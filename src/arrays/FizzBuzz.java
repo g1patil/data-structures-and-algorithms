@@ -5,7 +5,6 @@ import java.net.http.HttpClient;
 public class FizzBuzz {
     static String[] fizzBuzz(int number){
         String[] result = new String[number];
-        IOUtils
 
         for (int index = 0 ; index < number;index++){
             int target = index+1;
