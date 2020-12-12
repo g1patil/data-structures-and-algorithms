@@ -1,7 +1,5 @@
 package trees.binary;
 
-import jdk.vm.ci.code.ValueUtil;
-
 /**
  * Algorithm to delete the node from the BST
  * 
