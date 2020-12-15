@@ -51,23 +51,35 @@ public class MaximumProduct {
     }
     /**
      * @param input input array of integers
+     * @return max product of three integers.
      * */
     int maximumProductLinear(int[] input){
-        return 0;
+        int m1=0;int m2=0;int m3=0,n1,n2;
+
+        n1 = 0;
+        n2 = 0;
+        
+        for(int number : input){
+            if(m1 < number){
+                m3 = m2;
+                m2 = m1;
+                m1 = number;
+            }
+
+            if( number < n1 ){
+                n2 = n1;
+                n1 = number;
+            }
+
+        }
+
+        return Math.max(n1*n2*m1, m1*m2*m3);
     }
 
     public static void main(String[] args) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        minHeap.add(10);
-        minHeap.add(9);
-        minHeap.add(8);
-        minHeap.add(20);
-
-        Set<Integer> set = new TreeSet<>();
-        set.add(10);
-        set.
-        System.out.println(minHeap.poll());
 
         System.out.println(new MaximumProduct().maximumProduct(new int[]{-100,-2,-3,1}));
+
+        System.out.println(new MaximumProduct().maximumProductLinear(new int[]{-10,0,7,2,10,-19,20,1,3,5,-26}));
     }
 }
