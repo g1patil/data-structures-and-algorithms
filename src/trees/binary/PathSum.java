@@ -12,8 +12,12 @@ public class PathSum {
             return;
         }
 
-        calculateSum(node.left,sum + node.data);
-        calculateSum(node.right,sum + node.data);
+        if(node.left !=null){
+            calculateSum(node.left,sum + node.data);
+        }
+        if(node.right !=null){
+            calculateSum(node.right,sum + node.data);
+        }
 
     }
 
@@ -27,6 +31,9 @@ public class PathSum {
         Node n6 = new Node(25);
         Node n7 = new Node(6);
         Node n8 = new Node(9);
+        Node n9 = new Node(30);
+
+
 
 
 
@@ -41,6 +48,8 @@ public class PathSum {
 
         n4.left = n7;
         n4.right = n8;
+
+        n6.right = n9;
 
         new PathSum().calculateSum(root,0);
     }
