@@ -62,6 +62,23 @@ public class RegExTest {
         Assert.assertFalse(regEx.checkRegEx("mynameisJimandyou"));
     }
 
+    @Test
+    public void testValidNumber(){
+        Assert.assertTrue(regEx.validNumber("0"));
+        Assert.assertTrue(regEx.validNumber("1"));
+        Assert.assertTrue(regEx.validNumber("-1"));
+        Assert.assertTrue(regEx.validNumber("+1"));
+        Assert.assertFalse(regEx.validNumber("a"));
+        Assert.assertFalse(regEx.validNumber("1a"));
+        Assert.assertTrue(regEx.validNumber("0.1"));
+        Assert.assertFalse(regEx.validNumber("0..1"));
+        Assert.assertFalse(regEx.validNumber("0."));
+        Assert.assertFalse(regEx.validNumber("."));
+        Assert.assertTrue(regEx.validNumber(".2"));
+        Assert.assertFalse(regEx.validNumber("3."));
+
+    }
+
 
 
 }
