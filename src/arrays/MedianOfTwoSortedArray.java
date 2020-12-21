@@ -34,17 +34,34 @@ package arrays;
  * */
 public class MedianOfTwoSortedArray {
 
-    float getMedian(final int[] ints){
+    double getMedian(final int[] ints){
         int length = ints.length;
 
+        if (length == 0){
+            return 0;
+        }
+
+        if(length ==1){
+            return ints[0];
+        }
         if(length%2==1){
             return ints[ length/2];
         } else {
-            return (float) ( ints[ length/2 -1 ] + ints[ length/2 ] )/2;
+            return (double) ( ints[ length/2 -1 ] + ints[ length/2 ] )/2;
         }
     }
 
+    public double findMedianSortedArrays(final int[] ints, final int[] ints2){
+        if (ints.length == 0 || ints2.length ==0){
+            return ( getMedian(ints) + getMedian(ints2) ) ;
+        }
+        return ( getMedian(ints) + getMedian(ints2) )/2 ;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new MedianOfTwoSortedArray().getMedian(new int[]{7,4}));
+        System.out.println(
+                new MedianOfTwoSortedArray().findMedianSortedArrays(
+                        new int[]{1,3}, new int[]{2,7})
+        );
     }
 }
