@@ -49,6 +49,7 @@ public class MergeTwoSortedArrays {
         int[] result = new int[newLength];
         int p1=0,p2=0,p3=0;
 
+        //merge while both are not empty
         while ( p1 < first.length && p2 < second.length){
             if ( first[p1] < second[p2]){
                 result[p3] = first[p1];
@@ -61,11 +62,14 @@ public class MergeTwoSortedArrays {
             }
         }
 
+        //first is completed. Copy all remaining of second to result
         while (p1 == first.length && p2 < second.length){
             result[p3] = second[p2];
             p2++;
             p3++;
         }
+
+        //second is completed. Copy all remaining of first to result
         while (p2 == second.length && p1 < first.length){
             result[p3] = first[p1];
                 p1++;
