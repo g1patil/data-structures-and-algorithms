@@ -1,6 +1,7 @@
 package miscellaneous;
 
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -99,6 +100,22 @@ public class NumberOfRectangles {
         coordinates.add(c10);
 
         System.out.println(getNumberOfRectangles(coordinates));
+    }
+
+    //TODO fix the edge case where all diagonals are present
+    @Test
+    public void test3(){
+        Coordinate c1 = new Coordinate(0,0);
+        Coordinate c3 = new Coordinate(1,1);
+        Coordinate c5 = new Coordinate(2,2);
+
+        List<Coordinate> coordinates = new ArrayList<>();
+
+        coordinates.add(c1);
+        coordinates.add(c3);
+        coordinates.add(c5);
+        Assert.assertEquals(0,getNumberOfRectangles(coordinates));
+
     }
 }
 
