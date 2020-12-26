@@ -15,6 +15,8 @@ public class DetectCycle {
 
     /**
      * @param node head node
+     * Space O(n)
+     *  Linear
      * */
     private boolean cycleExist(Node node){
         Hashtable<Node,Node> nodes = new Hashtable<>();
@@ -41,11 +43,11 @@ public class DetectCycle {
         }
 
         Node odd = node;
-        Node even = odd.next;
+        Node even = node.next;
 
         while (odd != even){
 
-            if(odd == null || even == null){
+            if(even == null || even.next == null){
                 return false;
             }
 
@@ -80,13 +82,28 @@ public class DetectCycle {
     }
 
     @Test
+    public void test4(){
+        Node n1 = new Node(4);
+        Node n2 = new Node(5);
+        Node n3 = new Node(6);
+        Node n4 = new Node(7);
+        Node n5 = new Node(8);
+        n1.next = n2 ;
+        n2.next = n3 ;
+        n3.next = n4 ;
+        n4.next = n5 ;
+        n5.next = n3 ;
+
+        Assert.assertTrue(detectCycle(n1));
+    }
+
+    @Test
     public void cycleExist(){
         Node n1 = new Node(4);
         Node n2 = new Node(5);
         Node n3 = new Node(6);
         Node n4 = new Node(7);
         Node n5 = new Node(8);
-
 
         n1.next = n2;
         n2.next = n3;
