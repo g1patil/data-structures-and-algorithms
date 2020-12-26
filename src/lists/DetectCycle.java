@@ -9,7 +9,6 @@ import java.util.Hashtable;
 /**
  * @author jivanpatil
  * Check if there is clycle in the linked list
- *
  * */
 public class DetectCycle {
 
