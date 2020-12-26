@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 /**
  * Some example around equals and hashcode interview questions.
- * By default the equals() method checks the equilance relationship between the objects. 
+ * By default the equals() method checks the equivalence relationship between the objects.
  * That means that it checks if the two objects point to same reference or not.
  * 
  * public boolean equals(Object obj) {
@@ -12,9 +12,9 @@ import java.util.Map;
     } 
  * 
  * If we create two objects with exact same properties, but using new keyword then above code will return false.
- * Since they are pointing to differenct locations in the memory.
+ * Since they are pointing to different locations in the memory.
  * 
- * Now consider the case where we want to make sure that objects having all the properties same, should be equal. Their comparision should result in true.
+ * Now consider the case where we want to make sure that objects having all the properties same, should be equal. Their comparison should result in true.
  * For this we have to override the equals() method. This way we can give our own implementation.
  * 
  * Special case: Its generally recommended that we override equals and hashcode() both method.

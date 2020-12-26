@@ -1,14 +1,12 @@
 package lists;
-
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Stack;
 
 public class ReverseList {
 
     /**
      * Reverses the singly linked list
+     * @param root node of the head
      * */
     private Node reverseList(Node root){
         Node previous = null;
@@ -38,6 +36,7 @@ public class ReverseList {
             current = next;
             next = temp;
         }
+        //adjust the last node
         next.next = current;
         return next;
     }
