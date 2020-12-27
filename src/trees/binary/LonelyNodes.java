@@ -1,4 +1,4 @@
-package trees;
+package trees.binary;
 
 import data.TreeNode;
 import org.junit.Assert;
@@ -7,8 +7,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-
-//TODO
 /**
  * In a binary tree, a lonely node is a node that is the only child of its parent node.
  * The root of the tree is not lonely because it does not have a parent node.

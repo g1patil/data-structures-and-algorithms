@@ -1,4 +1,4 @@
-package trees;
+package trees.binary;
 
 import data.TreeNode;
 import org.junit.Assert;
