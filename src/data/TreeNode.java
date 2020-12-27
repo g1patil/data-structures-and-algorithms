@@ -9,6 +9,11 @@ public class TreeNode {
         this.data = data;
     }
 
+    public void setChild(final TreeNode left, final TreeNode right){
+        this.left = left ;
+        this.right = right ;
+    }
+
     public int getData(){
         return data;
     }
