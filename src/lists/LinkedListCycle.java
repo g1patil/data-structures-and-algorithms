@@ -55,4 +55,18 @@ class Node{
         this.data = data;
         this.next = null;
     }
+
+    public Node setNext(Node next){
+        this.next = next;
+        return next;
+    }
+
+    public int size(final Node node){
+        int size = 0;
+        if (node == null){
+            return 0;
+        }
+        //TODO
+        return 0;
+    }
 }
