@@ -68,4 +68,32 @@ public class MergeTwoSortedLists {
 
         Node result = mergeTwoLists(n1,l1);
     }
+
+    @Test
+    public void test2(){
+        Node result = mergeTwoLists(null,null);
+    }
+
+    @Test
+    public void test3(){
+        Node n1 = new Node(1);
+        Node result = mergeTwoLists(n1,null);
+    }
+
+    @Test
+    public void test4(){
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(9);
+
+        n1.setNext(n2).setNext(n3);
+
+        Node l1 = new Node(2);
+        Node l2 = new Node(7);
+        Node l3 = new Node(9);
+
+        l1.setNext(l2).setNext(l3);
+
+        Node result = mergeTwoLists(n1,l1);
+    }
 }
