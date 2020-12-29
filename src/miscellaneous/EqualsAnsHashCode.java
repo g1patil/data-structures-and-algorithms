@@ -1,7 +1,11 @@
 package miscellaneous;
 
+import org.junit.Assert;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+
 /**
  * Some example around equals and hashcode interview questions.
  * By default the equals() method checks the equivalence relationship between the objects.
@@ -18,10 +22,10 @@ import java.util.Map;
  * For this we have to override the equals() method. This way we can give our own implementation.
  * 
  * Special case: Its generally recommended that we override equals and hashcode() both method.
- * The reason is HashTable uses the hascode for getting and adding the object. And the their is contract between ewqulas and hashcode.
- *  For two equal objects, they have to return the same hashcode. Since if we fgive our own ummpemettion of the equals , mening that if we overirde the equals 
- * method thetn we have to overrisr the hashocde method as well so that we don;t break the contract. Whis means it rerurns the same results.
- *  If we don;t then hashtable will gilve the inconsidtent behaviuos
+ * The reason is HashTable uses the hascode for getting and adding the object. And the their is contract between equals and hashcode.
+ *  For two equal objects, they have to return the same hashcode. Since if we have our own ummpemettion of the equals , meaning that if we override the equals
+ * method thetn we have to override the hashocde method as well so that we don;t break the contract. Which means it rerurns the same results.
+ *  If we don;t then hashtable will give the inconsistent behaviour
  * 
  * 
 */
@@ -43,5 +47,31 @@ public class EqualsAnsHashCode {
         /*Here this is wrong. This is returning 2, but it should be one only.*/
         System.out.println(map.size());
 
+        Map<EqualsAnsHashCodeNode,Integer> integerHashMap = new HashMap<>();
+
+        integerHashMap.put(new EqualsAnsHashCodeNode(10),10);
+        integerHashMap.put(new EqualsAnsHashCodeNode(10),10);
+
+        //Following is correct since we are overriding the equals and hashcode method.
+        Assert.assertEquals(1,integerHashMap.size());
+    }
+
+}
+
+class EqualsAnsHashCodeNode{
+    private int data;
+    public EqualsAnsHashCodeNode(final int data){ this.data = data; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EqualsAnsHashCodeNode that = (EqualsAnsHashCodeNode) o;
+        return data == that.data;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(data);
     }
 }
