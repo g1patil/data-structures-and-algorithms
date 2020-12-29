@@ -32,7 +32,7 @@ public class KthLargestElementArray {
     private int findKthLargest(int[] nums, final int k) {
         Set<Integer> integerSet = new TreeSet<>();
 
-        if(nums.length < 4)
+        if(nums.length < k)
             return 0;
 
         for (int number: nums){
@@ -44,5 +44,10 @@ public class KthLargestElementArray {
     @Test
     public void test(){
         Assert.assertEquals( 5, findKthLargest(new int[]{3,2,3,1,2,4,5,5,6}, 4));
+    }
+
+    @Test
+    public void  test2(){
+        Assert.assertEquals(0, findKthLargest(new int[]{1,2,3,4,5},10));
     }
 }
