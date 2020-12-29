@@ -32,6 +32,9 @@ public class KthLargestElementArray {
     private int findKthLargest(int[] nums, final int k) {
         Set<Integer> integerSet = new TreeSet<>();
 
+        if(nums.length < 4)
+            return 0;
+
         for (int number: nums){
             integerSet.add( number );
         }
