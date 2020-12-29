@@ -22,9 +22,9 @@ import java.util.Objects;
  * For this we have to override the equals() method. This way we can give our own implementation.
  * 
  * Special case: Its generally recommended that we override equals and hashcode() both method.
- * The reason is HashTable uses the hascode for getting and adding the object. And the their is contract between equals and hashcode.
+ * The reason is HashTable uses the hashcode for getting and adding the object. And the their is contract between equals and hashcode.
  *  For two equal objects, they have to return the same hashcode. Since if we have our own ummpemettion of the equals , meaning that if we override the equals
- * method thetn we have to override the hashocde method as well so that we don;t break the contract. Which means it rerurns the same results.
+ * method thetn we have to override the hashcode method as well so that we don;t break the contract. Which means it return the same results.
  *  If we don;t then hashtable will give the inconsistent behaviour
  * 
  * 
