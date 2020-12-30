@@ -2,9 +2,7 @@ package lists;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -45,16 +43,19 @@ public class RemoveDuplicatesUnsortedList {
         return head;
     }
 
+    //null node
     @Test
     public void test(){
         Assert.assertNull(deleteDuplicates(null));
     }
 
+    //single node
     @Test
     public void test2(){
         Assert.assertNull(deleteDuplicates(new Node(10)).next);
     }
 
+    //duplicate at beginning
     @Test
     public void test3(){
         Node root = new Node(2);
@@ -66,6 +67,7 @@ public class RemoveDuplicatesUnsortedList {
         deleteDuplicates(root);
     }
 
+    //only two nodes, duplicate
     @Test
     public void test4(){
         Node root = new Node(2);
@@ -75,6 +77,7 @@ public class RemoveDuplicatesUnsortedList {
         deleteDuplicates(root);
     }
 
+    // Last two nodes duplicate
     @Test
     public void test5(){
         Node root = new Node(2);
@@ -84,6 +87,20 @@ public class RemoveDuplicatesUnsortedList {
         Node n4 = new Node(3);
 
         root.setNext(n1).setNext(n2).setNext(n3).setNext(n4);
+        deleteDuplicates(root);
+    }
+
+    //Multiple nodes duplicate
+    @Test
+    public void test6(){
+        Node root = new Node(2);
+        Node n1 = new Node(1);
+        Node n2 = new Node(4);
+        Node n3 = new Node(3);
+        Node n4 = new Node(2);
+        Node n5 = new Node(3);
+
+        root.setNext(n1).setNext(n2).setNext(n3).setNext(n4).setNext(n5);
         deleteDuplicates(root);
     }
 }
