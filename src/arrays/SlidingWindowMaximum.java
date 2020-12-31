@@ -11,9 +11,6 @@ import org.junit.Test;
  * You can only see the k numbers in the window. Each time the sliding window moves right by one position.
  *
  * Return the max sliding window.
- *
- *
- *
  * Example 1:
  *
  * Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
@@ -160,6 +157,7 @@ public class SlidingWindowMaximum {
         Assert.assertArrayEquals(new int[]{4},result);
     }
 
+    //TODO
     @Test
     public void test7(){
         int[] result = maxSlidingWindowOptimal(new int[]{7,2,4},2);
