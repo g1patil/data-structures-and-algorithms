@@ -1,6 +1,9 @@
 package lists;
 
+import org.junit.Test;
+
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 /**
