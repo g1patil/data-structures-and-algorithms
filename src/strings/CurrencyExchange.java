@@ -13,6 +13,9 @@ import java.util.*;
  * input fromCurrency, toCurrency
  *
  * return true or false
+ *
+ * Algorithm : The algorithm is to split the related currencies in groups.
+ * The check for each group, if particular group contains both from and to currencies or not.
  * */
 public class CurrencyExchange {
 
