@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.util.*;
 
-/**
+/*
  * 49. Group Anagrams
  *
  * Given an array of strings strs, group the anagrams together. You can return the answer in any order.
