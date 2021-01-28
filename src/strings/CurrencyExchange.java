@@ -21,9 +21,10 @@ public class CurrencyExchange {
 
     List<Set<String>> setArrayList = new ArrayList<>();
      {
-        String input = "USD/INR,INR/GBP,GBP/INR,GBP/RND,JPY/YAN,QWE/RTY,UYT/TYU,POI/OOP,YAN/BYJ";
+        String input = "USD/INR,GBP/RND,JPY/YAN,QWE/RTY,GBP/INR,UYT/TYU,POI/OOP,YAN/BYJ,INR/GBP";
         Set<String> stringSet = new HashSet<>();
         String[] inputArray = input.split(",");
+        Arrays.sort(inputArray);
         setArrayList.add(stringSet);
 
         for(String string:inputArray){
