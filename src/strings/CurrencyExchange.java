@@ -19,6 +19,7 @@ import java.util.*;
  * */
 public class CurrencyExchange {
 
+    Map<String,String> currencyMap = new HashMap<>();
     List<Set<String>> setArrayList = new ArrayList<>();
      {
         String input = "USD/INR,GBP/RND,JPY/YAN,QWE/RTY,GBP/INR,UYT/TYU,POI/OOP,YAN/BYJ,INR/GBP";
@@ -59,6 +60,35 @@ public class CurrencyExchange {
     * */
     private boolean canConvert(final String from, final String to){
         return setArrayList.stream().filter(set -> set.contains(from) && set.contains(to)).count() == 1;
+    }
+
+
+    private void buildData(){
+
+        String input = "USD/INR,GBP/RND,JPY/YAN,QWE/RTY,GBP/INR,UYT/TYU,POI/OOP,YAN/BYJ,INR/GBP";
+        String[] inputArray = input.split(",");
+
+        for (String pair:inputArray) {
+            String[] currency = pair.split("/");
+            if(!currencyMap.containsKey(currency[0])){
+                currencyMap.put(currency[0],currency[1]);
+            }
+            if(!currencyMap.containsKey(currency[1])){
+                currencyMap.put(currency[1],currency[0]);
+            }
+        }
+    }
+
+    private boolean canConverNew(final String s,final String d){
+
+        if(currencyMap.containsKey(s) && currencyMap.get(s).equals(d)){
+            return true;
+        }
+
+        if(currencyMap.values().contains(s)){
+            //currencyMap.ge
+        }
+        return false;
     }
 
     @Test
