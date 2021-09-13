@@ -3,10 +3,7 @@ package strings;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CurrencyConverter {
@@ -18,37 +15,49 @@ public class CurrencyConverter {
         }
     }
 
-    private boolean canConvert(final String source, final String target, final String oldSource){
-        List<String> conversions = getConvertedCurrency(source , oldSource) ;
-        if(conversions.get(0).equals(target)){
+    public boolean contains(final String s , final  String d){
+        if ( currencyList.contains( s + "/" + d ) || currencyList.contains( d + "/" + s )){
             return true;
-        }
-
-        for (String conversion : conversions) {
-            return canConvert( conversion , target , oldSource );
         }
         return false;
     }
-    private List<String> getConvertedCurrency(final String source, final String except){
-        List<String> conversion = currencyList.stream()
-               .filter( s-> s.contains(source) && !s.contains(except)  ).collect(Collectors.toList());
-        for (String s :
-             conversion) {
-            s.replace(source , "");
+    private boolean canConvert(final String source, final String target){
+        if ( contains(source , target)){
+            return true;
         }
-        conversion.stream().forEach(s-> s.replace("/", ""));
-        return conversion;
+        HashSet<String> visited = new HashSet<>();
+        return canConvert(source , target , visited);
 
+    }
+
+    private boolean canConvert(String source, String target, HashSet<String> visited) {
+        if ( contains(source , target)){
+            return true;
+        }
+
+        for (String s : currencyList.stream().filter(s -> s.contains(source)).collect(Collectors.toList())) {
+            String newCurrency = s.replace(source,"").replace("/","");
+            if (visited.contains(newCurrency)){
+                return false;
+            }
+            visited.add( newCurrency );
+            if( canConvert( newCurrency , target , visited)){
+                System.out.println(newCurrency);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Test
     public void test(){
-        Assert.assertTrue(this.canConvert("USD","INR", " "));
+        Assert.assertTrue(this.canConvert("USD","INR"));
     }
 
     @Test
     public void testTwo(){
-        Assert.assertTrue(this.canConvert("USD","GBP", " "));
-        Assert.assertTrue(this.canConvert("GBP","USD", " "));
+//        Assert.assertTrue(this.canConvert("USD","GBP"));
+//        Assert.assertTrue(this.canConvert("GBP","USD"));
+        Assert.assertTrue(this.canConvert("USD","RND"));
     }
 }
