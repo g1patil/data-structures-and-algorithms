@@ -34,13 +34,13 @@ public class CurrencyConverter {
         if ( contains(source , target)){
             return true;
         }
-
+        if (visited.contains(source)){
+            return false;
+        }
+        visited.add( source );
         for (String s : currencyList.stream().filter(s -> s.contains(source)).collect(Collectors.toList())) {
             String newCurrency = s.replace(source,"").replace("/","");
-            if (visited.contains(newCurrency)){
-                return false;
-            }
-            visited.add( newCurrency );
+
             if( canConvert( newCurrency , target , visited)){
                 System.out.println(newCurrency);
                 return true;
@@ -56,8 +56,14 @@ public class CurrencyConverter {
 
     @Test
     public void testTwo(){
-//        Assert.assertTrue(this.canConvert("USD","GBP"));
-//        Assert.assertTrue(this.canConvert("GBP","USD"));
+        Assert.assertTrue(this.canConvert("USD","GBP"));
+    }
+    @Test
+    public void testThree(){
+        Assert.assertTrue(this.canConvert("GBP","USD"));
+    }
+    @Test
+    public void testfour(){
         Assert.assertTrue(this.canConvert("USD","RND"));
     }
 }

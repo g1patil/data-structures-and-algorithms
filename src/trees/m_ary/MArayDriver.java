@@ -38,7 +38,9 @@ public class MArayDriver {
         Node n9 = new Node(9);
 
         n1.nodes.addAll(List.of(n5,n6));
-        n2.nodes.addAll(List.of(n7,n8,n9));
+        n2.nodes.addAll(List.of(n3));
+        n3.nodes.addAll(List.of(n8,n9));
+        n9.nodes.addAll(List.of(n7));
 
         root.nodes.addAll(List.of(n1,n2,n3,n4));
 
