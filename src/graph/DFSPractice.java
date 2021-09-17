@@ -23,8 +23,10 @@ public class DFSPractice {
         if (visited.contains(start)){
             return false;
         }
-        if(edgeExist(start,end))
+        if(edgeExist(start,end)) {
+            System.out.println(visited + "" + start + " " +  end);
             return true;
+        }
         visited.add(start);
         for(int[] node : this.input){
             if ( start == node[0] || start == node[1]){
