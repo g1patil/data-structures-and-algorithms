@@ -47,7 +47,7 @@ public class CloneGraph {
         Vertex newNode = createClone( node , built);
         visited.add( node );
 
-        if ( built.size() == 1){
+        if ( visited.size() == 1){
             this.newRoot = newNode;
         }
         for ( Vertex child : node.child){
