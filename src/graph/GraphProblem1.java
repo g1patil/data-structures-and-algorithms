@@ -29,7 +29,7 @@ public class GraphProblem1 {
 
         @Override
         public String toString() {
-            return "Vertex(" + x1 + ", " + y1 + ')';
+            return "(" + x1 + ", " + y1 + ')';
         }
 
         @Override
@@ -74,25 +74,11 @@ public class GraphProblem1 {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Edge edge = (Edge) o;
-            return distance == edge.distance && ( (Objects.equals(v1, edge.v1) && Objects.equals(v2, edge.v2) ) ||
+            return distance == edge.distance && (
+                    (Objects.equals(v1, edge.v1) && Objects.equals(v2, edge.v2) ) ||
                     (Objects.equals(v1, edge.v2) && Objects.equals(v2, edge.v1) )
-                    );
+            );
         }
-    }
-
-    boolean createsCycle(List<Edge> edgeList, Edge newEdge ){
-        List<Vertex> vertexList = new LinkedList<>();
-
-        List<Edge> newEdgeList = edgeList.stream()
-                .filter( edge -> List.of(newEdge.v1, newEdge.v2).contains(edge.v1) || List.of(newEdge.v1, newEdge.v2).contains(edge.v2))
-                .collect(Collectors.toList());
-
-        newEdgeList.stream().forEach( edge -> {
-            vertexList.add( edge.v1);
-            vertexList.add( edge.v2);
-        });
-
-        return vertexList.contains(newEdge.v1) && vertexList.contains(newEdge.v2);
     }
 
     List<Edge> createEdges(int[][] input){
@@ -110,13 +96,16 @@ public class GraphProblem1 {
 
     int returnMinCost(int[][] ints){
         List<Edge> edgeList = createEdges(ints);
-
         edgeList.sort(Comparator.comparingInt(o->o.distance));
+
+        Set<Vertex> visited = new HashSet<>();
         List<Edge> MST = new LinkedList<>();
 
         edgeList.stream().forEach( e-> {
-            if ( !createsCycle( MST , e)) {
+            if ( !(visited.contains(e.v1) && visited.contains(e.v2)) ) {
                 MST.add( e );
+                visited.add( e.v1);
+                visited.add( e.v2 );
             }
         });
         System.out.println( MST );
