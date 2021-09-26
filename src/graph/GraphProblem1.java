@@ -1,9 +1,10 @@
 package graph;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
+ * TODO improve this to logn complexity
+ *
  *  Min Cost to Connect All Points
  *
  *  You are given an array points representing integer coordinates of some points on a 2D-plane, where points[i] = [xi, yi].
