@@ -11,6 +11,10 @@ public class LCA {
     private List<Integer> integerList = new ArrayList<>();
     private List<Integer> integerArrayList = new ArrayList<>();
 
+    private void addElement(){
+
+    }
+
     private int getLCA(final TreeNode n1 , final TreeNode n2){
         int m1 = integerArrayList.indexOf(n1.data);
         int m2 = integerArrayList.indexOf(n2.data);
