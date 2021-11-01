@@ -9,48 +9,68 @@ import java.util.Arrays;
 */
 public class MergeSort {
 
-    int[] mergeArray(int[] first,int[] second){
-        int newLength  = first.length + second.length;
-        int[] result = new int[newLength];
-
-        int p1=0,p2=0;
-
-        for(int i = 0; i < newLength ; i++){
-                
-            if(p1 < first.length && p2 < second.length){
-                if (first[p1]< second[p2]){
-                    result[i] = first[p1];
-                    p1++;
-                    continue;
-                } else {
-                    result[i] = second[p2];
-                    p2++;
-                    continue;
-                }
-            }
-            
-        }
-
-        return result;
-    }
-    
+    /***
+     * Sorts the array using the merge sort algo.
+     * First split the array in two sub arrays ,
+     * call the merge sort on them , and merge the sorted array
+     * @param input int array
+     */
     int[] mergeSort(int[] input){
 
         if(input.length == 1){
             return input;
         }
+        int mid = input.length/2;
 
-        int[] left = Arrays.copyOfRange(input, 0, (input.length+1)/2);
-        int[] right = Arrays.copyOfRange(input,  (input.length+1)/2, input.length);
+        int[] left = Arrays.copyOfRange(input, 0,  mid );
+        int[] right = Arrays.copyOfRange(input,   mid , input.length );
 
-        int[] l = mergeSort(left);
-        int[] r = mergeSort(right);
+        left = mergeSort(left);
+        right = mergeSort(right);
 
-       return mergeArray(l,r);
+        return mergeArray(left , right );
     }
+
+    /**
+     * @param l left array
+     * @param r right array
+     * */
+    private int[] mergeArray(int[] l, int[] r) {
+        int newLength = l.length + r.length;
+        int[] result = new int[newLength];
+        int i=0,j=0,k=0;
+
+        while ( k < newLength && i < l.length && j < r.length){
+            if ( l[i] < r[j] ){
+                result[k] = l[i];
+                k++;
+                i++;
+            } else {
+                result[k] = r[j];
+                k++;
+                j++;
+            }
+        }
+
+        while ( i < l.length){
+            result[k] = l[i];
+            i++;
+            k++;
+        }
+
+        while ( j < r.length){
+            result[k] = r[j];
+            j++;
+            k++;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         MergeSort mg = new MergeSort();
 
-        System.out.println(mg.mergeSort(new int[]{10,5,1,7}));
+        for( int i : mg.mergeSort(new int[]{5,9,2,4,10,7,1,3}) ){
+            System.out.println( i );
+        }
     }
 }
