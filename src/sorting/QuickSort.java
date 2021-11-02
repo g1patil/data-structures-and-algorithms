@@ -31,6 +31,30 @@ public class QuickSort {
         return p1 ;
     }
 
+    /**
+     * Randomized version of pivot sorting .
+     * Pivot is chosen as random between the given range .
+     * @param ints integer array
+     * @param startIndex start index of the array
+     * @param endIndex end index of the array
+     * */
+    private int randomizedSortPartition(int[] ints , int startIndex , int endIndex){
+        int randomPivotIndex = (int) ((Math.random() * (endIndex - startIndex)) + startIndex);
+        int pivot = ints[randomPivotIndex];
+
+        int p1 = startIndex ;
+
+        for (int index = startIndex; index < endIndex  ; index++) {
+            if ( ints[index] < pivot ){
+                ArrayUtility.swap(ints , index , p1 );
+                p1 ++ ;
+            }
+        }
+
+        ArrayUtility.swap( ints , p1  , endIndex );
+        return p1 ;
+    }
+
     /***
      * Sorts the elements of the array using the QuickSort algo.
      * @param ints ineger array
