@@ -1,5 +1,6 @@
 package sorting;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -64,6 +65,16 @@ public class SelectionSort {
         this.selectionSort();
         for (int i : this.inputArray) {
             System.out.print(i + " " );
+        }
+    }
+
+    @Test
+    public void test2(){
+        try {
+            this.inputArray = new int[]{};
+            this.selectionSort();
+        } catch (Exception e){
+            Assert.assertEquals(e.getClass() , InvalidInputException.class);
         }
     }
 }
