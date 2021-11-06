@@ -47,16 +47,24 @@ public class CountingSort {
             frequencyArray[ inputInts[index] - MIN ] ++ ;
         }
 
-        for (int index = 1 ; index < inputInts.length; index++) {
+        for (int index = 1 ; index < frequencyArray.length; index++) {
             frequencyArray[  index  ] += frequencyArray[  index - 1  ] ;
         }
 
         int[] output = new int[this.inputInts.length];
+
+        for (int i = 0; i < inputInts.length; i++) {
+            int value = inputInts[ i ];
+            int newPosition = frequencyArray[ value -  MIN] - 1 ;
+            output[ newPosition ] = value ;
+            frequencyArray[ value -  MIN] -- ;
+        }
     }
 
     @Test
     public void test(){
         this.inputInts = new int[]{5,2,7,4,-2,2};
-        this.countSort();
+//        this.countSort();
+        this.countSortVersion2();
     }
 }
