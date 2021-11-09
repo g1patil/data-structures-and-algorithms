@@ -51,7 +51,7 @@ public class MinHeap {
     }
 
     private void ensureCapacity(){
-        if ( size == CAPACITY){
+        if ( size == this.ints.length ){
             this.ints = Arrays.copyOf( this.ints , CAPACITY * 2 );
             CAPACITY*= 2 ;
         }
@@ -90,6 +90,32 @@ public class MinHeap {
             }
             index = smallerChildIndex ;
 
+        }
+    }
+
+    private int removeElement(){
+        int smallest = this.ints[0];
+        this.ints[0] = this.ints[size -1];
+        size -- ;
+        heapifyDown();
+        return smallest;
+    }
+
+    public static void main(String[] args) {
+        MinHeap minHeap = new MinHeap(new int[]{25});
+        minHeap.add( 50 );
+        minHeap.add( 30 );
+        minHeap.add( 1 );
+        minHeap.add( 17 );
+        minHeap.add( 10 );
+        minHeap.add( 55 );
+        minHeap.add( 60 );
+
+        int[] output = new int[10];
+        int index = 0;
+        for ( int i : minHeap.ints){
+            output[index] = minHeap.removeElement(); ;
+            index ++ ;
         }
     }
 
