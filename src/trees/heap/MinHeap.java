@@ -1,13 +1,17 @@
 package trees.heap;
 
-import org.junit.Test;
 import sorting.ArrayUtility;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  * Implementation of the MeanHeap ds.
  * Reference : https://www.youtube.com/watch?v=t0Cq6tVNRBA
+ *
+ * TODO : refactor the code with better docs
  * */
 public class MinHeap {
 
@@ -16,7 +20,7 @@ public class MinHeap {
 
     private int CAPACITY = 10 ;
 
-    private MinHeap(int[] ints_){
+    public MinHeap(int[] ints_){
         this.ints = ints_ ;
         this.size = this.ints.length ;
     }
@@ -52,7 +56,7 @@ public class MinHeap {
     }
 
     private void ensureCapacity(){
-        if ( size == this.ints.length){
+        if ( size == this.ints.length ){
             this.ints = Arrays.copyOf( this.ints , CAPACITY * 2 );
             CAPACITY*= 2 ;
         }
@@ -68,7 +72,7 @@ public class MinHeap {
     private void heapifyUp(){
         int index = this.size - 1 ;
 
-        while ( hasParent(index) && getParent( index) < ints[index]){
+        while ( hasParent(index) && getParent( index) > ints[index]){
             ArrayUtility.swap( this.ints , getParentIndex(index), index);
             index = getParentIndex( index );
         }
@@ -94,9 +98,29 @@ public class MinHeap {
         }
     }
 
+    private int removeElement(){
+        int smallest = this.ints[0];
+        this.ints[0] = this.ints[size -1];
+        size -- ;
+        heapifyDown();
+        return smallest;
+    }
+
     public static void main(String[] args) {
-        MinHeap minHeap = new MinHeap(new int[]{50});
-        minHeap.add( 100 );
+        MinHeap minHeap = new MinHeap(new int[]{25});
+        minHeap.add( 50 );
+        minHeap.add( 30 );
+        minHeap.add( 1 );
+        minHeap.add( 17 );
+        minHeap.add( 10 );
+        minHeap.add( 55 );
+        minHeap.add( 60 );
+
+        int[] output = new int[minHeap.size];
+        for (int i = 0; i < output.length; i++) {
+            output[i] = minHeap.removeElement(); ;
+        }
+
     }
 
 
