@@ -40,6 +40,9 @@ public class KnapSack {
         int[] values = new int[]{1,2,10,3,4,6};
         int[] weight = new int[]{1,3,7,2,3,2};
 
-        System.out.println( this.knapSackSolver( values , weight ,  5 , 6 , 0));
+        int maxWeightCapacity = 10 ;
+        int currentMaxValue = 0 ;
+
+        System.out.println( this.knapSackSolver( values , weight ,  maxWeightCapacity , 6 , currentMaxValue));
     }
 }
