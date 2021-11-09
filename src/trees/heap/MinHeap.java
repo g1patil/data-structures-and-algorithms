@@ -120,23 +120,7 @@ public class MinHeap {
         for (int i = 0; i < output.length; i++) {
             output[i] = minHeap.removeElement(); ;
         }
-        float[] floatsNumbers = new float[]{0.37f,0.79f,0.52f,0.21f};
 
-        ArrayList<LinkedList<Float>> linkedListArrayList = new ArrayList<>(floatsNumbers.length);
-
-        for (int i = 0; i < floatsNumbers.length; i++) {
-            linkedListArrayList.add(new LinkedList<>());
-        }
-        for (int i = 0; i < floatsNumbers.length; i++) {
-            linkedListArrayList.get((int) ( floatsNumbers.length * floatsNumbers[i])).add( floatsNumbers[i]);
-        }
-        linkedListArrayList.forEach( a-> Collections.sort(a));
-        LinkedList<Float> floatLinkedList = new LinkedList<>();
-        linkedListArrayList.forEach(a -> a.forEach( e-> {
-            floatLinkedList.add( e );
-        }));
-
-        System.out.println( floatLinkedList );
     }
 
 
