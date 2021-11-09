@@ -1,5 +1,6 @@
 package trees.heap;
 
+import org.junit.Test;
 import sorting.ArrayUtility;
 
 import java.util.Arrays;
@@ -15,7 +16,7 @@ public class MinHeap {
 
     private int CAPACITY = 10 ;
 
-    public MinHeap(int[] ints_){
+    private MinHeap(int[] ints_){
         this.ints = ints_ ;
         this.size = this.ints.length ;
     }
@@ -51,7 +52,7 @@ public class MinHeap {
     }
 
     private void ensureCapacity(){
-        if ( size == CAPACITY){
+        if ( size == this.ints.length){
             this.ints = Arrays.copyOf( this.ints , CAPACITY * 2 );
             CAPACITY*= 2 ;
         }
@@ -67,7 +68,7 @@ public class MinHeap {
     private void heapifyUp(){
         int index = this.size - 1 ;
 
-        while ( hasParent(index) && getParent( index) > ints[index]){
+        while ( hasParent(index) && getParent( index) < ints[index]){
             ArrayUtility.swap( this.ints , getParentIndex(index), index);
             index = getParentIndex( index );
         }
@@ -91,6 +92,11 @@ public class MinHeap {
             index = smallerChildIndex ;
 
         }
+    }
+
+    public static void main(String[] args) {
+        MinHeap minHeap = new MinHeap(new int[]{50});
+        minHeap.add( 100 );
     }
 
 
