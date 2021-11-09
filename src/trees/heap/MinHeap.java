@@ -7,6 +7,8 @@ import java.util.Arrays;
 /**
  * Implementation of the MeanHeap ds.
  * Reference : https://www.youtube.com/watch?v=t0Cq6tVNRBA
+ *
+ * TODO : refactor the code with better docs
  * */
 public class MinHeap {
 
@@ -111,11 +113,9 @@ public class MinHeap {
         minHeap.add( 55 );
         minHeap.add( 60 );
 
-        int[] output = new int[10];
-        int index = 0;
-        for ( int i : minHeap.ints){
-            output[index] = minHeap.removeElement(); ;
-            index ++ ;
+        int[] output = new int[minHeap.size];
+        for (int i = 0; i < output.length; i++) {
+            output[i] = minHeap.removeElement(); ;
         }
     }
 
