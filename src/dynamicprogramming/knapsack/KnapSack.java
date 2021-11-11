@@ -72,15 +72,15 @@ public class KnapSack {
 
 
     private int knapSackBottomUp(final int[] values , final int[] weight , int weightCapacity, int numberOfItems){
-        for (int i = 1; i < numberOfItems + 1; i++) {
-            for (int j = 1; j < weightCapacity + 1; j++) {
-                if ( weight[i -1 ] <= j){
+        for (int currentNumberOfItems = 1; currentNumberOfItems < numberOfItems + 1; currentNumberOfItems++) {
+            for (int currentTargetSum = 1; currentTargetSum < weightCapacity + 1; currentTargetSum++) {
+                if ( weight[currentNumberOfItems -1 ] <= currentTargetSum){
 
-                     bottomUpResult[i][j] = Math.max(
-                             values[i -1 ] + bottomUpResult[i -1][j - weight[i -1 ] ]
-                                                        ,bottomUpResult[i -1 ][j ]
+                     bottomUpResult[currentNumberOfItems][currentTargetSum] = Math.max(
+                             values[currentNumberOfItems -1 ] + bottomUpResult[currentNumberOfItems -1][currentTargetSum - weight[currentNumberOfItems -1 ] ]
+                                                        ,bottomUpResult[currentNumberOfItems -1 ][currentTargetSum]
                     );
-                } else bottomUpResult[i][j] = bottomUpResult[i - 1 ][j] ;
+                } else bottomUpResult[currentNumberOfItems][currentTargetSum] = bottomUpResult[currentNumberOfItems - 1 ][currentTargetSum] ;
             }
         }
 
