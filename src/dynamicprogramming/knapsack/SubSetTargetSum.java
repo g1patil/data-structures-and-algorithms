@@ -1,5 +1,6 @@
 package dynamicprogramming.knapsack;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class SubSetTargetSum {
@@ -25,44 +26,44 @@ public class SubSetTargetSum {
 
     /**
      * Implement using the memoization.
-     * Improve this and change this to iterative
      * */
-    private boolean targetSubSetSumMemoization(int[] values , int pointer , int sum){
-        int oldPointer = pointer ;
-        if ( sum == 0)
-            return true;
-        if ( (pointer == values.length && sum > 0) || pointer > memoization.length - 1 )
-            return false ;
-
-        if ( memoization[pointer][sum])
-            return true;
-
-        if ( values[pointer] <= sum){
-            int currentValue = values[pointer];
-            pointer++;
-            if (targetSubSetSumMemoization( values , pointer , sum - currentValue) ||
-                    targetSubSetSumMemoization( values , pointer , sum ) ){
-                return memoization[oldPointer][sum] = true ;
-            } ;
+    private boolean targetSubSetSumMemoization(int[] values , int sum){
+        for (int i = 1; i <= values.length ; i++) {
+            for (int j = 1; j <= sum  ; j++) {
+                if ( values[i - 1 ] <= j){
+                    // either the previous element , previous row and same column
+                    // or previous element , previous row same column with current weight removed
+                    memoization[i][j] = ( memoization[ i -1  ][ j - values[i - 1]] || memoization[i - 1][j] ) ;
+                } else
+                    //previous element , previous row and same weight
+                    memoization[i][j] = memoization[i -1 ][j] ;
+            }
         }
-        pointer++ ;
-        return memoization[oldPointer][sum] = targetSubSetSumMemoization( values , pointer , sum) ;
+
+        return memoization[values.length][sum];
     }
 
     @Test
     public void test(){
         int[] values = new int[]{ 5,3,1,6,4 } ;
-        int targetSum = 11 ;
-        System.out.println( targetSubSetSum(values , 0 , targetSum ));
+        int targetSum = 19 ;
 
         memoization = new boolean[values.length + 1 ][targetSum + 1];
 
         for (int i = 0; i < values.length + 1; i++) {
             for (int j = 0; j < targetSum + 1; j++) {
-                memoization [i] [j] = false ;
+                if (i == 0){
+                    memoization [i] [j] = false ;
+                }
+                if ( j == 0){
+                    memoization [i] [j] = true ;
+                }
             }
         }
 
-        System.out.println( targetSubSetSumMemoization(values , 0 , targetSum ));
+        System.out.println(targetSubSetSum(values , 0 , targetSum ));
+        Assert.assertEquals(targetSubSetSum(values , 0 , targetSum ), targetSubSetSumMemoization(values , targetSum ));
+
     }
+
 }
