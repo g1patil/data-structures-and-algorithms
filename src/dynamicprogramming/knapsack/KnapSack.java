@@ -86,12 +86,47 @@ public class KnapSack {
 
         return bottomUpResult[numberOfItems][weightCapacity] ;
     }
+
     @Test
     public void test(){
         int[] values = new int[]{1,2,10,3,4,6};
         int[] weight = new int[]{1,3,7,2,3,2};
 
         int maxWeightCapacity = 10 ;
+        int numberOfItems = values.length ;
+
+        System.out.println( this.knapSackSolver( values , weight ,  maxWeightCapacity , numberOfItems ));
+
+        this.recursionResult = new int[numberOfItems + 1 ][maxWeightCapacity + 1];
+
+        for (int i = 0; i < numberOfItems + 1 ; i++) {
+            for (int j = 0; j < maxWeightCapacity + 1; j++) {
+                recursionResult[i][j] = -1 ;
+            }
+        }
+
+        this.bottomUpResult = new int[numberOfItems + 1 ][maxWeightCapacity + 1];
+
+        for (int i = 0; i < numberOfItems + 1 ; i++) {
+            for (int j = 0; j < maxWeightCapacity + 1; j++) {
+                if ( i == 0 || j == 0)
+                    bottomUpResult[i][j] = 0 ;
+            }
+        }
+
+        System.out.println( this.memoizationKnapSack(values , weight , maxWeightCapacity , numberOfItems) );
+        System.out.println( this.knapSackBottomUp(values , weight , maxWeightCapacity , numberOfItems) );
+    }
+
+    /**
+     * Cutting the role kp problem.
+     * */
+    @Test
+    public void test2(){
+        int[] weight = new int[]{1,2,3,4,5,6,7,8};
+        int[] values = new int[]{1,5,8,9,10,17,17,20};
+
+        int maxWeightCapacity = 8 ;
         int numberOfItems = values.length ;
 
         System.out.println( this.knapSackSolver( values , weight ,  maxWeightCapacity , numberOfItems ));
