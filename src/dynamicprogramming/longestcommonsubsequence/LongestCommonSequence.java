@@ -17,10 +17,10 @@ public class LongestCommonSequence {
      * */
     private int getLCSLength(String s1, String s2 , int p1 , int p2 ){
 
-        if ( p1 < 0 || p2 < 0)
+        if ( p1 == 0 || p2 == 0)
             return 0;
 
-        if ( s1.charAt(p1) == s2.charAt(p2 )){
+        if ( s1.charAt(p1 -1 ) == s2.charAt(p2 - 1)){
             return 1 + getLCSLength(s1,s2, p1 -1 ,p2 -1  );
         } else {
             return Math.max(getLCSLength(s1,s2, p1 -1 ,p2 ), getLCSLength(s1,s2,p1, p2 -1  ) ) ;
@@ -51,12 +51,31 @@ public class LongestCommonSequence {
 
     @Test
     public void test(){
-//        String s1 = "ttjtttitttva";
-//        String s2 = "aaaaaaajivzzzzzza";
+        String s1 = "ttjtttitttva";
+        String s2 = "aaaaaaajivzzzzzza";
 
+        System.out.println(this.getLCSLength(s1,s2,s1.length() , s2.length() ));
+
+        this.memoization = new int[s1.length() + 1][ s2.length() + 1];
+
+        for (int i = 0; i <= s1.length(); i++) {
+            for (int j = 0; j <= s2.length(); j++) {
+                if ( i == 0 || j == 0 )
+                    memoization[i][j] = 0 ;
+                else memoization[i][j] = -1 ;
+            }
+
+        }
+
+        System.out.println(this.getLCSLengthDP(s1,s2,s1.length() , s2.length() ));
+    }
+
+    @Test
+    public void test2(){
         String s1 = "ttttttttptttttttt";
         String s2 = "adsfpqqqqqqqq";
-        System.out.println(this.getLCSLength(s1,s2,s1.length() -1 , s2.length() -1 ));
+
+        System.out.println(this.getLCSLength(s1,s2,s1.length() , s2.length() ));
 
         this.memoization = new int[s1.length() + 1][ s2.length() + 1];
 
