@@ -59,8 +59,8 @@ public class LongestCommonSequence {
     private int getLCSLengthTopDown(String s1, String s2 , int p1 , int p2 ){
 
         for (int i = 1; i <= p1 ; i++) {
-            for (int j = 1; j < p2; j++) {
-                if ( s1.charAt(p1 -1) == s2.charAt(p2 - 1) ){
+            for (int j = 1; j <= p2; j++) {
+                if ( s1.charAt(i -1) == s2.charAt(j - 1) ){
                     this.topDown[i][j] = 1 + this.topDown[ i -1 ][ j -1 ];
                 } else this.topDown[i][j] = Math.max( this.topDown[ i ][ j -1 ], this.topDown[ i -1 ][ j ] );
             }
@@ -113,8 +113,8 @@ public class LongestCommonSequence {
 
     @Test
     public void test3(){
-        String s1 = "jivan";
-        String s2 = "j";
+        String s1 = "pppppppjppppipppv";
+        String s2 = "jiv";
 
         this.topDown = new int[s1.length() + 1][ s2.length() + 1];
 
