@@ -65,7 +65,23 @@ public class LongestCommonSequence {
                 } else this.topDown[i][j] = Math.max( this.topDown[ i ][ j -1 ], this.topDown[ i -1 ][ j ] );
             }
         }
-
+        int counter = topDown[p1][p2];
+        while ( counter!=0){
+            if (s1.charAt(p1 -1 ) == s2.charAt(p2 -1 )){
+                System.out.println(s1.charAt(p1 -1 ));
+                counter -- ;
+                p1-- ;
+                p2 -- ;
+            } else {
+                if ( topDown[p1][p2 -1] == counter){
+                    counter = topDown[p1][p2 -1] ;
+                    p2 --;
+                } else {
+                    counter = topDown[p1 - 1][p2] ;
+                    p1 -- ;
+                }
+            }
+        }
         return topDown[p1][p2];
     }
 
