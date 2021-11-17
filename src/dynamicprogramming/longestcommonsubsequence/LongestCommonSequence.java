@@ -66,9 +66,12 @@ public class LongestCommonSequence {
             }
         }
         int counter = topDown[p1][p2];
+
+        StringBuilder stringBuilder = new StringBuilder();
         while ( counter!=0){
             if (s1.charAt(p1 -1 ) == s2.charAt(p2 -1 )){
                 System.out.println(s1.charAt(p1 -1 ));
+                stringBuilder.append(s1.charAt(p1 -1 ));
                 counter -- ;
                 p1-- ;
                 p2 -- ;
@@ -82,6 +85,8 @@ public class LongestCommonSequence {
                 }
             }
         }
+
+        System.out.println( stringBuilder.reverse());
         return topDown[p1][p2];
     }
 
