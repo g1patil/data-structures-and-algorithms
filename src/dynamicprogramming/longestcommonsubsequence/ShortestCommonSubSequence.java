@@ -8,7 +8,7 @@ public class ShortestCommonSubSequence {
      * Not sure if its even possible
      * */
     private int getLCSLength(String s1, String s2 , int p1 , int p2 , int count ){
-
+        return -1 ;
     }
 
     @Test
