@@ -2,7 +2,11 @@ package dynamicprogramming.longestcommonsubsequence;
 
 import org.junit.Test;
 
-public class LongestPalindromicSubsequence {
+/**
+ * Minimum number of the deletion to make the string palindromic
+ * Minimum deletion will be , actual length of the string - longest palindromic subsequence
+ * */
+public class MinimumDeletionForPalindromic {
     int[][] memoization;
 
 
@@ -25,7 +29,7 @@ public class LongestPalindromicSubsequence {
 
     @Test
     public void test2(){
-        String s1 = "agbcba ";
+        String s1 = "agbcba";
         //s2 will be the palindrom of the original string
         String s2 = new StringBuilder(s1).reverse().toString();
 
@@ -40,6 +44,6 @@ public class LongestPalindromicSubsequence {
 
         }
 
-        System.out.println(this.getLCSLengthDP(s1,s2,s1.length() , s2.length() ));
+        System.out.println(s1.length() - this.getLCSLengthDP(s1,s2,s1.length() , s2.length() ));
     }
 }
