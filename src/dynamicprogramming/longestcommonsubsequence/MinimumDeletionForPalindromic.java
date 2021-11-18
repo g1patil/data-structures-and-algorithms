@@ -3,7 +3,8 @@ package dynamicprogramming.longestcommonsubsequence;
 import org.junit.Test;
 
 /**
- * Minimum number of the deletion to make the string palindromic
+ * Minimum number of the deletion to make the string palindromic.
+ * This is same as minimum number of the deletion to making the string palindromic
  * Minimum deletion will be , actual length of the string - longest palindromic subsequence
  * */
 public class MinimumDeletionForPalindromic {
