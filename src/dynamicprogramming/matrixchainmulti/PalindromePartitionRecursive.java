@@ -58,15 +58,45 @@ public class PalindromePartitionRecursive {
         return this.memoization[i][j] = min ;
     }
 
+    /**
+     * Top down approach optimized
+     * */
+    public int multiplyMatrixTopDownOptimized(String string , int i , int j ){
+
+        if (this.memoization[i][j] != -1)
+            return this.memoization[i][j] ;
+
+        if ( i >= j || isPalindrome(string, i, j))
+            return 0 ;
+
+        int left = 0 , right = 0  ;
+        int min = Integer.MAX_VALUE;
+        for (int k = i; k < j  ; k++) {
+
+            if(memoization[i][k] != -1){
+                left = memoization[i][k] ;
+            } else left = multiplyMatrixTopDown(string , i , k) ;
+
+            if(memoization[k +1 ][j] != -1){
+                right = memoization[k+1][j] ;
+            } else right = multiplyMatrixTopDown(string , k+1 , j )  ;
+
+            int temp  = left + right + 1 ;
+
+            min = Math.min( temp , min );
+        }
+        return this.memoization[i][j] = min ;
+    }
+
     @Test
     public void test_(){
-        String name = "AABBBCCCCqqqqqqqqyxxyyyyyyyyy" ;
+        String name = "AABBBCCCCqqqqqqqqyxxyyyyyyyyyqqqqqqqqqqqqqqqqqqjjjjjjjkkkkkkkllllbbbbbbbbbbbbbbppppppppppppppppppppppppxxxpppppppvvvvvvvvvvvvvvvveeeeeeeeewwwwwww" ;
         System.out.println( this.multiplyMatrix( name, 0 , name.length()  ) );
     }
 
     @Test
     public void test_2(){
-        String name = "AABBBCCCCqqqqqqqqyxxyyyyyyyyy" ;
+        String name = "AABBBCCCCqqqqqqqqyxxyyyyyyyyyqqqqqqqqqqqqqqqqqqjjjjjjjkkkkkkkllllbbbbbbbbbbbbbbppppppppppppppppppppppppxxxpppppppvvvvvvvvvvvvvvvveeeeeeeeewwwwwwwzxcvbnm" ;
         this.memoization = new int[name.length() + 1][ name.length() + 1] ;
 
         for (int i = 0; i <= name.length() ; i++) {
@@ -75,6 +105,9 @@ public class PalindromePartitionRecursive {
             }
         }
 
+        long startTime = System.currentTimeMillis();
         System.out.println( this.multiplyMatrixTopDown( name, 0 , name.length()  ) );
+        long stopTime = System.currentTimeMillis();
+        System.out.println(stopTime - startTime);
     }
 }
