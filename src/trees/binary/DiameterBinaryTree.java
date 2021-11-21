@@ -44,6 +44,21 @@ public class DiameterBinaryTree {
 
     public int diameterOfBinaryTree(TreeNode root) {
 
+        if ( root == null)
+            return 0;
+
+        int left = getHeight(root.left);
+        int right = getHeight(root.right);
+
+        return Math.max( left + right + 2, Math.max( diameterOfBinaryTree( root.right), diameterOfBinaryTree( root.left)));
+    }
+
+    /**
+     * Diameter of the binary tree using the memoisation technique.
+     * The trick is to save the result of the recursive call in some DS and return it when needed.
+     * */
+    public int diameterOfBinaryTreeMemoisation(TreeNode root) {
+
         if ( treeNodeIntegerMap.containsKey(root) )
             return treeNodeIntegerMap.get( root );
 
@@ -60,21 +75,6 @@ public class DiameterBinaryTree {
         treeNodeIntegerMap.put( root.right , diameterOfRight );
 
         return Math.max( left + right + 2, Math.max( diameterOfLeft, diameterOfRight));
-    }
-
-    /**
-     * Diameter of the binary tree using the memoisation technique.
-     * The trick is to save the result of the recursive call in some DS and return it when needed.
-     * */
-    public int diameterOfBinaryTreeMemoisation(TreeNode root) {
-
-        if ( root == null)
-            return 0;
-
-        int left = getHeight(root.left);
-        int right = getHeight(root.right);
-
-        return Math.max( left + right + 2, Math.max( diameterOfBinaryTree( root.right), diameterOfBinaryTree( root.left)));
     }
 
     @Test
