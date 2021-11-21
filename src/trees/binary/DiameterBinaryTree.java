@@ -4,7 +4,11 @@ import data.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
+ * @author g1patil
  * 543. Diameter of Binary Tree
  * Easy
  *
@@ -25,6 +29,8 @@ import org.junit.Test;
  * */
 public class DiameterBinaryTree {
 
+    Map<TreeNode , Integer> treeNodeIntegerMap = new HashMap<>();
+
     /**
      * @param node given node
      * @return height of the tree
@@ -37,6 +43,30 @@ public class DiameterBinaryTree {
     }
 
     public int diameterOfBinaryTree(TreeNode root) {
+
+        if ( treeNodeIntegerMap.containsKey(root) )
+            return treeNodeIntegerMap.get( root );
+
+        if ( root == null)
+            return 0;
+
+        int left = getHeight(root.left);
+        int right = getHeight(root.right);
+
+        int diameterOfLeft = diameterOfBinaryTree( root.left);
+        int diameterOfRight = diameterOfBinaryTree( root.right);
+
+        treeNodeIntegerMap.put( root.left , diameterOfLeft);
+        treeNodeIntegerMap.put( root.right , diameterOfRight );
+
+        return Math.max( left + right + 2, Math.max( diameterOfLeft, diameterOfRight));
+    }
+
+    /**
+     * Diameter of the binary tree using the memoisation technique.
+     * The trick is to save the result of the recursive call in some DS and return it when needed.
+     * */
+    public int diameterOfBinaryTreeMemoisation(TreeNode root) {
 
         if ( root == null)
             return 0;
@@ -67,5 +97,27 @@ public class DiameterBinaryTree {
         n4.setChild(null,n8);
 
         Assert.assertEquals( 5 ,diameterOfBinaryTree(node));
+    }
+
+    @Test
+    public void test2(){
+        TreeNode node = new TreeNode(10);
+
+        TreeNode n1 = new TreeNode(1);
+        TreeNode n2 = new TreeNode(2);
+        TreeNode n3 = new TreeNode(3);
+        TreeNode n4 = new TreeNode(4);
+        TreeNode n5 = new TreeNode(5);
+        TreeNode n6 = new TreeNode(6);
+        TreeNode n7 = new TreeNode(7);
+        TreeNode n8 = new TreeNode(8);
+
+        node.setChild(n1,n2);
+        n1.setChild(n3,n4);
+        n2.setChild(n5,n6);
+        n3.setChild(n7,null);
+        n4.setChild(null,n8);
+
+        Assert.assertEquals( 5 ,diameterOfBinaryTreeMemoisation(node));
     }
 }
