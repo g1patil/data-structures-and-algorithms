@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * @auther g1patil
  */
-public class MaxPathSum {
+public class MaxPathSumLeaf2Leaf {
 
     /**
      * @param node given node
@@ -70,7 +70,7 @@ public class MaxPathSum {
 
     @Test
     public void test3(){
-        TreeNode node = new TreeNode(-100);
+        TreeNode node = new TreeNode(10);
 
         TreeNode n1 = new TreeNode(2);
         TreeNode n2 = new TreeNode(5);
