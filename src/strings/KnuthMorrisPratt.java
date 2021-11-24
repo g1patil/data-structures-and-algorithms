@@ -51,18 +51,18 @@ public class KnuthMorrisPratt {
         int inputPointer = 0; // the position of the current character in text
         int patternPointer = 0; // the position of the current character in pattern
 
-        int tLen = text.length();
-        int pLen = pattern.length();
+        int textLength = text.length();
+        int patternLength = pattern.length();
 
         List<Integer> matches = new ArrayList<>();
         int[] prefixLen = calcPrefixLen(pattern);
 
-        while (inputPointer < tLen) {
+        while (inputPointer < textLength) {
             if (pattern.charAt(patternPointer) == text.charAt(inputPointer)) {
                 patternPointer++;
                 inputPointer++;
 
-                if (patternPointer == pLen) {
+                if (patternPointer == patternLength) {
                     // occurrence found, if only first occurrence is needed then you could halt here
                     matches.add(inputPointer - patternPointer);
                     patternPointer = prefixLen[patternPointer]; // reset
