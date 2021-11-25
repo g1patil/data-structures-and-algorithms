@@ -32,7 +32,6 @@ public class KMP {
         int[] prefixArray = new int[ patternLength + 1];
 
         prefixArray[0] = -1 ;
-        prefixArray[1] = 0 ;
 
         int pointer = 1;
         int prefixLength = 0 ;
