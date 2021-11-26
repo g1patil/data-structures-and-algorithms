@@ -27,10 +27,10 @@ public class RabinKarp {
 
     /**
      * Checks if the given pattern exists in the input string.
-     * @param inputString inoput string
+     * @param inputString input string
      * @param patternString pattern the needs to be checked
      * From the beginning, get the substring of the length which is equal to the
-     *                      lenght of the pattern, generate the hash of it. and match it with
+     *                      length of the pattern, generate the hash of it. and match it with
      *                      input pattern hash.
      * */
     private int matchThePattern(String inputString , String patternString){
