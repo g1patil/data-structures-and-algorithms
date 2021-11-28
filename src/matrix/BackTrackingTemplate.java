@@ -8,6 +8,10 @@ import org.junit.Test;
  */
 public class BackTrackingTemplate {
 
+    private void solve(){
+
+    }
+
     @Test
     public void test_(){
     }
