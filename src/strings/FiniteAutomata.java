@@ -26,52 +26,34 @@ public class FiniteAutomata {
         }
     }
 
-//    private int getNextState(int currentState, int character) {
-//        if (currentState < PATTERN_LENGTH && patternString.charAt(currentState) == character)
-//            return currentState + 1 ;
-//
-//        int p1 = 0 , p2  =  1 ;
-//        int length = 0 ;
-//
-//        for (p2 = 1; p2 <= currentState -1  ; p2++) {
-//            if ( patternString.charAt(p1) == patternString.charAt(p2)){
-//                p1++;
-//                length ++;
-//            } else {
-//                p1 = 0 ;
-//                length = 0 ;
-//            }
-//        }
-//
-//        if ( patternString.charAt(p1) == character )
-//            length++ ;
-//        return length ;
-//    }
-
     private int getNextState(int currentState, int character) {
         if (currentState < PATTERN_LENGTH && patternString.charAt(currentState) == character)
             return currentState + 1 ;
 
-        int ns, i;
+        int p1 = 0 , p2  =  1 ;
+        int length = 0 ;
 
-
-        for (ns = currentState; ns > 0; ns--)
-        {
-            if (patternString.charAt(ns-1) == character)
-            {
-                for (i = 0; i < ns-1; i++)
-                    if (patternString.charAt(i) != patternString.charAt(currentState-ns+1+i))
-                        break;
-                if (i == ns-1)
-                    return ns;
+        for (p2 = 1; p2 <= currentState -1  ; p2++) {
+            if ( patternString.charAt(p1) == patternString.charAt(p2)){
+                p1++;
+                length ++;
+            } else {
+                p1 = 0 ;
+                length = 0 ;
             }
         }
 
-        return 0;
+        if ( patternString.charAt(p1) == character ){
+            length++ ;
+        } else length = 0;
+
+        if ( length == 0 && patternString.charAt(0) == character)
+            return 1 ;
+        return length ;
     }
 
     public static void main(String[] args) {
-        FiniteAutomata finiteAutomata = new FiniteAutomata("aba" );
+        FiniteAutomata finiteAutomata = new FiniteAutomata("ababaca" );
         finiteAutomata.buildTransitionTable();
         MatrixUtility.print(finiteAutomata.transitionTable);
     }

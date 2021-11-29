@@ -27,9 +27,28 @@ public class TestString {
         }
         return length;
     }
+
+    private int solve2(String s, int p2Bound , int extraChar){
+
+        int p1 = 0 , p2 = 1 ;
+        int length = 0 ;
+
+        for ( p2 = 1 ; p2 < p2Bound ; p2 ++){
+            if (s.charAt(p1) == s.charAt(p2)){
+                p1 ++ ;
+                length ++ ;
+            } else {
+                p1 = 0 ;
+                length = 0 ;
+            }
+        }
+        if ( s.charAt(p1) == extraChar )
+            length++ ;
+        return length ;
+    }
     @Test
     public void test_(){
-        String pattern = "aabcdaabc";
-        System.out.println(solve(pattern , pattern.length() ));
+        String pattern = "aba";
+        System.out.println(solve2(pattern , pattern.length() , 99  ));
     }
 }
