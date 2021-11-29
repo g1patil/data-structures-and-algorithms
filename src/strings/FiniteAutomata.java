@@ -33,6 +33,7 @@ public class FiniteAutomata {
         int p1 = 0 , p2  =  1 ;
         int length = 0 ;
 
+        //create two pointers
         for (p2 = 1; p2 <= currentState -1  ; p2++) {
             if ( patternString.charAt(p1) == patternString.charAt(p2)){
                 p1++;
@@ -43,6 +44,7 @@ public class FiniteAutomata {
             }
         }
 
+        //handle the edge case
         if ( patternString.charAt(p1) == character ){
             length++ ;
         } else length = 0;
