@@ -18,6 +18,9 @@ public class FiniteAutomata {
         this.transitionTable = new int[PATTERN_LENGTH + 1 ][CHAR_COUNT];
     }
 
+    /**
+     * Builds the transition table for the given pattern
+     * */
     private void buildTransitionTable(){
         for (int STATE = 0; STATE < PATTERN_LENGTH + 1; STATE++) {
             for (int CHAR = 97; CHAR < 101 ; CHAR++) {
@@ -26,6 +29,11 @@ public class FiniteAutomata {
         }
     }
 
+    /**
+     * Returns the next state for the given char based on the current state
+     * @param currentState current state in the pattern
+     * @param character current character
+     * */
     private int getNextState(int currentState, int character) {
         if (currentState < PATTERN_LENGTH && patternString.charAt(currentState) == character)
             return currentState + 1 ;
@@ -54,6 +62,10 @@ public class FiniteAutomata {
         return length ;
     }
 
+    /**
+     * Solves the given pattern input string
+     * @param inputText input string text
+     * */
     private int solvePattern(String inputText){
         this.buildTransitionTable();
         MatrixUtility.print(this.transitionTable , 97 , 101 );
@@ -71,6 +83,9 @@ public class FiniteAutomata {
         return charIndex ;
     }
 
+    /**
+     * Main driver function
+     * */
     public static void main(String[] args) {
         FiniteAutomata finiteAutomata = new FiniteAutomata("bada" );
         finiteAutomata.solvePattern("aababadaba");
