@@ -57,6 +57,6 @@ public class FiniteAutomata {
     public static void main(String[] args) {
         FiniteAutomata finiteAutomata = new FiniteAutomata("ababaca" );
         finiteAutomata.buildTransitionTable();
-        MatrixUtility.print(finiteAutomata.transitionTable);
+        MatrixUtility.print(finiteAutomata.transitionTable , 97 , 100 );
     }
 }
