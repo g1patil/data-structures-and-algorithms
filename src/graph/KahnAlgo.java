@@ -47,7 +47,7 @@ public class KahnAlgo {
             int element = integers.poll();
             topologicalOrder[index++] = element ;
 
-            //redece the degree
+            //reduce the degree
             Arrays
                     .stream(input).filter( a  -> a[0] == element )
                     .collect(Collectors.toList())

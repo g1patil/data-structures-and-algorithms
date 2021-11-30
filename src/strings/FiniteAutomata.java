@@ -20,7 +20,7 @@ public class FiniteAutomata {
 
     private void buildTransitionTable(){
         for (int STATE = 0; STATE < PATTERN_LENGTH + 1; STATE++) {
-            for (int CHAR = 97; CHAR < 100 ; CHAR++) {
+            for (int CHAR = 97; CHAR < 101 ; CHAR++) {
                 transitionTable[STATE][CHAR] = getNextState(STATE , CHAR );
             }
         }
@@ -54,9 +54,25 @@ public class FiniteAutomata {
         return length ;
     }
 
+    private int solvePattern(String inputText){
+        this.buildTransitionTable();
+        MatrixUtility.print(this.transitionTable , 97 , 101 );
+        int currentState = 0 , charIndex = 0 ;
+        while ( charIndex < inputText.length()){
+            currentState = this.transitionTable[currentState][ inputText.charAt(charIndex)];
+            if ( currentState == PATTERN_LENGTH) {
+                System.out.println("We found the match");
+                System.out.println( "Pattern present at index " + (charIndex- 1  - PATTERN_LENGTH) );
+            }
+            System.out.print( currentState  + " " );
+            charIndex ++ ;
+        }
+
+        return charIndex ;
+    }
+
     public static void main(String[] args) {
-        FiniteAutomata finiteAutomata = new FiniteAutomata("ababaca" );
-        finiteAutomata.buildTransitionTable();
-        MatrixUtility.print(finiteAutomata.transitionTable , 97 , 100 );
+        FiniteAutomata finiteAutomata = new FiniteAutomata("bada" );
+        finiteAutomata.solvePattern("aababadaba");
     }
 }
