@@ -64,4 +64,12 @@ public class BoyerMooreBadChar {
         this.characterIntegerMap = new HashMap<>();
         match(pattern, inputText);
     }
+
+    @Test
+    public void test_2(){
+        String pattern = "nanan";
+        String inputText = "jinanananpatil";
+        this.characterIntegerMap = new HashMap<>();
+        match(pattern, inputText);
+    }
 }
