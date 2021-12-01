@@ -52,7 +52,7 @@ public class BoyerMooreBadChar {
                 System.out.println("match found");
                 p2 = pattern.length() -1 ;
                 matchLength = 0 ;
-                p1+= pattern.length();
+                p1+= 2*pattern.length();
             }
         }
         return -1 ;
