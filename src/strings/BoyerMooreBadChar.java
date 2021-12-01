@@ -29,13 +29,36 @@ public class BoyerMooreBadChar {
 
     private int match(String pattern , String inputText){
         buildBadChar(pattern);
+
+        int p1 = pattern.length() -1 ;
+        int p2 = p1 ;
+        int matchLength = 0 ;
+
+        while ( p1 < inputText.length() && p2 < inputText.length()){
+            if ( inputText.charAt(p1) == pattern.charAt(p2)){
+                p1 -- ;
+                p2 -- ;
+                matchLength ++ ;
+            } else {
+                p1+= getShift( inputText.charAt(p1));
+                p2 = pattern.length() -1 ;
+                matchLength = 0 ;
+            }
+
+            if ( matchLength == pattern.length()){
+                System.out.println("match found");
+                p2 = pattern.length() -1 ;
+                matchLength = 0 ;
+                p1+= pattern.length();
+            }
+        }
         return -1 ;
     }
 
     @Test
     public void test_(){
         String pattern = "jivan";
-        String inputText = "this is jack and not jivan patil";
+        String inputText = "this is jack and not jivan patil , and this is van and jivan";
         this.characterIntegerMap = new HashMap<>();
         System.out.println(match(pattern, inputText));
     }
