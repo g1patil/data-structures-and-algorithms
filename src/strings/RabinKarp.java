@@ -38,7 +38,7 @@ public class RabinKarp {
         int hashOfPattern = generateHash(patternString);
         for (int i = 0; i <= inputString.length() - patternString.length(); i++) {
             if ( generateHash(inputString.substring(i , i + patternString.length())) == hashOfPattern){
-                return i ;
+                System.out.println("found match at " + i  );
             }
         }
 
@@ -48,6 +48,11 @@ public class RabinKarp {
     @Test
     public void test_(){
         System.out.println(this.matchThePattern("abedabc","abc"));
+    }
+
+    @Test
+    public void test_2(){
+        System.out.println(this.matchThePattern("jinanananapatilnanan","nanan"));
     }
 
 }
