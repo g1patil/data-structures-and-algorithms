@@ -30,7 +30,7 @@ public class BoyerMooreBadChar {
         return characterIntegerMap.get(DEFAULT);
     }
 
-    private int match(String pattern , String inputText){
+    private void match(String pattern , String inputText){
         buildBadChar(pattern);
 
         int p1 = pattern.length() -1 ;
@@ -49,13 +49,12 @@ public class BoyerMooreBadChar {
             }
 
             if ( matchLength == pattern.length()){
-                System.out.println("match found");
+                System.out.println("match found at index : " + (p1+ 1 ) );
                 p2 = pattern.length() -1 ;
                 matchLength = 0 ;
                 p1+= 2*pattern.length();
             }
         }
-        return -1 ;
     }
 
     @Test
@@ -63,6 +62,6 @@ public class BoyerMooreBadChar {
         String pattern = "jivan";
         String inputText = "this is jack and not jivan patil , and this is van and jivan";
         this.characterIntegerMap = new HashMap<>();
-        System.out.println(match(pattern, inputText));
+        match(pattern, inputText);
     }
 }
