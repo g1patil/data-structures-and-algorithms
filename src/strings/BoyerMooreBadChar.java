@@ -13,6 +13,9 @@ public class BoyerMooreBadChar {
     Map<Character,Integer> characterIntegerMap ;
     static final char DEFAULT = '*';
 
+    /**
+     * Builds the bad character shift table. Used Map for faster performance.
+     * */
     private void buildBadChar(String pattern){
         for (int i = 0; i < pattern.length(); i++) {
             characterIntegerMap.put( pattern.charAt(i) , pattern.length() - i - 1 ) ;
