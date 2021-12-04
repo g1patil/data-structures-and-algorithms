@@ -5,18 +5,21 @@ import org.junit.Test;
 
 /**
  * @auther g1patil
+ *
+ * Code to rotate the NxN matrix. Rotation can be done in any direction and also
+ * how many times we want to rotate.
  */
 public class RotateMatrix {
 
     int[][] matrix ;
     boolean isClockwise ;
 
-    private int getNewRow(int oldRow){
-        return oldRow ;
-    }
-
-    private int getNewColumn(int oldcolumn){
-        return matrix.length - oldcolumn - 1 ;
+    /**
+     * Direction enum
+     * */
+    enum DIRECTION{
+        CLOCKWISE,
+        ANTI_CLOCKWISE;
     }
 
     /**
@@ -32,6 +35,30 @@ public class RotateMatrix {
         } else return new int[]{matrix.length - y - 1 , x};
     }
 
+    /**
+     * Rotates the matrix given number of times.
+     * Makes the rotation in the clockwise direction if not set.
+     * */
+    public void rotateMatrix(int count){
+        for (int i = 1; i <=count ; i++) {
+            rotateMatrix();
+        }
+    }
+
+    /**
+     * Rotates the matrix given number of times, provided the direction.
+     * */
+    public void rotateMatrix(int count, DIRECTION direction){
+        if (direction != DIRECTION.ANTI_CLOCKWISE)
+            this.isClockwise = true;
+        for (int i = 1; i <=count ; i++) {
+            rotateMatrix();
+        }
+    }
+
+    /**
+     * Rotates the matrix in the clock or anticlockwise direction once.
+     * */
     public void rotateMatrix(){
         if (matrix == null)
             return;
@@ -42,12 +69,13 @@ public class RotateMatrix {
             for (int i = diag -1 ; i < matrix[0].length - diag ; i++) {
                 int count = 4 ;
                 int currentRow = diag - 1  , currentColumn = i ;
-                int newRow = 0 , newColumn = 0 ;
-                int oldTemp = matrix[currentRow][currentColumn] , newTemp = 0  ;
+                int newRow , newColumn  ;
+                int oldTemp = matrix[currentRow][currentColumn] , newTemp ;
 
                 while ( count > 0){
-                    newRow = getNewRow(currentColumn);
-                    newColumn = getNewColumn(currentRow);
+                    int[] newCoordinate = getNewCoordinates(currentRow,currentColumn);
+                    newRow = newCoordinate[0];
+                    newColumn = newCoordinate[1];
                     newTemp = matrix[newRow][newColumn];
                     matrix[newRow][newColumn] = oldTemp ;
 
@@ -58,8 +86,8 @@ public class RotateMatrix {
                 }
             }
         }
-
     }
+
     @Test
     public void test_(){
         this.matrix = new int[][]{
@@ -68,10 +96,19 @@ public class RotateMatrix {
                 {9,10,11,12},
                 {13,14,15,16}
         };
-
         MatrixUtility.print(matrix);
         System.out.println("---------------------------");
-        rotateMatrix();
+        rotateMatrix(1 , DIRECTION.ANTI_CLOCKWISE);
+        MatrixUtility.print(matrix);
+    }
+
+    @Test
+    public void test_2(){
+        this.matrix = new int[][]{
+                {1}
+        };
+        MatrixUtility.print(matrix);
+        System.out.println("---------------------------");
         rotateMatrix();
         MatrixUtility.print(matrix);
     }
