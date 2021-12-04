@@ -30,7 +30,7 @@ public class BoyerMooreBadChar {
         return characterIntegerMap.get(DEFAULT);
     }
 
-    private void match(String pattern , String inputText){
+    public void match(String pattern , String inputText){
         buildBadChar(pattern);
 
         int p1 = pattern.length() -1 ;
@@ -71,5 +71,9 @@ public class BoyerMooreBadChar {
         String inputText = "jinanananpatil";
         this.characterIntegerMap = new HashMap<>();
         match(pattern, inputText);
+    }
+
+    public static void main(String[] args) {
+
     }
 }
