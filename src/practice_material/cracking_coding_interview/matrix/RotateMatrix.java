@@ -104,9 +104,7 @@ public class RotateMatrix {
 
     @Test
     public void test_2(){
-        this.matrix = new int[][]{
-                {1}
-        };
+        this.matrix = new int[][]{{1}};
         MatrixUtility.print(matrix);
         System.out.println("---------------------------");
         rotateMatrix();
