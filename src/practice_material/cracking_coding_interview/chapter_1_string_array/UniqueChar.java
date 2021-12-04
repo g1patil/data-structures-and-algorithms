@@ -21,8 +21,9 @@ public class UniqueChar {
             flags[string.charAt(i)] = true ;
         }
     }
+
     @Test
     public void test_(){
-        this.checkUnique("jivanj is the best things that can heppen to you ");
+        this.checkUnique("jiving is the best things that can happen to you ");
     }
 }
