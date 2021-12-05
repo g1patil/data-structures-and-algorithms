@@ -25,22 +25,6 @@ public class PartitionList {
         return n1 ;
     }
 
-    private Node addNodeAtEnd(Node head , Node newNode){
-        if ( head == null){
-            newNode.next = null;
-            return newNode;
-        }
-
-        newNode.next = null;
-
-        Node temp = head ;
-        while (temp.next != null )
-            temp = temp.next;
-
-        temp.next = newNode ;
-        return head;
-    }
-
     private Node partitionList(Node root , final int targetNumber){
         if (root == null || root.next == null)
             return root;
@@ -61,12 +45,14 @@ public class PartitionList {
             if (pointer.next.data < targetNumber){
                 Node temp = pointer.next ;
                 pointer.next = pointer.next.next;
-                p1 = addNodeAtEnd(p1 , temp );
+                temp.next = null ;
+                p1 = appendNode(p1 , temp );
 
             } else {
                 Node temp = pointer.next ;
                 pointer.next = pointer.next.next;
-                p2 = addNodeAtEnd(p2 , temp );
+                temp.next = null ;
+                p2 = appendNode(p2 , temp );
             }
         }
 
@@ -129,8 +115,12 @@ class Node{
         if (node == null){
             return 0;
         }
-        //TODO
-        return 0;
+        Node temp = node ;
+        while (temp!=null){
+            size ++;
+            temp = temp.next;
+        }
+        return size;
     }
 
     public void printList(){
