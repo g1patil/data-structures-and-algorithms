@@ -18,6 +18,11 @@ public class ListNode {
         return next;
     }
 
+    public ListNode setData(int data){
+        this.data = data;
+        return this;
+    }
+
     public int size(){
         int size = 0;
         if (this == null) return 0;
