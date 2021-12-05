@@ -11,6 +11,12 @@ import org.junit.Test;
  */
 public class PartitionList {
 
+    /**
+     * Appends the two lists.
+     * @param n1 head of the first list
+     * @param n2 head of the second node
+     * @return returns the head of the merged lists
+     * */
     private Node appendNode(Node n1 , Node n2){
         if (n1 == null)
             return n2;
@@ -25,11 +31,18 @@ public class PartitionList {
         return n1 ;
     }
 
+    /**
+     * @param root head of the list , root node
+     * @param targetNumber target number for comparison
+     * @return returns the sorted list such that all the smaller elements are on one side
+     * and all the greater element are on the other side.
+     * */
     private Node partitionList(Node root , final int targetNumber){
         if (root == null || root.next == null)
             return root;
-        // p1 will keep list nodes which are smaller than target
-        // p2 will keep the nodes which are greater that target
+
+        /*  p1 will keep list nodes which are smaller than target
+         p2 will keep the nodes which are greater that target*/
         Node p1 = null , p2 = null ;
 
         //create dummy node so that we always have the track of the previous node.
@@ -39,8 +52,10 @@ public class PartitionList {
         //now create the pointer on the dummy node
         Node pointer = dummyNode ;
 
-        //iterate over list using the next element always.
-        //iterating on the next element gives the ability to swap easily.
+        /*
+        iterate over list using the next element always.
+        iterating on the next element gives the ability to swap easily.
+        * */
         while ( pointer.next != null){
             if (pointer.next.data < targetNumber){
                 Node temp = pointer.next ;
