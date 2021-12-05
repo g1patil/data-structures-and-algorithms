@@ -69,6 +69,10 @@ public class SumLists {
         if (p2!=null)
             result.setNext(addCarryToNode(p2, carry));
 
+        if (p1 == null && p2 == null && carry > 0){
+            result.setNext(new ListNode(carry));
+        }
+
         return temp.next ;
     }
 
@@ -141,6 +145,29 @@ public class SumLists {
         System.out.println();
 
         sumList(m1 , n1 ).printList();
+
+    }
+
+    @Test
+    public void test_4(){
+        ListNode n1 = new ListNode(9);
+        ListNode n2 = new ListNode(9);
+        ListNode n3 = new ListNode(9);
+
+        n1.setNext(n2).setNext(n3);
+
+        ListNode m1 = new ListNode(9);
+        ListNode m2 = new ListNode(9);
+        ListNode m3 = new ListNode(9);
+
+        m1.setNext(m2).setNext(m3);
+
+        n1.printList();
+        System.out.println();
+
+        sumList(m1 , n1 ).printList();
+
+
 
     }
 
