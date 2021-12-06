@@ -5,10 +5,16 @@ package lists;
  */
 public class ListNode {
     public int data;
+    public String d;
     public ListNode next;
 
     public ListNode(int data){
         this.data = data;
+        this.next = null;
+    }
+
+    public ListNode(String data){
+        this.d = data;
         this.next = null;
     }
 
