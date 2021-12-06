@@ -8,6 +8,13 @@ import org.junit.Test;
  */
 public class SumLists {
 
+    /**
+     * Adds the carry to the remainder of the list or number you can say.
+     * Can be added from any point of the node from the list.
+     * @param n1 root node from which addition will start. Will carry on based on the final outcome
+     * @param data carry that needs to be added from staring node n1
+     * @return root node with updated sum
+     * */
     private ListNode addCarryToNode(ListNode n1, int data){
         if (data == 0)
             return n1;
@@ -34,6 +41,12 @@ public class SumLists {
         return n1 ;
     }
 
+    /**
+     * Adds the two numbers represented as the linked list in reverse order.
+     * @param n1 root node of the first number
+     * @param m1 root node of the second number
+     * @return final new number represented as the linkedlist
+     * */
     private ListNode sumList(ListNode n1 , ListNode m1){
         if (n1 == null)
             return m1;
