@@ -58,7 +58,7 @@ public class TopKFrequentWords {
             }
         }
 
-        Queue<String> stringQueue = new PriorityQueue<>( (s1,s2) -> stringIntegerMap.get(s1) - stringIntegerMap.get(s2));
+        Queue<String> stringQueue = new PriorityQueue<>(Comparator.comparingInt(stringIntegerMap::get));
 
         stringIntegerMap.keySet().forEach(s->{
             stringQueue.add(s);
