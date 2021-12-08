@@ -1,7 +1,10 @@
 package arrays;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 
+import java.lang.annotation.Documented;
 import java.util.*;
 
 /**
@@ -41,6 +44,12 @@ public class MakeArrayUnique {
     @Test
     public void test_(){
         System.out.println(minIncrementForUnique(new int[]{3,2,1,2,1,7}));
+    }
+
+    @Test
+    @DisplayName("When all the elements are equal")
+    public void test_2(){
+        Assert.assertEquals(6 , minIncrementForUnique(new int[]{1,1,1,1}));
     }
 }
 
