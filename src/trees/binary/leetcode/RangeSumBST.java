@@ -1,10 +1,11 @@
-package trees.binary;
+package trees.binary.leetcode;
 
 import data.TreeNode;
 import org.junit.Test;
 
 /**
  * @auther g1patil
+ * 938. Range Sum of BST
  */
 public class RangeSumBST {
 
