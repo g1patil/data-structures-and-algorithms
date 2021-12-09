@@ -4,7 +4,8 @@ public class AddTwoNumbers {
 
     private Node addTwoNumbers(Node l1,Node l2){
         int number1=0,number2=0,digit =0;
-        Node answer = null;
+        Node answer = new Node(-1);
+        Node temp = answer ;
     
 
         while(l1!=null){
@@ -30,7 +31,7 @@ public class AddTwoNumbers {
             }
         }
 
-        return answer;
+        return temp;
     }
 
     public static void main(String[] args) {
