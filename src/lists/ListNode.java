@@ -5,6 +5,7 @@ package lists;
  */
 public class ListNode {
     public int data;
+    public String d;
     public ListNode next;
 
     public ListNode(int data){
@@ -12,10 +13,20 @@ public class ListNode {
         this.next = null;
     }
 
+    public ListNode(String data){
+        this.d = data;
+        this.next = null;
+    }
+
 
     public ListNode setNext(ListNode next){
         this.next = next;
         return next;
+    }
+
+    public ListNode setData(int data){
+        this.data = data;
+        return this;
     }
 
     public int size(){

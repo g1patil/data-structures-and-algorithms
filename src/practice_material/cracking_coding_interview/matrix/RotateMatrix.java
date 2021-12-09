@@ -38,6 +38,7 @@ public class RotateMatrix {
     /**
      * Rotates the matrix given number of times.
      * Makes the rotation in the clockwise direction if not set.
+     * @param count number of times we want to rotate the matrix
      * */
     public void rotateMatrix(int count){
         for (int i = 1; i <=count ; i++) {
@@ -47,6 +48,8 @@ public class RotateMatrix {
 
     /**
      * Rotates the matrix given number of times, provided the direction.
+     * @param count number of times , we want to rotate the matrix
+     * @param direction direction of the rotation
      * */
     public void rotateMatrix(int count, DIRECTION direction){
         if (direction != DIRECTION.ANTI_CLOCKWISE)

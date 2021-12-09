@@ -21,4 +21,12 @@ public class TreeNode {
     public void setData(int data){
         this.data = data;
     }
+
+    public void printTree(TreeNode root){
+        if (root == null)
+            return;
+        System.out.println(root.getData());
+        printTree(root.left);
+        printTree(root.right);
+    }
 }
