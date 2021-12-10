@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * @auther g1patil
+ * Give list of the nodes , which are only child to their parent.
  */
 public class LonelyNodes {
 
