@@ -1,6 +1,6 @@
 package dynamicprogramming.knapsack;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Solution for KnapSack problem using the DP/. Recursive approach.

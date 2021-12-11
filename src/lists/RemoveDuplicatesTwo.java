@@ -1,7 +1,7 @@
 package lists;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,12 +64,12 @@ public class RemoveDuplicatesTwo {
 
     @Test
     public void test(){
-        Assert.assertNull(getUnique(null));
+        Assertions.assertNull(getUnique(null));
     }
 
     @Test
     public void test2(){
-        Assert.assertNull(getUnique(new Node(10)).next);
+        Assertions.assertNull(getUnique(new Node(10)).next);
     }
 
     @Test
@@ -80,9 +80,9 @@ public class RemoveDuplicatesTwo {
         root.setNext(n1).setNext(n2);
 
         Node result = getUnique(root);
-        Assert.assertNotNull(result);
-        Assert.assertNull(result.next);
-        Assert.assertEquals(n1.data,result.data);
+        Assertions.assertNotNull(result);
+        Assertions.assertNull(result.next);
+        Assertions.assertEquals(n1.data,result.data);
     }
 
     @Test

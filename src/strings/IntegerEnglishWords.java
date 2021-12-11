@@ -1,7 +1,7 @@
 package strings;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * TODO
@@ -38,6 +38,6 @@ public class IntegerEnglishWords {
     @Test
     public void test(){
         String result = numberToWords(10);
-        Assert.assertEquals("Ten",result);
+        Assertions.assertEquals("Ten",result);
     }
 }

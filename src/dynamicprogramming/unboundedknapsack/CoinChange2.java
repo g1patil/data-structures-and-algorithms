@@ -1,6 +1,6 @@
 package dynamicprogramming.unboundedknapsack;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Problem statement : https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/

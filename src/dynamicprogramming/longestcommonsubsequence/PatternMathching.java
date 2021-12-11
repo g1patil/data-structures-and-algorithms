@@ -1,7 +1,7 @@
 package dynamicprogramming.longestcommonsubsequence;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class PatternMathching {
     int[][] topDown ;
@@ -55,7 +55,7 @@ public class PatternMathching {
 
         }
 
-        Assert.assertEquals( this.getLCSLengthTopDown( s1 , s1 , s1.length() , s1.length()).length() ,
+        Assertions.assertEquals( this.getLCSLengthTopDown( s1 , s1 , s1.length() , s1.length()).length() ,
                 Math.min( s1.length() , s2.length())
                 );
     }

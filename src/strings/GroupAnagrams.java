@@ -1,7 +1,7 @@
 package strings;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /*
@@ -62,22 +62,22 @@ public class GroupAnagrams {
     @Test
     public void test(){
         List<List<String>> result = groupAnagrams(new String[]{"ab","ba"});
-        Assert.assertNotNull(result);
-        Assert.assertEquals(1,result.size());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(1,result.size());
     }
 
     @Test
     public void test2(){
         List<List<String>> result = groupAnagrams(new String[]{"ab"," ba"});
-        Assert.assertNotNull(result);
-        Assert.assertEquals(1,result.size());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(1,result.size());
     }
 
     @Test
     public void test3(){
         List<List<String>> result = groupAnagrams(new String[]{"ji van"," nav ji", "ji", " j i ", "pa"});
-        Assert.assertNotNull(result);
-        Assert.assertEquals(3,result.size());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(3,result.size());
     }
 
 }

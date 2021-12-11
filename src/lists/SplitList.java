@@ -1,6 +1,6 @@
 package lists;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Split the linked list in two lists , such that all even positions are in one list,

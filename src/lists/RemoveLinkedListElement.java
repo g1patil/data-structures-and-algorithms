@@ -1,7 +1,7 @@
 package lists;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import javax.management.relation.InvalidRelationIdException;
 
@@ -45,13 +45,13 @@ public class RemoveLinkedListElement {
 
     @Test
     public void test(){
-        Assert.assertNull(removeElements(null,9));
+        Assertions.assertNull(removeElements(null,9));
     }
 
     @Test
     public void test2(){
         Node head = new Node(5);
-        Assert.assertNotNull(removeElements(head,9));
+        Assertions.assertNotNull(removeElements(head,9));
     }
 
     @Test

@@ -1,8 +1,8 @@
 package miscellaneous;
 
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,7 +114,7 @@ public class NumberOfRectangles {
         coordinates.add(c1);
         coordinates.add(c3);
         coordinates.add(c5);
-        Assert.assertEquals(0,getNumberOfRectangles(coordinates));
+        Assertions.assertEquals(0,getNumberOfRectangles(coordinates));
 
     }
 }

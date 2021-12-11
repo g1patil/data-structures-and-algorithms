@@ -1,8 +1,8 @@
 package lists;
 
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * 83. Remove Duplicates from Sorted List
@@ -46,12 +46,12 @@ public class RemoveDuplicates {
 
     @Test
     public void test(){
-        Assert.assertNull(deleteDuplicates(null));
+        Assertions.assertNull(deleteDuplicates(null));
     }
 
     @Test
     public void test2(){
-        Assert.assertNull(deleteDuplicates(new Node(10).next));
+        Assertions.assertNull(deleteDuplicates(new Node(10).next));
     }
 
     @Test

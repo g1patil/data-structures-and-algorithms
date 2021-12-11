@@ -1,6 +1,6 @@
 package sorting;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Implementation of the QuickSort algo. This is in-place algo.

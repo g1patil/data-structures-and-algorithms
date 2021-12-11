@@ -1,7 +1,7 @@
 package practice_material.cracking_coding_interview.chapter2;
 
 import lists.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;

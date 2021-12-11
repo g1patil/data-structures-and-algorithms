@@ -1,7 +1,7 @@
 package graph;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -54,8 +54,8 @@ public class DFSPractice {
 
         this.input = new int[][]{one, two , three};
 
-        Assert.assertTrue( validPath( this.input , 1 , 2));
-        Assert.assertFalse( validPath( this.input , 1 , 3));
+        Assertions.assertTrue( validPath( this.input , 1 , 2));
+        Assertions.assertFalse( validPath( this.input , 1 , 3));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class DFSPractice {
 
         this.input = new int[][]{v1,v2,v3,v4,v5,v6,v7,v8};
 
-        Assert.assertTrue( validPath( this.input , 0 , 6));
+        Assertions.assertTrue( validPath( this.input , 0 , 6));
     }
 }
 

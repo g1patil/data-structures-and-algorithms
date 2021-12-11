@@ -1,7 +1,8 @@
 package dynamicprogramming.knapsack;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class SubSetTargetSum {
 
@@ -62,7 +63,7 @@ public class SubSetTargetSum {
         }
 
         System.out.println(targetSubSetSum(values , 0 , targetSum ));
-        Assert.assertEquals(targetSubSetSum(values , 0 , targetSum ), targetSubSetSumMemoization(values , targetSum ));
+        Assertions.assertEquals(targetSubSetSum(values , 0 , targetSum ), targetSubSetSumMemoization(values , targetSum ));
 
     }
 

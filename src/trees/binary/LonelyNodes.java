@@ -1,8 +1,8 @@
 package trees.binary;
 
 import data.TreeNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class LonelyNodes {
         r1.right = r2 ;
         r2.right = r3 ;
 
-        Assert.assertEquals(lonelyNodes(node).size(),4);
+        Assertions.assertEquals(lonelyNodes(node).size(),4);
     }
 
     @Test
@@ -69,12 +69,12 @@ public class LonelyNodes {
         node.right = r1 ;
         l1.right = r2 ;
 
-        Assert.assertEquals(lonelyNodes(node).size(),1);
+        Assertions.assertEquals(lonelyNodes(node).size(),1);
     }
 
     @Test
     public void test3(){
         TreeNode node = new TreeNode(1);
-        Assert.assertEquals(lonelyNodes(node).size(),0);
+        Assertions.assertEquals(lonelyNodes(node).size(),0);
     }
 }

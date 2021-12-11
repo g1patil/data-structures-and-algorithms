@@ -1,6 +1,6 @@
 package dynamicprogramming.missalenious;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 /**
  * Buy and sell the stock on the specific dats to maximize the profit at the end .
  *

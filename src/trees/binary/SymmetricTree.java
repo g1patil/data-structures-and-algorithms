@@ -1,8 +1,8 @@
 package trees.binary;
 
 import data.TreeNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * 101. Symmetric Tree - Easy
@@ -46,7 +46,7 @@ public class SymmetricTree {
     @Test
     public void test(){
         TreeNode treeNode = new TreeNode(10);
-        Assert.assertTrue(isSymmetric(treeNode));
+        Assertions.assertTrue(isSymmetric(treeNode));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class SymmetricTree {
         treeNode.left = left ;
         treeNode.right = right ;
 
-        Assert.assertTrue(isSymmetric(treeNode));
+        Assertions.assertTrue(isSymmetric(treeNode));
     }
 
     @Test
@@ -67,6 +67,6 @@ public class SymmetricTree {
         TreeNode left = new TreeNode(1);
         treeNode.left = left ;
 
-        Assert.assertFalse(isSymmetric(treeNode));
+        Assertions.assertFalse(isSymmetric(treeNode));
     }
 }

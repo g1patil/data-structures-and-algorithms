@@ -1,6 +1,6 @@
 package miscellaneous;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class EqualsAnsHashCode {
         integerHashMap.put(new EqualsAnsHashCodeNode(10),10);
 
         //Following is correct since we are overriding the equals and hashcode method.
-        Assert.assertEquals(1,integerHashMap.size());
+        Assertions.assertEquals(1,integerHashMap.size());
     }
 
 }

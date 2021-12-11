@@ -1,8 +1,8 @@
 package trees.binary;
 
 import data.TreeNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  *226. Invert Binary Tree
@@ -74,7 +74,7 @@ public class InvertBinaryTree {
 
         root.setChild(l,r);
         root = invertTree(root);
-        Assert.assertEquals(root.left,r);
-        Assert.assertEquals(root.right,l);
+        Assertions.assertEquals(root.left,r);
+        Assertions.assertEquals(root.right,l);
     }
 }

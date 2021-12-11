@@ -1,8 +1,9 @@
 package trees.binary.leetcode;
 
 import data.TreeNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil
@@ -59,6 +60,6 @@ public class SubtreeAnotherTree {
         TreeNode m2 = new TreeNode(2);
         m4.setChild(m1,m2);
 
-        Assert.assertFalse( isSubtree(n3 , m4 ));
+        Assertions.assertFalse( isSubtree(n3 , m4 ));
     }
 }

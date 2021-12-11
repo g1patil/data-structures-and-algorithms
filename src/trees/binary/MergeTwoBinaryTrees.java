@@ -1,8 +1,8 @@
 package trees.binary;
 
 import data.TreeNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class MergeTwoBinaryTrees {
 
@@ -61,7 +61,7 @@ public class MergeTwoBinaryTrees {
         TreeNode root2 = new TreeNode(10);
 
         root1 = mergeTrees(null,root2);
-        Assert.assertNotNull(root1);
+        Assertions.assertNotNull(root1);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class MergeTwoBinaryTrees {
 
 
         root1 = mergeTrees(root1,root2);
-        Assert.assertNotNull(root1);
+        Assertions.assertNotNull(root1);
     }
 
 }

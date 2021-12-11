@@ -1,5 +1,5 @@
 package lists;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 21. Merge Two Sorted Lists

@@ -1,6 +1,6 @@
 package dynamicprogramming.longestcommonsubsequence;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Recursive impl for longest common sub sequence.

@@ -1,7 +1,7 @@
 package arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
@@ -70,6 +70,6 @@ public class CountGoodMeals {
 
     @Test
     public void test(){
-        Assert.assertEquals( countPairs(new int[]{1,3,5,7,9}), 4);
+        Assertions.assertEquals( countPairs(new int[]{1,3,5,7,9}), 4);
     }
 }

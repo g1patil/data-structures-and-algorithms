@@ -1,7 +1,7 @@
 package lists;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Stack;
 
@@ -57,7 +57,7 @@ public class PalindromeLinkedList {
 
         head.setNext(n2).setNext(n3);
 
-        Assert.assertFalse(isPalindrome(head));
+        Assertions.assertFalse(isPalindrome(head));
     }
 
 
@@ -72,6 +72,6 @@ public class PalindromeLinkedList {
 
         head.setNext(n2).setNext(n3).setNext(n3a).setNext(n4).setNext(n5);
 
-        Assert.assertTrue(isPalindrome(head));
+        Assertions.assertTrue(isPalindrome(head));
     }
 }

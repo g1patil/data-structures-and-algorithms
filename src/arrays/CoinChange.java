@@ -1,7 +1,7 @@
 package arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -86,36 +86,36 @@ public class CoinChange {
 
     @Test
     public void test(){
-        Assert.assertEquals( 3, coinChangeOptimal(new int[]{1,2,5},11));
+        Assertions.assertEquals( 3, coinChangeOptimal(new int[]{1,2,5},11));
     }
 
     @Test
     public void test2(){
-        Assert.assertEquals( -1, coinChangeOptimal(new int[]{2},3));
+        Assertions.assertEquals( -1, coinChangeOptimal(new int[]{2},3));
     }
 
     @Test
     public void test3(){
-        Assert.assertEquals( 0, coinChangeOptimal(new int[]{1},0));
+        Assertions.assertEquals( 0, coinChangeOptimal(new int[]{1},0));
     }
 
     @Test
     public void test4(){
-        Assert.assertEquals( 1, coinChangeOptimal(new int[]{1},1));
+        Assertions.assertEquals( 1, coinChangeOptimal(new int[]{1},1));
     }
 
     @Test
     public void test5(){
-        Assert.assertEquals( 2, coinChangeOptimal(new int[]{1},2));
+        Assertions.assertEquals( 2, coinChangeOptimal(new int[]{1},2));
     }
 
     @Test
     public void test6(){
-        Assert.assertEquals( 4, coinChangeOptimal(new int[]{1,2,5,10},27));
+        Assertions.assertEquals( 4, coinChangeOptimal(new int[]{1,2,5,10},27));
     }
 
     @Test
     public void test7(){
-        Assert.assertEquals( -1, coinChangeOptimal(new int[]{186,419,83,408},6249));
+        Assertions.assertEquals( -1, coinChangeOptimal(new int[]{186,419,83,408},6249));
     }
 }

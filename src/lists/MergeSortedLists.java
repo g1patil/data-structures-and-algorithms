@@ -1,7 +1,7 @@
 package lists;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -71,7 +71,7 @@ public class MergeSortedLists {
         l2.add(10);
 
         List<Integer> mergedList = mergeLists(List.of(l1,l2));
-        Assert.assertEquals(l1.size() + l2.size() , mergedList.size());
+        Assertions.assertEquals(l1.size() + l2.size() , mergedList.size());
     }
 
     @Test
@@ -112,7 +112,7 @@ public class MergeSortedLists {
         lists.add(l2);
         lists.add(l3);
 
-        Assert.assertEquals(l1.size()+l2.size()+l3.size(),mergeLists(lists).size());
+        Assertions.assertEquals(l1.size()+l2.size()+l3.size(),mergeLists(lists).size());
     }
 
 }

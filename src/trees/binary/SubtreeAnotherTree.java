@@ -1,8 +1,8 @@
 package trees.binary;
 
 import data.TreeNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * 572. Subtree of Another Tree
@@ -73,12 +73,12 @@ public class SubtreeAnotherTree {
         TreeNode t1 = new TreeNode(10);
         TreeNode t2 = new TreeNode(10);
 
-        Assert.assertTrue(isSubtree(t1,t2));
+        Assertions.assertTrue(isSubtree(t1,t2));
     }
 
     @Test
     public void test2(){
-        Assert.assertTrue(isSubtree(null,null));
+        Assertions.assertTrue(isSubtree(null,null));
     }
 
     @Test
@@ -87,14 +87,14 @@ public class SubtreeAnotherTree {
         TreeNode n1 = new TreeNode(5);
         t1.setChild(n1,null);
         TreeNode t2 = new TreeNode(10);
-        Assert.assertTrue(isSubtree(t1,t2));
+        Assertions.assertTrue(isSubtree(t1,t2));
     }
 
     @Test
     public void test4(){
         TreeNode t1 = new TreeNode(10);
         TreeNode t2 = new TreeNode(11);
-        Assert.assertFalse(isSubtree(t1,t2));
+        Assertions.assertFalse(isSubtree(t1,t2));
     }
 
     @Test
@@ -116,6 +116,6 @@ public class SubtreeAnotherTree {
 
         n1.setChild(n2,n3);
 
-        Assert.assertTrue(isSubtree(t1,n1));
+        Assertions.assertTrue(isSubtree(t1,n1));
     }
 }

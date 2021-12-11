@@ -1,5 +1,5 @@
 package practice_material.cracking_coding_interview.chapter_1_string_array;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

@@ -1,7 +1,7 @@
 package strings;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /*TODO
  * 91. Decode Ways
@@ -92,22 +92,22 @@ public class DecodeWays {
 
     @Test
     public void test(){
-        Assert.assertEquals(5,numDecodings("123"));
+        Assertions.assertEquals(5,numDecodings("123"));
     }
 
     @Test
     public void test1(){
-        Assert.assertEquals(1,numDecodings("1"));
+        Assertions.assertEquals(1,numDecodings("1"));
     }
 
     @Test
     public void test2(){
-        Assert.assertEquals(3,numDecodings("19"));
-        Assert.assertEquals(2,numDecodings("29"));
+        Assertions.assertEquals(3,numDecodings("19"));
+        Assertions.assertEquals(2,numDecodings("29"));
     }
 
     @Test
     public void test3(){
-        Assert.assertEquals(7,numDecodings("1224"));
+        Assertions.assertEquals(7,numDecodings("1224"));
     }
 }

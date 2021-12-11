@@ -1,7 +1,7 @@
 package miscellaneous;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import java.util.List;
 
 /*
@@ -48,7 +48,7 @@ public class NumberOfOptions {
 
     @Test
     public void test(){
-        Assert.assertEquals( getNumberOfOptions(List.of(2,3), List.of(2,3), List.of(1,2), List.of(4),
+        Assertions.assertEquals( getNumberOfOptions(List.of(2,3), List.of(2,3), List.of(1,2), List.of(4),
                 10
         ), 4);
 

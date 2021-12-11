@@ -1,7 +1,7 @@
 package arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
@@ -77,8 +77,8 @@ public class TopKFrequentWords {
     @Test
     public void test(){
         List<String> stringList = topKFrequent(new String[]{"i", "love", "leetcode", "i", "love", "coding"},2);
-        Assert.assertNotNull(stringList);
-        Assert.assertEquals(2,stringList.size());
+        Assertions.assertNotNull(stringList);
+        Assertions.assertEquals(2,stringList.size());
     }
 
     @Test

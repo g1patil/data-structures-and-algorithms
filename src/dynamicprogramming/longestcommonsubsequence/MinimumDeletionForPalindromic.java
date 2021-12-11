@@ -1,6 +1,6 @@
 package dynamicprogramming.longestcommonsubsequence;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Minimum number of the deletion to make the string palindromic.

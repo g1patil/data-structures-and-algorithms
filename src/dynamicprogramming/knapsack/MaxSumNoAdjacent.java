@@ -1,6 +1,6 @@
 package dynamicprogramming.knapsack;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Maximum sum such that no two elements are adjacent

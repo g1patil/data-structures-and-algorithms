@@ -1,7 +1,7 @@
 package lists;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,13 +46,13 @@ public class RemoveDuplicatesUnsortedList {
     //null node
     @Test
     public void test(){
-        Assert.assertNull(deleteDuplicates(null));
+        Assertions.assertNull(deleteDuplicates(null));
     }
 
     //single node
     @Test
     public void test2(){
-        Assert.assertNull(deleteDuplicates(new Node(10)).next);
+        Assertions.assertNull(deleteDuplicates(new Node(10)).next);
     }
 
     //duplicate at beginning

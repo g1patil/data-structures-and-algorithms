@@ -2,7 +2,7 @@ package trees.binary.leetcode;
 
 import data.TreeNode;
 import lists.ListNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
@@ -45,7 +45,7 @@ public class KLargestElementInArray {
     @Test
     public void test(){
         int[] result = getKLargestElements(new int[]{200,9,3,7,1,11,4,19,100},3);
-        Assert.assertEquals(3,result.length);
-        Assert.assertArrayEquals(new int[]{19,100,200}, result);
+        Assertions.assertEquals(3,result.length);
+        Assertions.assertArrayEquals(new int[]{19,100,200}, result);
     }
 }

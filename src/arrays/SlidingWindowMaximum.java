@@ -1,7 +1,7 @@
 package arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * 239. Sliding Window Maximum
@@ -118,50 +118,50 @@ public class SlidingWindowMaximum {
     @Test
     public void test(){
         int[] result = maxSlidingWindow(new int[]{1,3,-1,-3,5,3,6,7},3);
-        Assert.assertEquals( 6 , result.length );
-        Assert.assertArrayEquals(new int[]{3,3,5,5,6,7},result);
+        Assertions.assertEquals( 6 , result.length );
+        Assertions.assertArrayEquals(new int[]{3,3,5,5,6,7},result);
     }
 
     @Test
     public void test6(){
         int[] result = maxSlidingWindowOptimal(new int[]{1,3,-1,-3,5,3,6,7},3);
-        Assert.assertEquals( 6 , result.length );
-        Assert.assertArrayEquals(new int[]{3,3,5,5,6,7},result);
+        Assertions.assertEquals( 6 , result.length );
+        Assertions.assertArrayEquals(new int[]{3,3,5,5,6,7},result);
     }
 
     @Test
     public void test2(){
         int[] result = maxSlidingWindowOptimal(new int[]{1},1);
-        Assert.assertEquals( 1 , result.length );
-        Assert.assertArrayEquals(new int[]{1},result);
+        Assertions.assertEquals( 1 , result.length );
+        Assertions.assertArrayEquals(new int[]{1},result);
     }
 
     @Test
     public void test3(){
         int[] result = maxSlidingWindowOptimal(new int[]{1,-1},1);
-        Assert.assertEquals( 2 , result.length );
-        Assert.assertArrayEquals(new int[]{1,-1},result);
+        Assertions.assertEquals( 2 , result.length );
+        Assertions.assertArrayEquals(new int[]{1,-1},result);
     }
 
     @Test
     public void test4(){
         int[] result = maxSlidingWindowOptimal(new int[]{9,11},2);
-        Assert.assertEquals( 1 , result.length );
-        Assert.assertArrayEquals(new int[]{11},result);
+        Assertions.assertEquals( 1 , result.length );
+        Assertions.assertArrayEquals(new int[]{11},result);
     }
 
     @Test
     public void test5(){
         int[] result = maxSlidingWindowOptimal(new int[]{4,-2},2);
-        Assert.assertEquals( 1 , result.length );
-        Assert.assertArrayEquals(new int[]{4},result);
+        Assertions.assertEquals( 1 , result.length );
+        Assertions.assertArrayEquals(new int[]{4},result);
     }
 
     //TODO
     @Test
     public void test7(){
         int[] result = maxSlidingWindowOptimal(new int[]{7,2,4},2);
-        Assert.assertEquals( 2 , result.length );
-        Assert.assertArrayEquals(new int[]{7,4},result);
+        Assertions.assertEquals( 2 , result.length );
+        Assertions.assertArrayEquals(new int[]{7,4},result);
     }
 }

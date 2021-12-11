@@ -1,7 +1,7 @@
 package regex;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class RegExTest {
 
@@ -9,73 +9,73 @@ public class RegExTest {
 
     @Test
     public void test1(){
-        Assert.assertTrue(regEx.checkRegEx("Joe"));
+        Assertions.assertTrue(regEx.checkRegEx("Joe"));
     }
 
     @Test
     public void test1a(){
-        Assert.assertTrue(regEx.checkRegEx(" Joe "));
+        Assertions.assertTrue(regEx.checkRegEx(" Joe "));
     }
 
     @Test
     public void test2(){
-        Assert.assertTrue(regEx.checkRegEx("Jim"));
+        Assertions.assertTrue(regEx.checkRegEx("Jim"));
     }
 
     @Test
     public void test2a(){
-        Assert.assertTrue(regEx.checkRegEx(" Jim "));
+        Assertions.assertTrue(regEx.checkRegEx(" Jim "));
     }
 
     @Test
     public void test3(){
-        Assert.assertTrue(regEx.checkRegEx("my name is Jim."));
+        Assertions.assertTrue(regEx.checkRegEx("my name is Jim."));
     }
 
     @Test
     public void test4(){
-        Assert.assertTrue(regEx.checkRegEx("my name is Jim.And you ?"));
+        Assertions.assertTrue(regEx.checkRegEx("my name is Jim.And you ?"));
     }
 
     @Test
     public void test5(){
-        Assert.assertTrue(regEx.checkRegEx("my name is Joe.And you ?"));
+        Assertions.assertTrue(regEx.checkRegEx("my name is Joe.And you ?"));
     }
 
     @Test
     public void test6(){
-        Assert.assertTrue(regEx.checkRegEx("my name is Jim Joe."));
+        Assertions.assertTrue(regEx.checkRegEx("my name is Jim Joe."));
     }
 
     @Test
     public void test7(){
-        Assert.assertTrue(regEx.checkRegEx("Jim Joe"));
+        Assertions.assertTrue(regEx.checkRegEx("Jim Joe"));
     }
 
     @Test
     public void test8(){
-        Assert.assertFalse(regEx.checkRegEx("mynameisJimandyou"));
+        Assertions.assertFalse(regEx.checkRegEx("mynameisJimandyou"));
     }
 
     @Test
     public void test9(){
-        Assert.assertFalse(regEx.checkRegEx("mynameisJimandyou"));
+        Assertions.assertFalse(regEx.checkRegEx("mynameisJimandyou"));
     }
 
     @Test
     public void testValidNumber(){
-        Assert.assertTrue(regEx.validNumber("0"));
-        Assert.assertTrue(regEx.validNumber("1"));
-        Assert.assertTrue(regEx.validNumber("-1"));
-        Assert.assertTrue(regEx.validNumber("+1"));
-        Assert.assertFalse(regEx.validNumber("a"));
-        Assert.assertFalse(regEx.validNumber("1a"));
-        Assert.assertTrue(regEx.validNumber("0.1"));
-        Assert.assertFalse(regEx.validNumber("0..1"));
-        Assert.assertFalse(regEx.validNumber("0."));
-        Assert.assertFalse(regEx.validNumber("."));
-        Assert.assertTrue(regEx.validNumber(".2"));
-        Assert.assertFalse(regEx.validNumber("3."));
+        Assertions.assertTrue(regEx.validNumber("0"));
+        Assertions.assertTrue(regEx.validNumber("1"));
+        Assertions.assertTrue(regEx.validNumber("-1"));
+        Assertions.assertTrue(regEx.validNumber("+1"));
+        Assertions.assertFalse(regEx.validNumber("a"));
+        Assertions.assertFalse(regEx.validNumber("1a"));
+        Assertions.assertTrue(regEx.validNumber("0.1"));
+        Assertions.assertFalse(regEx.validNumber("0..1"));
+        Assertions.assertFalse(regEx.validNumber("0."));
+        Assertions.assertFalse(regEx.validNumber("."));
+        Assertions.assertTrue(regEx.validNumber(".2"));
+        Assertions.assertFalse(regEx.validNumber("3."));
 
     }
 

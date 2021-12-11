@@ -1,8 +1,8 @@
 package lists;
 
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Hashtable;
 
@@ -60,7 +60,7 @@ public class DetectCycle {
     @Test
     public void test1(){
         Node n1 = new Node(4);
-        Assert.assertFalse(detectCycle(n1));
+        Assertions.assertFalse(detectCycle(n1));
     }
 
     @Test
@@ -68,7 +68,7 @@ public class DetectCycle {
         Node n1 = new Node(4);
         Node n2 = new Node(5);
         n1.next = n2 ;
-        Assert.assertFalse(detectCycle(n1));
+        Assertions.assertFalse(detectCycle(n1));
     }
 
     @Test
@@ -77,7 +77,7 @@ public class DetectCycle {
         Node n2 = new Node(5);
         n1.next = n2 ;
         n2.next = n1 ;
-        Assert.assertTrue(detectCycle(n1));
+        Assertions.assertTrue(detectCycle(n1));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class DetectCycle {
         n4.next = n5 ;
         n5.next = n3 ;
 
-        Assert.assertTrue(detectCycle(n1));
+        Assertions.assertTrue(detectCycle(n1));
     }
 
     @Test
@@ -110,7 +110,7 @@ public class DetectCycle {
         n4.next = n5;
         n5.next = n1;
 
-        Assert.assertTrue(cycleExist(n1));
+        Assertions.assertTrue(cycleExist(n1));
     }
 
     @Test
@@ -130,7 +130,7 @@ public class DetectCycle {
         n4.next = n5;
         n5.next = n6;
 
-        Assert.assertTrue(cycleExist(n1));
+        Assertions.assertTrue(cycleExist(n1));
 
     }
 }

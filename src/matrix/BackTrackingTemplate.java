@@ -1,6 +1,6 @@
 package matrix;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil

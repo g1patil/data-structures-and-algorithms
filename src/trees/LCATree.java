@@ -1,5 +1,5 @@
 package trees;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Find the lowest common ancestor for the given two nodes.

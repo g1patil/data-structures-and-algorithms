@@ -1,6 +1,6 @@
 package dynamicprogramming.matrixchainmulti;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 887. Super Egg Drop

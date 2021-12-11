@@ -1,15 +1,15 @@
 package arrays;
 
 import jdk.jfr.Description;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class MergeTwoSortedArrays {
 
     @Test
     @Description("Happy path use case")
     public void testHappyPath(){
-        Assert.assertArrayEquals(mergeArray(
+        Assertions.assertArrayEquals(mergeArray(
                 new int[]{1,2,3},new int[]{4,5,6}
         ),new int[]{1,2,3,4,5,6});
     }
@@ -17,7 +17,7 @@ public class MergeTwoSortedArrays {
     @Test
     @Description("First array in empty")
     public void testFirstArrayEmpty(){
-        Assert.assertArrayEquals(mergeArray(
+        Assertions.assertArrayEquals(mergeArray(
                 new int[]{},new int[]{4,5,6}
         ),new int[]{4,5,6});
     }
@@ -25,7 +25,7 @@ public class MergeTwoSortedArrays {
     @Test
     @Description("Second array in empty")
     public void testSecondArrayEmpty(){
-        Assert.assertArrayEquals(mergeArray(
+        Assertions.assertArrayEquals(mergeArray(
                 new int[]{1,2,3},new int[]{}
         ),new int[]{1,2,3});
     }
@@ -33,7 +33,7 @@ public class MergeTwoSortedArrays {
     @Test
     @Description("Both array are empty ")
     public void testBothArrayEmpty(){
-        Assert.assertArrayEquals(mergeArray(
+        Assertions.assertArrayEquals(mergeArray(
                 new int[]{},new int[]{}
         ),new int[]{});
     }

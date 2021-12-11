@@ -7,7 +7,7 @@ package miscellaneous;
  * https://open.kattis.com/problems/alicedigital
  */
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 public class AliceDigital {
 
 

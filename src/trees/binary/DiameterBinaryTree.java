@@ -1,8 +1,8 @@
 package trees.binary;
 
 import data.TreeNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -101,7 +101,7 @@ public class DiameterBinaryTree {
         n3.setChild(n7,null);
         n4.setChild(null,n8);
 
-        Assert.assertEquals( 5 ,diameterOfBinaryTree(node));
+        Assertions.assertEquals( 5 ,diameterOfBinaryTree(node));
     }
 
     @Test
@@ -124,6 +124,6 @@ public class DiameterBinaryTree {
         n6.setChild(n7,n8);
         n3.setChild(n9,null);
 
-        Assert.assertEquals( 5 ,diameterOfBinaryTreeMemoisation(node));
+        Assertions.assertEquals( 5 ,diameterOfBinaryTreeMemoisation(node));
     }
 }

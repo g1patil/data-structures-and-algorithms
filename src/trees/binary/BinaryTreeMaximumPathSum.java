@@ -1,7 +1,7 @@
 package trees.binary;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * 124. Binary Tree Maximum Path Sum
@@ -55,7 +55,7 @@ public class BinaryTreeMaximumPathSum {
     @Test
     public void test(){
         Node root = new Node(10);
-        Assert.assertEquals(10,maxPathSum(root));
+        Assertions.assertEquals(10,maxPathSum(root));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class BinaryTreeMaximumPathSum {
         root.left = n1;
         root.right = n2;
 
-        Assert.assertEquals(21,maxPathSum(root));
+        Assertions.assertEquals(21,maxPathSum(root));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class BinaryTreeMaximumPathSum {
         n2.left = n3;
         n2.right = n4;
 
-        Assert.assertEquals(33,maxPathSum(root));
+        Assertions.assertEquals(33,maxPathSum(root));
     }
 
     @Test
@@ -109,6 +109,6 @@ public class BinaryTreeMaximumPathSum {
         n1.left = n5;
         n1.right = n6;
 
-        Assert.assertEquals(305,maxPathSum(root));
+        Assertions.assertEquals(305,maxPathSum(root));
     }
 }

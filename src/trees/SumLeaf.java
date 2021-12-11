@@ -1,7 +1,7 @@
 package trees;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class SumLeaf {
 
@@ -37,6 +37,6 @@ public class SumLeaf {
         n4.left = n8;
         n6.right = n9;
 
-        Assert.assertEquals(18 , getLeafSum(n1));
+        Assertions.assertEquals(18 , getLeafSum(n1));
     }
 }

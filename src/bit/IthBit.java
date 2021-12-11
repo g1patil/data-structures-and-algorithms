@@ -1,7 +1,7 @@
 package bit;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import java.util.logging.Logger;
@@ -60,7 +60,7 @@ public class IthBit {
     @Test
     @DisplayName("get the ith bit of the number")
     public void test_(){
-        Assert.assertEquals(1 , getIthBit(6 , 0));
+        Assertions.assertEquals(1 , getIthBit(6 , 0));
     }
 
     @Test

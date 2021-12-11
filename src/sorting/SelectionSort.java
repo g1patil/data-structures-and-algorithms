@@ -1,7 +1,7 @@
 package sorting;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Implementation of the selection sort algo
@@ -74,7 +74,7 @@ public class SelectionSort {
             this.inputArray = new int[]{};
             this.selectionSort();
         } catch (Exception e){
-            Assert.assertEquals(e.getClass() , InvalidInputException.class);
+            Assertions.assertEquals(e.getClass() , InvalidInputException.class);
         }
     }
 }

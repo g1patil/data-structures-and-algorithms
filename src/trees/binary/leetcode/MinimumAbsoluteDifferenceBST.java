@@ -1,8 +1,8 @@
 package trees.binary.leetcode;
 
 import data.TreeNode;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +54,6 @@ public class MinimumAbsoluteDifferenceBST {
         n3.setChild(n6,n7);
         n6.setChild(n8,n9);
 
-        Assert.assertEquals( 1 ,getMinimumDifference(n1));
+        Assertions.assertEquals( 1 ,getMinimumDifference(n1));
     }
 }

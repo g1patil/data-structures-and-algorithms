@@ -1,6 +1,6 @@
 package lists;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class ReverseList {
 
@@ -56,6 +56,6 @@ public class ReverseList {
         n4.next = n5;
         n5.next = n1;
 
-        Assert.assertNotNull(reverseCircular(n1));
+        Assertions.assertNotNull(reverseCircular(n1));
     }
 }

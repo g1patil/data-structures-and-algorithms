@@ -1,7 +1,7 @@
 package miscellaneous;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +21,7 @@ public class IntervalsTest {
     @Test
     public void testMergeInterval_BothIntervalEmpty(){
         List<Integer[]> result = intervals.mergeIntervals(Collections.emptyList(),Collections.emptyList());
-        Assert.assertTrue(result.isEmpty());
+        Assertions.assertTrue(result.isEmpty());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class IntervalsTest {
         integerIntervals.add(new Integer[]{10,100});
 
         List<Integer[]> result = intervals.mergeIntervals(Collections.emptyList(),integerIntervals);
-        Assert.assertTrue(result.isEmpty());
+        Assertions.assertTrue(result.isEmpty());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class IntervalsTest {
         integerIntervals.add(new Integer[]{10,100});
 
         List<Integer[]> result = intervals.mergeIntervals(integerIntervals,Collections.emptyList());
-        Assert.assertArrayEquals(result.get(0),integerIntervals.get(0));
+        Assertions.assertArrayEquals(result.get(0),integerIntervals.get(0));
     }
 
     @Test
@@ -57,8 +57,8 @@ public class IntervalsTest {
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
 
-        Assert.assertArrayEquals(result.get(0),new Integer[]{10,49});
-        Assert.assertArrayEquals(result.get(1),new Integer[]{61,100});
+        Assertions.assertArrayEquals(result.get(0),new Integer[]{10,49});
+        Assertions.assertArrayEquals(result.get(1),new Integer[]{61,100});
     }
 
     @Test
@@ -70,7 +70,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{95,110});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),new Integer[]{10,94});
+        Assertions.assertArrayEquals(result.get(0),new Integer[]{10,94});
 
     }
 
@@ -83,7 +83,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{5,50});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(new Integer[]{51,100},result.get(0));
+        Assertions.assertArrayEquals(new Integer[]{51,100},result.get(0));
 
     }
 
@@ -112,8 +112,8 @@ public class IntervalsTest {
         exclude.add(new Integer[]{95,205});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),new Integer[]{10,94});
-        Assert.assertArrayEquals(result.get(1),new Integer[]{206,300});
+        Assertions.assertArrayEquals(result.get(0),new Integer[]{10,94});
+        Assertions.assertArrayEquals(result.get(1),new Integer[]{206,300});
 
     }
 
@@ -126,7 +126,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{70,100});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),include.get(0));
+        Assertions.assertArrayEquals(result.get(0),include.get(0));
 
     }
 
@@ -139,7 +139,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{10,50});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertTrue(result.isEmpty());
+        Assertions.assertTrue(result.isEmpty());
 
     }
 
@@ -152,7 +152,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{1,25});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),new Integer[]{26,50});
+        Assertions.assertArrayEquals(result.get(0),new Integer[]{26,50});
 
     }
 
@@ -165,7 +165,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{1,25});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),include.get(0));
+        Assertions.assertArrayEquals(result.get(0),include.get(0));
 
     }
 
@@ -179,8 +179,8 @@ public class IntervalsTest {
         exclude.add(new Integer[]{50,100});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),include.get(0));
-        Assert.assertEquals(result.size(),1);
+        Assertions.assertArrayEquals(result.get(0),include.get(0));
+        Assertions.assertEquals(result.size(),1);
 
     }
 
@@ -194,8 +194,8 @@ public class IntervalsTest {
         exclude.add(new Integer[]{1,25});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),include.get(0));
-        Assert.assertEquals(result.size(),1);
+        Assertions.assertArrayEquals(result.get(0),include.get(0));
+        Assertions.assertEquals(result.size(),1);
 
     }
 
@@ -208,9 +208,9 @@ public class IntervalsTest {
         exclude.add(new Integer[]{2,99});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),new Integer[]{1,1});
-        Assert.assertArrayEquals(result.get(1),new Integer[]{100,100});
-        Assert.assertEquals(result.size(),2);
+        Assertions.assertArrayEquals(result.get(0),new Integer[]{1,1});
+        Assertions.assertArrayEquals(result.get(1),new Integer[]{100,100});
+        Assertions.assertEquals(result.size(),2);
 
     }
 
@@ -223,8 +223,8 @@ public class IntervalsTest {
         exclude.add(new Integer[]{1,10});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertArrayEquals(result.get(0),new Integer[]{11,100});
-        Assert.assertEquals(result.size(),1);
+        Assertions.assertArrayEquals(result.get(0),new Integer[]{11,100});
+        Assertions.assertEquals(result.size(),1);
 
     }
 
@@ -238,7 +238,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{1,100});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertEquals(2, result.size());
+        Assertions.assertEquals(2, result.size());
 
     }
 
@@ -252,7 +252,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{100,120});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertEquals(result.size(),2);
+        Assertions.assertEquals(result.size(),2);
 
     }
 
@@ -266,11 +266,11 @@ public class IntervalsTest {
         exclude.add(new Integer[]{1,10});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertEquals(result.size(),2);
+        Assertions.assertEquals(result.size(),2);
 
     }
 
-    @Test(expected = InvalidInputException.class)
+    @Test
     public void eight(){
         List<Integer[]> include = new LinkedList<>();
         include.add(new Integer[]{20,40});
@@ -278,7 +278,7 @@ public class IntervalsTest {
 
         List<Integer[]> exclude = new ArrayList<>();
         exclude.add(new Integer[]{1,10});
-        intervals.mergeIntervals(include,exclude);
+        Assertions.assertThrows(InvalidInputException.class , ()->intervals.mergeIntervals(include,exclude));
 
     }
 
@@ -292,8 +292,8 @@ public class IntervalsTest {
         exclude.add(new Integer[]{200,300});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertEquals(1,result.size());
-        Assert.assertArrayEquals(new Integer[]{1,100},result.get(0));
+        Assertions.assertEquals(1,result.size());
+        Assertions.assertArrayEquals(new Integer[]{1,100},result.get(0));
     }
 
     //negative
@@ -306,7 +306,7 @@ public class IntervalsTest {
         exclude.add(new Integer[]{50,100});
 
         List<Integer[]> result = intervals.mergeIntervals(include,exclude);
-        Assert.assertEquals(1,result.size());
-        Assert.assertArrayEquals(include.get(0),result.get(0));
+        Assertions.assertEquals(1,result.size());
+        Assertions.assertArrayEquals(include.get(0),result.get(0));
     }
 }

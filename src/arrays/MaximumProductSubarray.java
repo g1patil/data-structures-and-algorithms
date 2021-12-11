@@ -1,7 +1,7 @@
 package arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -37,21 +37,21 @@ public class MaximumProductSubarray {
 
     @Test
     public void test(){
-        Assert.assertEquals(6, maxProduct(new int[]{2,3,-2,4}));
+        Assertions.assertEquals(6, maxProduct(new int[]{2,3,-2,4}));
     }
 
     @Test
     public void test2(){
-        Assert.assertEquals(0, maxProduct(new int[]{-2,0,-1}));
+        Assertions.assertEquals(0, maxProduct(new int[]{-2,0,-1}));
     }
 
     @Test
     public void test3(){
-        Assert.assertEquals(2, maxProduct(new int[]{2,0}));
+        Assertions.assertEquals(2, maxProduct(new int[]{2,0}));
     }
 
     @Test
     public void test4(){
-        Assert.assertEquals(2, maxProduct(new int[]{1,2,-1,-99,3,0,5,6,7,-2,4}));
+        Assertions.assertEquals(2, maxProduct(new int[]{1,2,-1,-99,3,0,5,6,7,-2,4}));
     }
 }
