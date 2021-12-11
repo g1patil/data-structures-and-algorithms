@@ -3,7 +3,7 @@ package practice_material.cracking_coding_interview.chapter_1_string_array;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  *
  * Print the repeating chars in the string.
  */

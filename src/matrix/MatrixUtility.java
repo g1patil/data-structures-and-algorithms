@@ -1,7 +1,7 @@
 package matrix;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class MatrixUtility {
 

@@ -6,7 +6,7 @@ import java.util.Map;
 
 
 /**
- * @auther g1patil
+ * @author g1patil
  *
  * Check if strings are one char edit away from being equal
  * CCI 1.6

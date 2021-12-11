@@ -3,7 +3,7 @@ package strings;
 import matrix.MatrixUtility;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class FiniteAutomata {
 

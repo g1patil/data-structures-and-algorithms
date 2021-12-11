@@ -4,7 +4,7 @@ import data.TreeNode;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  * 938. Range Sum of BST
  * Given the two range, high and low, return the sum of all
  * the nodes in that range.

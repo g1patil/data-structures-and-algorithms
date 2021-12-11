@@ -4,7 +4,7 @@ import lists.ListNode;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  *
  * Partition the linked list in a way the all the nods lesser than
  * target number are on the left side and all the ListNodes greater than

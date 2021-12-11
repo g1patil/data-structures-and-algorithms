@@ -4,7 +4,7 @@ import matrix.MatrixUtility;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class ZeroMatrix {
 

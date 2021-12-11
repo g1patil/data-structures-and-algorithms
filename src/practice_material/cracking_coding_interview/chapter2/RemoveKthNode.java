@@ -4,7 +4,7 @@ import lists.ListNode;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  *
  * Delete the kth node from the last
  */

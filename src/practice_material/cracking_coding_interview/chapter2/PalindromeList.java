@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.Stack;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class PalindromeList {
 

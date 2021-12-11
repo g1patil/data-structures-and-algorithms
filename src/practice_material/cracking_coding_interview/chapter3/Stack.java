@@ -3,7 +3,7 @@ package practice_material.cracking_coding_interview.chapter3;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class Stack {
     static final int CAPACITY = 10;

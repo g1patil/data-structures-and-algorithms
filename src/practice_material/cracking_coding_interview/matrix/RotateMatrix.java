@@ -4,7 +4,7 @@ import matrix.MatrixUtility;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  *
  * Code to rotate the NxN matrix. Rotation can be done in any direction and also
  * how many times we want to rotate.

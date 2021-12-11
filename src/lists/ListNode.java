@@ -1,7 +1,7 @@
 package lists;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class ListNode {
     public int data;

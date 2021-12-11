@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class BoyerMooreBadChar {
 

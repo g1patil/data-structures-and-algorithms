@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import java.util.logging.Logger;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class IthBit {
 

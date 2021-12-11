@@ -3,7 +3,7 @@ package strings;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  *
  * Longest suffix , which is also suffix. Overlapping is allowed.
  */

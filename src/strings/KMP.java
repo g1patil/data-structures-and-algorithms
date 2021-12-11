@@ -3,7 +3,7 @@ package strings;
 import org.junit.Test;
 
 /**
- * @auther g1patil
+ * @author g1patil
  *
  * Proper suffix is the suffix of the string which is not equal to the whole string.
  * jivan -> ji is the proper suffix. jivan is not the proper suffix of the jivan , but jiva is.
