@@ -3,7 +3,7 @@ package trees.binary.leetcode;
 import data.TreeNode;
 
 /**
- * @auther g1patil
+ * @author g1patil
  */
 public class PathSum {
 
