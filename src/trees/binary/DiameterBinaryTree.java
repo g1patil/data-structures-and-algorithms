@@ -26,6 +26,11 @@ import java.util.Map;
  *       4   5
  * Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
  *
+ * Algorithm :
+ *  Math.max ( H of left tree + H of right tree + 2 ,
+ *      Math.max ( diameter of left , diameter of right )
+ *  )
+ *
  * */
 public class DiameterBinaryTree {
 
@@ -37,7 +42,7 @@ public class DiameterBinaryTree {
      * */
     int getHeight(TreeNode node){
         if(node == null){
-            return -1;
+            return 0;
         }
         return 1 + Math.max(getHeight(node.left), getHeight(node.right));
     }
@@ -50,7 +55,7 @@ public class DiameterBinaryTree {
         int left = getHeight(root.left);
         int right = getHeight(root.right);
 
-        return Math.max( left + right + 2, Math.max( diameterOfBinaryTree( root.right), diameterOfBinaryTree( root.left)));
+        return Math.max( left + right, Math.max( diameterOfBinaryTree( root.right), diameterOfBinaryTree( root.left)));
     }
 
     /**
@@ -74,7 +79,7 @@ public class DiameterBinaryTree {
         treeNodeIntegerMap.put( root.left , diameterOfLeft);
         treeNodeIntegerMap.put( root.right , diameterOfRight );
 
-        return Math.max( left + right + 2, Math.max( diameterOfLeft, diameterOfRight));
+        return Math.max( left + right , Math.max( diameterOfLeft, diameterOfRight));
     }
 
     @Test
@@ -111,12 +116,13 @@ public class DiameterBinaryTree {
         TreeNode n6 = new TreeNode(6);
         TreeNode n7 = new TreeNode(7);
         TreeNode n8 = new TreeNode(8);
+        TreeNode n9 = new TreeNode(9);
 
-        node.setChild(n1,n2);
+        node.setChild(n5 , n2);
+        n2.setChild(n1,n6);
         n1.setChild(n3,n4);
-        n2.setChild(n5,n6);
-        n3.setChild(n7,null);
-        n4.setChild(null,n8);
+        n6.setChild(n7,n8);
+        n3.setChild(n9,null);
 
         Assert.assertEquals( 5 ,diameterOfBinaryTreeMemoisation(node));
     }
