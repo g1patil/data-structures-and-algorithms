@@ -54,9 +54,11 @@ public class OrderTraversal {
         TreeNode n3 = new TreeNode(3);
 
         n1.setChild(null , n2 );
-        n2.setChild(n3 , null);
+        n2.setChild(null , n3);
         System.out.println(inOrderTraversal(n1));
+        integerList.removeAll(integerList);
         System.out.println(preOrderTraversal(n1));
+        integerList.removeAll(integerList);
         System.out.println(postOrderTraversal(n1));
     }
 }
