@@ -1,6 +1,8 @@
 package trees;
 
 import org.junit.jupiter.api.Test;
+import trees.binary.AVLTree;
+
 
 /**
  * @auther g1patil
@@ -9,14 +11,11 @@ public class TestBST {
 
     @Test
     public void test_(){
-        BinarySearchTree<Integer> integerTree = new BinarySearchTree<>();
-        integerTree.insert(5);
-        integerTree.insert(2);
-        integerTree.insert(1);
-        integerTree.insert(3);
-        integerTree.insert(7);
-        integerTree.traverse();
+        AVLTree<Integer> integerTree = new AVLTree<>();
+        integerTree.insert(40);
+        integerTree.insert(20);
+        integerTree.insert(10);
 
-        integerTree.delete(2);
+        integerTree.traverse();
     }
 }

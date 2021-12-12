@@ -1,14 +1,17 @@
 package trees;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+/**
+ * @auther g1patil
+ */
 @Data
+public class AVLNode<T extends Comparable<T>>{
 
-public class Node<T extends Comparable<T>> {
-    private Node<T> leftChild;
-    private Node<T> rightChild;
+    private int height;
+    private AVLNode<T> leftChild;
+    private AVLNode<T> rightChild;
     @NonNull private T data;
 
     @Override
