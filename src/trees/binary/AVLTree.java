@@ -1,8 +1,6 @@
 package trees.binary;
 
 import trees.AVLNode;
-import trees.BinarySearchTree;
-import trees.Node;
 import trees.Tree;
 
 /**
@@ -30,12 +28,21 @@ public class AVLTree <T extends Comparable<T>>  implements Tree {
             return node_ ;
         }
         updateHeight(node_);
-        applyRotation(node_);
-        return node_;
+        return applyRotation(node_);
     }
 
-    private int isBalanced(AVLNode<T> node_ ){
-        return node_ == null ? 0 : height(node_);
+    private int getBalanceFactor(AVLNode<T> node_ ){
+        if (node_ == null){
+            return 0 ;
+        }
+
+        if (node_.getLeftChild() == null && node_.getRightChild() == null)
+            return 0 ;
+
+        if (node_.getRightChild() == null || node_.getRightChild() == null){
+            return height(node_.getLeftChild()) +  height(node_.getRightChild()) + 1 ;
+        }
+        return node_ == null ? 0 : height(node_.getLeftChild()) - height(node_.getRightChild());
     }
 
     private int height(AVLNode node_){
@@ -47,6 +54,10 @@ public class AVLTree <T extends Comparable<T>>  implements Tree {
                 height(node_.getLeftChild()) ,
                 height(node_.getRightChild())
         );
+        if (node_.getLeftChild() == null && node_.getRightChild() == null){
+            node_.setHeight(0);
+            return;
+        }
         node_.setHeight(height + 1 );
     }
 
@@ -84,17 +95,17 @@ public class AVLTree <T extends Comparable<T>>  implements Tree {
     }
 
     private AVLNode<T> applyRotation(AVLNode<T> node){
-        int balance = isBalanced(node);
+        int balance = getBalanceFactor(node);
 
         if ( balance > 1) {
-            if (isBalanced(node.getLeftChild()) < 0 ){
+            if (getBalanceFactor(node.getLeftChild()) < 0 ){
                 node.setLeftChild(rotateLeft(node.getLeftChild()));
             }
             return rotateRight(node);
         }
 
         if ( balance < -1) {
-            if (isBalanced(node.getRightChild()) > 0 ){
+            if (getBalanceFactor(node.getRightChild()) > 0 ){
                 node.setRightChild(rotateRight(node.getRightChild()));
             }
             return rotateLeft(node);
@@ -107,23 +118,62 @@ public class AVLTree <T extends Comparable<T>>  implements Tree {
         AVLNode<T> rightNode = node.getRightChild();
         AVLNode<T> centerNode = rightNode.getLeftChild();
 
-        rightNode.setLeftChild(node);
-        node.setRightChild(centerNode);
+        if(centerNode == null){
+            rightNode.setLeftChild(node);
+            centerNode.setRightChild(rightNode);
+            centerNode.setLeftChild(node);
+            rightNode.setLeftChild(centerNode.getRightChild());
+            node.setRightChild(centerNode.getLeftChild());
+            updateHeight(node);
+            updateHeight(rightNode);
+            return centerNode;
+        } else {
+            rightNode.setLeftChild(node);
+            node.setRightChild(centerNode);
+            updateHeight(node);
+            updateHeight(rightNode);
+            return centerNode;
 
-        updateHeight(node);
-        updateHeight(rightNode);
-        return rightNode;
+        }
+
     }
 
+    /**
+     *        n1
+     *      /
+     *     n2
+     *    / \
+     *   n3  n4
+     *  n1 = node
+     *  n2 = leftNode
+     *  n4 = centerNode
+     *
+     *        n2
+     *      /   \
+     *     n3     n1
+     *          /
+     *         n4
+     * */
     private AVLNode<T> rotateRight(AVLNode<T> node){
         AVLNode<T> leftNode = node.getLeftChild();
         AVLNode<T> centerNode = leftNode.getRightChild();
 
-        leftNode.setRightChild(node);
-        node.setLeftChild(centerNode);
+        if (centerNode == null){
+            leftNode.setRightChild(node);
+            node.setLeftChild(centerNode);
+            updateHeight(node);
+            updateHeight(leftNode);
 
-        updateHeight(node);
-        updateHeight(leftNode);
-        return leftNode;
+            return leftNode;
+        } else {
+            centerNode.setRightChild(node);
+            centerNode.setLeftChild(leftNode);
+            node.setLeftChild(null);
+            leftNode.setRightChild(null);
+            updateHeight(node);
+            updateHeight(leftNode);
+            return centerNode;
+        }
+
     }
 }

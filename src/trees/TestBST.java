@@ -15,6 +15,9 @@ public class TestBST {
         integerTree.insert(40);
         integerTree.insert(20);
         integerTree.insert(10);
+        integerTree.insert(25);
+        integerTree.insert(30);
+        integerTree.insert(22);
 
         integerTree.traverse();
     }
