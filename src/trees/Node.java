@@ -1,11 +1,18 @@
 package trees;
 
-public class Node {
-    Node left;
-    Node right;
-    int data;
+import lombok.Data;
+import lombok.NonNull;
 
-    public Node(int _data){
-        data = _data;
+@Data
+public class Node<T extends Comparable<T>> {
+    private Node<T> leftChild;
+    private Node<T> rightChild;
+    @NonNull private T data;
+
+    @Override
+    public String toString() {
+        return "BinarySearchTree{" +
+                "root=" + data +
+                '}';
     }
 }
