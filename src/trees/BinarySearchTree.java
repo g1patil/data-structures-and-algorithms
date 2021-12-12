@@ -17,11 +17,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree{
      * Creates tree if null , or adds node.
      * */
     @Override
-    public Tree<T> insert(Comparable data) {
+    public Tree<T> insert(Comparable data_) {
         if ( isEmpty()){
-            root =  new Node<>(data);
+            root =  new Node<>(data_);
         } else {
-            insert(data , root);
+            insert(data_ , root);
         }
         return this;
     }
@@ -59,32 +59,32 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree{
     }
 
     @Override
-    public void delete(Comparable data) {
-        root = delete(data , root );
+    public void delete(Comparable data_) {
+        root = delete(data_ , root );
     }
 
-    private Node<T> delete(Comparable data , Node<T> node){
-        if (node == null)
+    private Node<T> delete(Comparable data , Node<T> node_){
+        if (node_ == null)
             return null;
 
-        if ( data.compareTo(node.getData())< 0){
-            node.setLeftChild( delete(data , node.getLeftChild()));
-        } else if (data.compareTo(node.getData()) > 0){
-            node.setRightChild( delete(data , node.getRightChild()));
+        if ( data.compareTo(node_.getData())< 0){
+            node_.setLeftChild( delete(data , node_.getLeftChild()));
+        } else if (data.compareTo(node_.getData()) > 0){
+            node_.setRightChild( delete(data , node_.getRightChild()));
         } else {
-            /* We reached to the node that needs to be deleted*/
-            /* When node we want to delete has one child , or no child (leaf )*/
-            if (node.getLeftChild() == null){
-                return node.getRightChild();
-            } else if ( node.getRightChild() == null){
-                return node.getLeftChild();
+            /* We reached to the node_ that needs to be deleted*/
+            /* When node_ we want to delete has one child , or no child (leaf )*/
+            if (node_.getLeftChild() == null){
+                return node_.getRightChild();
+            } else if ( node_.getRightChild() == null){
+                return node_.getLeftChild();
             }
 
             /* Node we want to delete has the two non null child*/
-            node.setData(getMax(node.getLeftChild()));
-            node.setLeftChild( delete(node.getData() , node.getLeftChild()));
+            node_.setData(getMax(node_.getLeftChild()));
+            node_.setLeftChild( delete(node_.getData() , node_.getLeftChild()));
         }
-        return node;
+        return node_;
     }
 
     @Override
@@ -92,11 +92,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree{
         inorderTraversal(root);
     }
 
-    private void inorderTraversal(Node node){
-        if (node != null){
-            inorderTraversal(node.getLeftChild());
-            System.out.println(node);
-            inorderTraversal(node.getRightChild());
+    private void inorderTraversal(Node node_){
+        if (node_ != null){
+            inorderTraversal(node_.getLeftChild());
+            System.out.println(node_);
+            inorderTraversal(node_.getRightChild());
         }
     }
 
@@ -124,7 +124,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree{
     }
 
     @Override
-    public T getMin( ) {
+    public T getMin() {
         if (isEmpty())
             return null ;
 
