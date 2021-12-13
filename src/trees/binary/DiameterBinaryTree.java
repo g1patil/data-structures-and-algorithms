@@ -59,10 +59,10 @@ public class DiameterBinaryTree {
     }
 
     /**
-     * Diameter of the binary tree using the memoisation technique.
+     * Diameter of the binary tree using the memoization technique.
      * The trick is to save the result of the recursive call in some DS and return it when needed.
      * */
-    public int diameterOfBinaryTreeMemoisation(TreeNode root) {
+    public int diameterOfBinaryTreeMemoization(TreeNode root) {
 
         if ( treeNodeIntegerMap.containsKey(root) )
             return treeNodeIntegerMap.get( root );
@@ -124,6 +124,6 @@ public class DiameterBinaryTree {
         n6.setChild(n7,n8);
         n3.setChild(n9,null);
 
-        Assertions.assertEquals( 5 ,diameterOfBinaryTreeMemoisation(node));
+        Assertions.assertEquals( 5 , diameterOfBinaryTreeMemoization(node));
     }
 }
