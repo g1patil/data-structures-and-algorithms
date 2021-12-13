@@ -29,4 +29,12 @@ public class TreeNode {
         printTree(root.left);
         printTree(root.right);
     }
+
+    public static void printTreeStatic(TreeNode root){
+        if (root == null)
+            return;
+        System.out.println(root.getData());
+        printTreeStatic(root.left);
+        printTreeStatic(root.right);
+    }
 }
