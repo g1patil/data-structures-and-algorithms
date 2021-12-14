@@ -33,16 +33,16 @@ public class MaximumWidthBinaryTree {
 
     public int widthOfBinaryTree(TreeNode root) {
         listList = widthOfBinaryTreeHelper(root , 1 , 0 );
-
-        for (int i = listList.size() - 1 ; i >= 0 ; i--) {
+        int result = 1;
+        for (int i = listList.size() - 1 ; i > 0 ; i--) {
             if (listList.get(i).size() > 1){
                 List list = listList.get(i);
                 int first = (int) list.get(0);
                 int last = (int) list.get( list.size() -1 );
-                return last - first + 1 ;
+                result = Math.max(last - first + 1 , result) ;
             }
         }
-        return 0;
+        return result;
     }
 
     @Test
