@@ -1,5 +1,7 @@
 package trees.binary.leetcode;
 
+import annotation.Platform;
+import annotation.Site;
 import data.TreeNode;
 import lists.ListNode;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import java.util.List;
  * @author g1patil
  * Give list of the nodes , which are only child to their parent.
  */
+@Platform(value = Site.LEETCODE , tests = "passes all the test cases")
 public class LonelyNodes {
 
     List<Integer> integerList = new ArrayList<>();
