@@ -1,5 +1,9 @@
 package trees.binary;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 import trees.Tree;
@@ -10,6 +14,8 @@ import java.util.Queue;
 /**
  * @author g1patil
  */
+@Platform(Site.LEETCODE)
+@Quality(value = Stage.FAILING, details = "passes 38/71 cases.")
 public class LongestUnivaluePath {
     Queue<Integer> queue = new PriorityQueue<>();
 
