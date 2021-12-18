@@ -5,6 +5,7 @@ import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
 import data.TreeNode;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import trees.Tree;
 
@@ -106,6 +107,25 @@ public class LongestUnivaluePath {
 
 
         System.out.println(longestUnivaluePath(n1  ));
+    }
+
+    @Test
+    @DisplayName("TODO this should return 4 ")
+    public void test_3(){
+        TreeNode n1 = new TreeNode(1);
+        TreeNode n2 = new TreeNode(2);
+        TreeNode n3 = new TreeNode(1);
+        TreeNode n4 = new TreeNode(1);
+        TreeNode n5 = new TreeNode(1);
+        TreeNode n6 = new TreeNode(1);
+        TreeNode n7 = new TreeNode(1);
+        TreeNode n8 = new TreeNode(1);
+        n1.setChild(null,n3);
+        n3.setChild(n4,n5);
+        n4.setChild(n6,n7);
+        n5.setChild(n8,null);
+
+        System.out.println(longestUnivaluePath(n1 ));
     }
 
 }

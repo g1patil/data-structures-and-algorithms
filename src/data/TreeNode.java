@@ -37,4 +37,9 @@ public class TreeNode {
         printTreeStatic(root.left);
         printTreeStatic(root.right);
     }
+
+    @Override
+    public String toString() {
+        return "TreeNode{" + "data=" + data  + '}';
+    }
 }
