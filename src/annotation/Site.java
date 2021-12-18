@@ -6,5 +6,6 @@ package annotation;
 public enum Site {
     LEETCODE,
     CODERFORCE,
-    HACKERRANK
+    HACKERRANK,
+    RANDOM
 }
