@@ -34,8 +34,11 @@ public class DFSPath {
         if(treeNode == null)
             return false;
 
-        if (treeNode.getData() == target)
+        if (treeNode.getData() == target){
+            integerList.add(0, treeNode.getData());
             return true;
+        }
+
 
         result =  nodeExist(treeNode.left , target) || nodeExist(treeNode.right , target);
         if (result)
@@ -50,7 +53,7 @@ public class DFSPath {
      * @return path of the target node from the root in list format.
      * List will be empty if the path does not exist
      * */
-    private List<Integer> printPath(TreeNode treeNode , int target){
+    public List<Integer> getPath(TreeNode treeNode , int target){
         nodeExist(treeNode, target);
         return integerList;
     }
@@ -69,6 +72,19 @@ public class DFSPath {
         n2.setChild(n4,n5);
         n3.setChild(n6,n7);
 
-        System.out.println(printPath(n1,9 ));
+        System.out.println(getPath(n1,-1 ));
+    }
+
+    @Test
+    @DisplayName("If the target node is the root node")
+    public void test_root_node(){
+        TreeNode n1 = new TreeNode(1);
+        TreeNode n2 = new TreeNode(2);
+        TreeNode n3 = new TreeNode(3);
+
+        n1.setChild(n2,n3);
+
+
+        System.out.println(getPath(n1,1 ));
     }
 }
