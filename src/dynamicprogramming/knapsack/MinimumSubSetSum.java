@@ -1,10 +1,13 @@
 package dynamicprogramming.knapsack;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
 /**
  * Mininum subset sum difference dp knapsack type
  * */
+@Platform(Site.RANDOM)
 public class MinimumSubSetSum {
 
     private boolean[][] memoization ;
@@ -36,7 +39,7 @@ public class MinimumSubSetSum {
 
     @Test
     public void test(){
-        int[] values = new int[]{ 1,2 , 7 } ;
+        int[] values = new int[]{ 1,2 ,7 } ;
         int targetSum = 0;
         int maxSum = 0 ;
 

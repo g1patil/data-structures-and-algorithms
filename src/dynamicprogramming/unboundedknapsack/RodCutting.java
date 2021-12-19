@@ -39,7 +39,7 @@ public class RodCutting {
     }
 
     /**
-     * Cutting the role kp problem.
+     * Cutting the rod kp problem.
      * */
     @Test
     public void test(){
@@ -62,7 +62,7 @@ public class RodCutting {
     }
 
     /**
-     * Cutting the role kp problem.
+     * Cutting the rod kp problem.
      * */
     @Test
     public void test2(){

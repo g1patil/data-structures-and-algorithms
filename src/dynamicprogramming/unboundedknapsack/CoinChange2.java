@@ -2,6 +2,9 @@ package dynamicprogramming.unboundedknapsack;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
  * Problem statement : https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/
  * */
@@ -30,7 +33,7 @@ public class CoinChange2 {
 
 
     /**
-     * TODO improve this solustion using the memoization technique.
+     * TODO improve this solution using the memoization technique.
      * */
     private int findMinimumChangeDP(final int[] values  , int remainingChange, int flag, int minimumCoins){
         return - 1;
@@ -41,6 +44,17 @@ public class CoinChange2 {
     public void test(){
         int[] coins = new int[]{25, 10 ,5 };
         int totalValue = 35 ;
+
+        System.out.println(this.findMinimumChange( coins , totalValue , 0 , 0 ));
+
+
+
+    }
+
+    @Test
+    public void test2(){
+        int[] coins = new int[]{5,2,1 };
+        int totalValue = 11 ;
 
         System.out.println(this.findMinimumChange( coins , totalValue , 0 , 0 ));
 
