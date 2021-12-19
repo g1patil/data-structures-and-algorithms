@@ -19,6 +19,13 @@ import java.util.List;
 @Platform(Site.GEEKFORGEEKS)
 public class LargestIndependentSetBST {
 
+    private int getNumberOfNodes(TreeNode treeNode){
+        if (treeNode == null)
+            return 0;
+
+        return 1 + getNumberOfNodes(treeNode.left) + getNumberOfNodes(treeNode.right);
+    }
+
     private boolean canChoose(List<TreeNode> treeNodeList , TreeNode currentNode){
         if (treeNodeList.isEmpty())
             return true;
