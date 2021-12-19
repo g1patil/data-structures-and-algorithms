@@ -38,6 +38,7 @@ public class MaximumProfitJobScheduling {
 
         /* If the start time of job is greater than equal to current pointer at the time , then we can choose of not choose*/
         if ( jobs[pointer].start >= start ) {
+            /* if chosen , the new start time will be end time of the current job*/
             return Math.max(
                     jobs[pointer].value + getMaxProfit(jobs , jobs[pointer].end , pointer + 1 ),
                     getMaxProfit(jobs , start , pointer + 1 )
