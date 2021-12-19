@@ -7,5 +7,6 @@ public enum Site {
     LEETCODE,
     CODERFORCE,
     HACKERRANK,
-    RANDOM
+    RANDOM,
+    GEEKFORGEEKS
 }

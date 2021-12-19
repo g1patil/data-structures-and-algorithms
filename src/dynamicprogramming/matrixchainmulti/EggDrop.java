@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * */
 public class EggDrop {
 
-    int[][] memoisation ;
+    int[][] memoization;
 
     public int solve(int numberOfEggs , int numberOfFloors){
         if ( numberOfFloors == 0 || numberOfFloors == 1)
@@ -40,8 +40,8 @@ public class EggDrop {
         if ( numberOfEggs == 0 || numberOfEggs == 1)
             return numberOfFloors ;
 
-        if ( memoisation[numberOfEggs][numberOfFloors] != -1)
-            return memoisation[numberOfEggs][numberOfFloors] ;
+        if ( memoization[numberOfEggs][numberOfFloors] != -1)
+            return memoization[numberOfEggs][numberOfFloors] ;
         int min = Integer.MAX_VALUE ;
 
         for (int i = 1; i <= numberOfFloors ; i++) {
@@ -52,7 +52,7 @@ public class EggDrop {
             min = Math.min( min , temp );
         }
 
-        return memoisation[numberOfEggs][numberOfFloors] = min ;
+        return memoization[numberOfEggs][numberOfFloors] = min ;
 
     }
 
@@ -65,11 +65,11 @@ public class EggDrop {
     public void test_memo(){
         int numberOfFloors = 36 ;
         int numberOfEggs = 2 ;
-        memoisation = new int[numberOfEggs + 1 ][ numberOfFloors + 1] ;
+        memoization = new int[numberOfEggs + 1 ][ numberOfFloors + 1] ;
 
         for (int i = 0; i <= numberOfEggs ; i++) {
             for (int j = 0; j <= numberOfFloors ; j++) {
-                memoisation[i][j] = -1 ;
+                memoization[i][j] = -1 ;
             }
         }
         System.out.println( solveMemoisation( numberOfEggs , numberOfFloors ));
