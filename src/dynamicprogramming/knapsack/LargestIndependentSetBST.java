@@ -1,12 +1,16 @@
 package dynamicprogramming.knapsack;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author g1patil
@@ -17,7 +21,11 @@ import java.util.List;
  * replace the line 44 where we add the data of the node, instead choose 1 as the count.
  */
 @Platform(Site.GEEKFORGEEKS)
+@Quality(value = Stage.FAILING, details = "passes 122/124 cases on LC")
+/* Slower , needs improvements*/
 public class LargestIndependentSetBST {
+
+    Map<TreeNode , Integer> treeNodeIntegerMap = new HashMap<>();
 
     private int getNumberOfNodes(TreeNode treeNode){
         if (treeNode == null)

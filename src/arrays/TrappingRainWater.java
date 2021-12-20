@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
  */
 
 @Quality(Stage.DOCUMENTED)
-/* Note : passes 318/320 cases*/
 @Platform(Site.LEETCODE)
 public class TrappingRainWater {
 
