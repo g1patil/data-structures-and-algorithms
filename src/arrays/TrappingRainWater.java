@@ -41,7 +41,7 @@ public class TrappingRainWater {
                 p2 -- ;
             }
 
-
+            current = Math.min(height[p1] , height[p2]);
             fillWater(height , p1 , p2 , current);
             current++;
             p2 = height.length -1 ;

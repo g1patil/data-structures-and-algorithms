@@ -1,5 +1,11 @@
 package lists;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
+import org.junit.jupiter.api.Test;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,13 +16,53 @@ import java.util.List;
  * partitions. Example: Input: head = 1->4->3->2->5->2, x = 3 Output:
  * 1->2->2->4->3->5
  */
+@Platform(Site.LEETCODE)
+@Quality(Stage.DOCUMENTED)
 public class PartitionList {
 
+    /**
+     * Sort the list in a way that all the elements < x are on left side
+     * and all the elements > x are on the right side of the linked list
+     *
+     * Create two separate LL , iterate over main list and keep adding the
+     * elements to respective list based on the value
+     * Attack the second list at the end of the first list,
+     * and then return the first list.
+     * @param x comparison value
+     * @param head head of the list
+     * @return returns the sorted list
+     * */
+    public ListNode partition(ListNode head, int x) {
+        if (head == null)
+            return head;
+
+        ListNode finalListHead = new ListNode(Integer.MIN_VALUE);
+        ListNode secondListHead = new ListNode(Integer.MIN_VALUE);
+        ListNode listSmall = finalListHead;
+        ListNode listBig = secondListHead;
+
+        while (head!=null){
+            if (head.data < x){
+                listSmall.next = new ListNode(head.data);
+                listSmall = listSmall.next;
+            } else {
+                listBig.next = new ListNode(head.data);
+                listBig = listBig.next;
+            }
+
+            head = head.next;
+        }
+
+        listSmall.next = secondListHead.next;
+        return finalListHead.next;
+    }
+
     /***
-     * 
+     * Uses the collection framework of Java.
      * @param input input array
      * @param target element respect to which the list needs to be sorted
-     * @return returns the sorted list. partitioned in a way that smaller are on the left side of the target and bigger are on the right side 
+     * @return returns the sorted list. partitioned in a way that
+     * smaller are on the left side of the target and bigger are on the right side
     */
     public static List<Integer> partitionList(List<Integer> input, int target){
         List<Integer> smallerList = new LinkedList<>();
@@ -35,8 +81,20 @@ public class PartitionList {
         return smallerList;
     }
 
-    public static void main(String[] args) {
-        System.out.println(partitionList(List.of(1,9,3,8,5,10,2,4), 5));
+//    public static void main(String[] args) {
+//        System.out.println(partitionList(List.of(1,9,3,8,5,10,2,4), 5));
+//    }
+
+    @Test
+    public void test_(){
+        ListNode n1 = new ListNode(9);
+        ListNode n2 = new ListNode(3);
+        ListNode n3 = new ListNode(5);
+        ListNode n4 = new ListNode(10);
+
+        n1.setNext(n2).setNext(n3).setNext(n4);
+
+        partition(n1 , 6 );
     }
     
 }
