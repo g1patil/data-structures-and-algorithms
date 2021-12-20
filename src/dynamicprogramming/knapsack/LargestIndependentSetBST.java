@@ -98,13 +98,18 @@ public class LargestIndependentSetBST {
 
     @Test
     public void test_3(){
-        TreeNode n1 = new TreeNode(0);
-        TreeNode n2 = new TreeNode(0);
-        TreeNode n3 = new TreeNode(0);
-        TreeNode n4 = new TreeNode(0);
+        TreeNode n1 = new TreeNode(1);
+        TreeNode n2 = new TreeNode(1);
+        TreeNode n3 = new TreeNode(1);
+        TreeNode n4 = new TreeNode(1);
+        TreeNode n5 = new TreeNode(1);
+        TreeNode n6 = new TreeNode(1);
 
         n1.setChild(n2,null);
-        n2.setChild(n3,n4);
+        n2.setChild(n3,null);
+        n3.setChild(n4,null);
+        n4.setChild(n5,null);
+//        n5.setChild(n6,null);
 
         List<TreeNode> newTreeNodeList = new LinkedList<>();
         System.out.println(getLIS(n1 , newTreeNodeList));
