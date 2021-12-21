@@ -10,6 +10,11 @@ public class MakeChain {
     List<String> strings = new ArrayList<>();
     String mainSource;
 
+    /**
+     * Makes the circular chain given the strings such that last and first char of two
+     * strings match to form chain. Returns true/false if the chain is possible to form or not
+     * given the strings.
+     * */
     private boolean makeChain(String source , Stack<String> stringStack, Set<String> visited){
 
         stringStack.push( source );
