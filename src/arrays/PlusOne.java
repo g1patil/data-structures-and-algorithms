@@ -1,4 +1,8 @@
 package arrays;
+
+import annotation.Platform;
+import annotation.Site;
+
 /**
  * 66. Plus One
  * Easy
@@ -27,6 +31,7 @@ package arrays;
  * Output: [1]
  *
  * */
+@Platform(Site.LEETCODE)
 public class PlusOne {
 
     /**
