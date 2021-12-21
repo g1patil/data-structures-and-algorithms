@@ -22,6 +22,11 @@ public class HouseRobber2 {
 
     }
 
+    /**
+     * Returns the maximum amount that can be robbed/added
+     * from the alternating houses.
+     * @param nums int array of houses
+     * */
     public int rob(int[] nums) {
         if (nums.length ==1)
             return nums[0];

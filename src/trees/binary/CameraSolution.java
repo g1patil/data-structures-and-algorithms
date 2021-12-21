@@ -38,7 +38,6 @@ public class CameraSolution {
     private Camera dfs(TreeNode node) {
         if (node == null || node.left == null  && node.right == null)
             return Camera.NOT_COVERED;
-
         Camera left = dfs(node.left);
         Camera right = dfs(node.right);
 
