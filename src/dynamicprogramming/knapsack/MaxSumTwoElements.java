@@ -15,39 +15,20 @@ import org.junit.jupiter.api.Test;
 @Platform(Site.LEETCODE)
 public class MaxSumTwoElements {
 
-    public int getWaterCapacity(int i , int j , int[] ints){
-        return Math.min(ints[i], ints[j])*Math.min(ints[i], ints[j]);
-    }
-
-    public int getMaxSumTwoNums(int[] ints){
-        return getMaxSumHelper(ints, 0 , 2 );
-    }
-
-    private int getMaxSumHelper(int[] ints, int pointer, int count) {
-        if (count == 0 || pointer >= ints.length)
-            return 0;
-
-        return Math.max(
-                ints[pointer] + getMaxSumHelper(ints , pointer + 1 , count -1),
-                getMaxSumHelper(ints , pointer + 1 , count)
-        );
-    }
-
-    @Test
-    public void test_(){
-        System.out.println(getMaxSumTwoNums(new int[]{3,1,2,6}));
-    }
-
-    // naive n*n solution
+    /**
+     * This is standard 2 pointers method. The idea is to keep the two pointers at the
+     * either end. get the area of them , and which ever side is the smaller, decrease that pointer.
+     *
+     * */
     public int maxArea(int[] height) {
         int result = 0 ;
 
-        for (int i = 0; i < height.length -1; i++) {
-            for ( int j = i ; j < height.length; j ++){
-                if (height[j] >= height[i]){
-                    result = Math.max( result , Math.min(height[i] , height[j] )*Math.abs(i - j));
-                }
-            }
+        for (int i = 0 , j = height.length - 1 ; i <  j ; ) {
+            result = Math.max( result , Math.min(height[i] , height[j] )*Math.abs(i - j));
+            if (height[i] < height[j]){
+                i ++ ;
+            } else j -- ;
+
         }
         return result;
     }
