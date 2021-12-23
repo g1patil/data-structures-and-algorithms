@@ -12,22 +12,32 @@ import org.junit.jupiter.api.Test;
 public class RotatingTheBox {
 
     //print the elements for each column starting from the bottom
+
+    private int getLastEmptyIndex(int[][] matrix , int i , int j){
+        while (i >=0 && matrix[i][j -1] != 0){
+            i--;
+        }
+        return i -;
+    }
     public int[][] rotateMatrix(int[][] matrix){
         int columnLength = matrix[0].length;
 
         while (columnLength > 0){
-            int lastEmptyIndex = matrix.length -1 ;
 
-            while (lastEmptyIndex >= 0  && matrix[lastEmptyIndex][columnLength -1] !=  0  ){
-                lastEmptyIndex --;
-            }
+            int lastEmptyIndex = getLastEmptyIndex(matrix , matrix.length -1 , columnLength ) ;
 
             for ( int lastElementIndex  = lastEmptyIndex - 1 ; lastElementIndex >=0 ; lastElementIndex --){
-                if (matrix[lastElementIndex][columnLength -1 ] > 0 ){
+
+                if (matrix[lastElementIndex][columnLength -1 ] != 0 && matrix[lastElementIndex][columnLength -1 ] != -1  ){
                     //swap the element
                     matrix[lastEmptyIndex][columnLength -1 ] = matrix[lastElementIndex][columnLength -1 ];
                     matrix[lastElementIndex][columnLength -1 ] = 0 ;
                     lastEmptyIndex --;
+                }
+
+                //if obstruction found then again look for new empty
+                if (matrix[lastElementIndex][columnLength -1 ] != -1 ){
+                    lastEmptyIndex = getLastEmptyIndex(matrix , lastElementIndex , columnLength);
                 }
             }
             columnLength -- ;
@@ -68,12 +78,12 @@ public class RotatingTheBox {
     public void test_(){
         int[][] matrix = new int[][]{
                 {1 ,0,0},
-                {4 ,0,6},
-                {0 ,0,9}
+                {1 ,-1,0},
+                {1 ,0,0}
         };
         System.out.println("Org matrix ");
         printMatrix(matrix);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             matrix = rotateTheBox(matrix);
             System.out.println("rotated");
             printMatrix(matrix);
