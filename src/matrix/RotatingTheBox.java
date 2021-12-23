@@ -11,46 +11,54 @@ import org.junit.jupiter.api.Test;
  */
 public class RotatingTheBox {
 
-    //print the elements for each column starting from the bottom
-
+    /**
+     * Returns the last empty box index.
+     * @param matrix given matrix box
+     * @param i starting row index
+     * @param j starting column index
+     * */
     private int getLastEmptyIndex(int[][] matrix , int i , int j){
         while (i >=0 && matrix[i][j -1] != 0){
             i--;
         }
-        return i -;
+        return i;
     }
-    public int[][] rotateMatrix(int[][] matrix){
-        int columnLength = matrix[0].length;
+    public int[][] reArrangeBox(int[][] box){
+        int columnLength = box[0].length;
 
         while (columnLength > 0){
 
-            int lastEmptyIndex = getLastEmptyIndex(matrix , matrix.length -1 , columnLength ) ;
+            int lastEmptyIndex = getLastEmptyIndex(box, box.length -1 , columnLength ) ;
 
             for ( int lastElementIndex  = lastEmptyIndex - 1 ; lastElementIndex >=0 ; lastElementIndex --){
 
-                if (matrix[lastElementIndex][columnLength -1 ] != 0 && matrix[lastElementIndex][columnLength -1 ] != -1  ){
+                if (box[lastElementIndex][columnLength -1 ] != 0
+                        && box[lastElementIndex][columnLength -1 ] != -1
+                        && box[lastEmptyIndex][columnLength -1 ] == 0
+                        ){
                     //swap the element
-                    matrix[lastEmptyIndex][columnLength -1 ] = matrix[lastElementIndex][columnLength -1 ];
-                    matrix[lastElementIndex][columnLength -1 ] = 0 ;
+                    box[lastEmptyIndex][columnLength -1 ] = box[lastElementIndex][columnLength -1 ];
+                    box[lastElementIndex][columnLength -1 ] = 0 ;
                     lastEmptyIndex --;
                 }
 
                 //if obstruction found then again look for new empty
-                if (matrix[lastElementIndex][columnLength -1 ] != -1 ){
-                    lastEmptyIndex = getLastEmptyIndex(matrix , lastElementIndex , columnLength);
+                if (box[lastElementIndex][columnLength -1 ] == -1 ){
+                    lastEmptyIndex = getLastEmptyIndex(box, lastElementIndex , columnLength);
+                    lastElementIndex = lastEmptyIndex;
                 }
             }
             columnLength -- ;
         }
 
-        return matrix;
+        return box;
 
     }
 
 
     public int[][] rotateTheBox(int[][] box) {
         box = transformMatrix(box);
-        return rotateMatrix(box);
+        return reArrangeBox(box);
     }
 
     private int[][] transformMatrix(int[][] box) {
@@ -77,13 +85,13 @@ public class RotatingTheBox {
     @Test
     public void test_(){
         int[][] matrix = new int[][]{
-                {1 ,0,0},
-                {1 ,-1,0},
-                {1 ,0,0}
+                {1 ,1, -1, 0 , -1 , 0},
+                {1 ,1, -1, -1 , 0 , 0},
+                {1 ,1, 1, 0 , 1 , 0}
         };
         System.out.println("Org matrix ");
         printMatrix(matrix);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 1; i++) {
             matrix = rotateTheBox(matrix);
             System.out.println("rotated");
             printMatrix(matrix);
