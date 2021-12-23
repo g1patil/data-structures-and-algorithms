@@ -2,6 +2,8 @@ package matrix;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
+
 /**
  * @author g1patil
  *
@@ -9,7 +11,21 @@ import org.junit.jupiter.api.Test;
  * TODO : WIP
  *  current impl without obstruction
  */
-public class RotatingTheBox {
+public class RotatingTheBox< T extends Comparable> {
+
+    private T[][] box;
+    private T obstacle;
+    private T empty;
+    private T element;
+    private final Class<? extends T> cls;
+
+    public RotatingTheBox(T[][] box_ , T obstacle_ , T empty_ , T element_, Class<? extends T> cls_){
+        box = box_;
+        obstacle = obstacle_;
+        empty = empty_;
+        element = element_;
+        cls = cls_ ;
+    }
 
     /**
      * Returns the last empty box index.
@@ -17,13 +33,13 @@ public class RotatingTheBox {
      * @param i starting row index
      * @param j starting column index
      * */
-    private int getLastEmptyIndex(int[][] matrix , int i , int j){
-        while (i >=0 && matrix[i][j -1] != 0){
+    private int getLastEmptyIndex(T[][] matrix , int i , int j){
+        while (i >=0 && matrix[i][j -1] != empty){
             i--;
         }
         return i;
     }
-    public int[][] reArrangeBox(int[][] box){
+    public T[][] reArrangeBox(T[][] box){
         int columnLength = box[0].length;
 
         while (columnLength > 0){
@@ -32,18 +48,18 @@ public class RotatingTheBox {
 
             for ( int lastElementIndex  = lastEmptyIndex - 1 ; lastElementIndex >=0 ; lastElementIndex --){
 
-                if (box[lastElementIndex][columnLength -1 ] != 0
-                        && box[lastElementIndex][columnLength -1 ] != -1
-                        && box[lastEmptyIndex][columnLength -1 ] == 0
+                if (box[lastElementIndex][columnLength -1 ] != empty
+                        && box[lastElementIndex][columnLength -1 ] != obstacle
+                        && box[lastEmptyIndex][columnLength -1 ] == empty
                         ){
                     //swap the element
                     box[lastEmptyIndex][columnLength -1 ] = box[lastElementIndex][columnLength -1 ];
-                    box[lastElementIndex][columnLength -1 ] = 0 ;
+                    box[lastElementIndex][columnLength -1 ] = empty ;
                     lastEmptyIndex --;
                 }
 
                 //if obstruction found then again look for new empty
-                if (box[lastElementIndex][columnLength -1 ] == -1 ){
+                if (box[lastElementIndex][columnLength -1 ] == obstacle ){
                     lastEmptyIndex = getLastEmptyIndex(box, lastElementIndex , columnLength);
                     lastElementIndex = lastEmptyIndex;
                 }
@@ -56,13 +72,14 @@ public class RotatingTheBox {
     }
 
 
-    public int[][] rotateTheBox(int[][] box) {
+    public T[][] rotateTheBox(T[][] box) {
         box = transformMatrix(box);
         return reArrangeBox(box);
     }
 
-    private int[][] transformMatrix(int[][] box) {
-        int[][] matrix = new int[box[0].length][box.length];
+    private T[][] transformMatrix( T[][] box) {
+        @SuppressWarnings("unchecked")
+        T[][] matrix = (T[][]) Array.newInstance(cls , box[0].length, box.length);
 
         for (int i = 0; i < box.length; i++) {
             for (int j = 0; j < box[0].length; j++) {
@@ -73,7 +90,7 @@ public class RotatingTheBox {
         return matrix;
     }
 
-    private void printMatrix(int[][] matrix){
+    private void printMatrix(T[][] matrix){
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 System.out.print( matrix[i][j] + "  ");
@@ -82,21 +99,16 @@ public class RotatingTheBox {
         }
     }
 
-    @Test
-    public void test_(){
-        int[][] matrix = new int[][]{
+    public static void main(String[] args) {
+        Integer[][] matrix = new Integer[][]{
                 {1 ,1, -1, 0 , -1 , 0},
                 {1 ,1, -1, -1 , 0 , 0},
                 {1 ,1, 1, 0 , 1 , 0}
         };
-        System.out.println("Org matrix ");
-        printMatrix(matrix);
-        for (int i = 0; i < 1; i++) {
-            matrix = rotateTheBox(matrix);
-            System.out.println("rotated");
-            printMatrix(matrix);
-        }
+        RotatingTheBox<Integer> rotateObj  = new RotatingTheBox<>(matrix , -1 , 0 , 1 , Integer.class);
 
-
+        rotateObj.printMatrix(matrix);
+        matrix = rotateObj.rotateTheBox(matrix);
+        rotateObj.printMatrix(matrix);
     }
 }
