@@ -80,6 +80,21 @@ public class TopologicalSort {
     }
 
     @Test
+    public void test2(){
+        int[] v1 = {3,1};
+        int[] v2 = {3,2};
+        int[] v3 = {1,0};
+        int[] v4 = {2,0};
+
+
+
+        this.input = new int[][]{v1,v2,v3,v4};
+
+        this.printPath( 3 , new HashSet());
+
+    }
+
+    @Test
     public void one(){
         int[] v1 = {2,1};
 

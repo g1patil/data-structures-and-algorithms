@@ -6,15 +6,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Sort the vertices of the graph in topological order using Kahn's algorithms.
- *
- * Extra credit : convert this into generics. Should be able to used by strings. Even fancier , by objects.
- * */
-public class KahnAlgo {
+ * @author g1patil
+ */
+public class CourseSchedule2 {
 
     int[][] input;
 
-    private void sortKahn(int[][] input) {
+    private int[] sortKahn(int[][] input) {
 
         Map<Integer, Integer> nodeDegreesMap = new HashMap<>();
         int[] topologicalOrder = new int[input.length];
@@ -60,77 +58,28 @@ public class KahnAlgo {
         }
 
 
-        for (int i : topologicalOrder) {
-            System.out.print ( i + " ");
-        }
+        if (index!= nodeDegreesMap.size())
+            return new int[]{};
+
+        return topologicalOrder;
     }
 
     @Test
-    public void one(){
-        int[] v1 = {2,1};
-
-        int[] v3 = {1,4};
-
-        int[] v4 = {4,11};
-        int[] v5 = {4,12};
-        int[] v6 = {3,4};
-
-        int[] v7 = {6,8};
-        int[] v8 = {8,7};
-        int[] v9 = {6,7};
-
-        int[] v10 = {7,10};
-        int[] v11 = {7,9};
-
-        int[] v12 = {11,7};
-        int[] v13 = {11,13};
-
-        int[] v14 = {5,1};
-        int[] v15 = {5,4};
-        int[] v16 = {5,6};
-
-        int[] v17 = {13,9};
-        int[] v18 = {12,13};
-        int[] v2 = {2,3};
-
-
-        this.input = new int[][]{v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,v16,v17,v18};
-        this.sortKahn(this.input);
+    public void test_(){
+        System.out.println(findOrder(4 , new int[][]{
+                new int[]{3,1},
+                new int[]{3,2},
+                new int[]{1,0},
+                new int[]{2,0}
+        }));
     }
 
     @Test
-    public void two(){
-        int[] v1 = {1,2};
-        int[] v2 = {2,3};
-        int[] v3 = {2,5};
-        int[] v4 = {1,6};
-
-        int[] v5 = {3,4};
-        int[] v6 = {5,3};
-
-        int[] v7 = {5,7};
-        int[] v8 = {6,5};
-        int[] v9 = {6,7};
-
-        int[] v10 = {7,4};
-
-
-
-        this.input = new int[][]{v1,v2,v3,v4,v5,v6,v7,v8,v9,v10};
-        this.sortKahn(this.input);
+    public void test_2(){
+        System.out.println(findOrder(3 , new int[][]{
+                new int[]{0,2},
+                new int[]{2,0},
+                new int[]{1,2}
+        }));
     }
-
-    @Test
-    public void three(){
-        int[] v1 = {0,2};
-        int[] v2 = {1,2};
-        int[] v3 = {2,0};
-
-
-
-        this.input = new int[][]{v1,v2,v3};
-        this.sortKahn(this.input);
-    }
-
-
 }
