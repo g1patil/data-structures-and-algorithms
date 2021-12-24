@@ -66,7 +66,7 @@ public class CourseSchedule2 {
 
     @Test
     public void test_(){
-        System.out.println(findOrder(4 , new int[][]{
+        System.out.println(sortKahn( new int[][]{
                 new int[]{3,1},
                 new int[]{3,2},
                 new int[]{1,0},
@@ -76,7 +76,7 @@ public class CourseSchedule2 {
 
     @Test
     public void test_2(){
-        System.out.println(findOrder(3 , new int[][]{
+        System.out.println(sortKahn( new int[][]{
                 new int[]{0,2},
                 new int[]{2,0},
                 new int[]{1,2}
