@@ -9,19 +9,24 @@ import org.junit.jupiter.api.Test;
  */
 public class RotateBoxLC {
 
+    private static final char EMPTY_CHAR = '.';
+    private static final char STONE = '#';
+    private static final char OBSTRUCTION = '*';
+
     /**
      * Returns the last empty box index.
      * @param matrix given matrix box
      * @param i starting row index
      * @param j starting column index
      * */
-    private int getLastEmptyIndex(int[][] matrix , int i , int j){
-        while (i >=0 && matrix[i][j -1] != 0){
+    private int getLastEmptyIndex(char[][] matrix , int i , int j){
+        while (i >=0 && matrix[i][j -1] != EMPTY_CHAR){
             i--;
         }
         return i;
     }
-    public int[][] reArrangeBox(int[][] box){
+
+    public char[][] reArrangeBox(char[][] box){
         int columnLength = box[0].length;
 
         while (columnLength > 0){
@@ -30,18 +35,18 @@ public class RotateBoxLC {
 
             for ( int lastElementIndex  = lastEmptyIndex - 1 ; lastElementIndex >=0 ; lastElementIndex --){
 
-                if (box[lastElementIndex][columnLength -1 ] != 0
-                        && box[lastElementIndex][columnLength -1 ] != -1
-                        && box[lastEmptyIndex][columnLength -1 ] == 0
+                if (box[lastElementIndex][columnLength -1 ] != EMPTY_CHAR
+                        && box[lastElementIndex][columnLength -1 ] != OBSTRUCTION
+                        && box[lastEmptyIndex][columnLength -1 ] == EMPTY_CHAR
                 ){
                     //swap the element
                     box[lastEmptyIndex][columnLength -1 ] = box[lastElementIndex][columnLength -1 ];
-                    box[lastElementIndex][columnLength -1 ] = 0 ;
+                    box[lastElementIndex][columnLength -1 ] = EMPTY_CHAR ;
                     lastEmptyIndex --;
                 }
 
                 //if obstruction found then again look for new empty
-                if (box[lastElementIndex][columnLength -1 ] == -1 ){
+                if (box[lastElementIndex][columnLength -1 ] == OBSTRUCTION ){
                     lastEmptyIndex = getLastEmptyIndex(box, lastElementIndex , columnLength);
                     lastElementIndex = lastEmptyIndex;
                 }
@@ -53,14 +58,18 @@ public class RotateBoxLC {
 
     }
 
-
-    public int[][] rotateTheBox(int[][] box) {
+    public char[][] rotateTheBox(char[][] box) {
         box = transformMatrix(box);
         return reArrangeBox(box);
     }
 
-    private int[][] transformMatrix(int[][] box) {
-        int[][] matrix = new int[box[0].length][box.length];
+    /**
+     * Transforms the m*n matrix to n*m
+     * @param box char matrix
+     * @return returns the transformed matrix
+     * */
+    private char[][] transformMatrix(char[][] box) {
+        char[][] matrix = new char[box[0].length][box.length];
 
         for (int i = 0; i < box.length; i++) {
             for (int j = 0; j < box[0].length; j++) {
@@ -71,7 +80,10 @@ public class RotateBoxLC {
         return matrix;
     }
 
-    private void printMatrix(int[][] matrix){
+    /**
+     * Utility method to print the m*n matrix
+     * */
+    private void printMatrix(char[][] matrix){
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 System.out.print( matrix[i][j] + "  ");
@@ -82,10 +94,10 @@ public class RotateBoxLC {
 
     @Test
     public void test_(){
-        int[][] matrix = new int[][]{
-                {1 ,1, -1, 0 , -1 , 0},
-                {1 ,1, -1, -1 , 0 , 0},
-                {1 ,1, 1, 0 , 1 , 0}
+        char[][] matrix = new char[][]{
+                {STONE ,STONE, OBSTRUCTION, EMPTY_CHAR , OBSTRUCTION , EMPTY_CHAR},
+                {STONE ,STONE, STONE, OBSTRUCTION , EMPTY_CHAR , EMPTY_CHAR},
+                {STONE ,STONE, STONE, EMPTY_CHAR , STONE , EMPTY_CHAR}
         };
         System.out.println("Org matrix ");
         printMatrix(matrix);
