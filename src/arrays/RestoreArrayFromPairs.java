@@ -15,17 +15,16 @@ import java.util.*;
  * 1743. Restore the Array From Adjacent Pairs
  */
 @Platform(Site.LEETCODE)
-@Quality(Stage.DOCUMENTED)
+@Quality(value = Stage.DOCUMENTED , details = "passes all the test cased")
 public class RestoreArrayFromPairs {
 
     Map<Integer , List> integerListMap = new HashMap<>();
-    List<int[]> integers = new ArrayList<>();
     Set<Integer> integerSet = new HashSet<>();
+
 
     public int getAdjacent(int number, int[][] adjacentPairs){
 
        List<Integer> integers =  integerListMap.get(number);
-
         for (Integer integer : integers) {
             int[] pair = adjacentPairs[integer];
             if (!integerSet.contains(pair[0]))
@@ -36,6 +35,12 @@ public class RestoreArrayFromPairs {
         return 0;
     }
 
+    /**
+     * Add the position (index) of the element. This index is the position
+     * where pairs are present. Also returns the first of last element
+     * in the pairs.
+     * @param adjacentPairs adjacent pairs
+     * */
     public int initializePosition(int[][] adjacentPairs){
         for (int i = 0; i < adjacentPairs.length; i++) {
 
@@ -61,15 +66,17 @@ public class RestoreArrayFromPairs {
 
     }
 
+    /**
+     * Restores the array from adjacent pairs.
+     * @param adjacentPairs adjacent pair of numbers
+     * @return returns the final array.
+     * */
     public int[] restoreArray(int[][] adjacentPairs) {
         List<Integer> integerList = new ArrayList<>();
 
-        initializeList(adjacentPairs);
         int firstElement = initializePosition(adjacentPairs);
         integerList.add(firstElement);
         integerSet.add(firstElement);
-
-
 
         for (int i = 0 ; i < adjacentPairs.length ; i ++){
             int next = getAdjacent(firstElement ,adjacentPairs);
@@ -88,10 +95,6 @@ public class RestoreArrayFromPairs {
         return result;
     }
 
-    private int getFirstElement(int[][] adjacentPairs) {
-        return 1 ;
-    }
-
     @Test
     public void test_(){
         int[][] ints = new int[][]{
@@ -99,7 +102,6 @@ public class RestoreArrayFromPairs {
                 new int[]{3,4},
                 new int[]{3,2}
         };
-
         System.out.println(restoreArray(ints));
     }
 }
