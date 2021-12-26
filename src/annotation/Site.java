@@ -8,5 +8,6 @@ public enum Site {
     CODERFORCE,
     HACKERRANK,
     RANDOM,
-    GEEKFORGEEKS
+    GEEKFORGEEKS,
+    CODESIGNAL
 }

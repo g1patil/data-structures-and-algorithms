@@ -55,3 +55,7 @@ public class WebCrawler {
         }
     }
 }
+
+interface HtmlParser {
+    List<String> getUrls(String s);
+}
