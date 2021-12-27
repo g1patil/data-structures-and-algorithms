@@ -22,6 +22,11 @@ public class ReconstructItinerary {
     Set<String> visited = new HashSet<>();
     List<String> tour = new LinkedList<>();
 
+    /**
+     * Returns the next unvisited node from the source node.
+     * @param source node
+     * @return list of nodes that we can visit from source
+     * */
     public List<String> getNextNode(String source){
         List<String> nextFlights = new ArrayList<>();
 
@@ -29,16 +34,18 @@ public class ReconstructItinerary {
             List<String> _ticket = tickets.get(i);
             String other = _ticket.get(0) == source ? _ticket.get(1): _ticket.get(0);
             if (!visited.contains(source+other)){
-                if(_ticket.get(0) == source){
-                    nextFlights.add(_ticket.get(1));
-                } else  nextFlights.add(_ticket.get(0));
+                nextFlights.add(other);
             }
         }
 
         return nextFlights;
     }
 
-    public String buildDS(List<List<String>> tickets){
+    /**
+     * Builds the Graph and returns the starting node
+     * @param tickets list of list of nodes or flight tickets
+     * */
+    public String buildGraphAndGetStartNode(List<List<String>> tickets){
         this.tickets = tickets;
 
         for (int i = 0 ; i < tickets.size() ; i ++){
@@ -66,21 +73,27 @@ public class ReconstructItinerary {
         return flightNodeMap.keySet().stream().filter( k-> flightNodeMap.get(k).outDegree == 1).findFirst().get();
 
     }
+
+    /**
+     * Build the flight ticket path from given list of tickets
+     * */
     public List<String> findItinerary(List<List<String>> tickets) {
-        String startNode = buildDS(tickets);
+        String startNode = buildGraphAndGetStartNode(tickets);
         tour.add(startNode);
         dfs(startNode);
         return tour;
     }
 
+    /**
+     * Runs the DFS on graph from stating node
+     * @param node start node
+     * */
     public void dfs(String node){
-
         for (String next : getNextNode(node)){
-            if (!visited.contains(node + next)) {tour.add(next);}
+            if (!visited.contains(node + next)){tour.add(next);}
             visited.add(node+next);
             dfs(next);
         }
-
     }
 
     @Test
