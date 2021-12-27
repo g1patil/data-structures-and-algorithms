@@ -27,8 +27,8 @@ public class ReconstructItinerary {
      * @param source node
      * @return list of nodes that we can visit from source
      * */
-    public List<String> getNextNode(String source){
-        List<String> nextFlights = new ArrayList<>();
+    public Queue<String> getNextNode(String source){
+        Queue<String> nextFlights = new LinkedList<>();
 
         for (int i : flightNodeMap.get(source).indexes){
             List<String> _ticket = tickets.get(i);
@@ -89,10 +89,12 @@ public class ReconstructItinerary {
      * @param node start node
      * */
     public void dfs(String node){
-        for (String next : getNextNode(node)){
-            if (!visited.contains(node + next)){tour.add(next);}
+        Queue<String> next = getNextNode(node);
+        while (next.size() > 0){
+            String _next = next.poll();
+            if (!visited.contains(node + next)){tour.add(_next);}
             visited.add(node+next);
-            dfs(next);
+            dfs(_next);
         }
     }
 

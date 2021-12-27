@@ -13,9 +13,13 @@ import java.util.*;
  * @author g1patil
  *
  * 1743. Restore the Array From Adjacent Pairs
+ *
+ * Graph trick for DFS : When getting the next pairs, use the queue ,
+ * So that next time when we come back to the same vertex, queue will be empty.
+ * Queue allow the concurrent traversal while removal also.
  */
 @Platform(Site.LEETCODE)
-@Quality(value = Stage.DOCUMENTED , details = "passes all the test cased")
+@Quality(value = Stage.DOCUMENTED , details = "passes all the test case")
 public class RestoreArrayFromPairs {
 
     Map<Integer , List> integerListMap = new HashMap<>();
