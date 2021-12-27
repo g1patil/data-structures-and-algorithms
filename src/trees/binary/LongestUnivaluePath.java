@@ -7,63 +7,51 @@ import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import trees.Tree;
-
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * @author g1patil
+ * 687. Longest Univalue Path
  */
 @Platform(Site.LEETCODE)
-@Quality(value = Stage.FAILING, details = "passes 38/71 cases.")
+@Quality(value = Stage.TESTED)
 public class LongestUnivaluePath {
-    Queue<Integer> queue = new PriorityQueue<>();
 
-    private Queue getAllNodes(TreeNode treeNode){
-        if (treeNode == null)
-            return queue;
+    int max_length = 0;
 
-        queue.add(treeNode.getData());
-        getAllNodes(treeNode.left);
-        getAllNodes(treeNode.right);
-        return queue;
-    }
-
-    private int getLongestPathNode(TreeNode treeNode , int target ){
-        int leftLength = 0;
-        int rightLength = 0;
-
-        if (treeNode == null)
-            return 0;
-
-        if (treeNode.left != null && treeNode.getData() == target && treeNode.left.getData() == treeNode.getData())
-             leftLength = 1 + getLongestPathNode(treeNode.left , target );
-
-        if (treeNode.right != null && treeNode.getData() == target && treeNode.right.getData() == treeNode.getData())
-             rightLength = 1 + getLongestPathNode(treeNode.right , target );
-
-        return Math.max( leftLength + rightLength ,
-                Math.max(
-                        getLongestPathNode(treeNode.left , target ),
-                        getLongestPathNode(treeNode.right , target )
-                )
-                );
+    public int driver(TreeNode treeNode){
+        longestUnivaluePath(treeNode);
+        return max_length;
     }
     public int longestUnivaluePath(TreeNode root) {
-        int longestUnivaluePath = Integer.MIN_VALUE;
-
-        queue = getAllNodes(root);
-
-        if (queue.isEmpty())
+        if (root == null)
             return 0;
 
-        while (!queue.isEmpty()){
-            int node = queue.poll();
-            longestUnivaluePath = Math.max( longestUnivaluePath , getLongestPathNode(root , node));
-        }
+        int left = longestUnivaluePath(root.left);
+        int right = longestUnivaluePath(root.right);
 
-        return longestUnivaluePath;
+        int leftLength = 0;
+        int rightLength = 0;
+        if (root.left != null && root.getData() == root.left.getData())
+            leftLength = left + 1 ;
+
+        if (root.right != null && root.getData() == root.right.getData())
+            rightLength = right + 1;
+
+        max_length = Math.max( leftLength + rightLength, max_length);
+        return Math.max( leftLength , rightLength);
+    }
+
+    @Test
+    public void test(){
+        TreeNode root = new TreeNode(10);
+        TreeNode n1 = new TreeNode(10);
+        TreeNode n2 = new TreeNode(10);
+        TreeNode n3 = new TreeNode(10);
+//        TreeNode n4 = new TreeNode(5);
+        root.setChild(n1, n2);
+        n1.setChild(n3 , null);
+//        n2.setChild(null , n4 );
+        System.out.println(driver(root));
     }
 
     @Test
