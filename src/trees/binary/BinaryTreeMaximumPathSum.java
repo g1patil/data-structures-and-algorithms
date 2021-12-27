@@ -1,5 +1,6 @@
 package trees.binary;
 
+import data.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,76 +9,68 @@ import org.junit.jupiter.api.Test;
  *
  * Given a non-empty binary tree, find the maximum path sum.
  *
- * For this problem, a path is defined as any node sequence from some
- * starting node to any node in the tree along the parent-child connections.
- * The path must contain at least one node and does not need to go through the root.
+ * For this problem, a path is defined as any TreeNode sequence from some
+ * starting TreeNode to any TreeNode in the tree along the parent-child connections.
+ * The path must contain at least one TreeNode and does not need to go through the root.
  * */
 public class BinaryTreeMaximumPathSum {
+    
 
     /**
-     * Given the node, returns the longest path sum from that node
-     * @param node given node
-     * @param sum, current sum
-     * @return sum of the largest value till the leaf
-     * */
-    int getMaxSum(final Node node, int sum){
-
-        if(node == null){
-            return 0;
-        }
-        if(node.left == null && node.right == null){
-            return node.data + sum;
-        }
-
-        return  Math.max(getMaxSum(node.left, node.data),getMaxSum(node.right, node.data));
-    }
-
-    /**
-     * Given the node, gets the sum of the diameter. Here diameter will be considered as the largest sum
-     * @param root given node
+     * Given the TreeNode, gets the sum of the diameter. Here diameter will be considered as the largest sum
+     * @param root given TreeNode
      * @return returns the sum of the maximum path
      *
      * */
-    private int maxPathSum(Node root) {
+
+    int some = Integer.MIN_VALUE;
+    private int maxPathSum(TreeNode root) {
 
         if(root == null){
             return 0;
         }
-        int leftSum = getMaxSum(root.left, 0) ;
-        int rightSum = getMaxSum(root.right , 0) ;
+        int leftSum = Math.max(maxPathSum(root.left) , 0) ;
+        int rightSum = Math.max(maxPathSum(root.right ) , 0 ) ;
 
-        return Math.max( leftSum + rightSum + root.data , Math.max(
-                maxPathSum(root.left), maxPathSum(root.right)
-        ));
+        some = Math.max( some , root.getData() + leftSum + rightSum);
+        return root.getData() + Math.max(leftSum , rightSum);
+    }
 
+    private int maxPathSumDriver(TreeNode root){
+        maxPathSum(root);
+        return some;
     }
 
     @Test
     public void test(){
-        Node root = new Node(10);
-        Assertions.assertEquals(10,maxPathSum(root));
+        TreeNode root = new TreeNode(30);
+        TreeNode n1 = new TreeNode(10);
+        TreeNode n2 = new TreeNode(-20);
+        root.setChild(n1,n2);
+
+        Assertions.assertEquals(40,maxPathSumDriver(root));
     }
 
     @Test
     public void test2(){
-        Node root = new Node(10);
-        Node n1 = new Node(5);
-        Node n2 = new Node(6);
+        TreeNode root = new TreeNode(10);
+        TreeNode n1 = new TreeNode(5);
+        TreeNode n2 = new TreeNode(6);
 
         root.left = n1;
         root.right = n2;
 
-        Assertions.assertEquals(21,maxPathSum(root));
+        Assertions.assertEquals(21,maxPathSumDriver(root));
     }
 
     @Test
     public void test3(){
-        Node root = new Node(10);
-        Node n1 = new Node(5);
-        Node n2 = new Node(6);
+        TreeNode root = new TreeNode(10);
+        TreeNode n1 = new TreeNode(5);
+        TreeNode n2 = new TreeNode(6);
 
-        Node n3 = new Node(11);
-        Node n4 = new Node(12);
+        TreeNode n3 = new TreeNode(11);
+        TreeNode n4 = new TreeNode(12);
 
         root.left = n1;
         root.right = n2;
@@ -85,20 +78,20 @@ public class BinaryTreeMaximumPathSum {
         n2.left = n3;
         n2.right = n4;
 
-        Assertions.assertEquals(33,maxPathSum(root));
+        Assertions.assertEquals(33,maxPathSumDriver(root));
     }
 
     @Test
     public void test4(){
-        Node root = new Node(10);
-        Node n1 = new Node(5);
-        Node n2 = new Node(6);
+        TreeNode root = new TreeNode(10);
+        TreeNode n1 = new TreeNode(5);
+        TreeNode n2 = new TreeNode(6);
 
-        Node n3 = new Node(11);
-        Node n4 = new Node(12);
+        TreeNode n3 = new TreeNode(11);
+        TreeNode n4 = new TreeNode(12);
 
-        Node n5 = new Node(100);
-        Node n6 = new Node(200);
+        TreeNode n5 = new TreeNode(100);
+        TreeNode n6 = new TreeNode(200);
 
         root.left = n1;
         root.right = n2;
@@ -109,6 +102,13 @@ public class BinaryTreeMaximumPathSum {
         n1.left = n5;
         n1.right = n6;
 
-        Assertions.assertEquals(305,maxPathSum(root));
+        Assertions.assertEquals(305,maxPathSumDriver(root));
+    }
+
+
+    @Test
+    public void test5(){
+        TreeNode root = new TreeNode(-2);
+        Assertions.assertEquals(-2,maxPathSumDriver(root));
     }
 }
