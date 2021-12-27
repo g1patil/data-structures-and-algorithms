@@ -1,5 +1,9 @@
 package trees.binary;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,6 +17,8 @@ import org.junit.jupiter.api.Test;
  * starting TreeNode to any TreeNode in the tree along the parent-child connections.
  * The path must contain at least one TreeNode and does not need to go through the root.
  * */
+@Quality(value = Stage.DOCUMENTED , details = "passes all test cases")
+@Platform(Site.LEETCODE)
 public class BinaryTreeMaximumPathSum {
     
 
