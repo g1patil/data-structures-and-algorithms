@@ -1,7 +1,9 @@
 package graph;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -9,24 +11,31 @@ import java.util.*;
 /**
  * @author jivanpatil
  * 332. Reconstruct Itinerary
+ *
  * */
+@Quality(value = Stage.FAILING, details = "somehow works in local but does not work in the LC")
 @Platform(Site.LEETCODE)
 public class ReconstructItinerary {
 
     Map<String , FlightNode> flightNodeMap = new HashMap<>();
     List<List<String>> tickets = new ArrayList<>();
-    Set<List<String>> visited = new HashSet<>();
+    Set<String> visited = new HashSet<>();
+    List<String> tour = new LinkedList<>();
 
-    public String getNextNode(String source){
-        for (int i = 0; i < flightNodeMap.get(source).indexes.size(); i++) {
+    public List<String> getNextNode(String source){
+        List<String> nextFlights = new ArrayList<>();
+
+        for (int i : flightNodeMap.get(source).indexes){
             List<String> _ticket = tickets.get(i);
-            if (!visited.contains(_ticket)){
-                visited.add(_ticket);
-                return _ticket.get(0) == source ? _ticket.get(1) : _ticket.get(0);
+            String other = _ticket.get(0) == source ? _ticket.get(1): _ticket.get(0);
+            if (!visited.contains(source+other)){
+                if(_ticket.get(0) == source){
+                    nextFlights.add(_ticket.get(1));
+                } else  nextFlights.add(_ticket.get(0));
             }
         }
 
-        return null;
+        return nextFlights;
     }
 
     public String buildDS(List<List<String>> tickets){
@@ -47,11 +56,8 @@ public class ReconstructItinerary {
             }
 
             if (!flightNodeMap.containsKey(d)){
-                List<Integer> integerList = new ArrayList<>();
-                integerList.add(i);
-                flightNodeMap.put( d , new FlightNode(d , integerList , -1));
+                flightNodeMap.put( d , new FlightNode(d , new ArrayList() , -1));
             } else {
-                flightNodeMap.get(d).indexes.add(i);
                 flightNodeMap.get(d).outDegree --;
             }
 
@@ -62,18 +68,19 @@ public class ReconstructItinerary {
     }
     public List<String> findItinerary(List<List<String>> tickets) {
         String startNode = buildDS(tickets);
+        tour.add(startNode);
         dfs(startNode);
-        return null;
+        return tour;
     }
 
     public void dfs(String node){
 
-        while (node != null){
-            String next = getNextNode(node);
+        for (String next : getNextNode(node)){
+            if (!visited.contains(node + next)) {tour.add(next);}
+            visited.add(node+next);
             dfs(next);
         }
 
-        System.out.println(node);
     }
 
     @Test
@@ -102,7 +109,35 @@ public class ReconstructItinerary {
         tickets.add(f4);
         tickets.add(f5);
 
-        findItinerary(tickets);
+        for (String s : findItinerary(tickets)) {
+            System.out.print( s + "     ");
+        }
+    }
+
+    @Test
+    public void test2(){
+        List<List<String>> tickets = new ArrayList<>();
+        List<String> f1 = new ArrayList<>();
+        f1.add("MUC");
+        f1.add("LHR");
+        List<String> f2 = new ArrayList<>();
+        f2.add("JFK");
+        f2.add("MUC");
+        List<String> f3 = new ArrayList<>();
+        f3.add("SFO");
+        f3.add("SJC");
+        List<String> f4 = new ArrayList<>();
+        f4.add("LHR");
+        f4.add("SFO");
+
+        tickets.add(f1);
+        tickets.add(f2);
+        tickets.add(f3);
+        tickets.add(f4);
+
+        for (String s : findItinerary(tickets)) {
+            System.out.print( s + "     ");
+        }
     }
 }
 
