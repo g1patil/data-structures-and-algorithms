@@ -35,6 +35,18 @@ public class BuySellStock {
         );
     }
 
+
+    private int getProfit2(int[] stocks){
+        int min = stocks[0];
+        int currentProfit = Integer.MIN_VALUE;
+
+        for (int current : stocks){
+            currentProfit = Math.max( currentProfit , current - min);
+            min = Math.min( min , current);
+        }
+        return currentProfit;
+    }
+
     @Test
     public void test_(){
         System.out.println(
@@ -46,6 +58,16 @@ public class BuySellStock {
     public void test_2(){
         System.out.println(
                 getProfit(new int[]{2,1,2,1,0,1,2})
+        );
+    }
+
+    @Test
+    public void test_3(){
+        System.out.println(
+                getProfit2(new int[]{10, 22, 5, 75, 65, 80})
+        );
+        System.out.println(
+                getProfit2(new int[]{2,1,2,1,0,1,2})
         );
     }
 }
