@@ -2,7 +2,7 @@ package miscellaneous;
 /**
  * Silly code to show that you can call the main method. No biggy !!
  * 
- * 
+ * @author g1patil
 */
 public class CallMainMethod {
     public static void main(String[] args) {
