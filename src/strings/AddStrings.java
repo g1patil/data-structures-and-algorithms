@@ -1,5 +1,8 @@
 package strings;
 
+import annotation.Platform;
+import annotation.Site;
+
 /*
  * 415. Add Strings
  *
@@ -13,6 +16,7 @@ Both num1 and num2 does not contain any leading zero.
 You must not use any built-in BigInteger library or convert the inputs to integer directly.
 *
  * */
+@Platform(Site.LEETCODE)
 public class AddStrings {
 
     private String addStrings(String num1, String num2) {
