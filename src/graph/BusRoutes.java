@@ -1,5 +1,7 @@
 package graph;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import java.util.List;
  * Explanation: The best strategy is take the first bus to the bus stop 7, then take the second bus to the bus stop 6.
  *
  * */
+@Platform(Site.LEETCODE)
 public class BusRoutes {
 
     private int[][] routes ;
