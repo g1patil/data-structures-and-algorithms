@@ -126,4 +126,14 @@ public class CourseSchedule {
         System.out.println(order);
     }
 
+    @Test
+    public void test_5(){
+        int[][] edges = new int[][]{
+                new int[]{1,0}
+        };
+
+        System.out.println(canFinish(2 , edges));
+        System.out.println(order);
+    }
+
 }
