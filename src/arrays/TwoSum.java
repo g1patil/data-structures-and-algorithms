@@ -5,6 +5,7 @@ import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +69,36 @@ public class TwoSum {
 
     }
 
+    /**
+     * For array that is already sorted
+     * 167. Two Sum II - Input Array Is Sorted
+     * Two pointer method
+     * */
+    public int[] twoSumTwoPointer(int[] nums, int target) {
+
+        int p1 = 0 , p2 = nums.length-1 ;
+        int[] result = new int[2];
+
+        while (p1 < p2) {
+            int currentSum = nums[p1] + nums[p2];
+            if (currentSum < target){
+                p1 ++;
+            } else if (currentSum > target){
+                p2 --;
+            } else {
+                result[0] = p1 ;
+                result[1] = p2 ;
+                p1++;
+                p2--;
+            }
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         new TwoSum().getTargetElements(new int[]{1,3,5,8,11}, 12);
+        new TwoSum().twoSumTwoPointer(new int[]{2,7,11,15}, 9);
+        new TwoSum().twoSumTwoPointer(new int[]{2,3,4}, 6);
     }
 }
