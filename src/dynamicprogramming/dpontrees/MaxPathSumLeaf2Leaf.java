@@ -16,7 +16,7 @@ public class MaxPathSumLeaf2Leaf {
         if(node == null){
             return 0;
         }
-        return node.getData() + Math.max(getHeight(node.left), getHeight(node.right));
+        return node.getVal() + Math.max(getHeight(node.left), getHeight(node.right));
     }
 
     public int diameterOfBinaryTree(TreeNode root) {
@@ -27,7 +27,7 @@ public class MaxPathSumLeaf2Leaf {
         int left = Math.max( getHeight(root.left) , 0 );
         int right = Math.max( getHeight(root.right) , 0 );
 
-        return Math.max( left + right + root.getData(), Math.max( diameterOfBinaryTree( root.right), diameterOfBinaryTree( root.left)));
+        return Math.max( left + right + root.getVal(), Math.max( diameterOfBinaryTree( root.right), diameterOfBinaryTree( root.left)));
     }
 
     @Test

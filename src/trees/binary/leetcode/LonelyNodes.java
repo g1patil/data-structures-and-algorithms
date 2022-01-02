@@ -4,7 +4,6 @@ package trees.binary.leetcode;
 import annotation.Platform;
 import annotation.Site;
 import data.TreeNode;
-import lists.ListNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -27,11 +26,11 @@ public class LonelyNodes {
 
         if ( ( left == null && right!=null) || ( right == null && left!=null) ){
             if (right != null){
-                integerList.add(right.getData());
+                integerList.add(right.getVal());
                 getLonelyNodes(right);
             }
             if (left!=null){
-                integerList.add(left.getData());
+                integerList.add(left.getVal());
                 getLonelyNodes(left);
             }
         } else {

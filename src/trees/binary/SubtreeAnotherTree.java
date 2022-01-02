@@ -61,7 +61,7 @@ public class SubtreeAnotherTree {
         if(s == null || t == null){
             return false;
         }
-        if ( s.getData() == t.getData()){
+        if ( s.getVal() == t.getVal()){
             return isSubtree(s.left,t.left) && isSubtree( s.right,t.right);
         }
 

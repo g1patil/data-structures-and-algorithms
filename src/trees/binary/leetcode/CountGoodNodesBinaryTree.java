@@ -1,7 +1,6 @@
 package trees.binary.leetcode;
 
 import data.TreeNode;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,9 +14,9 @@ public class CountGoodNodesBinaryTree {
         if (treeNode == null)
             return counter;
 
-        if ( treeNode.getData() >= max){
+        if ( treeNode.getVal() >= max){
             counter+=1;
-            max = treeNode.getData();
+            max = treeNode.getVal();
         }
 
         goodNodeHelper(treeNode.left , max);

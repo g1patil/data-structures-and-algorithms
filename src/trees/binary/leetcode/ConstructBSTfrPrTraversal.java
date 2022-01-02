@@ -14,7 +14,7 @@ public class ConstructBSTfrPrTraversal {
         if (root == null)
             return new TreeNode(data);
 
-        if ( data < root.getData()){
+        if ( data < root.getVal()){
             root.left = addToTree(root.left , data);
         } else root.right = addToTree(root.right , data);
 

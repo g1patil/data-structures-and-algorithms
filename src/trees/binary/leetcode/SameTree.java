@@ -22,7 +22,7 @@ public class SameTree {
             return false;
 
         /* if the data is same then both sub tree should be equal , else unequal*/
-        if (p.getData() == q.getData()){
+        if (p.getVal() == q.getVal()){
             return isSameTree(p.left, q.left) &&
             isSameTree(p.right, q.right);
         } else return false;

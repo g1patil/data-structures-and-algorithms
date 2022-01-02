@@ -22,10 +22,10 @@ public class LCATree {
             return -1 ;
 
         if (one_ == two_)
-            return one_.getData();
+            return one_.getVal();
 
-        List pathOne = new DFSPath().getPath(root_ , one_.getData());
-        List pathTwo = new DFSPath().getPath(root_ , two_.getData());
+        List pathOne = new DFSPath().getPath(root_ , one_.getVal());
+        List pathTwo = new DFSPath().getPath(root_ , two_.getVal());
 
         if (pathOne.isEmpty() || pathTwo.isEmpty())
             return -1;

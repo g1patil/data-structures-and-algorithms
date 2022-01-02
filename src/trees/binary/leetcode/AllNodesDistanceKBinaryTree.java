@@ -7,7 +7,6 @@ import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 import java.util.Stack;
 
 /**
@@ -28,7 +27,7 @@ public class AllNodesDistanceKBinaryTree {
         if (distance == Math.abs(counter) || distance == Math.abs(reverse) ){
             System.out.println("element found : " + integerStack.peek());
         }
-        integerStack.push(treeNode.getData());
+        integerStack.push(treeNode.getVal());
         if (found == true){
             counter = Math.abs(counter) + 1 ;
             reverse = Math.abs(reverse) - 1 ;
@@ -36,7 +35,7 @@ public class AllNodesDistanceKBinaryTree {
         if (distance == Math.abs(counter) || distance == Math.abs(reverse) ){
             System.out.println("element found : " + integerStack.peek());
         }
-        if (treeNode.getData() == target){
+        if (treeNode.getVal() == target){
             found = true;
         }
         distanceHelper(treeNode.left , target , distance);

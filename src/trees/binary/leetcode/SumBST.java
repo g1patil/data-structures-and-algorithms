@@ -65,7 +65,7 @@ public class SumBST {
         if (m1 == null)
             return n1;
 
-        n1.setData( n1.getData() + m1.getData());
+        n1.setVal( n1.getVal() + m1.getVal());
         n1.left = sumBST(n1.left, m1.left);
         n1.right = sumBST(n1.right, m1.right);
         return n1;

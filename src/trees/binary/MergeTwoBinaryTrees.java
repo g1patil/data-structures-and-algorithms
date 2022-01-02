@@ -23,7 +23,7 @@ public class MergeTwoBinaryTrees {
             return first;
         }
 
-        first.setData( first.getData() + second.getData());
+        first.setVal( first.getVal() + second.getVal());
         first.left = mergeTrees( first.left, second.left);
         first.right = mergeTrees( first.right, second.right);
 

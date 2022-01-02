@@ -67,7 +67,7 @@ public class SkewedTree {
             return n1;
 
         makeSkewedTreeDecreasing(n1.right);
-        addNode(n1.getData());
+        addNode(n1.getVal());
         makeSkewedTreeDecreasing(n1.left);
         
         return result;
@@ -82,7 +82,7 @@ public class SkewedTree {
             return n1;
 
         makeSkewedTreeIncreasing(n1.left);
-        addNode(n1.getData());
+        addNode(n1.getVal());
         makeSkewedTreeIncreasing(n1.right);
 
         return result;

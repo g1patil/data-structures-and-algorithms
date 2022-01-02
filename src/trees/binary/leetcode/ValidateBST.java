@@ -29,7 +29,7 @@ public class ValidateBST {
            return integerList;
 
        getNodesList(treeNode.left);
-       integerList.add(treeNode.getData());
+       integerList.add(treeNode.getVal());
        getNodesList(treeNode.right);
 
        return integerList;

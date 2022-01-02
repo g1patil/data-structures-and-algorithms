@@ -34,15 +34,15 @@ public class DFSPath {
         if(treeNode == null)
             return false;
 
-        if (treeNode.getData() == target){
-            integerList.add(0, treeNode.getData());
+        if (treeNode.getVal() == target){
+            integerList.add(0, treeNode.getVal());
             return true;
         }
 
 
         result =  nodeExist(treeNode.left , target) || nodeExist(treeNode.right , target);
         if (result)
-            integerList.add(0, treeNode.getData());
+            integerList.add(0, treeNode.getVal());
         return result;
     }
 

@@ -27,7 +27,7 @@ public class FindLeavesBinaryTree {
             return treeNode;
 
         if (isLeaf(treeNode)){
-            integerArrayList.add(treeNode.getData());
+            integerArrayList.add(treeNode.getVal());
             return null;
         }
 

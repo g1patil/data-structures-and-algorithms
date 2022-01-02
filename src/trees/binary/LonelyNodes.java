@@ -27,11 +27,11 @@ public class LonelyNodes {
             result.addAll(lonelyNodes(root.left));
             result.addAll(lonelyNodes(root.right));
         } else if ( root.left == null && root.right !=null ){
-            result.add(root.right.getData());
+            result.add(root.right.getVal());
             result.addAll(lonelyNodes(root.right));
 
         } else if ( root.right == null && root.left !=null ) {
-            result.add(root.left.getData());
+            result.add(root.left.getVal());
             result.addAll(lonelyNodes(root.left));
         }
         return result;

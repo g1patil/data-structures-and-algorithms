@@ -20,7 +20,7 @@ public class OrderTraversal {
         if (root == null)
             return integerList;
         inOrderTraversal(root.left);
-        integerList.add(root.getData());
+        integerList.add(root.getVal());
         inOrderTraversal(root.right);
 
         return integerList;
@@ -29,7 +29,7 @@ public class OrderTraversal {
     public List<Integer> preOrderTraversal(TreeNode root) {
         if (root == null)
             return integerList;
-        integerList.add(root.getData());
+        integerList.add(root.getVal());
         preOrderTraversal(root.left);
         preOrderTraversal(root.right);
 
@@ -41,7 +41,7 @@ public class OrderTraversal {
             return integerList;
         postOrderTraversal(root.left);
         postOrderTraversal(root.right);
-        integerList.add(root.getData());
+        integerList.add(root.getVal());
 
         return integerList;
     }

@@ -18,7 +18,7 @@ public class MinimumAbsoluteDifferenceBST {
         if (root == null)
             return integerList;
         inOrderTraversal(root.left);
-        integerList.add(root.getData());
+        integerList.add(root.getVal());
         inOrderTraversal(root.right);
 
         return integerList;

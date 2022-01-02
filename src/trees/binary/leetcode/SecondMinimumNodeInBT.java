@@ -20,7 +20,7 @@ import java.util.Queue;
  */
 public class SecondMinimumNodeInBT {
 
-    Queue<TreeNode> treeNodePriorityQueue = new PriorityQueue<>(Comparator.comparingInt(TreeNode::getData));
+    Queue<TreeNode> treeNodePriorityQueue = new PriorityQueue<>(Comparator.comparingInt(TreeNode::getVal));
     Queue<Integer> integerQueue = new PriorityQueue<>();
 
     public int findSecondMinimumValue(TreeNode root) {
@@ -30,8 +30,8 @@ public class SecondMinimumNodeInBT {
             TreeNode treeNode = treeNodePriorityQueue.remove();
             if (treeNode == null)
                 continue;
-            if (!integerQueue.contains(treeNode.getData()) && integerQueue.size() < 3)
-                integerQueue.add(treeNode.getData());
+            if (!integerQueue.contains(treeNode.getVal()) && integerQueue.size() < 3)
+                integerQueue.add(treeNode.getVal());
 
             if (treeNode.left!=null)
                 treeNodePriorityQueue.add(treeNode.left);

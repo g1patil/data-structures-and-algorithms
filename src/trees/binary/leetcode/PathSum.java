@@ -13,7 +13,7 @@ public class PathSum {
         if ( root == null && targetSum > 0)
             return false;
 
-        return hasPathSum( root.left ,targetSum - root.getData() )
-                || hasPathSum(root.right , targetSum - root.getData() );
+        return hasPathSum( root.left ,targetSum - root.getVal() )
+                || hasPathSum(root.right , targetSum - root.getVal() );
     }
 }

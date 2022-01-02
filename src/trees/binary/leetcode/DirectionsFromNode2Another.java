@@ -28,7 +28,7 @@ public class DirectionsFromNode2Another {
         if (treeNode == null)
             return;
 
-        integerStack.push(treeNode.getData());
+        integerStack.push(treeNode.getVal());
 
         if (integerStack.peek() == source || integerStack.peek() == destination){
             found = true;

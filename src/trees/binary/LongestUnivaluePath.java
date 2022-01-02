@@ -31,10 +31,10 @@ public class LongestUnivaluePath {
 
         int leftLength = 0;
         int rightLength = 0;
-        if (root.left != null && root.getData() == root.left.getData())
+        if (root.left != null && root.getVal() == root.left.getVal())
             leftLength = left + 1 ;
 
-        if (root.right != null && root.getData() == root.right.getData())
+        if (root.right != null && root.getVal() == root.right.getVal())
             rightLength = right + 1;
 
         max_length = Math.max( leftLength + rightLength, max_length);

@@ -1,7 +1,6 @@
 package dynamicprogramming.dpontrees;
 
 import data.TreeNode;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -13,7 +12,7 @@ public class MaxNodeSum {
         if ( root == null)
             return 0 ;
 
-        return root.getData() + Math.max( getMaxSum(root.left) , getMaxSum(root.right));
+        return root.getVal() + Math.max( getMaxSum(root.left) , getMaxSum(root.right));
     }
 
     @Test

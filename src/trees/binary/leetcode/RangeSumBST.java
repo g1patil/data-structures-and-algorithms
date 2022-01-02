@@ -15,8 +15,8 @@ public class RangeSumBST {
         if (root == null)
             return 0 ;
 
-        if ( root.getData() <= high && root.getData() >= low){
-            return root.getData() + rangeSumBST(root.left , low , high) + rangeSumBST(root.right , low, high);
+        if ( root.getVal() <= high && root.getVal() >= low){
+            return root.getVal() + rangeSumBST(root.left , low , high) + rangeSumBST(root.right , low, high);
         } else return rangeSumBST(root.left , low , high) + rangeSumBST(root.right , low, high);
 
     }

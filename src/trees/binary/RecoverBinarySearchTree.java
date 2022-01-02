@@ -44,7 +44,7 @@ public class RecoverBinarySearchTree {
             return;
 
         inorder(root.left);
-        if(previous.getData() > root.getData()){
+        if(previous.getVal() > root.getVal()){
             if (first== null){
                 first = previous;
                 middle = root ;
@@ -64,13 +64,13 @@ public class RecoverBinarySearchTree {
         inorder(root);
 
         if (first!=null && last!= null){
-            int temp = first.getData();
-            first.setData(last.getData());
-            last.setData(temp);
+            int temp = first.getVal();
+            first.setVal(last.getVal());
+            last.setVal(temp);
         } else if (first!=null && middle!= null){
-            int temp = first.getData();
-            first.setData(middle.getData());
-            middle.setData(temp);
+            int temp = first.getVal();
+            first.setVal(middle.getVal());
+            middle.setVal(temp);
         }
     }
 

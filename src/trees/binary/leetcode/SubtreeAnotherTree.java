@@ -3,7 +3,6 @@ package trees.binary.leetcode;
 import data.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil
@@ -19,10 +18,10 @@ public class SubtreeAnotherTree {
         if( root == null || subRoot == null)
             return false;
 
-        if ( root.getData() != subRoot.getData())
+        if ( root.getVal() != subRoot.getVal())
             return false;
 
-        return (root.getData() == subRoot.getData()) &&
+        return (root.getVal() == subRoot.getVal()) &&
                 areSame(root.left , subRoot.left) &&
                 areSame(root.right , subRoot.right) ;
 

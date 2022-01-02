@@ -38,8 +38,8 @@ public class BinaryTreeMaximumPathSum {
         int leftSum = Math.max(maxPathSum(root.left) , 0) ;
         int rightSum = Math.max(maxPathSum(root.right ) , 0 ) ;
 
-        some = Math.max( some , root.getData() + leftSum + rightSum);
-        return root.getData() + Math.max(leftSum , rightSum);
+        some = Math.max( some , root.getVal() + leftSum + rightSum);
+        return root.getVal() + Math.max(leftSum , rightSum);
     }
 
     private int maxPathSumDriver(TreeNode root){
