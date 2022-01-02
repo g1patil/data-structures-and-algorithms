@@ -20,29 +20,20 @@ public class MaxSumBSTBinaryTree {
 
     int max = Integer.MIN_VALUE;
 
-    public boolean isValidBST(TreeNode _node){
-
-        if (_node == null)
-            return true;
-
-        if (_node.left == null && _node.right == null){
-            max = Math.max( max , _node.val);
-            return true;
+    public int[] isValidBST(TreeNode _node){
+        if (_node == null){
+            return new int[]{ 1 , Integer.MIN_VALUE , Integer.MAX_VALUE, 0};
         }
 
+        int[] left = isValidBST(_node.left);
+        int[] right = isValidBST(_node.right);
 
-        boolean left = isValidBST(_node.left);
-        boolean right = isValidBST(_node.right);
+        boolean isCurrentValid = left[0] == 1 && right[0] == 1 && _node.val > left[1] && _node.val < right[2];
 
-        int leftVal = _node.left == null ? 0 : _node.left.val;
-        int rightVal = _node.right == null ? 0 : _node.right.val;
+        if (isCurrentValid)
+            max = Math.max( max , _node.val + left[3] + right[3]);
 
-        if (left && right && _node.val < rightVal && _node.val > leftVal){
-            max = Math.max( max , _node.val + leftVal + rightVal);
-            return true;
-        }
-
-        return false;
+        return new int[]{isCurrentValid ? 1 : 0 , Math.max(_node.val , right[1]) , Math.min(_node.val, left[2]) , _node.val + left[3] + right[3]};
     }
 
     public int maxSumBST(TreeNode root) {
