@@ -67,7 +67,6 @@ public class MaxSumBSTBinaryTree {
         TreeNode n7 = new TreeNode(4);
         TreeNode n8 = new TreeNode(6);
 
-
         root.setChild(n1,n2);
         n1.setChild(n3,n4);
         n2.setChild(n5,n6);
