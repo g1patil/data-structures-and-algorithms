@@ -27,23 +27,12 @@ public class KadaneAlgo {
      * @param nums ints
      * */
     public int maxSubArray(int[] nums) {
-        int[] sum = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            sum[i] = nums[i];
-        }
-
         int previous = nums[0] ;
         int max = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
-            if (sum[i] + previous > sum[i]){
-                sum[i] = sum[i] + previous;
-                previous = sum[i];
-            } else {
-                previous = sum[i];
-            }
-
-            max = Math.max( max , sum[i] );
+            previous = Math.max( nums[i] , previous + nums[i] );
+            max = Math.max(previous , max);
         }
 
         return max;
