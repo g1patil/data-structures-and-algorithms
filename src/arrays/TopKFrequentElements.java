@@ -1,6 +1,12 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
+
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -26,6 +32,8 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
 It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
 You can return the answer in any order.
 * */
+@Quality(Stage.DOCUMENTED)
+@Platform(Site.LEETCODE)
 public class TopKFrequentElements {
 
     /**
@@ -44,7 +52,7 @@ public class TopKFrequentElements {
             }
         }
 
-        Queue<Integer> integerQueue = new PriorityQueue<>((n1,n2)-> integerHashMap.get(n1)- integerHashMap.get(n2));
+        Queue<Integer> integerQueue = new PriorityQueue<>(Comparator.comparingInt(integerHashMap::get));
 
         int count = 0;
         for (Integer integer : integerHashMap.keySet()) {
