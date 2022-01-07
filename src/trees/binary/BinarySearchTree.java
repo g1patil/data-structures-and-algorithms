@@ -7,12 +7,9 @@ package trees.binary;
 */
 class BinarySearch{
 
-
-
     boolean binarySearch(Node head,int target){
 
         if (head ==null){
-            System.out.println("The tree node is null");
             return false;
         }
 
@@ -20,16 +17,27 @@ class BinarySearch{
             return true;
         }
 
-        if (target < head.data  && head.left!=null){
-            return binarySearch(head.left, target);
-        }
-
-        if(target> head.data  && head.right!=null){
-            return binarySearch(head.right, target);
-        }
-
-        return false;
+        return target < head.data ? binarySearch(head.left, target) : binarySearch(head.right, target);
     }
+
+
+    boolean binarySearch(int[] ints , int target , int _left , int _right){
+
+        int mid = (_left + _right) /2;
+
+        if (ints[mid] == target)
+            return true;
+
+        if (_left == _right)
+            return false;
+
+        if ( target < ints[mid])
+            _right = mid - 1 ;
+        else _left = mid + 1 ;
+
+        return binarySearch(ints , target , _left , _right);
+    }
+
     public static void main(String[] args) {
 
         //initialize the node
@@ -57,7 +65,11 @@ class BinarySearch{
         n4.left = n7;
         n4.right = n8;
 
-        System.out.println(new BinarySearch().binarySearch(root,8));
+//        System.out.println(new BinarySearch().binarySearch(root,8));
+
+        System.out.println(new BinarySearch().binarySearch(new int[]{
+                1,3,5,6,8,9,10
+        } , 2 , 0 , 7));
     }
 }
 
