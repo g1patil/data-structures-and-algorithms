@@ -9,11 +9,13 @@ import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * @author jivanpatil
  * 314. Binary Tree Vertical Order Traversal
+ * 987. Binary Tree Vertical Order Traversal
  *
  * Workig folution.
  * */
@@ -24,33 +26,18 @@ public class BinaryTreeVerticalOrderTraversal {
     List<List<Integer>> listList = new ArrayList<>();
     int totalLists ;
     int startPosition;
+    int _leftList = 0;
+    int _rightList = 0 ;
 
-    public void calculateNumberOfLists(TreeNode treeNode){
-        int result = 0;
-        if (treeNode!= null)
-            result++;
-        TreeNode left = treeNode.left;
-        TreeNode right = treeNode.right;
+    public void calculateNumberOfLists(TreeNode treeNode  , int _number){
 
-        int _left=0;
-        while (left != null){
-            result++;
-            left = left.left;
-            _left++;
-        }
+        if (treeNode == null)
+            return;
 
-        int _right=0;
-        while (right != null){
-            result++;
-            right = right.left;
-            _right++;
-        }
-
-        for (int i = 1; i <= result ; i++) {
-            listList.add(new ArrayList<>());
-        }
-        startPosition = _left ;
-        totalLists = result;
+        calculateNumberOfLists(treeNode.left , _number - 1);
+        _leftList = Math.min(_number , _leftList);
+        _rightList = Math.max(_number , _rightList);
+        calculateNumberOfLists(treeNode.right , _number +  1);
 
     }
 
@@ -63,11 +50,18 @@ public class BinaryTreeVerticalOrderTraversal {
         verticalOrderHelper(root.right , listNumber  + 1);
     }
 
-    public List<List<Integer>> verticalOrder(TreeNode root) {
-        calculateNumberOfLists(root);
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+        calculateNumberOfLists(root, 0);
+        totalLists = -_leftList + 1 + _rightList;
+        startPosition = - _leftList ;
+        for (int i = 1; i <= totalLists ; i++) {
+            listList.add(new ArrayList<>());
+        }
         verticalOrderHelper(root , startPosition);
         if (listList.get(listList.size()-1).isEmpty())
             listList.remove(listList.size()-1);
+        for (List l : listList)
+            Collections.sort(l);
         return listList;
     }
 
@@ -82,7 +76,7 @@ public class BinaryTreeVerticalOrderTraversal {
         root.setChild(n9, n20);
         n20.setChild(n15,n7);
 
-        System.out.println(verticalOrder(root));
+        System.out.println(verticalTraversal(root));
     }
 
     @Test
@@ -103,7 +97,7 @@ public class BinaryTreeVerticalOrderTraversal {
         n8.setChild(n1,n7);
         n1.setChild(null,n2);
 
-        System.out.println(verticalOrder(root));
+        System.out.println(verticalTraversal(root));
     }
 
     @Test
@@ -113,6 +107,22 @@ public class BinaryTreeVerticalOrderTraversal {
         TreeNode n4 = new TreeNode(4);
 
 //        root.setChild(n4,n9);
-        System.out.println(verticalOrder(root));
+        System.out.println(verticalTraversal(root));
+    }
+
+    @Test
+    public void test4(){
+        TreeNode root = new TreeNode(0);
+        TreeNode n2 = new TreeNode(2);
+        TreeNode n4 = new TreeNode(4);
+        TreeNode n1 = new TreeNode(1);
+        TreeNode n3 = new TreeNode(3);
+
+        root.setChild(n2,n1);
+        n2.setChild(null,n4);
+        n1.setChild(null,n3);
+
+//        root.setChild(n4,n9);
+        System.out.println(verticalTraversal(root));
     }
 }
