@@ -1,9 +1,8 @@
 package trees.binary;
 
 /**
+ * @author jivanpatil
  * Search the node in given Binary Search Tree
- * 
- * 
 */
 class BinarySearch{
 
