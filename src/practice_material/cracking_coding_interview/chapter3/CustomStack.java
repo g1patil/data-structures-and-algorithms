@@ -1,17 +1,15 @@
 package practice_material.cracking_coding_interview.chapter3;
 
-import org.junit.jupiter.api.Test;
-
 /**
  * @author g1patil
  */
-public class Stack {
+public class CustomStack {
     static final int CAPACITY = 10;
     private int HEAD = -1 ;
     private int SIZE = 0 ;
     private int[] elements;
 
-    public Stack(){
+    public CustomStack(){
         elements = new int[CAPACITY];
     }
 
@@ -49,19 +47,19 @@ public class Stack {
 
     public int pop(){
         if (SIZE == 0)
-            throw new StackError("Stack is empty");
+            throw new StackError("CustomStack is empty");
         SIZE -- ;
         return elements[HEAD--];
     }
 
     public static void main(String[] args) {
-        Stack stack = new Stack();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-        stack.push(6);
+        CustomStack customStack = new CustomStack();
+        customStack.push(1);
+        customStack.push(2);
+        customStack.push(3);
+        customStack.push(4);
+        customStack.push(5);
+        customStack.push(6);
 
     }
 }

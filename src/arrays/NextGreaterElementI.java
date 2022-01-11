@@ -1,7 +1,7 @@
 package arrays;
 
 import org.junit.jupiter.api.Test;
-import practice_material.cracking_coding_interview.chapter3.Stack;
+import practice_material.cracking_coding_interview.chapter3.CustomStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class NextGreaterElementI {
 
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        Stack stack = new Stack();
+        CustomStack customStack = new CustomStack();
         Map<Integer,Integer> map = new HashMap<>();
 
         for (int i : nums1)
@@ -20,17 +20,17 @@ public class NextGreaterElementI {
 
         for (int i = 0; i < nums2.length; i++) {
 
-            if (!stack.isEmpty() && stack.peek() > nums2[i]){
-                stack.push(nums2[i]);
+            if (!customStack.isEmpty() && customStack.peek() > nums2[i]){
+                customStack.push(nums2[i]);
                 continue;
             }
 
-            while (!stack.isEmpty() && stack.peek() < nums2[i]){
-                int j = stack.pop();
+            while (!customStack.isEmpty() && customStack.peek() < nums2[i]){
+                int j = customStack.pop();
                 map.put( j , nums2[i]);
             }
 
-            stack.push(nums2[i]);
+            customStack.push(nums2[i]);
 
         }
 

@@ -1,7 +1,7 @@
 package arrays;
 
 import org.junit.jupiter.api.Test;
-import practice_material.cracking_coding_interview.chapter3.Stack;
+import practice_material.cracking_coding_interview.chapter3.CustomStack;
 
 /**
  * @author g1patil
@@ -12,22 +12,22 @@ public class NextGreaterElement {
 
     public void nextGreater(int[] ints){
 
-        Stack integerStack = new Stack();
+        CustomStack integerCustomStack = new CustomStack();
 
         for (int i = 0; i < ints.length; i++) {
 
-            if (!integerStack.isEmpty() && integerStack.peek() > ints[i]){
-                integerStack.push(ints[i]);
+            if (!integerCustomStack.isEmpty() && integerCustomStack.peek() > ints[i]){
+                integerCustomStack.push(ints[i]);
                 continue;
             }
 
-            while (!integerStack.isEmpty() && integerStack.peek() < ints[i]){
-                int j = integerStack.pop();
+            while (!integerCustomStack.isEmpty() && integerCustomStack.peek() < ints[i]){
+                int j = integerCustomStack.pop();
                 System.out.println("For " + j + " next greater is " + ints[i]);
                 continue;
             }
 
-            integerStack.push(ints[i]);
+            integerCustomStack.push(ints[i]);
         }
     }
 
