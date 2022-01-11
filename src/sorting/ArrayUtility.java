@@ -15,4 +15,9 @@ public class ArrayUtility {
         ints_[source] = ints_[target_];
         ints_[target_] = temp;
     }
+
+    public static void print(int[] ints_ ){
+        for (int i : ints_)
+            System.out.print(i + "   ");
+    }
 }

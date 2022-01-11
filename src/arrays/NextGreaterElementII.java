@@ -3,6 +3,7 @@ package arrays;
 import annotation.Platform;
 import annotation.Site;
 import org.junit.jupiter.api.Test;
+import sorting.ArrayUtility;
 
 import java.util.Arrays;
 import java.util.Stack;
@@ -10,6 +11,8 @@ import java.util.Stack;
 /**
  * @author g1patil
  * 503. Next Greater Element II
+ *
+ * circular
  */
 @Platform(Site.LEETCODE)
 public class NextGreaterElementII {
@@ -48,11 +51,14 @@ public class NextGreaterElementII {
             indexCustomStack.push(i);
         }
 
+        //my own utility method to print array
+        ArrayUtility.print(result);
+
         return result;
     }
 
     @Test
     public void test_(){
-        nextGreaterElements(new int[]{1,2,3,4,3});
+        nextGreaterElements(new int[]{5,1,2,3,4,6,3});
     }
 }

@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 public class NumberVisiblePeopleinQueue {
 
 
+    /**
+     * Naive impl
+     * */
     public int getTotalVisible(int index , int[] heights){
         int target = heights[index];
         int max = Integer.MIN_VALUE;
