@@ -3,8 +3,7 @@ package arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * 215. Kth Largest Element in an Array
@@ -30,7 +29,7 @@ public class KthLargestElementArray {
      * @param k , kth largest element
      * */
     private int findKthLargest(int[] nums, final int k) {
-        Set<Integer> integerSet = new TreeSet<>();
+        PriorityQueue<Integer> integerSet = new PriorityQueue<>(Comparator.reverseOrder());
 
         if(nums.length < k)
             return 0;
@@ -38,16 +37,36 @@ public class KthLargestElementArray {
         for (int number: nums){
             integerSet.add( number );
         }
-        return (Integer) integerSet.toArray()[integerSet.size() - k];
+
+        int result = 0;
+        for (int i = 1; i <= k ; i++) {
+            result = integerSet.poll();
+        }
+        return result;
+    }
+
+    private int findKthLargestOptimized(int[] nums, final int k) {
+        PriorityQueue<Integer> integerSet = new PriorityQueue<>();
+
+        if(nums.length < k)
+            return 0;
+
+        for (int number: nums){
+            integerSet.add( number );
+            if (integerSet.size()> k)
+                integerSet.poll();
+        }
+
+        return integerSet.poll();
     }
 
     @Test
     public void test(){
-        Assertions.assertEquals( 5, findKthLargest(new int[]{3,2,3,1,2,4,5,5,6}, 4));
+        Assertions.assertEquals( 4, findKthLargest(new int[]{3,2,3,1,2,4,5,5,6}, 4));
     }
 
     @Test
     public void  test2(){
-        Assertions.assertEquals(0, findKthLargest(new int[]{1,2,3,4,5},10));
+        Assertions.assertEquals(5, findKthLargest(new int[]{3,2,1,5,6,4},2));
     }
 }
