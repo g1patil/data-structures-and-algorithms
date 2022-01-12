@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 public class ConvertSortedArrayBST {
 
     TreeNode result ;
+    int[] nums;
 
     /**
      * @param root root node where data element will go
@@ -79,9 +80,28 @@ public class ConvertSortedArrayBST {
         return result;
     }
 
+    public TreeNode sortedArrayToBSTOptimal(int[] nums){
+        this.nums = nums;
+        return sortedArrayToBSTOptimalHelper(0 , nums.length -1 ) ;
+    }
+
+    public TreeNode sortedArrayToBSTOptimalHelper(int i , int j){
+
+        if (i  > j )
+            return null;
+
+        int mid = (i + j)/2;
+        TreeNode root = new TreeNode(this.nums[mid]);
+
+        root.left = sortedArrayToBSTOptimalHelper( i , mid -1);
+        root.right = sortedArrayToBSTOptimalHelper( mid + 1 , j );
+
+        return root;
+    }
+
     @Test
     public void test_(){
-        TreeNode treeNode = sortedArrayToBST(new int[]{0,1,2,3,4,5,6});
+        TreeNode treeNode = sortedArrayToBSTOptimal(new int[]{0,1,2,3,4,5,6});
         treeNode.printTree(treeNode);
     }
 }
