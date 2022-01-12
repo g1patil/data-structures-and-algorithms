@@ -1,5 +1,9 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -8,6 +12,8 @@ import java.util.Stack;
 /**
  * @author g1patil
  */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class NumberVisiblePeopleinQueue {
 
 
