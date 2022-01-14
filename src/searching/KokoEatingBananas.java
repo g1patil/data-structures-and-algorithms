@@ -1,13 +1,16 @@
 package searching;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil
  * 875. Koko Eating Bananas
  */
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class KokoEatingBananas {
 
