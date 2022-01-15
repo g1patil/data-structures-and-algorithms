@@ -47,8 +47,29 @@ public class KthMissingPositiveNumber {
 
     }
 
+    public int findKthPositiveV2(int[] arr, int k) {
+        int low = 0 , high = arr.length ;
+
+        while (low < high){
+            int mid = (low + high)/2;
+
+            if (arr[mid] - mid - 1 < k ){
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low + k ;
+
+    }
+
     @Test
     public void test_(){
         System.out.println(findKthPositive(new int[]{5,6,7,8,9} ,9));
+    }
+
+    @Test
+    public void test_2(){
+        System.out.println(findKthPositiveV2(new int[]{1,2,4,5,6} ,3));
     }
 }
