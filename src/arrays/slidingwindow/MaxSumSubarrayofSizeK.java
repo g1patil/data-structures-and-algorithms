@@ -4,8 +4,11 @@ import annotation.Platform;
 import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author g1patil
@@ -36,5 +39,17 @@ public class MaxSumSubarrayofSizeK {
         }
 
         return max;
+    }
+
+    @Test
+    public void test_(){
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(5);
+        queue.add(4);
+        queue.add(3);
+
+        while (!queue.isEmpty()){
+            System.out.println(queue.poll());
+        }
     }
 }
