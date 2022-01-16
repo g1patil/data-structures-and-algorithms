@@ -23,17 +23,20 @@ public class SlidingWindowMaximum {
         int start = 0 , end = 0 ;
 
         while (end < nums.length) {
+
+            /* computation step */
             while (!queue.isEmpty() && queue.getLast() < nums[end] ){
                 queue.removeLast();
             }
-
             queue.addLast(nums[end]);
 
+            /* increase the window */
             if (end - start + 1  < k ){
                 end ++;
             } else {
-                list.add(queue.peek());
 
+                /* compute the result , and reverse the first element operation */
+                list.add(queue.peek());
                 if (queue.peek() == nums[start]){
                     queue.removeFirst();
                 }
