@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 @Platform(Site.LEETCODE)
 public class SubarraySumEqualsK {
 
+    // TLE time limit exceeds - not recommended
     public int subarraySum(int[] nums, int k) {
         int count = 0 ;
 
