@@ -18,8 +18,7 @@ public class SlidingWindowMaximum {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
         List<Integer> list = new ArrayList<>();
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-
+        LinkedList<Integer> queue = new LinkedList<>();
         int start = 0 , end = 0 ;
 
         while (end < nums.length) {
