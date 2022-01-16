@@ -10,6 +10,11 @@ import java.util.ArrayList;
 /**
  * @author g1patil
  * Given an array of integers Arr of size N and a number K. Return the maximum sum of a subarray of size K.
+ *
+ * Algo : Create two pointers , start and end,
+ *          increase the sum
+ *         if window length is less, increase end
+ *         if equal, then calculate max, remove start from the sum and increase both pointers.
  */
 @Quality(Stage.TESTED)
 @Platform(Site.GEEKFORGEEKS)
