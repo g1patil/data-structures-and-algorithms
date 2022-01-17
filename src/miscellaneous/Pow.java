@@ -37,7 +37,10 @@ public class Pow {
     @Test
     public void test_(){
         System.out.println(myPow(0.00001 , 2147483647));
+    }
 
-
+    @Test
+    public void test_2(){
+        System.out.println(myPow(3 , 3));
     }
 }

@@ -12,4 +12,7 @@ public class AbstractImpl extends MyAbstractClass{
         
         return null;
     }
+    public void some(){
+
+    }
 }
