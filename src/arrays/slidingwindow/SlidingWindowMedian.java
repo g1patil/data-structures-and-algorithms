@@ -16,14 +16,23 @@ import java.util.PriorityQueue;
 @Platform(Site.LEETCODE)
 public class SlidingWindowMedian {
 
+    PriorityQueue<Integer> max = new PriorityQueue<>(Collections.reverseOrder());
+    PriorityQueue<Integer> min = new PriorityQueue<>();
+
     public void balanceHeaps(PriorityQueue bigger, PriorityQueue smaller){
         smaller.add(bigger.poll());
     }
 
+    public void balanceHeapsHelper(){
+        if (max.size() > min.size() + 1)
+            balanceHeaps(max, min);
+        else if (min.size() > max.size() + 1)
+            balanceHeaps(min,max);
+    }
+
     public double[] medianSlidingWindow(int[] nums, int k) {
         double[] result = new double[nums.length - k + 1];
-        PriorityQueue<Integer> max = new PriorityQueue<>(Collections.reverseOrder());
-        PriorityQueue<Integer> min = new PriorityQueue<>();
+
 
         for(int i = 0; i < nums.length; i++) {
             if(max.isEmpty() ||  max.peek() >  nums[i]) {
@@ -32,10 +41,7 @@ public class SlidingWindowMedian {
                 min.add(nums[i]);
             }
 
-            if (max.size() > min.size() + 1)
-                balanceHeaps(max, min);
-            else if (min.size() > max.size() + 1)
-                balanceHeaps(min,max);
+            balanceHeapsHelper();
 
 
             if(max.size() + min.size() == k) {
@@ -56,10 +62,7 @@ public class SlidingWindowMedian {
                     min.remove(nums[start]);
                 }
 
-                if (max.size() > min.size() + 1)
-                    balanceHeaps(max, min);
-                else if (min.size() > max.size() + 1)
-                    balanceHeaps(min,max);
+                balanceHeapsHelper();
             }
         }
         return result;
