@@ -1,5 +1,9 @@
 package arrays.slidingwindow;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -8,6 +12,8 @@ import java.util.PriorityQueue;
 /**
  * @author g1patil
  */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class SlidingWindowMedian {
 
     public void balanceHeaps(PriorityQueue bigger, PriorityQueue smaller){

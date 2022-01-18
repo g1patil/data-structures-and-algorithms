@@ -1,5 +1,7 @@
 package arrays.slidingwindow;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
@@ -8,6 +10,7 @@ import java.util.LinkedList;
 /**
  * @author g1patil
  */
+@Platform(Site.LEETCODE)
 public class MovingAverageDataStream {
 
     int size, head = 0, windowSum = 0, count = 0;
