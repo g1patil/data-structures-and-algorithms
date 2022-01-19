@@ -15,6 +15,7 @@ import java.util.Queue;
 /**
  * @author g1patil
  * 286. Walls and Gates
+ * Ref : https://leetcode.com/problems/walls-and-gates/discuss/72745/Java-BFS-Solution-O(mn)-Time
  */
 @Pattern(Topic.DFS)
 @Platform(Site.LEETCODE)
