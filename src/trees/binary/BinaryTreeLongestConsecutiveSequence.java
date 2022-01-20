@@ -13,23 +13,19 @@ import org.junit.jupiter.api.Test;
 public class BinaryTreeLongestConsecutiveSequence {
 
     public int longestConsecutive(TreeNode root) {
-        return longestConsecutiveHelper(root , Integer.MIN_VALUE);
+        return longestConsecutiveHelper(root , root ,0 );
     }
 
-    private int longestConsecutiveHelper(TreeNode root, int minValue) {
+    private int longestConsecutiveHelper(TreeNode root, TreeNode parent , int length) {
         if (root == null)
-            return 0;
+            return length;
 
-        if (minValue + 1 == root.val ){
-            return 1 + Math.max(
-                    longestConsecutiveHelper(root.left , root.val) ,
-                    longestConsecutiveHelper(root.right , root.val)
-            );
-        }
+        length = (parent != null && root.val + 1 == parent.val) ? length + 1 : 1 ;
 
-        return Math.max(
-                longestConsecutiveHelper(root.left , root.val) ,
-                longestConsecutiveHelper(root.right , root.val)
+        return Math.max( length , Math.max(
+                longestConsecutiveHelper(root.left , root , length) ,
+                longestConsecutiveHelper(root.right , root ,length )
+                )
         );
     }
 
