@@ -43,7 +43,7 @@ public class DutchFlag {
         }
     }
     public static void main(String[] args) {
-        int[] arr = new int[] { 1, 0,0 ,1,1,1,1,0,0,0,0,0,1,0,1,0 ,0,0,0,0,0,0,1};
+        int[] arr = new int[] { 1,0,1,0,2,0,5,0,7};
         sort(arr);
         System.out.print(Arrays.toString(arr));
 
