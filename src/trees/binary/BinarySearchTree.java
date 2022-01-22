@@ -76,6 +76,7 @@ class Node{
     public int data;
     public Node left;
     public Node right;
+    public Node parent;
 
     Node(int data){
         this.data = data;
