@@ -1,6 +1,10 @@
 package lists;
 
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +13,10 @@ import java.util.Hashtable;
 /**
  * @author jivanpatil
  * Check if there is clycle in the linked list
+ * 141. Linked List Cycle
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class DetectCycle {
 
     /**
