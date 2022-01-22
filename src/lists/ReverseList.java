@@ -1,7 +1,17 @@
 package lists;
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author jivanpatil
+ * 206. Reverse Linked List
+ * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class ReverseList {
 
     /**
@@ -56,6 +66,6 @@ public class ReverseList {
         n4.next = n5;
         n5.next = n1;
 
-        Assertions.assertNotNull(reverseCircular(n1));
+        Assertions.assertNotNull(reverseList(n1));
     }
 }
