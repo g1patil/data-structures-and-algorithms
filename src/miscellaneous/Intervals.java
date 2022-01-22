@@ -11,7 +11,7 @@ public class Intervals {
     private static final int END_INDEX = 1;
 
     /**
-     * Checks whether from the the provided intervals, if the interval begins first then other.
+     * Checks whether from the provided intervals, if the interval begins first then other.
      * @param intervalOne first integer interval
      * @param intervalTwo second integer interval
      * @return true , if first interval completely covers the second interval
