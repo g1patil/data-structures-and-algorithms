@@ -16,6 +16,8 @@ public class KDigitPalindrome {
             double reverse = reverseNumber(i);
             double palindrome = i * Math.pow(10 , k/2) + reverse;
             System.out.println((int) palindrome);
+
+            //generate for all the middle digits
         }
     }
 

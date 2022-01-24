@@ -31,7 +31,7 @@ public class SUM3 {
 
             if(i == 0 || ( i > 0 && nums[i] != nums[i-1])){
 
-                /* logic of target two summ Array after i becomes sub array and run two sum on that*/
+                /* logic of target two sum Array after i becomes sub array and run two sum on that*/
                 int low = i + 1 ;
                 int high = nums.length - 1 ;
                 int target = 0 - nums[i];

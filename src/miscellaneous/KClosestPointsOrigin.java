@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 
 /**
  * @author g1patil
- * 973. K Closest Points to Origin
+ * 973. K  The Closest Points to Origin
  */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
