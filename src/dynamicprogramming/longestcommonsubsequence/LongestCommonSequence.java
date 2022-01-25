@@ -92,8 +92,8 @@ public class LongestCommonSequence {
 
     @Test
     public void test(){
-        String s1 = "ttjtttitttva";
-        String s2 = "aaaaaaajivzzzzzza";
+        String s1 = "aacabdkacaa";
+        String s2 = "aacakdbacaa";
 
         System.out.println(this.getLCSLength(s1,s2,s1.length() , s2.length() ));
 
@@ -134,8 +134,8 @@ public class LongestCommonSequence {
 
     @Test
     public void test3(){
-        String s1 = "pppppppjppppipppv";
-        String s2 = "jiv";
+        String s1 = "aacabdkacaa";
+        String s2 = "aacakdbacaa";
 
         this.topDown = new int[s1.length() + 1][ s2.length() + 1];
 

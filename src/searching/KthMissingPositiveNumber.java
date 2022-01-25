@@ -72,4 +72,9 @@ public class KthMissingPositiveNumber {
     public void test_2(){
         System.out.println(findKthPositiveV2(new int[]{1,2,4,5,6} ,3));
     }
+
+    @Test
+    public void test_3(){
+        System.out.println(findKthPositiveV2(new int[]{2,3,4,7,11} ,5));
+    }
 }
