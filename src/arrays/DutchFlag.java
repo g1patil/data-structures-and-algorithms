@@ -20,26 +20,25 @@ public class DutchFlag {
         int i = 0;
         int j = ints.length - 1;
 
-        while(i < ints.length){
+        while(i <= p2 ){
 
-            if(ints[i] < 1 ){
-                int temp = ints[i];
+            if(ints[i] == 0 ){
+
                 ints[i] = ints[p1];
-                ints[p1] = temp;
+                ints[p1] = 0;
                 p1++;
             }
+
+            if(ints[i] == 2){
+
+                ints[i] = ints[p2];
+                ints[p2] = 2;
+                p2--;
+                i--;
+            }
+
             i++;
 
-        }
-
-        while (j >=0 ){
-            if(ints[j] > 1){
-                int temp = ints[j];
-                ints[j] = ints[p2];
-                ints[p2] = temp;
-                p2--;
-            }
-            j--;
         }
     }
     public static void main(String[] args) {
