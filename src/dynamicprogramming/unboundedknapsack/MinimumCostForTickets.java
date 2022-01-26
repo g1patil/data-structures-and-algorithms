@@ -36,8 +36,27 @@ public class MinimumCostForTickets {
     }
 
     public int mincostTicketsOptimal(int[] days, int[] costs) {
-        boolean[]
-        return mincostTicketsHelper(days , costs , 0 , 0 , 0);
+        boolean[] travelDay = new boolean[366];
+        int[] minCostOnDay = new int[366];
+
+        for (int day : days){
+            travelDay[day] = true;
+        }
+
+
+        for (int i = 1; i < 366; i++) {
+            if (!travelDay[i]){
+                minCostOnDay[i] = minCostOnDay[i-1];
+                continue;
+            }
+
+            int min = minCostOnDay[i -1] + costs[0];
+            min = Math.min( min , costs[1] + minCostOnDay[ Math.max(0, i - 7) ] );
+            min = Math.min( min , costs[2] + minCostOnDay[ Math.max(0, i - 30) ] );
+
+            minCostOnDay[i] = min ;
+        }
+        return minCostOnDay[365];
     }
 
     @Test
@@ -45,6 +64,6 @@ public class MinimumCostForTickets {
         int[] days =  new int[]{1,4,6,7,8,20};
         int[] costs = new int[]{2,7,15};
 
-        System.out.println(mincostTickets(days,costs));
+        System.out.println(mincostTicketsOptimal(days,costs));
     }
 }
