@@ -6,12 +6,14 @@ import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /**
  * @author g1patil
  * 213. House Robber II
  */
 @Platform(Site.LEETCODE)
-@Quality(value = Stage.BUGGY , details = "53 / 75 test cases passed.")
+@Quality(value = Stage.TESTED)
 public class HouseRobber2 {
 
     public int robNums(int[] nums , int index) {
@@ -28,17 +30,34 @@ public class HouseRobber2 {
      * @param nums int array of houses
      * */
     public int rob(int[] nums) {
-        if (nums.length ==1)
+        return Math.max(
+                robHelper(Arrays.copyOfRange(nums , 1 , nums.length )),
+                robHelper(Arrays.copyOfRange(nums , 0 , nums.length - 1))
+        );
+    }
+
+    public int robHelper(int[] nums) {
+
+        if(nums.length == 1)
             return nums[0];
-        if (nums[0] >= nums[nums.length -1]){
-            nums[nums.length - 1] = 0;
-            return robNums(nums , 0 );
+
+        if(nums.length == 2){
+            return Math.max(nums[0], nums[1]);
         }
-        return robNums(nums , 1 );
+
+        int[] result = new int[nums.length];
+        result[0] = nums[0]; ;
+        result[1] = Math.max(result[0] , nums[1]) ;
+
+        for (int i = 2; i < nums.length; i++) {
+            result[i] = Math.max( result[i -1],  nums[i] + result[i-2]);
+        }
+
+        return result[nums.length -1];
     }
 
     @Test
     public void test_(){
-        System.out.println(rob(new int[]{1,2,1,1}));
+        System.out.println(rob(new int[]{1,2,3}));
     }
 }
