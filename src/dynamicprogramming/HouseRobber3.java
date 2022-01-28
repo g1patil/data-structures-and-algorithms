@@ -1,51 +1,56 @@
 package dynamicprogramming;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil
+ * 337. House Robber III
  */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class HouseRobber3 {
 
-    enum Include {
-        INCLUDE,
-        EXCLUDE
-    }
+    private static final int INCLUDE = 0,EXCLUDE = 1;
 
     public int rob(TreeNode root) {
-        return Math.max(robHelper(root , Include.INCLUDE ) , robHelper(root , Include.EXCLUDE));
+        int[] result = robHelper(root);
+        return Math.max(result[0], result[1]);
     }
 
-    private int robHelper(TreeNode root , Include rootInclude ) {
+    private int[] robHelper(TreeNode root ) {
         if (root == null)
-            return 0 ;
+            return new int[2];
 
-        if (root.left == null && root.right == null && rootInclude == Include.EXCLUDE)
-            return root.val;
+        int[] leftResult = robHelper(root.left);
+        int[] rightResult = robHelper(root.right);
 
-        if (root.left == null && root.right == null && rootInclude == Include.INCLUDE)
-            return 0;
+        int[] rootResult = new int[2];
 
-        if (rootInclude == Include.INCLUDE){
-            return robHelper(root.left , Include.EXCLUDE) + robHelper(root.right , Include.EXCLUDE);
-        } else {
-            return root.val + robHelper(root.left , Include.INCLUDE) + robHelper(root.right , Include.INCLUDE);
-        }
+        rootResult[INCLUDE] = root.val + leftResult[EXCLUDE] + rightResult[EXCLUDE];
+        rootResult[EXCLUDE] = Math.max(leftResult[INCLUDE], leftResult[EXCLUDE]) +
+                Math.max(rightResult[INCLUDE], rightResult[EXCLUDE]);
+
+        return rootResult;
     }
+
 
     @Test
     public void test_(){
-        TreeNode root= new TreeNode(3);
-        TreeNode n1= new TreeNode(4);
-        TreeNode n2= new TreeNode(5);
-        TreeNode n3= new TreeNode(1);
+        TreeNode root= new TreeNode(10);
+        TreeNode n1= new TreeNode(20);
+        TreeNode n2= new TreeNode(100);
+        TreeNode n3= new TreeNode(100);
         TreeNode n4= new TreeNode(3);
         TreeNode n5= new TreeNode(1);
 
         root.setChild(n1,n2);
-        n1.setChild(n3,n4);
-        n2.setChild(null,n5);
+        n1.setChild(n3,null);
+//        n2.setChild(null,n5);
         System.out.println(rob(root));
     }
 }
