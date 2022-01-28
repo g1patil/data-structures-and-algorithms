@@ -10,6 +10,14 @@ import org.junit.jupiter.api.Test;
 /**
  * @author g1patil
  * 337. House Robber III
+ *
+ * Algo :
+ * DFS traversal. For each node , return int[]{include result , exclude result }
+ *
+ * root (include) = root.val + left.Exclude + right.Exclude
+ * root (exclude) = Max(left.Exclude , left.Include) + Max (right.Exclude , right.Include);   <-- Crux of algo
+ *
+ * result Max(root[include] , root[exclude]);
  */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
