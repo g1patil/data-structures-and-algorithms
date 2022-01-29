@@ -15,6 +15,17 @@ import java.util.Stack;
 /**
  * @author jivanpatil
  * 1249. Minimum Remove to Make Valid Parentheses
+ *
+ * DS : stack , and set for character set for input
+ * Algo :
+ * Convert the problem to regular paranthesis problem.
+ * if the char is ( -> push opposite
+ * else if peek is equal then pop
+ * else push the index.
+ *
+ * Loop over char array and append at the end of the stringbuilder
+ * At the end traverse the list , append the char except the index
+ * from the list we have. Pop after processing.
  * */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
@@ -59,10 +70,10 @@ public class MinimumRemove2MakeValidParentheses {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < chars.length; i++) {
-            if (list.isEmpty() || (!list.isEmpty() && list.peekLast().index != i)){
+            if (list.isEmpty() || (!list.isEmpty() && list.peek().index != i)){
                 stringBuilder.append(chars[i]);
             } else {
-                list.removeLast();
+                list.remove();
             }
         }
         return stringBuilder.toString();
@@ -73,5 +84,10 @@ public class MinimumRemove2MakeValidParentheses {
 //        System.out.println(minRemoveToMakeValid("())()((("));
 //        System.out.println(minRemoveToMakeValid("lee(t(c)o)de)"));
         System.out.println(minRemoveToMakeValid("a)b(c)d"));
+    }
+
+    @Test
+    public void test2(){
+        System.out.println(minRemoveToMakeValid(")(ab)"));
     }
 }
