@@ -39,4 +39,9 @@ public class RemoveAllAdjacentDuplicatesInString {
     public void test_(){
         System.out.println(removeDuplicates("abbaca"));
     }
+
+    @Test
+    public void test_2(){
+        System.out.println(removeDuplicates("aaa"));
+    }
 }
