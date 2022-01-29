@@ -22,7 +22,7 @@ public class SumRootLeafNumbers {
     public int sumNumbersHelper(TreeNode root , int sum) {
         if (root == null)
             return 0;
-        if (root !=null && root.left == null && root.right == null)
+        if (root.left == null && root.right == null)
             return sum * 10 + root.val;
 
        return sumNumbersHelper(root.left , sum * 10 + root.val) +
