@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Test class to practice any given problem .
@@ -10,31 +8,54 @@ import java.util.Stack;
  * */
 public class TestClass {
 
+    ArrayList<Integer> list = new ArrayList<>();
+    class Query{
+        int[] ints = new int[2];
+    }
+    List answerQueries(ArrayList<Query> queries, int N){
+        ArrayList<Integer> answer = new ArrayList<>();
+        for (Query query : queries){
 
-    public int getLargest(int n){
-        String str = Integer.toString(n);
-
-        int p1 = -1,p2 = -1;
-        char s = 0, t = 0;
-        for (int i = 0; i < str.length() -1 && p1 == -1; i++) {
-            for (int j = i+1; j < str.length() ; j++) {
-                if (str.charAt(i) < str.charAt(j) && str.charAt(j) >= t){
-                    p1 = i;
-                    p2 = j;
-                    t = str.charAt(j);
-
-                }
+            switch (query.ints[0]){
+                case 1 :
+                    list.add(query.ints[2]);
+                    break;
+                case 2 :
+                    if (list.isEmpty()){
+                        answer.add(-1);
+                        break;
+                    }
+                    int ans = getAnwer(query.ints[2]);
+                    answer.add(ans);
+                    break;
             }
         }
-        StringBuilder sb = new StringBuilder(str);
-        if (p1 != -1){
-            sb.setCharAt(p1 ,str.charAt(p2));
-            sb.setCharAt(p2 ,str.charAt(p1));
+
+        return answer ;
+    }
+
+    private int getAnwer(int index) {
+        int low = 0 ;
+        int high = list.size();
+
+        while (low < high){
+            int mid = (low + high)/2 ;
+
+            if (list.get(mid) > index){
+                high = mid;
+            } else if(list.get(mid) < index) {
+                low = mid + 1;
+            } else {
+                return mid;
+            }
         }
-        return p1 == -1 ? n : Integer.parseInt(sb.toString());
+
+        return high;
     }
     @Test
     public void test_(){
-        System.out.println(getLargest(993999969));
+        ArrayList<Query> queries = new ArrayList<>();
+
+        System.out.println(answerQueries(null,1));
     }
 }

@@ -41,6 +41,6 @@ public class Pow {
 
     @Test
     public void test_2(){
-        System.out.println(myPow(3 , 3));
+        System.out.println(myPow(2 , Integer.MIN_VALUE));
     }
 }
