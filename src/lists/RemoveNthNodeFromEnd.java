@@ -27,6 +27,10 @@ public class RemoveNthNodeFromEnd {
 
         return size;
     }
+
+    /**
+     * Two pass method
+     * */
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null)
             return head;
@@ -36,6 +40,9 @@ public class RemoveNthNodeFromEnd {
          * get the size so that we can remove from beginning
          * */
         int size = getSize(head);
+        if(size == n)
+            return head.next;
+
         int m = size - n , counter = 1;
 
         /** if the size is same as the n , meaning removing the head.
@@ -50,6 +57,33 @@ public class RemoveNthNodeFromEnd {
         return head ;
     }
 
+    /**
+     * Two pass method
+     * */
+    public ListNode removeNthFromEndOnePass(ListNode head, int n) {
+        ListNode node = new ListNode(0);
+        node.next = head ;
+        ListNode slow = node , fast = node ;
+        if (head == null)
+            return head;
+
+
+        int counter = 1;
+
+        while (counter <= n + 1){
+            fast = fast.next;
+            counter++;
+        }
+
+        while (fast != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        slow.next = slow.next.next;
+        return node.next ;
+    }
+
     @Test
     public void test_(){
         ListNode n1 = new ListNode(1);
@@ -57,10 +91,11 @@ public class RemoveNthNodeFromEnd {
         ListNode n3 = new ListNode(3);
         ListNode n4 = new ListNode(4);
         ListNode n5 = new ListNode(5);
+        ListNode n6 = new ListNode(6);
 
-        n1.setNext(n2).setNext(n3).setNext(n4).setNext(n5);
+        n1.setNext(n2).setNext(n3).setNext(n4).setNext(n5).setNext(n6);
 
-        removeNthFromEnd(n1 , 5);
+        removeNthFromEndOnePass(n1 , 3);
     }
 
     @Test
