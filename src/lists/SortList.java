@@ -51,6 +51,7 @@ public class SortList {
 
         }
 
+        // append the rest of the list if any
         if (one!=null){
             head.next = one ;
         } else {
@@ -65,19 +66,27 @@ public class SortList {
 
     private ListNode mergeSortList(ListNode head) {
 
-        //divide the list
+        //split the list
         ListNode[] split = splitList(head);
 
+        //call again until we have one node in split
         if (split.length!= 1){
             split[0] = mergeSortList(split[0]);
             split[1] = mergeSortList(split[1]);
         }
 
+        //merge the splits
         return mergeTwoList(split[0] , split.length == 1 ? null : split[1]);
     }
 
     /**
      * Split the two linked lists in two equal parts
+     * Algo : two parts.
+     * Init the two pointers.
+     * Find the middle node , using slow pointer.
+     * Traverse again one node before the mid/slow and make next null
+     * the previous step unlinks the two lists pointer that we have.
+     * return the result as the array
      * */
     private ListNode[] splitList(ListNode head) {
         if (head == null ||head.next == null)
@@ -92,20 +101,14 @@ public class SortList {
             fast = fast.next.next;
         }
 
-        if (fast!=null)
-            slow = slow.next;
+        slow = slow.next;
 
         ListNode temp = headCopy;
         while (temp.next!=slow)
             temp = temp.next;
         temp.next = null;
 
-        ListNode[] sorted = new ListNode[2];
-
-        sorted[0] = headCopy;
-        sorted[1] = slow ;
-
-        return sorted;
+        return new ListNode[]{headCopy , slow};
     }
 
     @Test
