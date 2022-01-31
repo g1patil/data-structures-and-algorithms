@@ -21,7 +21,7 @@ public class SameTree {
         if ( p == null || q == null )
             return false;
 
-        /* if the data is same then both sub tree should be equal , else unequal*/
+        /* if the val is same then both sub tree should be equal , else unequal*/
         if (p.getVal() == q.getVal()){
             return isSameTree(p.left, q.left) &&
             isSameTree(p.right, q.right);

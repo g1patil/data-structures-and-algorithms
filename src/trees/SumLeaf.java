@@ -8,7 +8,7 @@ public class SumLeaf {
 //    private int getLeafSum(Node root){
 //        if ( root == null){ return  0;}
 //
-//        if ( root.left == null && root.right == null){ return  root.data ;}
+//        if ( root.left == null && root.right == null){ return  root.val ;}
 //
 //        return getLeafSum( root.left) + getLeafSum( root.right);
 //    }

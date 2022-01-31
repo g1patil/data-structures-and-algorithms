@@ -1,4 +1,8 @@
 package lists;
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -22,6 +26,8 @@ import org.junit.jupiter.api.Test;
  * Output: [0]
  *
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class MergeTwoSortedLists {
 
     /**

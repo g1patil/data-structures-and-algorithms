@@ -10,7 +10,7 @@ public class MaxPathSumLeaf2Leaf {
 
     /**
      * @param node given node
-     * @return sum path for the node , add the data of each node nad
+     * @return sum path for the node , add the val of each node nad
      * */
     int getHeight(TreeNode node){
         if(node == null){

@@ -41,7 +41,7 @@ public class ListIntersection {
             p2 = p2.next.next;
         }
 
-        System.out.println("Collide at " + p1.data);
+        System.out.println("Collide at " + p1.val);
     }
 
     @Test

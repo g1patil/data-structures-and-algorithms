@@ -16,14 +16,14 @@ public class PalindromeList {
         ListNode p1 = root ;
 
         while ( p1!=null){
-            integerStack.push( p1.data );
+            integerStack.push( p1.val);
             p1 = p1.next ;
         }
 
         p1 = root ;
 
         while (!integerStack.isEmpty()){
-            if ( p1.data != integerStack.pop()){
+            if ( p1.val != integerStack.pop()){
                 return false;
             }
             p1 = p1.next;

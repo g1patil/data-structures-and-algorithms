@@ -31,7 +31,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree{
      * we need to traverse either to right or to left and then add node.
      * This is not optimized, since smaller value will always be added to left and
      * bigger values will always be added to right. It might create skewed tree.
-     * @param data data node that needs to be inserted
+     * @param data val node that needs to be inserted
      * @param node subtree node, with whom we will compare the value
      * */
     private void insert(Comparable data, Node<T> node){

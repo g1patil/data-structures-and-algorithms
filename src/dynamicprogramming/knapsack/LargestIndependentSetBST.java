@@ -18,7 +18,7 @@ import java.util.Map;
  *
  * Actual problem asks for largest independent set size.
  * I have implemented sum of all those nodes. To get the size of the subset ,
- * replace the line 44 where we add the data of the node, instead choose 1 as the count.
+ * replace the line 44 where we add the val of the node, instead choose 1 as the count.
  */
 @Platform(Site.GEEKFORGEEKS)
 @Quality(value = Stage.FAILING, details = "passes 122/124 cases on LC")

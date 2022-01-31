@@ -4,17 +4,17 @@ package lists;
  * @author g1patil
  */
 public class ListNode {
-    public int data;
+    public int val;
     public String d;
     public ListNode next;
 
-    public ListNode(int data){
-        this.data = data;
+    public ListNode(int val){
+        this.val = val;
         this.next = null;
     }
 
-    public ListNode(String data){
-        this.d = data;
+    public ListNode(String val){
+        this.d = val;
         this.next = null;
     }
 
@@ -24,8 +24,8 @@ public class ListNode {
         return next;
     }
 
-    public ListNode setData(int data){
-        this.data = data;
+    public ListNode setVal(int val){
+        this.val = val;
         return this;
     }
 
@@ -45,7 +45,7 @@ public class ListNode {
         ListNode p1 = this ;
 
         while (p1 != null){
-            System.out.print( p1.data + " -> ");
+            System.out.print( p1.val + " -> ");
             p1 = p1.next ;
         }
         System.out.print( "null" );

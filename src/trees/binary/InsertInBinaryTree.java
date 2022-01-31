@@ -9,10 +9,10 @@ package trees.binary;
  *  if node == null;
  *      return (create new node)
  * 
- * if targetElement < node.data
- *  if data is less, then insert in the left
+ * if targetElement < node.val
+ *  if val is less, then insert in the left
  *  node.left = insert(node.left, targetElement)
- * if targetElement > node.data
+ * if targetElement > node.val
  *  node.right = insert (node.right, targetElement)
  * 
  * Remember that new node will always inserted at the leaf, 

@@ -28,8 +28,8 @@ public class ConvertSortedArrayBST {
     int[] nums;
 
     /**
-     * @param root root node where data element will go
-     * @param data data that needs to be added
+     * @param root root node where val element will go
+     * @param data val that needs to be added
      * */
     private TreeNode addNode(TreeNode root , int data){
         if (root == null){

@@ -58,7 +58,7 @@ public class PartitionList {
         iterating on the next element gives the ability to swap easily.
         * */
         while ( pointer.next != null){
-            if (pointer.next.data < targetNumber){
+            if (pointer.next.val < targetNumber){
                 ListNode temp = pointer.next ;
                 pointer.next = pointer.next.next;
                 temp.next = null ;

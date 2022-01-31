@@ -42,11 +42,11 @@ public class PartitionList {
         ListNode listBig = secondListHead;
 
         while (head!=null){
-            if (head.data < x){
-                listSmall.next = new ListNode(head.data);
+            if (head.val < x){
+                listSmall.next = new ListNode(head.val);
                 listSmall = listSmall.next;
             } else {
-                listBig.next = new ListNode(head.data);
+                listBig.next = new ListNode(head.val);
                 listBig = listBig.next;
             }
 

@@ -22,13 +22,13 @@ public class SumLists {
         ListNode temp = n1;
 
         while (temp!=null){
-            data_ = temp.data + data_ ;
+            data_ = temp.val + data_ ;
             if (data_ > 9){
                 int remainder = data_ % 10 ;
                 data_ = data_ / 10;
-                temp.setData( remainder );
+                temp.setVal( remainder );
             } else {
-                temp.setData(data_);
+                temp.setVal(data_);
                 break;
             }
             if (temp.next == null && data_!= 0 ){
@@ -61,7 +61,7 @@ public class SumLists {
         int carry = 0 ;
 
         while ( p1 != null && p2 != null){
-            int data = p1.data + p2.data + carry ;
+            int data = p1.val + p2.val + carry ;
             if ( data > 9){
                 int remainder = data % 10 ;
                 carry = data / 10 ;

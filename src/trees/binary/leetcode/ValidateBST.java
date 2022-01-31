@@ -22,7 +22,7 @@ public class ValidateBST {
    /**
     * Builds the list from the given tree node
     * @param treeNode root node from which list will be built
-    * @return list of tree data
+    * @return list of tree val
     * */
    private List<Integer> getNodesList(TreeNode treeNode){
        if (treeNode == null)
