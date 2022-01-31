@@ -80,7 +80,7 @@ public class SortList {
      * Split the two linked lists in two equal parts
      * */
     private ListNode[] splitList(ListNode head) {
-        if (head.next == null)
+        if (head == null ||head.next == null)
             return new ListNode[]{head};
 
         ListNode headCopy = head ;
