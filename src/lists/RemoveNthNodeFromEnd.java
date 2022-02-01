@@ -40,14 +40,15 @@ public class RemoveNthNodeFromEnd {
          * get the size so that we can remove from beginning
          * */
         int size = getSize(head);
+
+        /** if the size is same as the n , meaning removing the head.
+         * then just return head next
+         * */
         if(size == n)
             return head.next;
 
         int m = size - n , counter = 1;
 
-        /** if the size is same as the n , meaning removing the head.
-        * then just return head next
-        * */
         while ( counter < m && temp!= null){
             temp = temp.next;
             counter++;
