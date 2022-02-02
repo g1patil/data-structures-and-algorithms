@@ -1,0 +1,11 @@
+
+String test = "teststring";
+
+==> Get the substring
+String sub = test.substring(0,5);
+- in above 0 in inclusive and 5 is exclusive
+
+==> Get the index of the char
+String test = "jivan";
+test.indexOf('v') => 2
+
