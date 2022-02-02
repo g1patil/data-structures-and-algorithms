@@ -1,3 +1,4 @@
+import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -9,26 +10,23 @@ import java.util.*;
 public class TestClass {
 
 
-    public boolean canConstruct(String ransomNote, String magazine) {
-        if(ransomNote == null)
-            return true;
-        Map<Character,Integer> map = new HashMap();
+    public boolean result = true ;
+    public boolean isBalanced(TreeNode root) {
+        treeBalance(root);
+        return result;
+    }
 
-        for(char c : magazine.toCharArray()){
-            if(map.containsKey(c)){
-                map.put(c , map.get(c) + 1 );
-            } else map.put(c , 1);
-        }
+    public int treeBalance(TreeNode root){
 
-        for(char c : ransomNote.toCharArray()){
-            if(!map.containsKey(c) || map.get(c) == 0){
-                return false;
-            } else {
-                map.put(c , map.get(c) -1 );
-            }
-        }
+        if(root == null)
+            return 0;
 
-        return true;
+        int left = treeBalance(root.left);
+        int right = treeBalance(root.right);
+
+        if(Math.abs(left - right) > 1)
+            result = false;
+        return 1 + Math.max(left, right);
     }
 
     @Test
