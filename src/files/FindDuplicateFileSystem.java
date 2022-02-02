@@ -38,7 +38,7 @@ public class FindDuplicateFileSystem {
             String root = files[0];
 
             for (int i = 1; i < files.length; i++) {
-                String content = files[i].substring(files[i].indexOf('('), files[i].indexOf(')'));
+                String content = files[i].substring(files[i].indexOf('(') + 1, files[i].indexOf(')'));
                 String fileName = files[i].substring(0 , files[i].indexOf('(') );
 
                 if (contentMap.containsKey(content)){
