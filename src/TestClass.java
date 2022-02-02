@@ -8,54 +8,69 @@ import java.util.*;
  * */
 public class TestClass {
 
-    ArrayList<Integer> list = new ArrayList<>();
-    class Query{
-        int[] ints = new int[2];
-    }
-    List answerQueries(ArrayList<Query> queries, int N){
-        ArrayList<Integer> answer = new ArrayList<>();
-        for (Query query : queries){
 
-            switch (query.ints[0]){
-                case 1 :
-                    list.add(query.ints[2]);
-                    break;
-                case 2 :
-                    if (list.isEmpty()){
-                        answer.add(-1);
-                        break;
-                    }
-                    int ans = getAnwer(query.ints[2]);
-                    answer.add(ans);
-                    break;
-            }
-        }
 
-        return answer ;
-    }
 
-    private int getAnwer(int index) {
-        int low = 0 ;
-        int high = list.size();
+    public double[] medianSlidingWindow(int[] nums, int k) {
 
-        while (low < high){
-            int mid = (low + high)/2 ;
+        PriorityQueue<Integer> min = new PriorityQueue();
+        PriorityQueue<Integer> max = new PriorityQueue(Comparator.reverseOrder());
 
-            if (list.get(mid) > index){
-                high = mid;
-            } else if(list.get(mid) < index) {
-                low = mid + 1;
+        double[] result = new double[nums.length  - k + 1];
+
+
+        for(int i = 0 ; i < nums.length ; i ++){
+
+            if(max.isEmpty() || max.peek() > nums[i]){
+                max.add(nums[i]);
             } else {
-                return mid;
+                min.add(nums[i]);
             }
+
+            balanceHeap(max, min);
+
+            if(min.size() + max.size() == 3){
+                double med = 0 ;
+
+                if(max.size() > min.size()){
+                    med = max.peek();
+                } else if (min.size() > max.size()){
+                    med = min.peek();
+                } else {
+                    med = (double) (max.peek() + min.peek())/2;
+                }
+
+                int index = i - k + 1;
+                result[index] = med;
+
+                if(!max.remove(nums[index])){
+                    min.remove(nums[index]);
+                }
+                index++;
+                balanceHeap(max,min);
+
+            }
+
         }
 
-        return high;
+        return result;
     }
+
+    public void balanceHeap(PriorityQueue<Integer> first , PriorityQueue<Integer> second){
+        if(first.size() > second.size() + 1){
+            second.add(first.poll());
+        } else if (second.size() > first.size() + 1){
+            first.add(second.poll());
+        }
+    }
+
     @Test
     public void test_(){
-        ArrayList<Query> queries = new ArrayList<>();
+        System.out.println(medianSlidingWindow(new int[]{1,3,-1,-3,5,3,6,7} , 3 ));
+    }
 
-        System.out.println(answerQueries(null,1));
+    @Test
+    public void test_2(){
+        System.out.println(medianSlidingWindow(new int[]{1,4,2,3} , 3 ));
     }
 }

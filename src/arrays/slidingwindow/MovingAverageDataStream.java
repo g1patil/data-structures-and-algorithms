@@ -13,23 +13,25 @@ import java.util.LinkedList;
 @Platform(Site.LEETCODE)
 public class MovingAverageDataStream {
 
-    int size, head = 0, windowSum = 0, count = 0;
-    int[] queue;
+    private int [] window;
+    private int n, insert;
+    private long sum;
 
+    /** Initialize your data structure here. */
     public MovingAverageDataStream(int size) {
-        this.size = size;
-        queue = new int[size];
+        window = new int[size];
+        insert = 0;
+        sum = 0;
     }
 
     public double next(int val) {
-        ++count;
-        // calculate the new sum by shifting the window
-        int tail = (head + 1) % size;
-        windowSum = windowSum - queue[tail] + val;
-        // move on to the next head
-        head = (head + 1) % size;
-        queue[head] = val;
-        return windowSum * 1.0 / Math.min(size, count);
+        if (n < window.length)  n++;
+        sum -= window[insert];
+        sum += val;
+        window[insert] = val;
+        insert = (insert + 1) % window.length;
+
+        return (double)sum / n;
     }
 
     public static void main(String[] args) {
