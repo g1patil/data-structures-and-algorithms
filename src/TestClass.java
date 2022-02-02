@@ -10,28 +10,18 @@ import java.util.*;
 public class TestClass {
 
 
-    public boolean result = true ;
-    public boolean isBalanced(TreeNode root) {
-        treeBalance(root);
-        return result;
+    public int maxDepth(TreeNode root) {
+        return depthDFS(root);
     }
 
-    public int treeBalance(TreeNode root){
-
+    public int depthDFS(TreeNode root){
         if(root == null)
             return 0;
 
-        int left = treeBalance(root.left);
-        int right = treeBalance(root.right);
+        int left = depthDFS(root.left);
+        int right = depthDFS(root.right);
 
-        if(Math.abs(left - right) > 1)
-            result = false;
-        return 1 + Math.max(left, right);
-    }
-
-    @Test
-    public void test_(){
-        System.out.println(canConstruct("hello" , "hlo world"));
+        return 1 + Math.max(left , right);
     }
 
 }
