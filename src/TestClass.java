@@ -1,6 +1,7 @@
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -11,39 +12,35 @@ public class TestClass {
 
 
 
-    public List<List<String>> findDuplicate(String[] paths) {
-        Map<String,List<String>> map = new HashMap();
-        List<List<String>> result = new ArrayList();
-        for(String path : paths){
+    class Point {
+        int index;
+        double dis ;
 
-            String[] p = path.split(" ");
-
-
-            for(int i  = 1 ; i < p.length ; i ++){
-                String dir = p[0];
-                String content = p[i].substring( p[i].indexOf('(') + 1 , p[i].indexOf(')') );
-
-                if(!map.containsKey(content)){
-                    List<String> list = new ArrayList();
-                    list.add( dir + "/" + p[i].substring(0, p[i].indexOf('(')));
-                    map.put(content , list);
-                } else {
-                    map.get(content).add(dir + "/" + p[i].substring(0, p[i].indexOf('(')));
-                }
-            }
-
+        Point(int i , double d){
+            index = i ; dis = d;
         }
-
-        map.keySet().stream().filter( k-> map.get(k).size() > 1).forEach(
-                k-> result.add(map.get(k)));
-
-        return result;
     }
 
-    @Test
-    public void test_(){
-        String[] path = new String[]{"root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)","root/c/d 4.txt(efgh)","root 4.txt(efgh)"};
-        System.out.println(findDuplicate(path));
+    public int[][] kClosest(int[][] points, int k) {
+        PriorityQueue<Point> queue = new PriorityQueue<>(Comparator.comparingDouble(o -> o.dis));
+
+        for(int i = 0 ; i < points.length ; i ++){
+            double d = Math.sqrt(points[i][0]*points[i][0] + points[i][1]*points[i][1]);
+
+            queue.add(new Point(i,d));
+        }
+
+        int[][] result = new int[k][2];
+
+        int j = 0 ;
+
+        while ( j < k){
+            result[j] = points[queue.poll().index];
+            j++;
+        }
+
+        return result ;
+
     }
 
 }
