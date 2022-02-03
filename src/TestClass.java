@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 /**
  * Test class to practice any given problem .
@@ -12,35 +13,43 @@ public class TestClass {
 
 
 
-    class Point {
-        int index;
-        double dis ;
+    public List<String> letterCasePermutation(String s) {
 
-        Point(int i , double d){
-            index = i ; dis = d;
+        Queue<String> q = new LinkedList();
+        q.add(s);
+
+        for(int i = 0 ; i < s.length(); i ++){
+            if(Character.isDigit(s.charAt(i)))
+                continue;
+
+            int size = q.size();
+            for(int j  = 0 ; j < size; j ++){
+                String str = q.poll();
+
+                char[] lc = str.toCharArray();
+                char[] uc = str.toCharArray();
+
+                lc[i] = Character.toLowerCase(lc[i]);
+                uc[i] = Character.toUpperCase(uc[i]);
+
+                q.add(String.valueOf(lc));
+                q.add(String.valueOf(uc));
+            }
+
         }
+
+        List<String> result = new ArrayList();
+
+        while(!q.isEmpty()){
+            result.add(q.poll());
+        }
+
+        return result;
+
     }
-
-    public int[][] kClosest(int[][] points, int k) {
-        PriorityQueue<Point> queue = new PriorityQueue<>(Comparator.comparingDouble(o -> o.dis));
-
-        for(int i = 0 ; i < points.length ; i ++){
-            double d = Math.sqrt(points[i][0]*points[i][0] + points[i][1]*points[i][1]);
-
-            queue.add(new Point(i,d));
-        }
-
-        int[][] result = new int[k][2];
-
-        int j = 0 ;
-
-        while ( j < k){
-            result[j] = points[queue.poll().index];
-            j++;
-        }
-
-        return result ;
-
+    @Test
+    public void test_(){
+        System.out.println(letterCasePermutation("h1b1"));
     }
 
 }
