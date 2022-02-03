@@ -13,43 +13,38 @@ public class TestClass {
 
 
 
-    public List<String> letterCasePermutation(String s) {
+    public int compress(char[] chars) {
+        int index = 0 ;
 
-        Queue<String> q = new LinkedList();
-        q.add(s);
+        for(int i = 0 , j = 0 ; i < chars.length ; ){
 
-        for(int i = 0 ; i < s.length(); i ++){
-            if(Character.isDigit(s.charAt(i)))
-                continue;
+            char current = chars[i];
+            int count = 0 ;
 
-            int size = q.size();
-            for(int j  = 0 ; j < size; j ++){
-                String str = q.poll();
-
-                char[] lc = str.toCharArray();
-                char[] uc = str.toCharArray();
-
-                lc[i] = Character.toLowerCase(lc[i]);
-                uc[i] = Character.toUpperCase(uc[i]);
-
-                q.add(String.valueOf(lc));
-                q.add(String.valueOf(uc));
+            while( i < chars.length && chars[i] == current){
+                count++;
+                i++;
             }
+            chars[j] = current;
+            j++;
 
+            if (count > 1){
+                for(char c : String.valueOf(count).toCharArray()){
+                    chars[j] = c ;
+                    j++;
+                }
+            }
+            index = j ;
         }
 
-        List<String> result = new ArrayList();
-
-        while(!q.isEmpty()){
-            result.add(q.poll());
-        }
-
-        return result;
-
+        return index  ;
     }
+
     @Test
     public void test_(){
-        System.out.println(letterCasePermutation("h1b1"));
+        System.out.println(compress(
+                new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'}
+        ));
     }
 
 }
