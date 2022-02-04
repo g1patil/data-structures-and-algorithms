@@ -27,3 +27,6 @@ String s = String.valueOf(chars);
 Character.isDigit('0');
 Character.toUpperCase('a');
 Character.toLowerCase('A');
+
+==> integer to char array
+String.valueOf(123).toCharArray();

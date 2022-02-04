@@ -13,38 +13,34 @@ public class TestClass {
 
 
 
-    public int compress(char[] chars) {
-        int index = 0 ;
+    public int longestConsecutive(int[] nums) {
+        if(nums == null || nums.length == 0)
+            return 0;
 
-        for(int i = 0 , j = 0 ; i < chars.length ; ){
+        int result = 0 ;
+        Map<Integer,Integer> map = new HashMap();
 
-            char current = chars[i];
-            int count = 0 ;
+        for(int i : nums){
 
-            while( i < chars.length && chars[i] == current){
-                count++;
-                i++;
+            if(!map.containsKey(i)){
+
+                int left = map.containsKey(i -1 ) ? map.get(i - 1) : 0 ;
+                int right = map.containsKey(i  + 1 ) ? map.get(i + 1) : 0 ;
+                int length = left + right + 1 ;
+
+                result = Math.max(result , length);
+
+                map.put(i , length);
+                map.put( i - left, length);
+                map.put( i + right , length);
+
+
+            } else {
+                continue;
             }
-            chars[j] = current;
-            j++;
-
-            if (count > 1){
-                for(char c : String.valueOf(count).toCharArray()){
-                    chars[j] = c ;
-                    j++;
-                }
-            }
-            index = j ;
         }
 
-        return index  ;
-    }
-
-    @Test
-    public void test_(){
-        System.out.println(compress(
-                new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'}
-        ));
+        return result ;
     }
 
 }
