@@ -35,12 +35,18 @@ public class BalancedTree {
                  && isBalanced(node.left) && isBalanced(node.right);
     }
 
-    boolean isBalancedOptimal(Node node){
-        if(node == null){
-            return true;
-        }
-         return Math.abs(getHeight(node.left) - getHeight(node.right)) <= 1
-                 && isBalanced(node.left) && isBalanced(node.right);
+    boolean isBalanced = true ;
+    int isBalancedOptimal(Node node){
+        if (node == null)
+            return 0;
+
+        int left = isBalancedOptimal(node.left);
+        int right = isBalancedOptimal(node.right);
+
+        if (Math.abs(left - right) > 1)
+            isBalanced = false;
+
+        return 1 + Math.max(left , right );
     }
 
     public static void main(String[] args) {
