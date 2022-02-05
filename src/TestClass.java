@@ -43,4 +43,8 @@ public class TestClass {
         return result ;
     }
 
+    @Test
+    public void test_(){
+    }
+
 }
