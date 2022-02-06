@@ -25,7 +25,7 @@ public class LongestPalindromicSubsequence {
 
     @Test
     public void test2(){
-        String s1 = "agbcba ";
+        String s1 = "abc";
         //s2 will be the palindrom of the original string
         String s2 = new StringBuilder(s1).reverse().toString();
 
