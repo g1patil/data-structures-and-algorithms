@@ -69,4 +69,9 @@ public class LongestIncreasingSubsequence {
     public void test_2(){
         System.out.println(lengthOfLISMemo(new int[]{7,7,7,7,7,7,7}));
     }
+
+    @Test
+    public void test_3(){
+        System.out.println(lengthOfLISMemo(new int[]{1,3,5,4,7}));
+    }
 }
