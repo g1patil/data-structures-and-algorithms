@@ -17,19 +17,19 @@ public class TestClass {
         for(char c : s.toCharArray()){
             if(!map.containsKey(c)){
                 map.put(c , 1);
-            } else map.put(c , map.get(c));
+            } else map.put(c , map.get(c) + 1 );
         }
 
         uniCharCount = map.size();
         windowLength = s.length();
     }
 
-    public int checkInclusion(String s1, String s2) {
-        int result = 0 ;
+    public boolean checkInclusion(String s1, String s2) {
+
         freqCal(s2);
 
         if(s1 == null || s2 == null)
-            return 0;
+            return false;
 
         int start = 0 , end = 0 ;
 
@@ -54,7 +54,7 @@ public class TestClass {
 
                 //calculate the result
                 if(uniCharCount == 0)
-                    result++;
+                    return true;
 
                 //reverse the result
                 if(map.containsKey(s1.charAt(start))){
@@ -73,13 +73,14 @@ public class TestClass {
             }
         }
 
-        return result;
+        return false;
     }
 
     @Test
     public void test_(){
-        String input = "asdfamakaopaqaa";
-        String pattern = "a";
+
+        String input = "ooolleoooleh";
+        String pattern = "hello";
 
         System.out.println(checkInclusion(input, pattern));
     }
