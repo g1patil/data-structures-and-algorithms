@@ -9,38 +9,79 @@ public class TestClass {
 
 
 
-    public int longestConsecutive(int[] nums) {
-        if(nums == null || nums.length == 0)
+    int uniCharCount , windowLength  ;
+    Map<Character,Integer> map = new HashMap<>();
+
+    public void freqCal(String s){
+
+        for(char c : s.toCharArray()){
+            if(!map.containsKey(c)){
+                map.put(c , 1);
+            } else map.put(c , map.get(c));
+        }
+
+        uniCharCount = map.size();
+        windowLength = s.length();
+    }
+
+    public int checkInclusion(String s1, String s2) {
+        int result = 0 ;
+        freqCal(s2);
+
+        if(s1 == null || s2 == null)
             return 0;
 
-        int result = 0 ;
-        Map<Integer,Integer> map = new HashMap();
+        int start = 0 , end = 0 ;
 
-        for(int i : nums){
+        while(end < s1.length()){
+            char c = s1.charAt(end);
 
-            if(!map.containsKey(i)){
+            //calculations phase
+            if(map.containsKey(c)){
+                int count = map.get(c);
+                count--;
 
-                int left = map.containsKey(i -1 ) ? map.get(i - 1) : 0 ;
-                int right = map.containsKey(i  + 1 ) ? map.get(i + 1) : 0 ;
-                int length = left + right + 1 ;
+                if(count == 0)
+                    uniCharCount--;
 
-                result = Math.max(result , length);
+                map.put(c, count);
+            }
 
-                map.put(i , length);
-                map.put( i - left, length);
-                map.put( i + right , length);
-
-
+            //window is smaller than increase window length
+            if(end - start + 1 < windowLength){
+                end++;
             } else {
-                continue;
+
+                //calculate the result
+                if(uniCharCount == 0)
+                    result++;
+
+                //reverse the result
+                if(map.containsKey(s1.charAt(start))){
+                    int count = map.get(s1.charAt(start));
+
+                    if(count == 0)
+                        uniCharCount++;
+                    count++;
+                    map.put(s1.charAt(start) , count);
+
+                }
+
+                //increase flags
+                start++;
+                end++;
             }
         }
 
-        return result ;
+        return result;
     }
 
     @Test
     public void test_(){
+        String input = "asdfamakaopaqaa";
+        String pattern = "a";
+
+        System.out.println(checkInclusion(input, pattern));
     }
 
 }
