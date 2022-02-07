@@ -50,17 +50,24 @@ public class MinimumWindowSubstring {
 
         while (end < s.length() ){
 
+            //only enter the code when char matched
             if (map.containsKey(s.charAt(end))){
+
+                //process the element
                 map.put(s.charAt(end) , map.get(s.charAt(end)) - 1 );
                 if (map.get(s.charAt(end)) == 0 )
                     uniCharCount--;
 
+                //compute the result
                 while (uniCharCount == 0 ){
+
+                    //result computation
                     if (end - start + 1 < min){
                         min = end - start + 1 ;
                         p1 = start;
                     }
 
+                    //reverse the computation for the first char
                     if (map.containsKey(s.charAt(start))){
                         if (map.get(s.charAt(start)) == 0)
                             uniCharCount++;
@@ -69,6 +76,8 @@ public class MinimumWindowSubstring {
                     start++;
                 }
             }
+
+            //increase the fast or right pointer
             end++;
 
         }
