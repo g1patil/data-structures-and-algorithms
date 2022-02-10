@@ -23,7 +23,7 @@ public class PathSum3 {
     public int pathSum(TreeNode root, int targetSum) {
         HashMap<Integer,Integer> sumMap = new HashMap();
         sumMap.put(0,1);
-        return pathSumHelder(root , 0 , targetSum , sumMap); ;
+        return pathSumHelder(root , 0 , targetSum , sumMap);
     }
 
     public int pathSumHelder(TreeNode root , int curSum , int target , HashMap<Integer,Integer> map){
