@@ -1,3 +1,4 @@
+import data.TreeNode;
 import org.junit.jupiter.api.Test;
 import java.util.*;
 
@@ -8,26 +9,37 @@ import java.util.*;
 public class TestClass {
 
 
-    public int subarraysDivByK(int[] A, int K) {
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        int count = 0, sum = 0;
-        for(int a : A) {
-            sum = (sum + a) % K;
-            if(sum < 0)
-                sum += K;  // Because -1 % 5 = -1, but we need the positive mod 4
-            count += map.getOrDefault(sum, 0);
-            map.put(sum, map.getOrDefault(sum, 0) + 1);
-        }
-        System.out.println(map);
-        return count;
+
+    public int maxPathSum(TreeNode root) {
+        maxPathSumHelper(root);
+        return result;
+    }
+
+    int result = 0 ;
+    public int maxPathSumHelper(TreeNode root){
+        if (root == null)
+            return 0;
+
+        int left = Math.max(maxPathSumHelper(root.left), 0 );
+        int right = Math.max(maxPathSumHelper(root.right),0);
+
+        result = Math.max(root.val + right + left , result);
+        return root.val + Math.max(left , right);
     }
 
     @Test
     public void test_(){
-
-
-        System.out.println(subarraysDivByK(new int[]{4,5,0,-2,-3,1}, 5));
+        TreeNode root = new TreeNode(10);
+        TreeNode n1 = new TreeNode(5);
+        TreeNode n2 = new TreeNode(6);
+        TreeNode n3 = new TreeNode(1);
+        TreeNode n4 = new TreeNode(2);
+        TreeNode n5 = new TreeNode(3);
+        TreeNode n6 = new TreeNode(4);
+        root.setChild(n1,n2);
+        n1.setChild(n3,n4);
+        n2.setChild(n5,n6);
+        System.out.println(maxPathSum(root));
     }
 
 }
