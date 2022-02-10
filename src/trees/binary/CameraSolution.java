@@ -10,49 +10,45 @@ import org.junit.jupiter.api.Test;
 /**
  * @author https://leetcode.com/hunteryuh/
  *
+ * 968. Binary Tree Cameras
  * Any node will have not covered , covered , has camera
  * Main logic : Never put camera at leaf lode.
  *              If either child is not covered , put camera there. return has_camera
  *              If either child has_camera, you current not is covered. So return covered.
  *              If your both child are covered , that means you will not be covered and return not_covered.
- *                  so that in parent put put camera there.
+ *                  so that in parent put camera there.
  */
 @Quality(Stage.DOCUMENTED)
 @Platform(Site.LEETCODE)
 public class CameraSolution {
-    enum Camera {
-        HAS_CAMERA,
-        COVERED,
-        NOT_COVERED
-    }
-    int res = 0;
+
+    private static final int NO_COV =  0;
+    private static final int COV_NC =  1;
+    private static final int COV_CM =  2;
 
     public int minCameraCover(TreeNode root) {
-        Camera x = dfs(root);
-        if (x == Camera.NOT_COVERED) {
-            res++;
+        int x = dfs(root);
+        if (x == NO_COV) {
+            result++;
         }
-        return res;
+        return result;
     }
 
-    private Camera dfs(TreeNode node) {
-        if (node == null || node.left == null  && node.right == null)
-            return Camera.NOT_COVERED;
-        Camera left = dfs(node.left);
-        Camera right = dfs(node.right);
+    int result = 0 ;
+    private int dfs(TreeNode node) {
+       if (node == null)
+           return COV_NC;
+       int left = dfs(node.left);
+       int right = dfs(node.right);
 
-        if (left == Camera.COVERED && right == Camera.COVERED) {
-            return Camera.NOT_COVERED;
-        }
-        if (left == Camera.NOT_COVERED || right == Camera.NOT_COVERED) {
-            res++;
-            return Camera.HAS_CAMERA;
-        }
-        // this has to check at the end to not cover the case where left or right is NOT_COVERED
-        if (left == Camera.HAS_CAMERA || right == Camera.HAS_CAMERA) {
-            return Camera.COVERED;
-        }
-        return null;
+       if (left == NO_COV || right == NO_COV){
+           result++;
+           return COV_CM;
+       } else if(left == COV_NC &&  right == COV_NC){
+           return NO_COV;
+       } else {
+           return COV_NC;
+       }
     }
 
     @Test
