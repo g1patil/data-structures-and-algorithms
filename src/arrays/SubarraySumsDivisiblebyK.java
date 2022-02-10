@@ -22,6 +22,8 @@ public class SubarraySumsDivisiblebyK {
         map.put(0 , 1);
         for(int n : A){
             sum = (sum + n ) % k ;
+
+            //crux of the algo - converting the -ve sum to +ve mod. Just add the number itself to -ve mod
             if(sum < 0)
                 sum+=k;
             result+=map.getOrDefault(sum , 0);
