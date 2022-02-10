@@ -23,19 +23,18 @@ public class PathSum3 {
     public int pathSum(TreeNode root, int targetSum) {
         HashMap<Integer,Integer> sumMap = new HashMap();
         sumMap.put(0,1);
-        pathSumHelder(root , 0 , targetSum , sumMap);
-        return result ;
+        return pathSumHelder(root , 0 , targetSum , sumMap); ;
     }
 
-    public void pathSumHelder(TreeNode root , int curSum , int target , HashMap<Integer,Integer> map){
+    public int pathSumHelder(TreeNode root , int curSum , int target , HashMap<Integer,Integer> map){
         if (root == null)
-            return;
+            return 0;
 
         curSum+=root.val;
 
-        if (map.containsKey(curSum-target)){
-            result+=map.get(curSum - target);
-        }
+
+        int result=map.getOrDefault(curSum - target , 0);
+
 
         if(map.containsKey(curSum)){
             map.put(curSum , map.get(curSum) + 1);
@@ -43,9 +42,10 @@ public class PathSum3 {
             map.put(curSum , 1 );
         }
 
-        pathSumHelder(root.left , curSum , target , map);
+        result+=pathSumHelder(root.left , curSum , target , map)+
         pathSumHelder(root.right , curSum , target , map);
         map.put(curSum , map.get(curSum) - 1 );
+        return result;
     }
 
     @Test
