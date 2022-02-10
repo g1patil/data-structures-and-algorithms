@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  *
  * 968. Binary Tree Cameras
  * Any node will have not covered , covered , has camera
- * Main logic : Never put camera at leaf lode.
+ * Main logic : Never put camera at leaf lode. Or you can say null is always covered.
  *              If either child is not covered , put camera there. return has_camera
  *              If either child has_camera, you current not is covered. So return covered.
  *              If your both child are covered , that means you will not be covered and return not_covered.
