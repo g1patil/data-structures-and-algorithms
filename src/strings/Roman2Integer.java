@@ -12,6 +12,8 @@ import java.util.Map;
 /**
  * @author g1patil
  * 13. Roman to Integer
+ * O(9) - > O(1)
+ * Max roman is : MMMCMXCIX
  */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
@@ -54,6 +56,6 @@ public class Roman2Integer {
 
     @Test
     public void test_(){
-        System.out.println(romanToInt("MCMXCIV"));
+        System.out.println(romanToInt("MMMCMXCIX"));
     }
 }

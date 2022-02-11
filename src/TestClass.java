@@ -9,74 +9,75 @@ import java.util.*;
 public class TestClass {
 
 
-    int totalNodes = 0 ;
-    public int maxPathSum(TreeNode root) {
-        int[] result = maxPathSumHelper(root);
-        return totalNodes - Math.max(result[0] , result[1]);
+    public int maxEnvelopes(int[][] envelopes) {
+        Arrays.sort(envelopes, new Comparator<int[]>() {
+            public int compare(int[] arr1, int[] arr2) {
+                if (arr1[0] == arr2[0]) {
+                    return arr2[1] - arr1[1];
+                } else {
+                    return arr1[0] - arr2[0];
+                }
+            }
+        });
+        int[] nums = new int[envelopes.length * 2];
+
+        int i = 0 ;
+        for(int[] num : envelopes){
+            Arrays.sort(num);
+            nums[i++] = num[0];
+            nums[i++] = num[1];
+        }
+
+        return lengthOfLIS(nums);
     }
 
-    public int[] maxPathSumHelper(TreeNode root){
-        if (root == null)
-            return new int[2];
+    public int lengthOfLIS(int[] nums) {
+        int[] memoization = memoization = new int[nums.length];
 
-        int[] left = maxPathSumHelper(root.left);
-        int[] right = maxPathSumHelper(root.right);
+        for (int i = 0; i < nums.length; i++) {
+            memoization[i] = 1 ;
+        }
 
-        int[] result = new int[2];
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i]){
+                    memoization[i] = Math.max( memoization[j] + 1 , memoization[i] );
+                }
+            }
+        }
 
-        result[1] = root.val + left[0] + right[0];
-        result[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]) ;
-        totalNodes++;
+        int result = 1 ;
+
+        for (int i : memoization)
+            result = Math.max(result , i );
 
         return result;
     }
 
     @Test
     public void test_(){
-        TreeNode root = new TreeNode(1);
-        TreeNode n1 = new TreeNode(2);
-        TreeNode n2 = new TreeNode(3);
-        TreeNode n3 = new TreeNode(4);
-        TreeNode n4 = new TreeNode(5);
-        TreeNode n5 = new TreeNode(6);
-        TreeNode n6 = new TreeNode(7);
-        root.setChild(n1,n2);
-        n1.setChild(n3,n4);
-        n2.setChild(n5,n6);
-        System.out.println(maxPathSum(root));
+
+       int[][] ints = new int[][]{
+               new int[]{5,4},
+               new int[]{6,4},
+               new int[]{6,7},
+               new int[]{2,3}
+       };
+
+       maxEnvelopes(ints);
     }
 
     @Test
     public void test_2(){
-        TreeNode root = new TreeNode(1);
-        TreeNode n1 = new TreeNode(1);
-        TreeNode n2 = new TreeNode(1);
-        TreeNode n3 = new TreeNode(1);
-        TreeNode n4 = new TreeNode(1);
-        TreeNode n5 = new TreeNode(1);
 
-        root.setChild(n1 , null);
-        n1.setChild(n2, null);
-        n2.setChild(n3,null);
-        n3.setChild(n4 , null);
-        n4.setChild(n5 , null);
+       int[][] ints = new int[][]{
+               new int[]{1,1},
+               new int[]{1,1},
+               new int[]{1,1}
+       };
 
-        System.out.println(minCameraCover(root));
+       maxEnvelopes(ints);
     }
 
-    int res = 0;
-    public int minCameraCover(TreeNode root) {
-        return (dfs(root) < 1 ? 1 : 0) + res;
-    }
-
-    public int dfs(TreeNode root) {
-        if (root == null) return 2;
-        int left = dfs(root.left), right = dfs(root.right);
-        if (left == 0 || right == 0) {
-            res++;
-            return 1;
-        }
-        return left == 1 || right == 1 ? 2 : 0;
-    }
 
 }
