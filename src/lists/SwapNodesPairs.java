@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * @author g1patil
  * 24. Swap Nodes in Pairs
+ * Algo : maintain the previous
  */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
