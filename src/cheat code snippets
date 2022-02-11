@@ -29,3 +29,7 @@ Character.toLowerCase('A');
 
 ==> integer to char array
 String.valueOf(123).toCharArray();
+
+==> fill the entire int array with default values
+fills the array with 1
+Arrays.fill(nums , 1 );

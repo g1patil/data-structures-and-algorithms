@@ -4,6 +4,9 @@ import annotation.Platform;
 import annotation.Site;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * @author g1patil
  * 300. Longest Increasing Subsequence
@@ -34,10 +37,7 @@ public class LongestIncreasingSubsequence {
     public int lengthOfLISMemo(int[] nums) {
 
         memoization = new int[nums.length];
-
-        for (int i = 0; i < nums.length; i++) {
-            memoization[i] = 1 ;
-        }
+        Arrays.fill(memoization , 1 );
 
         for (int i = 1; i < nums.length; i++) {
             for (int j = 0; j < i; j++) {
@@ -53,6 +53,62 @@ public class LongestIncreasingSubsequence {
             result = Math.max(result , i );
 
         return result;
+    }
+
+    /**
+     * Impl of solution by https://leetcode.com/hiepit
+     * */
+    public int getLISOptimal(int[] nums){
+        ArrayList<Integer> numList = new ArrayList<>();
+        int last = 0;
+        for (int i : nums){
+
+            if(numList.isEmpty()){
+                numList.add(i);
+                last = i ;
+                continue;
+            }
+
+            if (last < i ){
+                numList.add(i);
+                last = i ;
+            } else {
+                int index = getIndex(numList , i);
+                if (index == numList.size() - 1)
+                    last = i ;
+                numList.set(index , i );
+
+            }
+
+
+
+        }
+        return numList.size();
+    }
+
+    public int getIndex(ArrayList<Integer> nums , int target){
+        if (nums.isEmpty())
+            return 0;
+
+        int low = 0  , high = nums.size();
+
+        while (low < high){
+            int mid = (low + high)/2;
+
+            if (nums.get(mid) < target){
+                low = mid + 1 ;
+            } else {
+                high = mid;
+            }
+        }
+        return high;
+    }
+
+
+    @Test
+    public void test_4(){
+        int[] nums = new int[]{7,7,7,7,7,7,7};
+        System.out.println(getLISOptimal(nums));
     }
 
 
