@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Test;
  * Return the excess coin that you have. If you receive anything from left
  * and right node, then add them with what you have , keep one and return the
  * remaining one.
+ * At each return value, take the absolute of that and add to result/
+ * the values flowing through the network is the final result
  */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
