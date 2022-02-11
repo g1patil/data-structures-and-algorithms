@@ -9,6 +9,14 @@ import org.junit.jupiter.api.Test;
 /**
  * @author g1patil
  * 23. Merge k Sorted Lists
+ * Algo :
+ *  0,1,2,3,4,5,6,7
+ *  merge each adj first
+ *  then 0,2,4,6
+ *      0,2 and 4,6
+ *      then 0 ,4
+ *
+ *  interval loop is really important
  */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
