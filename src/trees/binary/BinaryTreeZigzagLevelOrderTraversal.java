@@ -14,7 +14,7 @@ import java.util.Queue;
 
 /**
  * @author g1patil
- * 103. Binary Tree Zigzag Level Order
+ * 103. Binary Tree Zigzag Level Order Traversal
  */
 @Platform(Site.LEETCODE)
 public class BinaryTreeZigzagLevelOrderTraversal {
@@ -35,16 +35,24 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 
             for (int i = 0; i < size; i++) {
                 TreeNode node = current.poll();
-                result.get(level).add(node.val);
+                result.get(level - 1).add(node.val);
 
                 if (level % 2 == 1){
-                    even.add(node.right);
-                    even.add(node.left);
+                    if (node.right!=null)
+                        even.add(node.right);
+                    if (node.left!=null)
+                        even.add(node.left);
                 } else {
-                    odd.addFirst(node.left);
-                    odd.addFirst(node.right);
+                    if (node.right!=null)
+                        odd.addFirst(node.left);
+                    if (node.left!=null)
+                        odd.addFirst(node.right);
                 }
             }
+            if (level % 2 == 1)
+                current = even;
+            else current = odd;
+
             level++;
         }
 
