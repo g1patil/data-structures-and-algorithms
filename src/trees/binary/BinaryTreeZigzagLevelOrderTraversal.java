@@ -14,7 +14,7 @@ import java.util.Queue;
 
 /**
  * @author g1patil
- * 103. Binary Tree Zigzag Level Order Traversal
+ * 103. Binary Tree Zigzag Level Order
  */
 @Platform(Site.LEETCODE)
 public class BinaryTreeZigzagLevelOrderTraversal {
