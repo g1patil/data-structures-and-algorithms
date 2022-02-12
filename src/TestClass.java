@@ -70,13 +70,22 @@ public class TestClass {
     @Test
     public void test_2(){
 
-       int[][] ints = new int[][]{
-               new int[]{1,1},
-               new int[]{1,1},
-               new int[]{1,1}
-       };
+      divide(-1,-1);
+    }
 
-       maxEnvelopes(ints);
+    public int divide(int dividend, int divisor) {
+        int sign  = (divisor < 0 && dividend < 0) ? 1 : (divisor < 0 || dividend < 0) ? -1 : 1 ;
+        int result = 0 ;
+        divisor = Math.abs(divisor);
+        dividend = Math.abs(dividend);
+
+        while(dividend >= divisor){
+
+            dividend-=divisor;
+            result++;
+            System.out.println(result);
+        }
+        return result*sign;
     }
 
 
