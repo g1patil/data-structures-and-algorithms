@@ -3,27 +3,24 @@ package trees.binary;
 import annotation.Platform;
 import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
-import lists.LinkedListCycle;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author g1patil
  * 103. Binary Tree Zigzag Level Order Traversal
  */
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class BinaryTreeZigzagLevelOrderTraversal {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        LinkedList<TreeNode> even = new LinkedList<>();
-        LinkedList<TreeNode> odd = new LinkedList<>();
+        ArrayDeque<TreeNode> even = new ArrayDeque<>();
+        ArrayDeque<TreeNode> odd = new ArrayDeque<>();
         List<List<Integer>> result = new ArrayList<>();
-        Queue<TreeNode> current = new LinkedList<>();
+        ArrayDeque<TreeNode> current ;
 
         odd.add(root);
         current = odd;
@@ -34,19 +31,19 @@ public class BinaryTreeZigzagLevelOrderTraversal {
             result.add(new ArrayList<>());
 
             for (int i = 0; i < size; i++) {
-                TreeNode node = current.poll();
+                TreeNode node = (level % 2 == 1) ? current.removeLast() : current.removeLast();
                 result.get(level - 1).add(node.val);
 
                 if (level % 2 == 1){
-                    if (node.right!=null)
-                        even.add(node.right);
                     if (node.left!=null)
                         even.add(node.left);
+                    if (node.right!=null)
+                        even.add(node.right);
                 } else {
                     if (node.right!=null)
-                        odd.addFirst(node.left);
+                        odd.add(node.right);
                     if (node.left!=null)
-                        odd.addFirst(node.right);
+                        odd.add(node.left);
                 }
             }
             if (level % 2 == 1)
