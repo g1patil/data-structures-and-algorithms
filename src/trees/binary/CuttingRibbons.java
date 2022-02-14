@@ -1,5 +1,9 @@
 package trees.binary;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -16,6 +20,8 @@ import org.junit.jupiter.api.Test;
  * Perform binary search on the length , if the total is >= k , then go on right side since we
  * want to increase the cut length. we want minimum/total = k .
  */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class CuttingRibbons {
 
     public int maxLength(int[] ribbons, int k) {
