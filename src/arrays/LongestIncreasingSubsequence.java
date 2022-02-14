@@ -1,7 +1,9 @@
 package arrays;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.Arrays;
  * @author g1patil
  * 300. Longest Increasing Subsequence
  */
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class LongestIncreasingSubsequence {
 
