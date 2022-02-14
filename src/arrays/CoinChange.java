@@ -1,5 +1,7 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -36,6 +38,7 @@ import java.util.Arrays;
  * Input: coins = [1], amount = 2
  * Output: 2
  * */
+@Platform(Site.LEETCODE)
 public class CoinChange {
 
     public int coinChange(int[] coins, int amount) {
