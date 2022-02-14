@@ -8,6 +8,8 @@ import static java.util.Arrays.asList;
 
 /**
  * @author g1patil
+ * Given , cumstom traget return group of 3 elements whose sum is equal
+ * to target
  */
 public class Sum3Target {
 
