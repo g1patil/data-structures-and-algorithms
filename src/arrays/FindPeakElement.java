@@ -1,13 +1,16 @@
 package arrays;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author jivanpatil
  * 162. Find Peak Element
  * */
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class FindPeakElement {
 
