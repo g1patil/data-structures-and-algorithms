@@ -27,27 +27,6 @@ public class DeleteNodeInBST {
                 Node n1 = new Node(5);
                 Node n2 = new Node(20);
 
-                // Node n3 = new Node(4);
-                // Node n4 = new Node(8);
-                // Node n5 = new Node(14);
-                // Node n6 = new Node(25);
-                // Node n7 = new Node(6);
-                // Node n8 = new Node(9);
-        
-        
-                
-                root.left = n1;
-                root.right = n2;
-        
-                // n1.left = n3;
-                // n1.right = n4;
-        
-                // n2.left = n5;
-                // n2.right = n6;
-        
-                // n4.left = n7;
-                // n4.right = n8;
-
         DeleteNodeInBST deleteNodeInBST = new DeleteNodeInBST();
 
         Node targetNode = deleteNodeInBST.findNode(root, 5);

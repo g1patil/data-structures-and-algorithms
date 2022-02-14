@@ -1,7 +1,9 @@
 package strings;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import java.util.HashMap;
  * @author g1patil
  * 383. Ransom Note
  */
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class RansomNote {
     HashMap<Character , Integer> frequency = new HashMap();
