@@ -1,5 +1,7 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -41,6 +43,7 @@ import org.junit.jupiter.api.Test;
  * Input: nums = [4,-2], k = 2
  * Output: [4]
  * */
+@Platform(Site.LEETCODE)
 public class SlidingWindowMaximum {
 
     /**
