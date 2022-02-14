@@ -22,7 +22,6 @@ import org.junit.jupiter.api.Test;
 @Platform(Site.LEETCODE)
 public class MergekSortedLists {
 
-
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length == 0)
             return null;

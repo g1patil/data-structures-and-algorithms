@@ -15,6 +15,9 @@ import static java.util.Arrays.asList;
 /**
  * @author g1pati
  * 18. 4Sum
+ * Technically an extension of the two sum.
+ * Run two loops + two sum using two pointers.
+ * Two sum using two pointers gives the linear result
  */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
