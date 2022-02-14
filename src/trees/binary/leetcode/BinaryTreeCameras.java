@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * @author g1patil
+ * My own impl of BinaryTreeCameras. Look at other solution since this is
+ * not perfect
  */
 @Platform(Site.LEETCODE)
 @Quality(value = Stage.FAILING , details = "passes 97/171 test on LC")
