@@ -34,6 +34,7 @@ public class ListIntersection {
         return new ListNode(-1);
     }
 
+    //this will give the constant performace
     private ListNode getIntersectionNodeOptimal(ListNode n1 , ListNode m1){
         Map<ListNode , Integer> nodeIntegerMap = new HashMap<>();
 
