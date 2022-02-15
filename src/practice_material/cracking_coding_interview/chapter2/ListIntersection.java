@@ -11,7 +11,30 @@ import java.util.Map;
  */
 public class ListIntersection {
 
+    // this is linear space and time complexity solution.
     private ListNode getIntersectionNode(ListNode n1 , ListNode m1){
+        Map<ListNode , Integer> nodeIntegerMap = new HashMap<>();
+
+        ListNode temp = n1 ;
+
+        while ( temp != null){
+            nodeIntegerMap.put( temp , 1  );
+            temp  = temp.next ;
+        }
+
+        temp = m1 ;
+
+        while ( temp != null ){
+            if ( nodeIntegerMap.containsKey(temp)){
+                return temp ;
+            }
+            temp = temp.next ;
+        }
+
+        return new ListNode(-1);
+    }
+
+    private ListNode getIntersectionNodeOptimal(ListNode n1 , ListNode m1){
         Map<ListNode , Integer> nodeIntegerMap = new HashMap<>();
 
         ListNode temp = n1 ;
