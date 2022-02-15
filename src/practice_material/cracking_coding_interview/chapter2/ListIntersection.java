@@ -36,25 +36,7 @@ public class ListIntersection {
 
     //this will give the constant performace
     private ListNode getIntersectionNodeOptimal(ListNode n1 , ListNode m1){
-        Map<ListNode , Integer> nodeIntegerMap = new HashMap<>();
-
-        ListNode temp = n1 ;
-
-        while ( temp != null){
-            nodeIntegerMap.put( temp , 1  );
-            temp  = temp.next ;
-        }
-
-        temp = m1 ;
-
-        while ( temp != null ){
-            if ( nodeIntegerMap.containsKey(temp)){
-                return temp ;
-            }
-            temp = temp.next ;
-        }
-
-        return new ListNode(-1);
+        //calculate the length of the both list
     }
 
     private void rotate(ListNode n1){
