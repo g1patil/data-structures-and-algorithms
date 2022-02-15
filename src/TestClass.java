@@ -2,6 +2,7 @@ import data.TreeNode;
 import org.junit.jupiter.api.Test;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Test class to practice any given problem .
@@ -87,6 +88,25 @@ public class TestClass {
             System.out.println(result);
         }
         return result*sign;
+    }
+
+    @Test
+    public void test_3(){
+        List<SomeClass> list = new ArrayList<>();
+        list.add(new SomeClass(1,"jivan"));
+        list.add(new SomeClass(2,"manoj"));
+        list.add(new SomeClass(3,"dhana"));
+
+
+        int i = 0;
+        IntStream.rangeClosed(1, Integer.MAX_VALUE).asLongStream().forEach(System.out::println);
+    }
+
+    class SomeClass {
+        int id;
+        String name;
+        SomeClass(int i , String name){this.id = i ; this.name = "jivan";}
+
     }
 
 
