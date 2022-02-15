@@ -19,24 +19,22 @@ public class Subsets {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         result.add(new ArrayList<>());
-
         for (int i = 0; i < nums.length; i++) {
-            List<List<Integer>> newSet = new ArrayList<>();
-            for (List<Integer> list : result)
-                newSet.add(new ArrayList<>(list));
+                    List<List<Integer>> newSet = new ArrayList<>();
+                    for (List<Integer> list : result)
+                        newSet.add(new ArrayList<>(list));
+                    for (int j = 0; j < newSet.size(); j++) {
+                        newSet.get(j).add(nums[i]);
+                    }
+                    for (List<Integer> list : newSet)
+                        result.add(list);
 
-            for (int j = 0; j < newSet.size(); j++) {
-                newSet.get(j).add(nums[i]);
-            }
-
-            for (List<Integer> list : newSet)
-                result.add(list);
         }
         return result;
     }
 
     @Test
     public void test_(){
-        subsets(new int[]{1,2,3});
+        System.out.println(subsets(new int[]{1,2,2}));
     }
 }
