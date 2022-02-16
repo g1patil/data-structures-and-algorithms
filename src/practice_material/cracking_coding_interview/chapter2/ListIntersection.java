@@ -37,6 +37,7 @@ public class ListIntersection {
     //this will give the constant performace
     private ListNode getIntersectionNodeOptimal(ListNode n1 , ListNode m1){
         //calculate the length of the both list
+        return null;
     }
 
     private void rotate(ListNode n1){
