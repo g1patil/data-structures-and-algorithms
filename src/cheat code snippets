@@ -34,6 +34,9 @@ String.valueOf(123).toCharArray();
 fills the array with 1
 Arrays.fill(nums , 1 );
 
+==> Generate random number give the upper bound
+bound is exclusive
+new Random().nextInt(10);
 
 Typing practice list
 https://10fastfingers.com/widget/typingtest?dur=60&rand=1&words=int|nums|String|void|result|return|Queue|%20List|%20LinkedList|Map|HashMap

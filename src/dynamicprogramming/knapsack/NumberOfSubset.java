@@ -37,4 +37,14 @@ public class NumberOfSubset {
 
 
     }
+
+    @Test
+    public void test2(){
+        int[] values = new int[]{ 2,3,6,7 } ;
+        memoization = new int[values.length + 1 ][values.length + 1];
+
+        System.out.println(targetSubSetSumMemoization(values , 2));
+
+
+    }
 }
