@@ -36,7 +36,19 @@ public class ListIntersection {
 
     //this will give the constant performace
     private ListNode getIntersectionNodeOptimal(ListNode n1 , ListNode m1){
-        //calculate the length of the both list
+        int nSize = 0;
+        int mSize = 0;
+
+        ListNode n = n1;
+        while ( n!=null){
+            n = n.next;
+            nSize++;
+        }
+        n = m1;
+        while ( n!=null){
+            n = n.next;
+            mSize++;
+        }
         return null;
     }
 
