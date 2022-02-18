@@ -49,6 +49,18 @@ public class ListIntersection {
             n = n.next;
             mSize++;
         }
+
+        if (nSize > mSize){
+            while (nSize!=mSize){
+                n1 = n1.next;
+                nSize--;
+            }
+        } else {
+            while (nSize!=mSize){
+                n1 = n1.next;
+                nSize--;
+            }
+        }
         return null;
     }
 
