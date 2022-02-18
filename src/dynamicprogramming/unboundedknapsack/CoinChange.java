@@ -1,7 +1,5 @@
 package dynamicprogramming.unboundedknapsack;
-
 import org.junit.jupiter.api.Test;
-
 public class CoinChange {
 
     int[][] memoization;
