@@ -75,7 +75,7 @@ public class PalindromeLinkedList {
             headOne = headOne.next;
             reverse = reverse.next;
         }
-        return headOne == null && reverse == null;
+        return  reverse == null;
     }
 
     public Node getReverse(Node head){
@@ -132,6 +132,17 @@ public class PalindromeLinkedList {
         Node head = new Node(4);
         Node n2 = new Node(5);
         Node n3 = new Node(4);
+
+        head.setNext(n2).setNext(n3);
+
+        Assertions.assertTrue(isPalindromeOptimal(head));
+    }
+
+    @Test
+    public void test4(){
+        Node head = new Node(4);
+        Node n2 = new Node(5);
+        Node n3 = new Node(6);
 
         head.setNext(n2).setNext(n3);
 
