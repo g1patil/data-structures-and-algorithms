@@ -113,7 +113,6 @@ public class PalindromeLinkedList {
         Assertions.assertFalse(isPalindrome(head));
     }
 
-
     @Test
     public void test2(){
         Node head = new Node(4);
