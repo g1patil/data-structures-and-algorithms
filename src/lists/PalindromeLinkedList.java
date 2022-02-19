@@ -1,5 +1,9 @@
 package lists;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +26,8 @@ import java.util.Stack;
  * Could you do it in O(n) time and O(1) space?
  *
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class PalindromeLinkedList {
 
     /**
@@ -29,6 +35,27 @@ public class PalindromeLinkedList {
      * @return true/false - true if the list is palindrome - false if otherwise
      * */
     private boolean isPalindrome(Node head) {
+        if(head == null || head.next== null){
+            return true;
+        }
+
+        Stack<Integer> integerStack = new Stack<>();
+
+        while (head!=null){
+            if(integerStack.isEmpty()){
+                integerStack.push(head.data);
+            } else if(integerStack.peek() == head.data){
+                integerStack.pop();
+            } else {
+                integerStack.push(head.data);
+            }
+            head = head.next;
+        }
+
+        return integerStack.isEmpty();
+    }
+
+    private boolean isPalindromeOptimal(Node head) {
         if(head == null || head.next== null){
             return true;
         }
