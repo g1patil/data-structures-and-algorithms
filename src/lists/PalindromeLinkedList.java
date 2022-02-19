@@ -102,6 +102,7 @@ public class PalindromeLinkedList {
         return length;
     }
 
+
     @Test
     public void test(){
         Node head = new Node(4);
