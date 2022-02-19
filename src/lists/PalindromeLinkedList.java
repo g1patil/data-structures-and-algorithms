@@ -56,24 +56,50 @@ public class PalindromeLinkedList {
     }
 
     private boolean isPalindromeOptimal(Node head) {
-        if(head == null || head.next== null){
-            return true;
+        Node headOne = head ;
+
+        int length = getLength(head);
+        Node reverse = headOne;
+        int count = 1;
+        while (count<=length/2){
+            reverse = reverse.next;
+            count++;
         }
 
-        Stack<Integer> integerStack = new Stack<>();
+        reverse = getReverse(reverse);
 
-        while (head!=null){
-            if(integerStack.isEmpty()){
-                integerStack.push(head.data);
-            } else if(integerStack.peek() == head.data){
-                integerStack.pop();
-            } else {
-                integerStack.push(head.data);
+        while (reverse!=null){
+            if (headOne.data!= reverse.data){
+                return false;
             }
-            head = head.next;
+            headOne = headOne.next;
+            reverse = reverse.next;
+        }
+        return headOne == null && reverse == null;
+    }
+
+    public Node getReverse(Node head){
+        Node headCopy = head;
+        Node reverse = null;
+
+        while (headCopy!=null){
+            Node temp = headCopy.next;
+            headCopy.next = reverse;
+            reverse = headCopy;
+            headCopy = temp ;
         }
 
-        return integerStack.isEmpty();
+        return reverse;
+    }
+
+    public int getLength(Node head){
+        Node headCopy = head;
+        int length = 0;
+        while (headCopy!=null){
+            headCopy= headCopy.next;
+            length++;
+        }
+        return length;
     }
 
     @Test
@@ -99,6 +125,17 @@ public class PalindromeLinkedList {
 
         head.setNext(n2).setNext(n3).setNext(n3a).setNext(n4).setNext(n5);
 
-        Assertions.assertTrue(isPalindrome(head));
+        Assertions.assertTrue(isPalindromeOptimal(head));
+    }
+
+    @Test
+    public void test3(){
+        Node head = new Node(4);
+        Node n2 = new Node(5);
+        Node n3 = new Node(4);
+
+        head.setNext(n2).setNext(n3);
+
+        Assertions.assertTrue(isPalindromeOptimal(head));
     }
 }
