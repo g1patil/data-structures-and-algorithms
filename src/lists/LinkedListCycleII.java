@@ -18,6 +18,8 @@ public class LinkedListCycleII {
             return head;
 
         ListNode collNode = getCollisionNode(head);
+        if (collNode == null)
+            return null;
         ListNode tempHead = head ;
 
         while (collNode !=tempHead){
