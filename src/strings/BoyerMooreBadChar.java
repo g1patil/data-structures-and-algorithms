@@ -54,6 +54,7 @@ public class BoyerMooreBadChar {
                 matchLength = 0 ;
                 p1+= 2*pattern.length();
             }
+
         }
     }
 
