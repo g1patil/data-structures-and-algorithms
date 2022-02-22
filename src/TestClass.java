@@ -11,57 +11,30 @@ import java.util.stream.IntStream;
 public class TestClass {
 
 
-    ArrayList<Long> prob = new ArrayList();
-    Map<Long, Integer> map = new HashMap();
-    public TestClass(int[] w) {
-        int sum = 0;
-        for(int i : w){
-            sum+=i;
+    public String getSong(String[] songs){
+        int max = 0;
+        String result = "";
+        Map<String,Integer> fre = new HashMap<>();
+        for (String song : songs){
+            fre.put( song , fre.getOrDefault(song  , 0) + 1 );
         }
 
-        Long previous = 0L ;
-        for(int i = 0 ; i < w.length ;i++){
-            Long p = Math.round(((double)w[i]/sum)*100);
-            map.put(p + previous , i);
-            prob.add(p+ previous);
-            previous+=p;
-        }
-        // System.out.print(prob);
-        System.out.print(map);
-
-        Collections.sort(prob);
-    }
-
-    public int getIndex(long p){
-        int low= 0 , high = prob.size();
-
-        while(low < high){
-            int mid = low + (high - low)/2 ;
-
-            if(prob.get(mid) < p){
-                low = mid + 1;
-            } else{
-                high = mid;
+        for(String s : fre.keySet()){
+            int count = fre.get(s);
+            if (count > max){
+                result = s;
+                max = count;
             }
         }
-
-        return high;
+        return result;
     }
 
-    public int pickIndex() {
-        int index = getIndex( Math.round(Math.random()*100));
-        return map.get(prob.get(index == prob.size() ? index -1 : index));
-    }
-
-    public static void main(String[] args) {
-        TestClass testClass = new TestClass(new int[]{3,14,1,7});
-        System.out.println(testClass.pickIndex());
-        System.out.println(testClass.pickIndex());
-        System.out.println(testClass.pickIndex());
-        System.out.println(testClass.pickIndex());
-        System.out.println(testClass.pickIndex());
-        System.out.println(testClass.pickIndex());
-        System.out.println(testClass.pickIndex());
+    @Test
+    public void test_(){
+        String[] songs = new String[]{
+                "a","b","c","a","a","a","f","f","g"
+        };
+        getSong(songs);
     }
 
 
