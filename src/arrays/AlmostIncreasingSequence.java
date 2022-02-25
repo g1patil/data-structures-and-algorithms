@@ -1,8 +1,12 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Site;
+
 /**
  * @author g1patil
  */
+@Platform(Site.LEETCODE)
 public class AlmostIncreasingSequence {
 
 
