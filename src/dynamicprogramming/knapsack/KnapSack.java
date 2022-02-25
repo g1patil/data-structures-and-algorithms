@@ -1,5 +1,7 @@
 package dynamicprogramming.knapsack;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -8,6 +10,7 @@ import org.junit.jupiter.api.Test;
  * reference : https://www.youtube.com/watch?v=kvyShbFVaY8&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go
  *
  * */
+@Platform(Site.LEETCODE)
 public class KnapSack {
 
     int[][] recursionResult ;
