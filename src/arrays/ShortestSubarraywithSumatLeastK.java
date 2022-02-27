@@ -6,6 +6,8 @@ import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 /**
  * @author g1patil
  * 209. Minimum Size Subarray Sum
@@ -16,17 +18,23 @@ public class ShortestSubarraywithSumatLeastK {
 
     public int shortestSubarray(int[] nums, int k) {
         int len = Integer.MAX_VALUE;
+        int sum = 0 ;
 
-        for (int i = 0; i < nums.length; i++) {
-            int sum = 0 ;
-            for (int j = i ; j < nums.length; j++) {
-                sum+=nums[j];
+        for (int i = 0 ,j = 0; j < nums.length ; j++) {
+            sum+=nums[j];
 
-                if( len < j - i + 1 )
-                    continue;
+            if(sum < k){
+                continue;
+            } else {
+                len = Math.min( len , j - i + 1 );
 
-                if(sum == k)
-                    len = Math.min( j - i + 1 , len);
+                while (sum >= k){
+                    sum-=nums[i];
+                    i++;
+
+                  len =  sum >= k ? Math.min( len , j - i + 1 ) : len ;
+                }
+
             }
         }
 
@@ -35,8 +43,8 @@ public class ShortestSubarraywithSumatLeastK {
 
     @Test
     public void test_(){
-        int[] nums = new int[]{48,99,37,4,-31};
+        int[] nums = new int[]{1,2,3,4,5};
 
-        System.out.println(shortestSubarray(nums , 140 ));
+        System.out.println(shortestSubarray(nums , 11 ));
     }
 }
