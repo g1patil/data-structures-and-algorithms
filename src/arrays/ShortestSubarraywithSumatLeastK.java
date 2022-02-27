@@ -17,28 +17,17 @@ import java.util.Map;
 public class ShortestSubarraywithSumatLeastK {
 
     public int shortestSubarray(int[] nums, int k) {
-        int len = Integer.MAX_VALUE;
-        int sum = 0 ;
+        int len = Integer.MAX_VALUE,sum = 0 ;
 
         for (int i = 0 ,j = 0; j < nums.length ; j++) {
             sum+=nums[j];
-
-            if(sum < k){
-                continue;
-            } else {
-                len = Math.min( len , j - i + 1 );
-
-                while (sum >= k){
-                    sum-=nums[i];
-                    i++;
-
-                  len =  sum >= k ? Math.min( len , j - i + 1 ) : len ;
-                }
-
+            while (sum >= k){
+                len =  sum >= k ? Math.min( len , j - i + 1 ) : len ;
+                sum-=nums[i];
+                i++;
             }
         }
-
-        return len == Integer.MAX_VALUE ? - 1 : len;
+        return len == Integer.MAX_VALUE ? 0 : len;
     }
 
     @Test
