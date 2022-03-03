@@ -1,42 +1,36 @@
 package trees;
 
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil
+ * 1026. Maximum Difference Between Node and Ancestor
  */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class MaximumDifferenceBetweenNodeandAncestor {
 
     public int maxAncestorDiff(TreeNode root) {
-        return dfsMax(root , 0 );
+        return dfsMax(root , root.val , root.val );
     }
 
-    public int dfsMax(TreeNode root, int max){
+    public int dfsMax(TreeNode root , int min ,int max){
         if (root == null)
-            return 0;
+            return min - max;
 
-        max = Math.max( max ,
-                Math.max(
-                        Math.abs(getMin(root) - root.val) ,
-                        Math.abs(getMax(root) - root.val)
-                )
+        min = Math.min(root.val , min);
+        max  = Math.max( root.val , max);
+
+        return Math.max(
+                dfsMax(root.left , min , max),
+                dfsMax(root.right , min , max)
         );
-
-
-        return Math.max( max , Math.max(dfsMax(root.left , max) , dfsMax(root.right , max)));
-    }
-    public int getMin(TreeNode root){
-        if (root == null)
-            return Integer.MAX_VALUE;
-        return Math.min(root.val , Math.min(getMin(root.left) , getMin(root.right)) );
-    }
-
-    public int getMax(TreeNode root){
-        if (root == null)
-            return Integer.MIN_VALUE;
-        return Math.max(root.val , Math.max(getMax(root.left) , getMax(root.right)) );
     }
 
     @Test
