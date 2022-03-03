@@ -11,6 +11,7 @@ import java.util.Queue;
 /**
  * @author g1patil
  * 116. Populating Next Right Pointers in Each Node
+ * 117. Populating Next Right Pointers in Each Node II
  */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
