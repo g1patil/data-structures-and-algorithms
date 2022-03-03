@@ -1,5 +1,9 @@
 package lists;
 
+import annotation.Pattern;
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -11,6 +15,7 @@ import org.junit.jupiter.api.Test;
  * Then, for each subpart, the order of the elements is reversed. In the example, this would result in the new list, [1, 8, 2, 9, 16, 12].
  * The goal of this question is: given a resulting list, determine the original order of the elements.
  */
+@Quality(Stage.TESTED)
 public class ReverseOperations {
 
     Node reverse(Node head) {
