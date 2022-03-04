@@ -53,9 +53,25 @@ public class SearchinRotatedSortedArrayII {
         return result;
     }
 
+    /**
+     * No dups
+     * */
+    public int getStartingIndex(int[] nums){
+        int low = 0 ,  high = nums.length - 1;
+        while (low < high){
+            int mid = low + (high - low)/2;
+            if (nums[mid] > nums[high] ){
+                low = mid + 1 ;
+            } else{
+                high = mid;
+            }
+        }
+        return high;
+    }
+
     @Test
     public void test_(){
-        System.out.println(search(new int[]{2,5,6,0,1,2} , 3));
+        System.out.println(getStartingIndex(new int[]{2,5,6,0,1,2} ));
     }
 
     @Test
