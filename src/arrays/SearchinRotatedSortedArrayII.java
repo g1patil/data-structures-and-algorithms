@@ -17,12 +17,11 @@ import java.util.Arrays;
 public class SearchinRotatedSortedArrayII {
 
     public boolean search(int[] nums, int target) {
-        int start = getStartingIndex(nums);
+        int start = binarySearchHelper(nums , 0 , nums.length - 1 );
         int result = -1 ;
         if (target >= nums[start] && target <= nums[nums.length-1]){
             result = searchTarget(Arrays.copyOfRange(nums , start , nums.length ) , target);
         } else result = searchTarget(Arrays.copyOfRange(nums , 0 , start) , target);
-
         return result != -1 ;
     }
 
@@ -40,17 +39,18 @@ public class SearchinRotatedSortedArrayII {
         }
          return -1;
     }
-    public int getStartingIndex(int[] nums){
-        int low = 0 ,  high = nums.length - 1;
-        while (low < high){
-            int mid = low + (high - low)/2;
-            if (nums[mid] > nums[high] ){
-                low = mid + 1 ;
-            } else{
-                high = mid;
-            }
+    int result = 0 ;
+    private int binarySearchHelper(int[] ints, int i, int j) {
+        if (i > j || j >= ints.length || i < 0 )
+            return result;
+        int mid = (i + j )/2 ;
+        if (mid > 0 && ints[mid] < ints[mid -1]){
+            result = mid ;
+            return result;
         }
-        return high;
+        binarySearchHelper(ints , i , mid -1);
+        binarySearchHelper(ints , mid + 1 , j);
+        return result;
     }
 
     @Test
