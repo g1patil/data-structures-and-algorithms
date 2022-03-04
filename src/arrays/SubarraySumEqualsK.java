@@ -50,6 +50,6 @@ public class SubarraySumEqualsK {
 
     @Test
     public void test_(){
-        System.out.println(subarraySum(new int[]{3,4,7,2,-3,1,4,2} , 7 ));
+        System.out.println(subarraySum(new int[]{1,-1,5,-2,3} , 3 ));
     }
 }
