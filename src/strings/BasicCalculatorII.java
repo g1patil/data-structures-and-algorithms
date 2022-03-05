@@ -2,9 +2,7 @@ package strings;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author g1patil
@@ -12,54 +10,70 @@ import java.util.Stack;
 public class BasicCalculatorII {
 
     public int calculate(String s) {
-        Stack<Character> stack = new Stack<>();
-        Set<Character> p1Sign = new HashSet<>();
-        Set<Character> p2Sign = new HashSet<>();
+        s = s.replaceAll("\\s+","");
+        List<Character> operationList = new ArrayList<>();
+        operationList.add('/');
+        operationList.add('*');
+        operationList.add('+');
+        operationList.add('-');
 
-        p1Sign.add('*');
-        p1Sign.add('/');
+        for(char ol : operationList){
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                int first = 0;
+                String input = "" , output = "";
 
-        p2Sign.add('+');
-        p2Sign.add('-');
+                if (c == ol){
+                        first =  getFirstIndex(s , i-1);
+                        input = s.substring( first , getLastIndex(s, i+1));
+                        output = performOperation(input , i - first);
+                        s = s.replace(input , output );
 
-        for (char c : s.toCharArray()){
-
-            if (!stack.isEmpty() && p2Sign.contains(stack.peek())){
-                Character operation = stack.pop();
-                Character c1 = stack.pop();
-                switch (operation){
-                    case '*':
-                        int i = Character.getNumericValue(c1) * Character.getNumericValue(c);
-                        stack.push(Integer.toString(i).charAt(0));
-                        break;
-                    case '/':
-                         i = Character.getNumericValue(c1) / Character.getNumericValue(c);
-                        stack.push(Integer.toString(i).charAt(0));
-                        break;
                 }
-            } else if (!stack.isEmpty() && p1Sign.contains(stack.peek())){
-                Character operation = stack.pop();
-                Character c1 = stack.pop();
-                switch (operation){
-                    case '+':
-                        int i = Character.getNumericValue(c1) + Character.getNumericValue(c);
-                        stack.push(Integer.toString(i).charAt(0));
-                        break;
-                    case '-':
-                        i = Character.getNumericValue(c1) - Character.getNumericValue(c);
-                        stack.push(Integer.toString(i).charAt(0));
-                        break;
-                }
-            }
-            else {
-                stack.push(c);
             }
         }
-        return Character.getNumericValue(stack.pop());
+
+        return Integer.parseInt(s);
+    }
+
+    public int getFirstIndex(String s , int i){
+        while ( i > 0 && Character.isDigit(s.charAt(i)))
+            i--;
+        return i == 0 ? 0 : i+1;
+    }
+
+    public int getLastIndex(String s , int i){
+        while (i < s.length() && Character.isDigit(s.charAt(i)))
+            i++;
+        return i;
+    }
+
+    public String performOperation(String input , int index){
+        StringBuilder sb = new StringBuilder();
+        int result = 0 ;
+        int first = Integer.parseInt(input.substring(0 , index));
+        int second = Integer.parseInt(input.substring(index + 1 ));
+        switch (input.charAt(index)){
+            case '*':
+                result = first * second;
+                break;
+            case '/':
+                result = first / second ;
+                break;
+            case '+':
+                result = first + second ;
+                break;
+            case '-':
+                result = first - second;
+                break;
+            default:
+                return null;
+        }
+        return sb.append(result).toString();
     }
 
     @Test
     public void test_(){
-        System.out.println(calculate("3+2*2"));
+        System.out.println(calculate(" 1+1+1 " ));
     }
 }
