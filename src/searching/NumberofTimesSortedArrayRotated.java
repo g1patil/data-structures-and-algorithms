@@ -41,6 +41,6 @@ public class NumberofTimesSortedArrayRotated {
 
     @Test
     public void test_(){
-        System.out.println(getIndexOfRotation(new int[]{6,7,8,1}));
+        System.out.println(getIndexOfRotation(new int[]{0,0,0,0,0,0,0,0,0,0,0,1,0,0}));
     }
 }
