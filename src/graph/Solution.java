@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.Comparator;
+import java.util.Date;
 import java.util.PriorityQueue;
 
 class Solution {
@@ -10,7 +11,7 @@ class Solution {
             return 0;
         }
         int size = points.length;
-        PriorityQueue<Edge> pq = new PriorityQueue<Edge>(Comparator.comparingInt(x -> x.cost));
+        PriorityQueue<Edge> pq = new PriorityQueue<Edge>(Comparator.comparing(x -> x.date));
         boolean[] visited = new boolean[size];
         int result = 0;
         int count = size - 1;
@@ -51,6 +52,7 @@ class Solution {
         int point1;
         int point2;
         int cost;
+        Date date;
 
         Edge(int point1, int point2, int cost) {
             this.point1 = point1;
