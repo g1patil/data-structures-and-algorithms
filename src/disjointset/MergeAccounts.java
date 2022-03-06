@@ -1,5 +1,6 @@
 package disjointset;
 
+import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -16,6 +17,7 @@ public class MergeAccounts {
     List<List<String>> result ;
 
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
+
         Map<String,Integer> names = new HashMap<>();
         int index = 0 ;
         for (int i = 0; i < accounts.size(); i++) {
@@ -85,5 +87,15 @@ public class MergeAccounts {
         list.add(l3);
 
         System.out.println(accountsMerge(list));
+    }
+
+    @Test
+    public void test_2(){
+        Map<String , SortedSet<String>> queueMap = new HashMap<>();
+        Date d1 = new Date(2021,01,01,10,10,00);
+        Date d2 = new Date(2021,01,01,10,14,59);
+        long dif = 300000L;
+
+        System.out.println(Math.abs((d1.getTime() - d2.getTime())) < dif);
     }
 }
