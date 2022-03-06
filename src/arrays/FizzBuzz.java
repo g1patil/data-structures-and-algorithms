@@ -4,6 +4,7 @@ import java.net.http.HttpClient;
 
 public class FizzBuzz {
     static String[] fizzBuzz(int number){
+        final  long name = 1L;
         String[] result = new String[number];
 
         for (int index = 0 ; index < number;index++){
