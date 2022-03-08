@@ -1,5 +1,8 @@
 package strings;
 
+import annotation.Platform;
+import annotation.Site;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +11,7 @@ import java.util.Map;
 /**
  * @author g1patil
  */
+@Platform(Site.LEETCODE)
 public class LongestPalindromebyConcatenatingTwoLetterWords {
 
     public int longestPalindrome(String[] strs) {
