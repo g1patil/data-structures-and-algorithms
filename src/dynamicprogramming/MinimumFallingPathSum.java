@@ -36,7 +36,7 @@ public class MinimumFallingPathSum {
     public int getMin(int i  , int j , int[][] matrix){
         int left = i > 0 && j > 0  ? matrix[i-1][j-1] : Integer.MAX_VALUE;
         int up = matrix[i-1][j];
-        int right = i >0  && j < matrix[0].length - 1  ? matrix[i-1][j+1] : Integer.MAX_VALUE;
+        int right =  j < matrix[0].length - 1  ? matrix[i-1][j+1] : Integer.MAX_VALUE;
 
         return Math.min( up , Math.min(left,right));
     }
