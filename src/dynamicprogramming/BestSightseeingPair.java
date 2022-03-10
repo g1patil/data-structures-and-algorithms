@@ -4,6 +4,7 @@ import annotation.Platform;
 import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil
