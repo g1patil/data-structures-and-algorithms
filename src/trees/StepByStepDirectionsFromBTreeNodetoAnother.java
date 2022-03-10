@@ -11,20 +11,25 @@ import org.junit.jupiter.api.Test;
  * @author g1patil
  * 2096. Step-By-Step Directions From a Binary Tree Node to Another
  */
-@Quality(Stage.INCOMPLETE)
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class StepByStepDirectionsFromBTreeNodetoAnother {
 
-    public String getDirections(TreeNode root, int startValue, int destValue) {
-        return "";
-    }
-
-    public String getPath(TreeNode root , int source , int target){
+    public String getDirections(TreeNode root , int source , int target){
         StringBuilder start = new StringBuilder();
         StringBuilder end = new StringBuilder();
         dfsPath(root , source , start);
         dfsPath(root , target , end);
-        return start.reverse().toString();
+
+        start = start.reverse();
+        end = end.reverse();
+
+        int min = Math.min( start.length() , end.length()) , i = 0;
+
+        while ( i < min && start.charAt(i) == end.charAt(i))
+            i++;
+
+        return "U".repeat(start.length() - i) + end.substring(i);
     }
 
     public boolean dfsPath(TreeNode root , int target , StringBuilder sb){
@@ -36,7 +41,6 @@ public class StepByStepDirectionsFromBTreeNodetoAnother {
         } else if ( root.right!=null && dfsPath(root.right , target , sb) ) {
             sb.append("R");
         }
-
         return sb.length() > 0 ;
     }
 
@@ -52,6 +56,6 @@ public class StepByStepDirectionsFromBTreeNodetoAnother {
         root.setChild(n1,n2);
         n1.setChild(n3,n4);
         n2.setChild(n5,n6);
-        System.out.println(getPath(root , 2,4 ));
+        System.out.println(getDirections(root , 2,4 ));
     }
 }
