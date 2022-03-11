@@ -1,5 +1,7 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +24,7 @@ import java.util.*;
  * Note:
  * You may assume k is always valid, 1 ≤ k ≤ array's length.
  * */
+@Platform(Site.LEETCODE)
 public class KthLargestElementArray {
 
     /**
