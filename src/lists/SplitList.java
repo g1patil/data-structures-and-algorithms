@@ -1,5 +1,7 @@
 package lists;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -8,6 +10,7 @@ import org.junit.jupiter.api.Test;
  * successive elements are in different lists.
  *
  * */
+@Platform(Site.RANDOM)
 public class SplitList {
 
 
