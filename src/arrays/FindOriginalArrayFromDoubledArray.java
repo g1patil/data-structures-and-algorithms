@@ -16,12 +16,10 @@ import java.util.*;
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class FindOriginalArrayFromDoubledArray {
-
     public int[] findOriginalArray(int[] changed) {
         if(changed.length % 2 == 1)
             return new int[]{};
         Map<Integer,Integer> freq = new TreeMap<>();
-        List<Integer> result = new LinkedList<>();
         int[] r = new int[changed.length/2];
         int index = 0 ;
         for(int n : changed){
@@ -35,12 +33,11 @@ public class FindOriginalArrayFromDoubledArray {
                 freq.put( n + n , freq.get(n+n) - 1);
             }
         }
-
         return r;
     }
 
     @Test
     public void test_(){
-        ArrayUtility.print(findOriginalArray(new int[]{ 1,3,4,2,6,8 }));
+        ArrayUtility.print(findOriginalArray(new int[]{ 1,2,2,4 }));
     }
 }
