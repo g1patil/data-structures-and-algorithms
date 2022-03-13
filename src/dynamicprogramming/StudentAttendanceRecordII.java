@@ -8,7 +8,6 @@ import annotation.Stage;
 /**
  * @author g1patil
  * Reference : https://leetcode.com/yu6
- * shorturl.at/klDEX
  * 552. Student Attendance Record II
  */
 @Quality(Stage.TESTED)
