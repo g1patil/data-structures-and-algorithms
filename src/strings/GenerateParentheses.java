@@ -39,7 +39,7 @@ public class GenerateParentheses {
         }
         /* Remove the duplicated*/
         result.stream().forEach(r-> resultSet.add(r));
-        return resultSet.stream().collect(Collectors.toList());
+        return new ArrayList<>(resultSet);
 
     }
 

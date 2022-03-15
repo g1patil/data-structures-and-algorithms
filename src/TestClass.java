@@ -1,8 +1,5 @@
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * Test class to practice any given problem .
