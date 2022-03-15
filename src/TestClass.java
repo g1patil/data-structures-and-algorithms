@@ -11,30 +11,24 @@ import java.util.stream.IntStream;
 public class TestClass {
 
 
-    public String getSong(String[] songs){
-        int max = 0;
-        String result = "";
-        Map<String,Integer> fre = new HashMap<>();
-        for (String song : songs){
-            fre.put( song , fre.getOrDefault(song  , 0) + 1 );
-        }
+    public int getMaxSum(TreeNode root){
+        if (root == null)
+            return 0;
 
-        for(String s : fre.keySet()){
-            int count = fre.get(s);
-            if (count > max){
-                result = s;
-                max = count;
-            }
-        }
-        return result;
+        return root.val + Math.max( getMaxSum(root.left) , getMaxSum(root.right));
     }
 
     @Test
     public void test_(){
-        String[] songs = new String[]{
-                "a","b","c","a","a","a","f","f","g"
-        };
-        getSong(songs);
+        TreeNode root = new TreeNode(5);
+        TreeNode n1 = new TreeNode(6);
+        TreeNode n2 = new TreeNode(7);
+        TreeNode n3 = new TreeNode(1);
+        TreeNode n4 = new TreeNode(2);
+        n1.setChild(n3,n4);
+        root.setChild(n1,n2);
+
+        System.out.println(getMaxSum(root));
     }
 
 
