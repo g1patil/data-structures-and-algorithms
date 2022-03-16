@@ -28,5 +28,27 @@ public class TestClass {
         System.out.println(getMaxSum(root));
     }
 
+    public String compress(String input){
+        int index = 0 , count = 0;
+        StringBuilder sb = new StringBuilder();
+        char currentChar;
+        while ( index < input.length()){
+            count = 0;
+            currentChar = input.charAt(index);
+            while (index < input.length() && input.charAt(index) == currentChar){
+                count++;
+                index++;
+            }
+            sb.append(currentChar).append(count);
+
+        }
+        return sb.toString();
+    }
+
+    @Test
+    public void test_2(){
+        System.out.println(compress("aaabbc"));
+    }
+
 
 }

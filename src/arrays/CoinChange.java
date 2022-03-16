@@ -46,82 +46,17 @@ public class CoinChange {
 
     public int coinChange(int[] coins, int amount) {
         Arrays.sort(coins);
-        int numberOfCoins=0;
-        int lastIndex = coins.length-1;
+        int[] dp = new int[amount+1];
+        Arrays.fill(dp , amount + 1);
+        dp[0] =  0 ;
 
-        while ( (amount !=0) && lastIndex >= 0 ){
-            int currentCoin = coins[lastIndex];
-
-            if(currentCoin <= amount ){
-                amount-=currentCoin;
-                numberOfCoins++;
-            } else {
-                lastIndex--;
+        for (int i = 1; i <= amount; i++) {
+            for (int c : coins){
+                if ( i >= c)
+                    dp[i] = Math.min( dp[i] , 1 + dp[ i - c]);
             }
-
         }
-
-        if(amount > 0){
-            return -1;
-        }
-        return numberOfCoins;
+        return dp[amount] >  amount ? -1 : dp[amount];
     }
 
-    public int coinChangeOptimal(int[] coins, int amount) {
-        Arrays.sort(coins);
-        int numberOfCoins=0;
-        int lastIndex = coins.length-1;
-
-        while ( (amount !=0) && lastIndex >= 0 ){
-            int currentCoin = coins[lastIndex];
-
-            if(currentCoin <= amount ){
-                numberOfCoins+= amount/currentCoin;
-                amount = amount % currentCoin;
-            } else {
-                lastIndex--;
-            }
-
-        }
-
-        if(amount > 0){
-            return -1;
-        }
-        return numberOfCoins;
-    }
-
-    @Test
-    public void test(){
-        Assertions.assertEquals( 3, coinChangeOptimal(new int[]{1,2,5},11));
-    }
-
-    @Test
-    public void test2(){
-        Assertions.assertEquals( -1, coinChangeOptimal(new int[]{2},3));
-    }
-
-    @Test
-    public void test3(){
-        Assertions.assertEquals( 0, coinChangeOptimal(new int[]{1},0));
-    }
-
-    @Test
-    public void test4(){
-        Assertions.assertEquals( 1, coinChangeOptimal(new int[]{1},1));
-    }
-
-    @Test
-    public void test5(){
-        Assertions.assertEquals( 2, coinChangeOptimal(new int[]{1},2));
-    }
-
-    @Test
-    public void test6(){
-        Assertions.assertEquals( 4, coinChangeOptimal(new int[]{1,2,5,10},27));
-    }
-
-    @Test
-    public void test7(){
-        Assertions.assertEquals( -1, coinChangeOptimal(new int[]{186,419,83,408},6249));
-    }
 }
