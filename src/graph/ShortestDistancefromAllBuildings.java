@@ -12,7 +12,7 @@ import java.util.*;
  * @author g1patil
  * 317. Shortest Distance from All Buildings
  */
-@Quality(Stage.TESTED)
+@Quality(value = Stage.FAILING , details = "51/85")
 @Platform(Site.LEETCODE)
 public class ShortestDistancefromAllBuildings {
 
