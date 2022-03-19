@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author jivanpatil
  * 162. Find Peak Element
+ * 852. Peak Index in a Mountain Array
  * */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
