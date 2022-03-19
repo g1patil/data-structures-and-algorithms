@@ -12,7 +12,7 @@ import java.util.*;
  * @author g1patil
  * 317. Shortest Distance from All Buildings
  */
-@Quality(value = Stage.FAILING , details = "51/85")
+@Quality(value = Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class ShortestDistancefromAllBuildings {
 
@@ -21,24 +21,22 @@ public class ShortestDistancefromAllBuildings {
     public int shortestDistance(int[][] grid) {
         int row = grid.length , col = grid[0].length;
         int [][] distance = new int[row][col];
-        List<int[]> buildings  = new ArrayList<>();
+        int [][] coveredBuildings = new int[row][col];
+        int totalBuildings = 0 ;
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if (grid[i][j] == 1)
-                    buildings.add(new int[]{i,j});
+                if (grid[i][j] == 1){
+                    totalBuildings++;
+                    bfs(grid,distance , coveredBuildings, i , j );
+                }
             }
-        }
-
-        for (int[] b : buildings){
-            if (!bfs(grid , distance, b[0],b[1]))
-                return -1;
         }
 
         int result = Integer.MIN_VALUE;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if (distance[i][j] < 0){
+                if (distance[i][j] < 0 && coveredBuildings[i][j] == totalBuildings){
                     result = Math.max(result , distance[i][j]);
                 }
             }
@@ -46,13 +44,14 @@ public class ShortestDistancefromAllBuildings {
         return result == Integer.MIN_VALUE ? -1 : result * -1;
     }
 
-    public boolean bfs(int[][] grid , int[][] distance , int row , int col ){
-        boolean reachable = false;
+    public void bfs(int[][] grid , int[][] distance ,int[][] total, int row , int col ){
         Queue<int[]> q = new LinkedList<>();
         boolean[][] visited = new boolean[grid.length][grid[0].length];
+
         q.add(new int[]{row,col});
         visited[row][col] = true;
         int dis = 1;
+
         while (!q.isEmpty()){
             int size = q.size();
             for (int i = 0; i < size; i++) {
@@ -63,16 +62,15 @@ public class ShortestDistancefromAllBuildings {
                     int r1 = r + n[0] , c1 = c + n[1];
 
                     if (isValid(grid , r1, c1) && !visited[r1][c1] ){
-                        reachable = true;
                         q.add(new int[]{r1,c1});
                         distance[r1][c1]= distance[r1][c1] - dis;
                         visited[r1][c1] = true;
+                        total[r1][c1]++;
                     }
                 }
             }
             dis++;
         }
-        return reachable;
     }
 
     public boolean isValid(int[][] grid , int r , int c){
