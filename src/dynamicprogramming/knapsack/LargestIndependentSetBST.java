@@ -17,7 +17,7 @@ import java.util.Map;
  * Largest Independent Set Problem | DP-26
  *
  * Actual problem asks for largest independent set size.
- * I have implemented sum of all those nodes. To get the size of the subset ,
+ * I have implemented sum of all those children. To get the size of the subset ,
  * replace the line 44 where we add the val of the node, instead choose 1 as the count.
  */
 @Platform(Site.GEEKFORGEEKS)

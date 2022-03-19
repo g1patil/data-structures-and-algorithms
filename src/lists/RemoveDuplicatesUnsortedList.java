@@ -67,7 +67,7 @@ public class RemoveDuplicatesUnsortedList {
         deleteDuplicates(root);
     }
 
-    //only two nodes, duplicate
+    //only two children, duplicate
     @Test
     public void test4(){
         Node root = new Node(2);
@@ -77,7 +77,7 @@ public class RemoveDuplicatesUnsortedList {
         deleteDuplicates(root);
     }
 
-    // Last two nodes duplicate
+    // Last two children duplicate
     @Test
     public void test5(){
         Node root = new Node(2);
@@ -90,7 +90,7 @@ public class RemoveDuplicatesUnsortedList {
         deleteDuplicates(root);
     }
 
-    //Multiple nodes duplicate
+    //Multiple children duplicate
     @Test
     public void test6(){
         Node root = new Node(2);

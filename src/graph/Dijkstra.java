@@ -119,7 +119,7 @@ public class Dijkstra {
         Dijkstra dpq = new Dijkstra(V);
         dpq.dijkstra(adj, source);
 
-        // Printing the shortest path to all the nodes
+        // Printing the shortest path to all the children
         // from the source node
         System.out.println("The shorted path from node :");
 

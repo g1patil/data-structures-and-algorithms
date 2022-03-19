@@ -11,7 +11,7 @@ import java.util.List;
  * In a binary tree, a lonely node is a node that is the only child of its parent node.
  * The root of the tree is not lonely because it does not have a parent node.
  *
- * Given the root of a binary tree, return an array containing the values of all lonely nodes in the tree.
+ * Given the root of a binary tree, return an array containing the values of all lonely children in the tree.
  * Return the list in any order.
  *
  * */
@@ -19,7 +19,7 @@ public class LonelyNodes {
 
     /**
      * @param root root node
-     * @return List of nodes who are only child to their parent
+     * @return List of children who are only child to their parent
      * */
     List<Integer> lonelyNodes(TreeNode root){
         List<Integer> result = new ArrayList<>();

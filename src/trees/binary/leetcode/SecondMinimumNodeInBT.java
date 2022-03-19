@@ -9,12 +9,12 @@ import java.util.Queue;
 /**
  * @author g1patil
  *
- * Given a non-empty special binary tree consisting of nodes with the non-negative value,
- * where each node in this tree has exactly two or zero sub-node. If the node has two sub-nodes,
- * then this node's value is the smaller value among its two sub-nodes.
+ * Given a non-empty special binary tree consisting of children with the non-negative value,
+ * where each node in this tree has exactly two or zero sub-node. If the node has two sub-children,
+ * then this node's value is the smaller value among its two sub-children.
  * More formally, the property root.val = min(root.left.val, root.right.val) always holds.
  *
- * Given such a binary tree, you need to output the second minimum value in the set made of all the nodes' value in the whole tree.
+ * Given such a binary tree, you need to output the second minimum value in the set made of all the children' value in the whole tree.
  *
  * If no such second minimum value exists, output -1 instead.
  */

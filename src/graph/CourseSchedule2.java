@@ -36,7 +36,7 @@ public class CourseSchedule2 {
             if (child == null)
                 continue;;
 
-            /* reduce the in-degree on the nodes */
+            /* reduce the in-degree on the children */
             graph.get(num).forEach(i->{
                 int previousDegree =  indegreeMap.get(i);
                 indegreeMap.put( i , previousDegree - 1) ;
@@ -48,7 +48,7 @@ public class CourseSchedule2 {
 
         }
 
-        /* if the final order has less nodes than total size then, we are missing node*/
+        /* if the final order has less children than total size then, we are missing node*/
         if(order.size() != numCourses)
             return new int[0];
 
@@ -64,7 +64,7 @@ public class CourseSchedule2 {
     }
 
     /**
-     * Converts the 2D array to adjacency list of graph. Builds the in-degree hashmap of the nodes
+     * Converts the 2D array to adjacency list of graph. Builds the in-degree hashmap of the children
      * */
     public void buildGraph(int numCourses , int[][] prerequisites){
         for(int[] edge : prerequisites){
@@ -81,7 +81,7 @@ public class CourseSchedule2 {
             }
         }
 
-        /* Add the nodes with in-degree 0 to the map */
+        /* Add the children with in-degree 0 to the map */
         queue.addAll(indegreeMap.keySet().stream().filter(k -> indegreeMap.get(k) == 0).collect(Collectors.toList()));
     }
 

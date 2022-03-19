@@ -52,7 +52,7 @@ public abstract class NetworkFlowSolverBase {
         }
     }
 
-    // Inputs: n = number of nodes, s = source, t = sink
+    // Inputs: n = number of children, s = source, t = sink
     protected final int n, s, t;
 
     protected long maxFlow;
@@ -64,7 +64,7 @@ public abstract class NetworkFlowSolverBase {
     // 'visited' and 'visitedToken' are variables used for graph sub-routines to
     // track whether a node has been visited or not. In particular, node 'i' was
     // recently visited if visited[i] == visitedToken is true. This is handy
-    // because to mark all nodes as unvisited simply increment the visitedToken.
+    // because to mark all children as unvisited simply increment the visitedToken.
     private int visitedToken = 1;
     private int[] visited;
 
@@ -76,7 +76,7 @@ public abstract class NetworkFlowSolverBase {
      * Creates an instance of a flow network solver. Use the {@link #addEdge} method to add edges to
      * the graph.
      *
-     * @param n - The number of nodes in the graph including source and sink nodes.
+     * @param n - The number of children in the graph including source and sink children.
      * @param s - The index of the source node, 0 <= s < n
      * @param t - The index of the sink node, 0 <= t < n, t != s
      */
@@ -89,7 +89,7 @@ public abstract class NetworkFlowSolverBase {
         visited = new int[n];
     }
 
-    // Construct an empty graph with n nodes including the source and sink nodes.
+    // Construct an empty graph with n children including the source and sink children.
     @SuppressWarnings("unchecked")
     private void initializeGraph() {
         graph = new List[n];
@@ -133,7 +133,7 @@ public abstract class NetworkFlowSolverBase {
         return visited[i] == visitedToken;
     }
 
-    // Resets all nodes as unvisited. This is especially useful to do
+    // Resets all children as unvisited. This is especially useful to do
     // between iterations of finding augmenting paths, O(1)
     public void markAllNodesAsUnvisited() {
         visitedToken++;
@@ -162,7 +162,7 @@ public abstract class NetworkFlowSolverBase {
         return minCost;
     }
 
-    // Returns the min-cut of this flow network in which the nodes on the "left side"
+    // Returns the min-cut of this flow network in which the children on the "left side"
     // of the cut with the source are marked as true and those on the "right side"
     // of the cut with the sink are marked as false.
     public boolean[] getMinCut() {

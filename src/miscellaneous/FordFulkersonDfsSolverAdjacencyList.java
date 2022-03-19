@@ -21,7 +21,7 @@ public class FordFulkersonDfsSolverAdjacencyList extends NetworkFlowSolverBase {
      * Creates an instance of a flow network solver. Use the {@link #addEdge(int, int, int)} method to
      * add edges to the graph.
      *
-     * @param n - The number of nodes in the graph including source and sink nodes.
+     * @param n - The number of children in the graph including source and sink children.
      * @param s - The index of the source node, 0 <= s < n
      * @param t - The index of the sink node, 0 <= t < n, t != s
      */

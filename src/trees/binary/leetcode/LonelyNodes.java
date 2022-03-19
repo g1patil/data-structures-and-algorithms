@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @author g1patil
- * Give list of the nodes , which are only child to their parent.
+ * Give list of the children , which are only child to their parent.
  */
 @Platform(value = Site.LEETCODE , tests = "passes all the test cases")
 public class LonelyNodes {

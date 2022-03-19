@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  *  First , choose the root node
  *          the optimal and the best choice is the mid of the array.
  *          Since mid of the array can have the equal distribution
- *          of nodes less than and greater than it.
+ *          of children less than and greater than it.
  *          Now after mid , we have left sub array and right sub array.
  *          Now again, root for left will be mid of the left sub array and
  *          so on for right.

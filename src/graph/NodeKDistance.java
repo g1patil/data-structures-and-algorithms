@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * @author g1patil
  *
- * Print the nodes which are k distance from the given node
+ * Print the children which are k distance from the given node
  */
 @Platform(Site.RANDOM)
 public class NodeKDistance {

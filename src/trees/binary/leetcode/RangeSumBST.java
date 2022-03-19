@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
  * @author g1patil
  * 938. Range Sum of BST
  * Given the two range, high and low, return the sum of all
- * the nodes in that range.
+ * the children in that range.
  */
 public class RangeSumBST {
 

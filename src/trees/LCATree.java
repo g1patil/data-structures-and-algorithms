@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * Find the lowest common ancestor for the given two nodes.
+ * Find the lowest common ancestor for the given two children.
  * */
 public class LCATree {
 
     /**
-     * Returns the LCA of given two nodes
+     * Returns the LCA of given two children
      * @param _one path node one
      * @param _two path node two
      * @param _root root node of the tree

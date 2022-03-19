@@ -12,8 +12,8 @@ public class MArayDriver {
             return null;
         }
 
-        if(!node.nodes.isEmpty()){
-            node.nodes.forEach(consumer->{
+        if(!node.children.isEmpty()){
+            node.children.forEach(consumer->{
                 set.addAll(traverseTree(consumer));
             });
         }
@@ -37,12 +37,12 @@ public class MArayDriver {
         Node n8 = new Node(8);
         Node n9 = new Node(9);
 
-        n1.nodes.addAll(List.of(n5,n6));
-        n2.nodes.addAll(List.of(n3));
-        n3.nodes.addAll(List.of(n8,n9));
-        n9.nodes.addAll(List.of(n7));
+        n1.children.addAll(List.of(n5,n6));
+        n2.children.addAll(List.of(n3));
+        n3.children.addAll(List.of(n8,n9));
+        n9.children.addAll(List.of(n7));
 
-        root.nodes.addAll(List.of(n1,n2,n3,n4));
+        root.children.addAll(List.of(n1,n2,n3,n4));
 
         MArayDriver obj = new MArayDriver();
         obj.traverseTree(root).forEach(a->{

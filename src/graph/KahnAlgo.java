@@ -34,13 +34,13 @@ public class KahnAlgo {
 
         }
 
-        //add the nodes with the degree zero in the queue
+        //add the children with the degree zero in the queue
         for (Integer integer : nodeDegreesMap.keySet().stream().filter(key -> nodeDegreesMap.get(key) == 0).collect(Collectors.toList())) {
             integers.add( integer );
         }
 
         //process the queue : remove the node and reduce the degree of all connected
-        //add the nodes with zero degree in the queue
+        //add the children with zero degree in the queue
         // add the current node to the topological order
         int index = 0;
         while ( ! integers.isEmpty() ){

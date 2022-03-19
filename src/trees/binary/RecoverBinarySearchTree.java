@@ -57,7 +57,7 @@ public class RecoverBinarySearchTree {
     }
 
     /**
-     * Fixes the BT which has exactly two nodes in the wrong place.
+     * Fixes the BT which has exactly two children in the wrong place.
      * */
     public void recoverTree(TreeNode root) {
         previous = new TreeNode(Integer.MIN_VALUE);
