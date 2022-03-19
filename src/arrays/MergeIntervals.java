@@ -5,6 +5,7 @@ import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
+import sorting.ArrayUtility;
 
 import java.util.*;
 
@@ -18,32 +19,15 @@ public class MergeIntervals {
 
     public int[][] merge(int[][] intervals) {
         /* sort the intervals first*/
-        Arrays.sort(intervals , Comparator.comparingInt(a-> a[0]));
+        Arrays.sort(intervals , Comparator.comparingInt(a -> a[0]));
+        LinkedList<int[]> resultList = new LinkedList<>();
 
-        /* add them to list/ Iterate over each next pair, if overlap then merge , or continue*/
-        LinkedList<int[]> list = new LinkedList<>();
-        for (int[] ints : intervals)
-            list.add(ints);
-
-        for (int i = 0; i < list.size() - 1 ; i++) {
-            if (list.get(i)[1] >= list.get(i+1)[0]){
-                int[] _ints = new int[]{
-                        Math.min(list.get(i)[0] , list.get(i+1)[0]) ,
-                        Math.max(list.get(i)[1] , list.get(i+1)[1])
-                };
-                list.remove(i);
-                list.remove(i);
-                list.add( i ,_ints);
-                i--;
-            }
+        for(int[] interval : intervals){
+            if (resultList.isEmpty() || resultList.getLast()[1] < interval[0]){
+                resultList.add(interval);
+            } else resultList.getLast()[1] = Math.max( resultList.getLast()[1] , interval[1]);
         }
-
-        /* convert the list back to array*/
-        int[][] _interval = new int[list.size()][2];
-        for (int i = 0; i < list.size(); i++) {
-            _interval[i] = list.get(i);
-        }
-        return _interval ;
+        return resultList.toArray(new int[resultList.size()][]);
     }
 
     @Test
@@ -55,7 +39,7 @@ public class MergeIntervals {
                 new int[]{15,18},
         };
 
-        System.out.println(merge(ints));
+        ArrayUtility.print(merge(ints));
     }
 
     @Test
