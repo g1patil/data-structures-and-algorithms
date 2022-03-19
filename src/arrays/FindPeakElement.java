@@ -14,33 +14,22 @@ import org.junit.jupiter.api.Test;
 @Platform(Site.LEETCODE)
 public class FindPeakElement {
 
-    int result = 0 ;
+    public int findPeakElement(int[] nums) {
+        int low = 0 , high = nums.length - 1 ;
 
-    public int findPeakElement(int[] nums, int low , int high) {
-        if (result!= 0)
-            return result;
-        if (low > high)
-            return result;
+        while(low < high){
+            int mid = (low + high)/2;
 
-        int mid = low + (high - low)/2 ;
-
-        if (low == 1 || high == nums.length-2){
-            if (nums[0] > nums[1])
-                result = 0;
-            if(nums[nums.length -1] > nums[nums.length-2]){
-                result = nums.length -1;
+            if(nums[mid] < nums[mid + 1]){
+                low = mid + 1;
+            } else {
+                high = mid;
             }
         }
-        if (nums[mid] > nums[mid - 1] && nums[mid] > nums[mid +1]){
-            result =  mid;
-        } else {
-                findPeakElement(nums , low , mid-1);
-                findPeakElement(nums , mid +1  , high);
-        }
-
-        return result;
-
+        return high;
     }
+
+
 
     @Test
     public void test(){
