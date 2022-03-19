@@ -14,7 +14,7 @@ import java.util.*;
  */
 @Quality(value = Stage.TESTED)
 @Platform(Site.LEETCODE)
-public class ShortestDistancefromAllBuildings {
+public class ShortestDistanceFromAllBuildings {
 
     int[][] next = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
 
