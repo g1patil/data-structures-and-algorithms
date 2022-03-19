@@ -33,25 +33,25 @@ public class FindPeakElement {
 
     @Test
     public void test(){
-        System.out.println(findPeakElement(new int[]{1,2,1,3,5,6,4} , 0 , 6));
+        System.out.println(findPeakElement(new int[]{1,2,1,3,5,6,4} ));
     }
 
     @Test
     public void test2(){
-        System.out.println(findPeakElement(new int[]{1,2,3,1} , 0 , 3));
+        System.out.println(findPeakElement(new int[]{1,2,3,1} ));
     }
 
     @Test
     public void test3(){
         int[] ints = new int[]{6,5,4,3,2,3,2};
 
-        System.out.println(findPeakElement(ints , 1 , ints.length - 2));
+        System.out.println(findPeakElement(ints ));
     }
 
     @Test
     public void test4(){
         int[] ints = new int[]{1,2,3};
 
-        System.out.println(findPeakElement(ints , 1 , ints.length - 2));
+        System.out.println(findPeakElement(ints));
     }
 }
