@@ -34,7 +34,7 @@ public class ListIntersection {
         return new ListNode(-1);
     }
 
-    //this will give the constant performace
+    //this will give the constant performance
     private ListNode getIntersectionNodeOptimal(ListNode n1 , ListNode m1){
         int nSize = 0;
         int mSize = 0;
@@ -61,7 +61,12 @@ public class ListIntersection {
                 nSize--;
             }
         }
-        return null;
+
+        while (n1!=m1){
+            n1 = n1.next;
+            m1 = m1.next;
+        }
+        return n1;
     }
 
     private void rotate(ListNode n1){
