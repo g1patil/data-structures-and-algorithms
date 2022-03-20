@@ -92,7 +92,7 @@ public class ListIntersection {
         m1.printList();
 
         System.out.println();
-        getIntersectionNode(n1 , m1 ).printList();
+        getIntersectionNodeOptimal(n1 , m1 ).printList();
 
     }
 

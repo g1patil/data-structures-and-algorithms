@@ -101,7 +101,7 @@ public class RotateBoxLC {
         };
         System.out.println("Org matrix ");
         printMatrix(matrix);
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 3; i++) {
             matrix = rotateTheBox(matrix);
             System.out.println("rotated");
             printMatrix(matrix);
