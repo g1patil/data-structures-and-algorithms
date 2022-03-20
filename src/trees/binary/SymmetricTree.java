@@ -1,5 +1,9 @@
 package trees.binary;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,19 +31,20 @@ import org.junit.jupiter.api.Test;
  * Follow up: Solve it both recursively and iteratively.
  *
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class SymmetricTree {
 
-    boolean isSymmetric(final TreeNode node){
+    public boolean isSymmetric(TreeNode root) {
+        return isMirror(root , root);
+    }
 
-        if ( node.left !=null && node.right!=null){
-            isSymmetric( node.left);
-            isSymmetric( node.right);
-        } else if ( node.left != null && node.right == null ){
+    public boolean isMirror(TreeNode l,TreeNode r){
+        if( l == null && r == null)
+            return true;
+        if( l == null || r == null)
             return false;
-        } else if ( node.right != null && node.left == null ){
-            return false;
-        }
-        return true;
+        return l.val == r.val && isMirror(l.left , r.right) && isMirror(l.right , r.left);
     }
 
     //single node
