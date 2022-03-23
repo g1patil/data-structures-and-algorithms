@@ -18,7 +18,7 @@ public class ReconstructItinerary {
 
     public List<String> findItinerary(List<List<String>> tickets) {
         LinkedList<String> itinerary = new LinkedList<>();
-        Map<String,PriorityQueue<String>> flights = buildflightMap(tickets);
+        Map<String,PriorityQueue<String>> flights = buildFlightMap(tickets);
         dfs("JFK" , itinerary , flights);
         return itinerary;
     }
@@ -32,7 +32,7 @@ public class ReconstructItinerary {
     }
 
 
-    private Map<String,PriorityQueue<String>> buildflightMap(List<List<String>> tickets){
+    private Map<String,PriorityQueue<String>> buildFlightMap(List<List<String>> tickets){
         Map<String,PriorityQueue<String>> map = new HashMap<>();
 
         for(List<String> flight : tickets){
