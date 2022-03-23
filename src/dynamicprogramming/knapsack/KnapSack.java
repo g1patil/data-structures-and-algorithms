@@ -98,7 +98,7 @@ public class KnapSack {
         int maxWeightCapacity = 10 ;
         int numberOfItems = values.length ;
 
-        System.out.println( this.knapSackSolver( values , weight ,  maxWeightCapacity , numberOfItems ));
+
 
         this.recursionResult = new int[numberOfItems + 1 ][maxWeightCapacity + 1];
 
@@ -117,6 +117,7 @@ public class KnapSack {
             }
         }
 
+        System.out.println( this.knapSackSolver( values , weight ,  maxWeightCapacity , numberOfItems ));
         System.out.println( this.memoizationKnapSack(values , weight , maxWeightCapacity , numberOfItems) );
         System.out.println( this.knapSackBottomUp(values , weight , maxWeightCapacity , numberOfItems) );
     }

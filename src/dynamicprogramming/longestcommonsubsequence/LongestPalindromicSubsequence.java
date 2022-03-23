@@ -26,7 +26,7 @@ public class LongestPalindromicSubsequence {
     @Test
     public void test2(){
         String s1 = "abc";
-        //s2 will be the palindrom of the original string
+        //s2 will be the palindrome of the original string
         String s2 = new StringBuilder(s1).reverse().toString();
 
         this.memoization = new int[s1.length() + 1][ s2.length() + 1];
