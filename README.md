@@ -3,8 +3,6 @@
 This repo contains the standard Data Structure and Algorithm question for coding interviews. The major focus is on the Leetcode platform.
 Feel free to fork/contribute/share/createissue or ask any question. Majority of the algo are tested. The class are annotated with details about status. 
 
-You can also refer to my [Java Notes](http://blog..com/category/java) for a quick refresh on the Java concepts. Lastly, feel free to connect with me on [Twitter](https://twitter.com/ram__patra) for any queries or concerns. All the best!
-
 ## Contents
 
 1. [Basic Practice](/src/main/java/com//):
