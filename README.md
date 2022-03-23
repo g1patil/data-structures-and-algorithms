@@ -1,4 +1,4 @@
-# Data Structures and Algorithms ain Java
+# Data Structures and Algorithms in Java
 
 This repo contains the standard Data Structure and Algorithm question for coding interviews. The major focus is on the Leetcode platform.
 Feel free to fork/contribute/share/createissue or ask any question. Majority of the algo are tested. The class are annotated with details about status. 
