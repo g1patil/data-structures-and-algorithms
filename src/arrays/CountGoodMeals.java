@@ -1,5 +1,9 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +43,8 @@ Constraints:
 0 <= deliciousness[i] <= 220
 
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class CountGoodMeals {
 
     /**
