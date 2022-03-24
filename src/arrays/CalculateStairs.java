@@ -1,5 +1,12 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
+
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class CalculateStairs {
     static int getSum(int input){
         if(input == 0 || input == 1){
