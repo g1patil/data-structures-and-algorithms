@@ -1,5 +1,9 @@
 package disjointset;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +15,8 @@ import java.util.stream.Collectors;
  * 721. Accounts Merge
  *  TODO WTIP
  */
+@Quality(Stage.INCOMPLETE)
+@Platform(Site.LEETCODE)
 public class MergeAccounts {
 
     Map<String,Integer> stringIntegerMap = new HashMap<>();
