@@ -1,10 +1,17 @@
 package trees.binary;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
+
 /*
 * Checks if the given sum exists in path. Add the root to leaf node values and check if there is
 * possible path whose sum is equal to the target path
 *
 * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class SumExist {
 
     /**
