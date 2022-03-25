@@ -1,5 +1,9 @@
 package trees.binary;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -44,6 +48,8 @@ import org.junit.jupiter.api.Test;
  * Return false.
  *
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class SubtreeAnotherTree {
 
     /**
