@@ -1,4 +1,8 @@
 package trees;
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 import trees.binary.DFSPath;
@@ -10,6 +14,8 @@ import java.util.Queue;
 /**
  * Find the lowest common ancestor for the given two children.
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class LCATree {
 
     /**
