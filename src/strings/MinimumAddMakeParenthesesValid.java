@@ -19,42 +19,22 @@ import java.util.Set;
 @Quality(Stage.TESTED)
 public class MinimumAddMakeParenthesesValid {
 
-    LinkedList<Brace> list = new LinkedList<>();
-    Set<Character> characterSet = new HashSet<>();
-
-    {
-        characterSet.add('(');
-        characterSet.add(')');
-    }
-
-    class Brace {
-        char brace;
-        int index;
-
-        Brace(char _b , int _i){ brace = _b ;index = _i;}
-    }
 
     public int minAddToMakeValid(String s) {
-        if (s == null || s.isBlank())
-            return 0;
+        int result = 0 , currentCount = 0;
 
-        char[] chars = s.toCharArray();
-
-        for (int i = 0; i < chars.length; i++) {
-            char current = chars[i];
-
-            if (characterSet.contains(current)){
-                if (current == '('){
-                    list.push(new Brace(')' , i) );
-                } else if ( !list.isEmpty() && list.peek().brace == current){
-                    list.pop();
+        for(char c : s.toCharArray()){
+            if( c == '('){
+                currentCount++;
+            } else if ( c == ')'){
+                if(currentCount > 0 ){
+                    currentCount--;
                 } else {
-                    list.push(new Brace('(' , i));
+                    result++;
                 }
             }
-
         }
-        return list.size();
 
+        return result + currentCount;
     }
 }
