@@ -1,83 +1,102 @@
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
+import java.sql.PreparedStatement;
+import java.util.*;
+
 /**
  * Test class to practice any given problem .
  * This class serves as the template class for any coding practices that I do.
  * */
+
+
 public class TestClass {
 
+    public static class Transaction {
+        String company;
+        double amount;
+        int timestamp;
 
-    static void factorial(int n)
-    {
-        int res[] = new int[500];
-
-        // Initialize result
-        res[0] = 1;
-        int res_size = 1;
-
-        // Apply simple factorial formula
-        // n! = 1 * 2 * 3 * 4...*n
-        for (int x = 2; x <= n; x++)
-            res_size = multiply(x, res, res_size);
-
-        System.out.println("Factorial of given number is ");
-        for (int i = res_size - 1; i >= 0; i--)
-            System.out.print(res[i]);
+        public Transaction(String company, double amount, int timestamp) {
+            this.company = company;
+            this.amount = amount;
+            this.timestamp = timestamp;
+        }
     }
 
-    // This function multiplies x with the number
-    // represented by res[]. res_size is size of res[] or
-    // number of digits in the number represented by res[].
-    // This function uses simple school mathematics for
-    // multiplication. This function may value of res_size
-    // and returns the new value of res_size
-    static int multiply(int x, int res[], int res_size)
-    {
-        int carry = 0; // Initialize carry
-
-        // One by one multiply n with individual
-        // digits of res[]
-        for (int i = 0; i < res_size; i++)
-        {
-            int prod = res[i] * x + carry;
-            res[i] = prod % 10; // Store last digit of
-            // 'prod' in res[]
-            carry = prod/10; // Put rest in carry
+    public List<String> getCompaniesWithRecurringTransactions(Transaction[] transactions) {
+        List<String> companies = new ArrayList<>();
+        if(transactions == null || transactions.length == 0) {
+            return companies;
         }
 
-        // Put carry in res and increase result size
-        while (carry!=0)
-        {
-            res[res_size] = carry % 10;
-            carry = carry / 10;
-            res_size++;
+        Map<String, List<Transaction>> transactionsMap = new HashMap<>();
+        for(Transaction t : transactions) {
+            List<Transaction> listOfTransactions = transactionsMap.getOrDefault(t.company, new ArrayList<>());
+            listOfTransactions.add(t);
+            transactionsMap.put(t.company, listOfTransactions);
         }
-        return res_size;
+
+        for (Map.Entry<String, List<Transaction>> e : transactionsMap.entrySet()){
+            String result = getRecurring(e.getValue() , e.getKey());
+            if (result !=null)
+                companies.add(result);
+        }
+        return companies;
     }
 
-    static int multiplyMy(int x, int res[], int res_size) {
-        int carry = 0 , prod = 0 ;
-        for (int i = 0; i < res_size; i++) {
-            prod = res[i]*x + carry;
-            res[i] = prod % 10;
-            carry = prod/10;
+    private List<List<Transaction>> getEqualTransactions(List<Transaction> value) {
+        Map<Double , List<Transaction>>  tranMap = new HashMap<>();
+        List<List<Transaction>> result = new ArrayList<>();
+
+        for (Transaction t : value ){
+            if (tranMap.containsKey(t.amount)){
+                tranMap.get(t.amount).add(t);
+            } else {
+                tranMap.put(t.amount , new ArrayList<>());
+                tranMap.get(t.amount).add(t);
+            }
         }
-        while (carry!=0){
-            res[res_size] = carry % 10;
-            carry = carry / 10 ;
-            res_size++;
+
+        for (List<Transaction> list : tranMap.values() ){
+            if (list.size() >=3)
+                result.add(list);
+
         }
-        return res_size;
+        return result;
+    }
+
+    private String getRecurring(List<Transaction> transactions, String company){
+        Map<Integer,Integer> freq  = new HashMap<>();
+        for (int i = 0; i < transactions.size() - 1; i++) {
+            Transaction current = transactions.get(i);
+            for (int j = i + 1; j < transactions.size(); j++) {
+                int timeDiff = current.timestamp = transactions.get(j).timestamp;
+                freq.put( timeDiff , freq.getOrDefault(timeDiff , 0 ) + 1 );
+            }
+        }
+
+        for (int v : freq.values())
+            if (v >=2)
+                return company;
+        return null;
     }
 
 
 
-    // Driver program
-    public static void main(String args[])
-    {
-        factorial(100);
+
+    public static void main(String[] args) {
+        TestClass obj = new TestClass();
+
+        Transaction[] transactions = new Transaction[] {
+                new Transaction("Netflix", 9.99, 1),
+                new Transaction("Netflix", 9.99, 6),
+                new Transaction("Netflix", 9.99, 11),
+                new Transaction("Netflix", 9.99, 13),
+                new Transaction("Netflix", 9.99, 27)};
+
+
+        List<String> result = obj.getCompaniesWithRecurringTransactions(transactions);
+        System.out.println("The companies with recurring transactions are: " + result);
     }
-
-
 }
