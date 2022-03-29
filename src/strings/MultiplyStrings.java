@@ -1,10 +1,13 @@
 package strings;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil
  */
+@Platform(Site.LEETCODE)
 public class MultiplyStrings {
 
     public String multiply(String num1, String num2) {
