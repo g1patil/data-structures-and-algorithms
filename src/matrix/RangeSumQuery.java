@@ -1,5 +1,9 @@
 package matrix;
 
+import annotation.Platform;
+import annotation.Site;
+
+@Platform(Site.LEETCODE)
 public class RangeSumQuery {
 
     int[][] matrixSum;
