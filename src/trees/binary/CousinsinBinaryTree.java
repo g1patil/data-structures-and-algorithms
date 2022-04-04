@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * 993. Cousins in Binary Tree
+ * 993. Cousins in Binary Tre
  * */
 @Quality(Stage.FAILING)
 @Platform(Site.LEETCODE)
