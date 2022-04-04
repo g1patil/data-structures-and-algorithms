@@ -1,7 +1,10 @@
 package miscellaneous;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
+@Platform(Site.LEETCODE)
 public class Ordinal {
     private String ordinal(Integer number){
 
