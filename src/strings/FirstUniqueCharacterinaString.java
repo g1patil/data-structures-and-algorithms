@@ -2,6 +2,7 @@ package strings;
 
 import annotation.Platform;
 import annotation.Site;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,5 +23,10 @@ public class FirstUniqueCharacterinaString {
             else characterIntegerMap.put(c, i);
         }
         return -1;
+    }
+
+    @Test
+    public void test(){
+
     }
 }
