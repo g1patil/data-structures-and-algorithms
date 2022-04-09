@@ -14,19 +14,22 @@ import java.util.Map;
 public class FirstUniqueCharacterinaString {
 
     public int firstUniqChar(String s) {
-        Map<Character,Integer> characterIntegerMap = new HashMap<>();
+        int[] fre = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
-            char c  = s.charAt(i);
-            if (characterIntegerMap.containsKey(c))
-                return characterIntegerMap.get(c);
-            else characterIntegerMap.put(c, i);
+            int c  = s.charAt(i) - 'a';
+            fre[c]++;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            int c  = s.charAt(i) - 'a';
+            if (fre[c] == 1)
+                return i;
         }
         return -1;
     }
 
     @Test
     public void test(){
-
+        System.out.println(firstUniqChar("jivanivan"));
     }
 }
