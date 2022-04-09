@@ -1,7 +1,9 @@
 package strings;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import java.util.Map;
 /**
  * 387. First Unique Character in a String
  * */
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class FirstUniqueCharacterinaString {
 
