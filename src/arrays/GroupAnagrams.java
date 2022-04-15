@@ -1,5 +1,8 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Site;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,6 +21,7 @@ import java.util.Map;
  * Input: strs = ["eat","tea","tan","ate","nat","bat"] Output:
  * [["bat"],["nat","tan"],["ate","eat","tea"]]
  */
+@Platform(Site.LEETCODE)
 public class GroupAnagrams {
 
     Collection<List<String>> groupAnagrams(String[] inputArray){
