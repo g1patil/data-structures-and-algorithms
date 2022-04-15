@@ -1,5 +1,7 @@
 package arrays;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.List;
 /**
  * @author g1patil
  */
+@Platform(Site.LEETCODE)
 public class ExclusiveTimeOfFunctions {
 
     public int[] exclusiveTime(int n, List<String> logs) {
