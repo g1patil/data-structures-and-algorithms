@@ -1,5 +1,7 @@
 package trees.binary;
 
+import annotation.Platform;
+import annotation.Site;
 import data.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -32,6 +34,7 @@ import org.junit.jupiter.api.Test;
  * but you can’t invert a binary tree on a whiteboard so f*** off.
  *
  * */
+@Platform(Site.LEETCODE)
 public class InvertBinaryTree {
 
     /**
