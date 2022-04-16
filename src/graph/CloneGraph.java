@@ -1,11 +1,14 @@
 package graph;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 import java.util.*;
 /**
  * Clone the given undirected graph.
  *
  * */
+@Platform(Site.LEETCODE)
 public class CloneGraph {
     Set<Vertex> built;
     Vertex newRoot;
