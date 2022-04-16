@@ -1,11 +1,14 @@
 package graph;
 
+import annotation.Platform;
+import annotation.Site;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+@Platform(Site.RANDOM)
 public class EulerPath {
 
     List<ArrayList<Integer>> graph;
