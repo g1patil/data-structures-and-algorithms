@@ -1,11 +1,14 @@
 package dynamicprogramming.dpontrees;
 
+import annotation.Platform;
+import annotation.Site;
 import data.TreeNode;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author g1patil
  */
+@Platform(Site.LEETCODE)
 public class MaxPathSumLeaf2Leaf {
 
     /**
