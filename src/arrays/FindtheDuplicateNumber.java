@@ -13,6 +13,6 @@ import annotation.Stage;
 public class FindtheDuplicateNumber {
 
     public int findDuplicate(int[] nums) {
-        return -1
+        return -1;
     }
 }
