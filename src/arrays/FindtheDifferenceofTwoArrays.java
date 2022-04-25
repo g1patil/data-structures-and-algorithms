@@ -1,17 +1,17 @@
 package arrays;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 2215. Find the Difference of Two Arrays
  * */
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class FindtheDifferenceofTwoArrays {
 
@@ -53,6 +53,30 @@ public class FindtheDifferenceofTwoArrays {
         result.add(r2);
 
         return result;
+    }
+
+    /**
+     * Reference : https://leetcode.com/problems/find-the-difference-of-two-arrays/discuss/1888950/Java-HashSet-Solution
+     * */
+    public List<List<Integer>> findDifferenceImproved(int[] nums1, int[] nums2) {
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        for (int num : nums1) {
+            set1.add(num);
+        }
+        for (int num : nums2) {
+            set2.add(num);
+            set1.remove(num);
+        }
+
+        for (int num : nums1) {
+            set2.remove(num);
+        }
+
+        List<List<Integer>> ans = new ArrayList<>();
+        ans.add(new ArrayList<>(set1));
+        ans.add(new ArrayList<>(set2));
+        return ans;
     }
 
     @Test
