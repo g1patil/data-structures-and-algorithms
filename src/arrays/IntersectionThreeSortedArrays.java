@@ -14,6 +14,10 @@ import java.util.Map;
  * */
 @Platform(Site.LEETCODE)
 public class IntersectionThreeSortedArrays {
+
+    /**
+     * When order matters
+     * */
     public List<Integer> arraysIntersection(int[] arr1, int[] arr2, int[] arr3) {
         List<Integer> result = new ArrayList<>();
         int p1 = 0 , p2 = 0 , p3 = 0;
