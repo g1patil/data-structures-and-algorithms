@@ -11,4 +11,8 @@ import annotation.Stage;
 @Quality(Stage.INCOMPLETE)
 @Platform(Site.LEETCODE)
 public class UniqueNumberofOccurrences {
+
+    public int countBinarySubstrings(String s) {
+
+    }
 }
