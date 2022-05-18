@@ -12,18 +12,24 @@ import org.junit.jupiter.api.Test;
 public class InorderSuccessorinBST {
 
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        return inorderSuccessorHelper(root,p,false);
+        TreeNode treeNode = new TreeNode(-1)
+        inorderSuccessorHelper(root,p,false , treeNode );
+        return treeNode;
     }
 
-    public TreeNode inorderSuccessorHelper(TreeNode root, TreeNode p, boolean found) {
-        if (found || root == null)
-            return root;
-        inorderSuccessorHelper(root.left , p , found);
+    public void inorderSuccessorHelper(TreeNode root, TreeNode p, boolean found , TreeNode result) {
+        if (root.left == null && root.right == null)
+            return ;
+        if (found && root != null){
+            root = result;
+            return;
+        }
+        inorderSuccessorHelper(root.left , p , found , result);
         if (root.val == p.val)
             found = true;
-        inorderSuccessorHelper(root.right , p , found);
+        inorderSuccessorHelper(root.right , p , found , result);
 
-        return null;
+        return ;
     }
 
     @Test
