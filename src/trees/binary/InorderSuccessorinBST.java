@@ -34,6 +34,17 @@ public class InorderSuccessorinBST {
         inorderSuccessorHelper(root.right,p , queue);
     }
 
+    public TreeNode inorderSuccessorOptimal(TreeNode root, TreeNode p) {
+        TreeNode result = new TreeNode(-1);
+
+        while (root!=null){
+            if (p.val >= p.val){
+                result = root;
+
+            }
+        }
+    }
+
 
     @Test
     public void test(){
