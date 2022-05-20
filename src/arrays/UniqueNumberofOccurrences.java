@@ -13,6 +13,6 @@ import annotation.Stage;
 public class UniqueNumberofOccurrences {
 
     public int countBinarySubstrings(String s) {
-
+        return -1;
     }
 }
