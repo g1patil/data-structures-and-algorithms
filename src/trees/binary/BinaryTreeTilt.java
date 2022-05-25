@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * 563. Binary Tree Tilt
  * @link https://leetcode.com/problems/binary-tree-tilt/submissions/
  * */
-@Quality(Stage.BUGGY)
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class BinaryTreeTilt {
 

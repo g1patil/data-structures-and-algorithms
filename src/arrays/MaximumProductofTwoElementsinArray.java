@@ -38,7 +38,6 @@ public class MaximumProductofTwoElementsinArray {
                 j = k ;
             }
 
-
         }
 
         return (nums[i]-1)*(nums[j]-1);
