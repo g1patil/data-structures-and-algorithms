@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * 563. Binary Tree Tilt
+ * @link https://leetcode.com/problems/binary-tree-tilt/submissions/
  * */
 @Quality(Stage.BUGGY)
 @Platform(Site.LEETCODE)
@@ -20,17 +21,14 @@ public class BinaryTreeTilt {
         return treeNode.val;
     }
 
-    private void findTiltHelper(TreeNode root, TreeNode treeNode) {
+    private int findTiltHelper(TreeNode root, TreeNode treeNode) {
         if (root == null)
-            return;
+            return 0 ;
+        int left = findTiltHelper(root.left,treeNode);
+        int right = findTiltHelper(root.right,treeNode);
 
-        int left = root.left == null ? 0 : root.left.val;
-        int right = root.right == null ? 0 : root.right.val;
         treeNode.val +=Math.abs(left-right);
-
-        findTiltHelper(root.left,treeNode);
-        findTiltHelper(root.right,treeNode);
-
+        return root.val + left + right;
     }
 
     @Test
