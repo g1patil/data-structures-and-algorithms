@@ -17,6 +17,10 @@ import org.junit.jupiter.api.Test;
 
 public class ShortestPathWithFuel {
 
+    private int getShortestPath(){
+        return -1;
+    }
+
     @Test
     public void test(){
 
