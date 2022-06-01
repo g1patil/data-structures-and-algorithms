@@ -29,11 +29,13 @@ public class ShortestPathWithFuel {
     }
 
     private void getShortestPathHelper(Map<String, List<CityRoute>> graph , String source , String dest , int currentFuel , int dist){
-        if (source.equals(dest)){
-            if (paths.containsKey(source) && paths.get(source) > dist){
-                paths.put(source , dist);
-            } else paths.put(source , dist);
-        }
+
+        if (!paths.containsKey(source)){
+            paths.put(source , dist);
+        } else if( paths.containsKey(source) && paths.get(source) > dist) paths.put(source , dist);
+
+        if (!graph.containsKey(source))
+            return;
 
         for (CityRoute nextSource : graph.get(source)){
             int fuelCost = nextSource.fuelNeed;
@@ -53,16 +55,16 @@ public class ShortestPathWithFuel {
         forA.add(new CityRoute(3 , 2 , "C"));
 
         List<CityRoute> forB = new ArrayList<>();
-        forA.add(new CityRoute(4 , 3 , "D"));
+        forB.add(new CityRoute(4 , 3 , "D"));
 
         List<CityRoute> forC = new ArrayList<>();
-        forA.add(new CityRoute(4 , 3 , "D"));
+        forC.add(new CityRoute(4 , 3 , "D"));
 
         graph.put("A", forA);
         graph.put("B", forB);
         graph.put("C", forC);
 
-        System.out.println(getShortestPath(graph , "A","B",10));
+        System.out.println(getShortestPath(graph , "A","D",10));
 
 
     }
