@@ -22,6 +22,10 @@ public class ShortestPathWithFuel {
     Map<String,Integer> paths = new HashMap<>();
     Set<String> fuelStations = new HashSet<>();
 
+    {
+        fuelStations.add("C");
+    }
+
 
     private int getShortestPath(Map<String, List<CityRoute>> graph , String source , String destination, final int fuelCapacity){
         getShortestPathHelper(graph , source , destination , fuelCapacity ,0 );
@@ -29,6 +33,8 @@ public class ShortestPathWithFuel {
     }
 
     private void getShortestPathHelper(Map<String, List<CityRoute>> graph , String source , String dest , int currentFuel , int time){
+        if (currentFuel < 0)
+            return;
 
         if (!paths.containsKey(source)){
             paths.put(source , time);
@@ -40,16 +46,27 @@ public class ShortestPathWithFuel {
         for (CityRoute nextSource : graph.get(source)){
             int fuelCost = nextSource.fuelNeed;
             int etaToDestination = nextSource.etaToDestination;
-            int fuelTime = nextSource.refuelTime;
+            boolean fuelStation = fuelStations.contains(nextSource.destination);
+            int fuelTime = fuelStation ? nextSource.refuelTime : 0 ;
 
-            if (currentFuel - fuelCost > 0 )
+
+            if (fuelStation){
                 getShortestPathHelper(
-                        graph ,
-                        nextSource.destination ,
-                        dest ,
-                        currentFuel - fuelCost ,
-                        time + etaToDestination + fuelTime
+                        graph , nextSource.destination , dest ,
+                        10 , time + etaToDestination + fuelTime
                 );
+                getShortestPathHelper(
+                        graph , nextSource.destination , dest ,
+                        currentFuel - fuelCost , time + etaToDestination
+                );
+            } else {
+                if (currentFuel - fuelCost > 0 ){
+                    getShortestPathHelper(
+                            graph , nextSource.destination , dest ,
+                            currentFuel - fuelCost , time + etaToDestination
+                    );
+                }
+            }
         }
     }
 
@@ -58,20 +75,20 @@ public class ShortestPathWithFuel {
         Map<String, List<CityRoute>> graph = new HashMap<>();
 
         List<CityRoute> forA = new ArrayList<>();
-        forA.add(new CityRoute(5 , 3 , 2,"B"));
+        forA.add(new CityRoute(5 , 2 , 2,"B"));
         forA.add(new CityRoute(3 , 2 , 2,"C"));
 
         List<CityRoute> forB = new ArrayList<>();
         forB.add(new CityRoute(4 , 3 , 2,"D"));
 
         List<CityRoute> forC = new ArrayList<>();
-        forC.add(new CityRoute(4 , 3 , 2, "D"));
+        forC.add(new CityRoute(4 , 3 , 1, "D"));
 
         graph.put("A", forA);
         graph.put("B", forB);
         graph.put("C", forC);
 
-        getShortestPath(graph , "A","D",10);
+        getShortestPath(graph , "A","D",5);
         System.out.println(paths);
 
 
