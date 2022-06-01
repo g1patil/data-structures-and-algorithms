@@ -28,21 +28,28 @@ public class ShortestPathWithFuel {
         return paths.get(destination);
     }
 
-    private void getShortestPathHelper(Map<String, List<CityRoute>> graph , String source , String dest , int currentFuel , int dist){
+    private void getShortestPathHelper(Map<String, List<CityRoute>> graph , String source , String dest , int currentFuel , int time){
 
         if (!paths.containsKey(source)){
-            paths.put(source , dist);
-        } else if( paths.containsKey(source) && paths.get(source) > dist) paths.put(source , dist);
+            paths.put(source , time);
+        } else if( paths.containsKey(source) && paths.get(source) > time) paths.put(source , time);
 
         if (!graph.containsKey(source))
             return;
 
         for (CityRoute nextSource : graph.get(source)){
             int fuelCost = nextSource.fuelNeed;
-            int distCost = nextSource.distance;
+            int etaToDestination = nextSource.etaToDestination;
+            int fuelTime = nextSource.refuelTime;
 
             if (currentFuel - fuelCost > 0 )
-                getShortestPathHelper(graph , nextSource.destination , dest , currentFuel - fuelCost , dist + distCost);
+                getShortestPathHelper(
+                        graph ,
+                        nextSource.destination ,
+                        dest ,
+                        currentFuel - fuelCost ,
+                        time + etaToDestination + fuelTime
+                );
         }
     }
 
@@ -51,33 +58,36 @@ public class ShortestPathWithFuel {
         Map<String, List<CityRoute>> graph = new HashMap<>();
 
         List<CityRoute> forA = new ArrayList<>();
-        forA.add(new CityRoute(5 , 3 , "B"));
-        forA.add(new CityRoute(3 , 2 , "C"));
+        forA.add(new CityRoute(5 , 3 , 2,"B"));
+        forA.add(new CityRoute(3 , 2 , 2,"C"));
 
         List<CityRoute> forB = new ArrayList<>();
-        forB.add(new CityRoute(4 , 3 , "D"));
+        forB.add(new CityRoute(4 , 3 , 2,"D"));
 
         List<CityRoute> forC = new ArrayList<>();
-        forC.add(new CityRoute(4 , 3 , "D"));
+        forC.add(new CityRoute(4 , 3 , 2, "D"));
 
         graph.put("A", forA);
         graph.put("B", forB);
         graph.put("C", forC);
 
-        System.out.println(getShortestPath(graph , "A","D",10));
+        getShortestPath(graph , "A","D",10);
+        System.out.println(paths);
 
 
     }
 }
 
 class CityRoute {
-    int distance;
+    int etaToDestination;
     int fuelNeed;
+    int refuelTime;
     String destination;
 
-    public CityRoute(int distance, int fuelNeed, String destination) {
-        this.distance = distance;
+    public CityRoute(int etaToDestination, int fuelNeed, int refuelTime , String destination) {
+        this.etaToDestination = etaToDestination;
         this.fuelNeed = fuelNeed;
         this.destination = destination;
+        this.refuelTime = refuelTime;
     }
 }
