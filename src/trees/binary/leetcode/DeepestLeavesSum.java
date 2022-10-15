@@ -5,6 +5,7 @@ import model.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -12,6 +13,9 @@ import java.util.Map;
  * */
 public class DeepestLeavesSum {
 
+    /**
+     * DFS approach
+     * */
     public int deepestLeavesSum(TreeNode root) {
         int deepestLevel = 0;
         Map<Integer,Integer> levelSum  = new HashMap();
@@ -27,6 +31,26 @@ public class DeepestLeavesSum {
         return Math.max( deepestLeavesSumHelper(root.left , level + 1 , levelSum),
                 deepestLeavesSumHelper(root.right , level + 1 , levelSum)
                 );
+    }
+
+    public int deepestLeavesSum2(TreeNode root) {
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        int sum = 0 ;
+        queue.add(root);
+        while (!queue.isEmpty()){
+            sum = 0;
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode current = queue.poll();
+                sum+=current.val;
+
+                if (current.left!=null)
+                    queue.add(current.left);
+                if (current.right!=null)
+                    queue.add(current.right);
+            }
+        }
+        return sum;
     }
 
     @Test
@@ -48,8 +72,8 @@ public class DeepestLeavesSum {
 
         root.setChild(n1,n2);
         n1.setChild(n3,null);
-        n2.setChild(null,null);
+        n2.setChild(null,n6);
 
-        System.out.println(deepestLeavesSum(root));
+        System.out.println(deepestLeavesSum2(root));
     }
 }
