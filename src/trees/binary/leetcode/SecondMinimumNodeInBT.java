@@ -1,6 +1,6 @@
 package trees.binary.leetcode;
 
-import data.TreeNode;
+import model.TreeNode;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

@@ -3,13 +3,8 @@ import annotation.Platform;
 import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
-import data.TreeNode;
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
-import trees.binary.DFSPath;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
 /**
  * Find the lowest common ancestor for the given two children.

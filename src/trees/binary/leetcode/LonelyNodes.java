@@ -3,7 +3,7 @@ package trees.binary.leetcode;
 
 import annotation.Platform;
 import annotation.Site;
-import data.TreeNode;
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

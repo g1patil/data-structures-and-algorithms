@@ -1,6 +1,6 @@
 package dynamicprogramming.dpontrees;
 
-import data.TreeNode;
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
 
 /**

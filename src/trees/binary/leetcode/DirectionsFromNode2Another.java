@@ -2,7 +2,7 @@ package trees.binary.leetcode;
 
 import annotation.Quality;
 import annotation.Stage;
-import data.TreeNode;
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.Stack;

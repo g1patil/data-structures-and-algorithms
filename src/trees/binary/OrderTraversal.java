@@ -1,6 +1,6 @@
 package trees.binary;
 
-import data.TreeNode;
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

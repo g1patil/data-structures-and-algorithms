@@ -17,7 +17,7 @@ Gather requirements and scope the problem.  Ask questions to clarify use cases a
 * How many users are there?
 * What does the system do?
 * What are the inputs and outputs of the system?
-* How much data do we expect to handle?
+* How much model do we expect to handle?
 * How many requests per second do we expect?
 * What is the expected read to write ratio?
 

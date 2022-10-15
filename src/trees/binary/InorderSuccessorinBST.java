@@ -2,9 +2,8 @@ package trees.binary;
 
 import annotation.Platform;
 import annotation.Site;
-import data.TreeNode;
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
-import trees.Tree;
 
 import java.util.PriorityQueue;
 import java.util.Queue;

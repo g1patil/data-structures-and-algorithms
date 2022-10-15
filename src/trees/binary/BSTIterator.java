@@ -4,7 +4,7 @@ import annotation.Platform;
 import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
-import data.TreeNode;
+import model.TreeNode;
 
 import java.util.Stack;
 

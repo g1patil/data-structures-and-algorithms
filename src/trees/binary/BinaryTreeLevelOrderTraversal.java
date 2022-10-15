@@ -4,10 +4,8 @@ import annotation.Platform;
 import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
-import data.TreeNode;
-import lists.ListNode;
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
-import trees.Tree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
