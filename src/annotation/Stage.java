@@ -7,6 +7,9 @@ package annotation;
  * original author @author Mohammad Milad Naseri
  */
 public enum Stage {
+
+    TODO,
+
     /**
      * Marked element is not completely implemented, so there are not any reliable tests
      * for it
