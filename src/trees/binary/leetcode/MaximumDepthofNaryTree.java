@@ -5,26 +5,31 @@ import annotation.Stage;
 import org.junit.jupiter.api.Test;
 import trees.m_ary.Node;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * 559. Maximum Depth of N-ary Tree
  * */
-@Quality(Stage.INCOMPLETE)
+@Quality(Stage.TESTED)
 public class MaximumDepthofNaryTree {
 
     public int maxDepth(Node root) {
-        return maxDepthHelper(root,0);
+        Queue<Integer> maxHeap = new PriorityQueue<>();
+        maxDepthHelper(root,0 , maxHeap);
+        return maxHeap.isEmpty() ? 0 : maxHeap.peek()+1;
     }
 
-    private int maxDepthHelper(Node root, int level ){
+    private void maxDepthHelper(Node root, int level, Queue<Integer> maxHeap){
         if(root == null)
-            return level;
-        int max = level;
+            return;
+        maxHeap.add(level);
+        if (maxHeap.size() > 1)
+            maxHeap.poll();
 
         for (int i = 0; i < root.children.size(); i++) {
-            max = Math.max(maxDepthHelper(root.children.get(i) , level + 1), max);
+            maxDepthHelper(root.children.get(i),level+1,maxHeap);
         }
-        return max;
     }
 
     @Test
@@ -45,7 +50,6 @@ public class MaximumDepthofNaryTree {
         Node n9 = new Node(9);
 
         n1.children.addAll(List.of(n5,n6));
-        n2.children.addAll(List.of(n3));
         n3.children.addAll(List.of(n8,n9));
         n9.children.addAll(List.of(n7));
 
