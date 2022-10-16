@@ -11,6 +11,6 @@ import model.TreeNode;
 public class KthSmallestElementInBST {
 
     public int kthSmallest(TreeNode root, int k) {
-
+        return -1;
     }
 }
