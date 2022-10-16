@@ -15,17 +15,17 @@ import java.util.Queue;
 public class MaximumDepthofNaryTree {
 
     public int maxDepth(Node root) {
-        Queue<Integer> maxHeap = new PriorityQueue<>();
+        int[] maxHeap = new int[1];
+        maxHeap[0] = -1;
         maxDepthHelper(root,0 , maxHeap);
-        return maxHeap.isEmpty() ? 0 : maxHeap.peek()+1;
+        return maxHeap[0] == -1 ? 0 : maxHeap[0];
     }
 
-    private void maxDepthHelper(Node root, int level, Queue<Integer> maxHeap){
+    private void maxDepthHelper(Node root, int level, int[] maxHeap){
         if(root == null)
             return;
-        maxHeap.add(level);
-        if (maxHeap.size() > 1)
-            maxHeap.poll();
+        if (maxHeap[0] < level)
+            maxHeap[0] = level;
 
         for (int i = 0; i < root.children.size(); i++) {
             maxDepthHelper(root.children.get(i),level+1,maxHeap);
