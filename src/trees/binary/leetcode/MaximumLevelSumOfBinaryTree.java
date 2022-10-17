@@ -1,5 +1,9 @@
 package trees.binary.leetcode;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import model.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,6 +14,8 @@ import java.util.Queue;
 /**
  * 1161. Maximum Level Sum of a Binary Tree
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class MaximumLevelSumOfBinaryTree {
 
     public int maxLevelSum(TreeNode root) {
