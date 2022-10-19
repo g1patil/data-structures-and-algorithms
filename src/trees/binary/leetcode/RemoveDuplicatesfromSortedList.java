@@ -1,6 +1,7 @@
 package trees.binary.leetcode;
 
 import lists.ListNode;
+import org.junit.jupiter.api.Test;
 
 /**
  * 83. Remove Duplicates from Sorted List
@@ -11,6 +12,31 @@ import lists.ListNode;
 public class RemoveDuplicatesfromSortedList {
 
     public ListNode deleteDuplicates(ListNode head) {
-        return null;
+        ListNode resultHead = head;
+        ListNode current = head;
+        ListNode runner = current;
+
+        while (runner !=null ){
+            while (runner!=null && runner.val == current.val){
+                runner = runner.next;
+            }
+            current.next = runner;
+            current = current.next;
+        }
+        return resultHead;
+    }
+
+    @Test
+    public void test(){
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(1);
+        ListNode n3 = new ListNode(1);
+        ListNode n4 = new ListNode(2);
+        ListNode n5 = new ListNode(2);
+        ListNode n6 = new ListNode(4);
+        ListNode n7 = new ListNode(4);
+
+        n1.setNext(n2).setNext(n3).setNext(n4).setNext(n5).setNext(n6).setNext(n7);
+        deleteDuplicates(n1).printList();
     }
 }
