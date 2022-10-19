@@ -1,5 +1,9 @@
 package trees.binary.leetcode;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import lists.ListNode;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +13,8 @@ import org.junit.jupiter.api.Test;
  * Given the head of a sorted linked list, delete all duplicates
  * such that each element appears only once. Return the linked list sorted as well.
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class RemoveDuplicatesfromSortedList {
 
     public ListNode deleteDuplicates(ListNode head) {
