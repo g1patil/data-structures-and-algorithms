@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
  *
  * The path does not need to start or end at the root or a leaf,
  * but it must go downwards (i.e., traveling only from parent nodes to child nodes).
+ *
+ * Old impl/working : binary/PathSum3.java
  * */
 @Platform(Site.LEETCODE)
 @Quality(value = Stage.FAILING,details = "127/128")
