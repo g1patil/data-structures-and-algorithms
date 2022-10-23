@@ -1,5 +1,9 @@
 package trees.binary.leetcode;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import model.TreeNode;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +18,8 @@ import org.junit.jupiter.api.Test;
  * The path does not need to start or end at the root or a leaf,
  * but it must go downwards (i.e., traveling only from parent nodes to child nodes).
  * */
+@Platform(Site.LEETCODE)
+@Quality(value = Stage.FAILING,details = "127/128")
 public class PathSum3 {
 
     public int pathSum(TreeNode root, int targetSum) {
