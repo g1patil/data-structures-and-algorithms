@@ -81,9 +81,6 @@ public class PartitionList {
         return smallerList;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(partitionList(List.of(1,9,3,8,5,10,2,4), 5));
-//    }
 
     @Test
     public void test_(){
