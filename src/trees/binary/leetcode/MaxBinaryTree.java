@@ -40,6 +40,13 @@ public class MaxBinaryTree {
         return root;
     }
 
+    /**
+     * Returns the index of the max value in given indexes
+     * in array
+     * @param arr array
+     * @param start start index
+     * @param end end index
+     * */
     private int getMax(final int start , final int end , final int[] arr){
         int max = Integer.MIN_VALUE;
         int resultIndex = -1;
