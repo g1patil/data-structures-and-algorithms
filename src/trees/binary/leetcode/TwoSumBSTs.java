@@ -1,7 +1,9 @@
 package trees.binary.leetcode;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import model.TreeNode;
 
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import java.util.Map;
  * return true if and only if there is a node in the first tree and a node in the
  * second tree whose values sum up to a given integer target.
  * */
+@Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class TwoSumBSTs {
 
