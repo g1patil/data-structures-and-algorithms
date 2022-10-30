@@ -4,6 +4,9 @@ import annotation.Platform;
 import annotation.Site;
 import model.TreeNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 1214. Two Sum BSTs
  *
@@ -15,6 +18,29 @@ import model.TreeNode;
 public class TwoSumBSTs {
 
     public boolean twoSumBSTs(TreeNode root1, TreeNode root2, int target) {
-        return false;
+        Map<Integer,Integer> map = new HashMap<>();
+        buildTheMap(map, root1);
+        return treeContains(map,root2,target);
+    }
+
+    private boolean treeContains(Map<Integer, Integer> map, TreeNode root2, int target) {
+        if (root2 == null)
+            return false;
+
+        if (map.containsKey(target - root2.val))
+            return true;
+
+        return treeContains(map,root2.left,target) ||
+                treeContains(map , root2.right , target);
+    }
+
+    private void buildTheMap(Map<Integer,Integer> map , TreeNode root){
+        if (root == null)
+            return;
+
+        map.put(root.val,-1);
+        buildTheMap(map,root.left);
+        buildTheMap(map,root.right);
+
     }
 }
