@@ -5,6 +5,7 @@ import annotation.Platform;
 import annotation.Site;
 import model.TreeNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ import java.util.List;
 public class AllElementsinTwoBinarySearchTrees {
 
     public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
-        return null;
+        List<Integer> sortedList = new ArrayList<>();
+        return sortedList;
     }
 }
