@@ -13,7 +13,6 @@ import java.util.Map;
 
 /**
  * 1367. Linked List in Binary Tree
- *
  * Really slow :-(
  * */
 @Platform(Site.LEETCODE)
