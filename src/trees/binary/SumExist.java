@@ -47,8 +47,6 @@ public class SumExist {
         Node n7 = new Node(6);
         Node n8 = new Node(9);
 
-
-
         root.left = n1;
         root.right = n2;
 
