@@ -1,6 +1,10 @@
 package sorting;
 
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -10,6 +14,8 @@ import java.util.Map;
 /**
  * 1331. Rank Transform of an Array
  * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class RankTransformofArray {
 
     public int[] arrayRankTransform(int[] arr) {
