@@ -13,7 +13,22 @@ import java.util.Map;
 public class RankTransformofArray {
 
     public int[] arrayRankTransform(int[] arr) {
-        return arr;
+        int[] temp = arr.clone();
+        Arrays.sort(temp);
+        Map<Integer,Integer> indexMap = new HashMap<>();
+        for (int i = 0 , rank = 1; i < temp.length; i++) {
+            if (!indexMap.containsKey(temp[i])){
+                indexMap.put(temp[i], rank);
+                rank++;
+            }
+        }
+
+        int[] result = new int[temp.length];
+        for (int i = 0; i < arr.length; i++) {
+            result[i] = indexMap.get(arr[i]);
+        }
+
+        return result;
     }
 
     @Test
