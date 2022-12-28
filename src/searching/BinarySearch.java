@@ -1,10 +1,16 @@
 package searching;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
 /**
  * 704. Binary Search
  * */
+@Platform(Site.LEETCODE)
+@Quality(Stage.TESTED)
 public class BinarySearch {
 
     public int search(int[] nums, int target) {
@@ -14,7 +20,7 @@ public class BinarySearch {
             int mid = low + (high-low)/2;
 
             if (target< nums[mid]){
-                high = mid;
+                high = mid -1;
             } else if (target > nums[mid]) {
                 low = mid + 1;
             } else return mid;
@@ -25,6 +31,6 @@ public class BinarySearch {
 
     @Test
     public void test(){
-        System.out.println(search(new int[]{1,2,3},5));
+        System.out.println(search(new int[]{1},1));
     }
 }
