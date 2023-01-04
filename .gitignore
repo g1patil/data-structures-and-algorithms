@@ -47,7 +47,6 @@ out
 .idea
 .idea/*
 
-/src/practice/
 /.idea/
 lib
 *.iml

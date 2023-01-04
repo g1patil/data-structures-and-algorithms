@@ -6,93 +6,105 @@ import java.util.*;
  * */
 
 
+import java.time.*;
+import java.util.stream.Collectors;
+
 public class TestClass {
 
-    public static class Transaction {
-        String company;
-        double amount;
-        int timestamp;
+    static class Payment {
+        private final String paymentId;
+        private final Instant timestamp;
+        private final String hashedCardNumber;
 
-        public Transaction(String company, double amount, int timestamp) {
-            this.company = company;
-            this.amount = amount;
+        public Payment(String paymentId, Instant timestamp, String hashedCardNumber) {
+            this.paymentId = paymentId;
             this.timestamp = timestamp;
+            this.hashedCardNumber = hashedCardNumber;
+        }
+
+        public String getPaymentId() {
+            return paymentId;
+        }
+
+        public Instant getTimestamp() {
+            return timestamp;
+        }
+
+        public String getHashedCardNumber() {
+            return hashedCardNumber;
         }
     }
 
-    public List<String> getCompaniesWithRecurringTransactions(Transaction[] transactions) {
-        List<String> companies = new ArrayList<>();
-        if(transactions == null || transactions.length == 0) {
-            return companies;
-        }
+    static class VelocityProviderImpl implements VelocityProvider {
+        List<Payment> payments = new ArrayList();
 
-        Map<String, List<Transaction>> transactionsMap = new HashMap<>();
-        for(Transaction t : transactions) {
-            List<Transaction> listOfTransactions = transactionsMap.getOrDefault(t.company, new ArrayList<>());
-            listOfTransactions.add(t);
-            transactionsMap.put(t.company, listOfTransactions);
+        public int getCardUsageCount(Payment payment, Duration duration){
+            return payments.stream().filter( p -> p.hashedCardNumber == payment.hashedCardNumber &&
+                    p.timestamp.isAfter(Instant.now().minus(duration))
+            ).collect(Collectors.toList()).size();
         }
+        public void registerPayment(Payment payment){
 
-        for (Map.Entry<String, List<Transaction>> e : transactionsMap.entrySet()){
-            String result = getRecurring(e.getValue() , e.getKey());
-            if (result !=null)
-                companies.add(result);
+            payments.add(payment);
         }
-        return companies;
     }
 
-    private List<List<Transaction>> getEqualTransactions(List<Transaction> value) {
-        Map<Double , List<Transaction>>  tranMap = new HashMap<>();
-        List<List<Transaction>> result = new ArrayList<>();
 
-        for (Transaction t : value ){
-            if (tranMap.containsKey(t.amount)){
-                tranMap.get(t.amount).add(t);
-            } else {
-                tranMap.put(t.amount , new ArrayList<>());
-                tranMap.get(t.amount).add(t);
+    interface VelocityProvider {
+
+        /**
+         * This method is called during the payment risk assessment.
+         *
+         * It returns how many times the card in the Payment has been seen in the last minutes/seconds/hours as
+         * defined in the {@code duration} parameter at the time the payment is being processed.
+         *
+         * @param payment  The payment being processed
+         * @param duration The interval to count
+         * @return The number of times the card was used in the interval defined in duration.
+         */
+        int getCardUsageCount(Payment payment, Duration duration);
+
+
+        /**
+         * After the payment is processed this method is called.
+         *
+         * @param payment The payment that has been processed.
+         */
+        void registerPayment(Payment payment);
+
+        /**
+         * @return Instance of a Velocity provider
+         */
+        static VelocityProvider getProvider() {
+            return new VelocityProviderImpl();
+        }
+    }
+
+    public static void main(String args[]) throws Exception {
+        final VelocityProvider velocityProvider = VelocityProvider.getProvider();
+
+        try (final Scanner scanner = new Scanner(System.in)) {
+            while (scanner.hasNextLine()) {
+                final String assoc = scanner.next();
+                final String[] split = assoc.split(":");
+
+                final String operation = split[0];
+
+                if (split.length == 3 && "register".equals(operation)) {
+                    final long timestamp = Long.parseLong(split[1]);
+                    final String hashedCardNumber = split[2];
+                    final Payment payment = new Payment(UUID.randomUUID().toString(), Instant.ofEpochMilli(timestamp), hashedCardNumber);
+
+                    velocityProvider.registerPayment(payment);
+                } else if (split.length == 4 &&  "get".equals(operation)) {
+                    final long queryTime = Long.parseLong(split[1]);
+                    final String hashedCardNumber = split[2];
+                    final long durationInSeconds = Long.parseLong(split[3]);
+                    System.out.println(velocityProvider.getCardUsageCount(new Payment(UUID.randomUUID().toString(), Instant.ofEpochMilli(queryTime), hashedCardNumber), Duration.ofSeconds(durationInSeconds)));
+                } else {
+                    throw new RuntimeException("Invalid test input");
+                }
             }
         }
-
-        for (List<Transaction> list : tranMap.values() ){
-            if (list.size() >=3)
-                result.add(list);
-
-        }
-        return result;
-    }
-
-    private String getRecurring(List<Transaction> transactions, String company){
-        Map<Integer,Integer> freq  = new HashMap<>();
-        for (int i = 0; i < transactions.size() - 1; i++) {
-            Transaction current = transactions.get(i);
-            for (int j = i + 1; j < transactions.size(); j++) {
-                int timeDiff = current.timestamp = transactions.get(j).timestamp;
-                freq.put( timeDiff , freq.getOrDefault(timeDiff , 0 ) + 1 );
-            }
-        }
-
-        for (int v : freq.values())
-            if (v >=2)
-                return company;
-        return null;
-    }
-
-
-
-
-    public static void main(String[] args) {
-        TestClass obj = new TestClass();
-
-        Transaction[] transactions = new Transaction[] {
-                new Transaction("Netflix", 9.99, 1),
-                new Transaction("Netflix", 9.99, 6),
-                new Transaction("Netflix", 9.99, 11),
-                new Transaction("Netflix", 9.99, 13),
-                new Transaction("Netflix", 9.99, 27)};
-
-
-        List<String> result = obj.getCompaniesWithRecurringTransactions(transactions);
-        System.out.println("The companies with recurring transactions are: " + result);
     }
 }
