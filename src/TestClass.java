@@ -1,3 +1,4 @@
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
 import sorting.ArrayUtility;
 
@@ -12,25 +13,31 @@ import java.util.*;
 public class TestClass {
 
 
-    /*
-    * 121. Best Time to Buy and Sell Stock
-    * */
-    public int maxProfit(int[] prices) {
-        int currentMin = Integer.MAX_VALUE;
-        int profit = 0;
+    /**
+     * Maximum Depth of Binary Tree
+     * */
+    public int maxDepth(TreeNode root) {
+        return maxDepthHelper(root);
+    }
 
-        for(int i : prices){
-            if( i < currentMin){
-                currentMin = Math.min( i , currentMin);
-            }
-
-            profit = Math.max( profit , i - currentMin);
-        }
-        return profit;
+    private int maxDepthHelper(TreeNode root) {
+        if (root == null)
+            return 0;
+        return 1 + Math.max( maxDepthHelper( root.left),maxDepthHelper( root.right));
     }
 
     @Test
     public void test(){
-        System.out.println(maxProfit(new int[]{7,6,4,3,1}));
+        TreeNode root = new TreeNode(-10);
+        TreeNode n1 = new TreeNode(-5);
+        TreeNode n2 = new TreeNode(-6);
+        TreeNode n3 = new TreeNode(1);
+        TreeNode n4 = new TreeNode(2);
+        TreeNode n5 = new TreeNode(3);
+        TreeNode n6 = new TreeNode(4);
+        root.setChild(n1,n2);
+        n1.setChild(n3,n4);
+        n2.setChild(n5,n6);
+        System.out.println(maxDepth(n2));
     }
 }
