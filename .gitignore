@@ -47,6 +47,7 @@ out
 .idea
 .idea/*
 ./src/TestClass.java
+/src/practice/
 /.idea/
 lib
 *.iml
