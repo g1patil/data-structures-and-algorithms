@@ -14,21 +14,19 @@ public class TestClass {
 
 
 
-    //1379. Find a Corresponding Node of a Binary Tree in a Clone of That Tree
-    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        return getTargetCopyHelper(original,cloned,target);
+    //938. Range Sum of BST
+    public int rangeSumBST(TreeNode root, int low, int high) {
+        return rangeSumBSTDFS(root,low,high);
     }
 
-    public final TreeNode getTargetCopyHelper(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        if(original == null)
-            return null;
+    private int rangeSumBSTDFS(TreeNode root, int low, int high){
+        if(root == null)
+            return 0;
 
-        TreeNode left =  getTargetCopyHelper(original.left , cloned.left , target);
-        if(original == target)
-            return cloned;
-        TreeNode right =  getTargetCopyHelper(original.right , cloned.right , target);
 
-        return left == null ? right : left;
+        return (root.val >= low && root.val <= high ? root.val : 0) +
+                rangeSumBSTDFS(root.left , low , high) +
+                rangeSumBSTDFS(root.right , low , high);
     }
 
 
