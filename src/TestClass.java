@@ -14,19 +14,21 @@ public class TestClass {
 
 
 
-    //938. Range Sum of BST
-    public int rangeSumBST(TreeNode root, int low, int high) {
-        return rangeSumBSTDFS(root,low,high);
-    }
+    // 1614. Maximum Nesting Depth of the Parentheses
+    public int maxDepth(String s) {
+        int result = 0;
+        int p1 = 0 ;
 
-    private int rangeSumBSTDFS(TreeNode root, int low, int high){
-        if(root == null)
-            return 0;
+        for(char c : s.toCharArray()){
+            if(c == '('){
+                p1++;
+            } else if( c == ')'){
+                p1--;
+            }
 
-
-        return (root.val >= low && root.val <= high ? root.val : 0) +
-                rangeSumBSTDFS(root.left , low , high) +
-                rangeSumBSTDFS(root.right , low , high);
+            result = Math.max(result,p1);
+        }
+        return result;
     }
 
 
