@@ -1,20 +1,18 @@
-import model.TreeNode;
-import org.junit.jupiter.api.Test;
-import sorting.ArrayUtility;
+package trees.binary;
 
-import java.util.*;
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
+import model.TreeNode;
 
 /**
- * Test class to practice any given problem .
- * This class serves as the template class for any coding practices that I do.
+ * 1379. Find a Corresponding Node of a Binary Tree in a Clone of That Tree
  * */
+@Platform(Site.LEETCODE)
+@Quality(Stage.TESTED)
+public class FindCorrespondingNodeofBinaryTreeCloneofThatTree {
 
-
-public class TestClass {
-
-
-
-    //1379. Find a Corresponding Node of a Binary Tree in a Clone of That Tree
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
         return getTargetCopyHelper(original,cloned,target);
     }
@@ -29,11 +27,5 @@ public class TestClass {
         TreeNode right =  getTargetCopyHelper(original.right , cloned.right , target);
 
         return left == null ? right : left;
-    }
-
-
-    @Test
-    public void test(){
-
     }
 }
