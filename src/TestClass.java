@@ -13,31 +13,45 @@ import java.util.*;
 public class TestClass {
 
 
-    /**
-     * Maximum Depth of Binary Tree
-     * */
-    public int maxDepth(TreeNode root) {
-        return maxDepthHelper(root);
+    /*
+    * 98. Validate Binary Search Tree
+    * */
+    public boolean isValidBST(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = root;
+        TreeNode previous = null;
+        while(temp !=null || !stack.isEmpty()){
+            while(temp!=null){
+                stack.push(temp);
+                temp = temp.left;
+            }
+            temp = stack.pop();
+            if(previous!=null && temp.val <= previous.val){
+                return false;
+            }
+            previous = temp;
+            temp = temp.right;
+        }
+        return true;
     }
 
-    private int maxDepthHelper(TreeNode root) {
-        if (root == null)
-            return 0;
-        return 1 + Math.max( maxDepthHelper( root.left),maxDepthHelper( root.right));
-    }
+
+
 
     @Test
     public void test(){
-        TreeNode root = new TreeNode(-10);
-        TreeNode n1 = new TreeNode(-5);
-        TreeNode n2 = new TreeNode(-6);
-        TreeNode n3 = new TreeNode(1);
-        TreeNode n4 = new TreeNode(2);
-        TreeNode n5 = new TreeNode(3);
-        TreeNode n6 = new TreeNode(4);
-        root.setChild(n1,n2);
-        n1.setChild(n3,n4);
-        n2.setChild(n5,n6);
-        System.out.println(maxDepth(n2));
+        TreeNode n1 = new TreeNode(1);
+        TreeNode n2 = new TreeNode(2);
+        TreeNode n3 = new TreeNode(3);
+        TreeNode n4 = new TreeNode(4);
+        TreeNode n5 = new TreeNode(5);
+        TreeNode n6 = new TreeNode(6);
+        TreeNode n7 = new TreeNode(7);
+
+        n2.setChild(n1,n3);
+        n4.setChild(n2,n6);
+        n6.setChild(n5,n7);
+
+        System.out.println(isValidBST(n4));
     }
 }
