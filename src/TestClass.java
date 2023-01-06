@@ -1,3 +1,4 @@
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
 import sorting.ArrayUtility;
 
@@ -13,24 +14,44 @@ public class TestClass {
 
 
     /*
-    * 121. Best Time to Buy and Sell Stock
+    * 98. Validate Binary Search Tree
     * */
-    public int maxProfit(int[] prices) {
-        int currentMin = Integer.MAX_VALUE;
-        int profit = 0;
-
-        for(int i : prices){
-            if( i < currentMin){
-                currentMin = Math.min( i , currentMin);
+    public boolean isValidBST(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = root;
+        TreeNode previous = null;
+        while(temp !=null || !stack.isEmpty()){
+            while(temp!=null){
+                stack.push(temp);
+                temp = temp.left;
             }
-
-            profit = Math.max( profit , i - currentMin);
+            temp = stack.pop();
+            if(previous!=null && temp.val <= previous.val){
+                return false;
+            }
+            previous = temp;
+            temp = temp.right;
         }
-        return profit;
+        return true;
     }
+
+
+
 
     @Test
     public void test(){
-        System.out.println(maxProfit(new int[]{7,6,4,3,1}));
+        TreeNode n1 = new TreeNode(1);
+        TreeNode n2 = new TreeNode(2);
+        TreeNode n3 = new TreeNode(3);
+        TreeNode n4 = new TreeNode(4);
+        TreeNode n5 = new TreeNode(5);
+        TreeNode n6 = new TreeNode(6);
+        TreeNode n7 = new TreeNode(7);
+
+        n2.setChild(n1,n3);
+        n4.setChild(n2,n6);
+        n6.setChild(n5,n7);
+
+        System.out.println(isValidBST(n4));
     }
 }
