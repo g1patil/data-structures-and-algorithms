@@ -3,7 +3,6 @@ package arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Queue;
 

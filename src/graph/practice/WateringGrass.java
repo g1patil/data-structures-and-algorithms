@@ -1,6 +1,5 @@
 package graph.practice;
 
-import javax.swing.*;
 import java.util.Arrays;
 import java.util.Comparator;
 

@@ -5,10 +5,6 @@ import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.NodeList;
-
-import java.util.LinkedList;
-import java.util.List;
 
 /***
  * Sort the linked list

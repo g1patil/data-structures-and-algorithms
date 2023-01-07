@@ -6,7 +6,6 @@ import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**

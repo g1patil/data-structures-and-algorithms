@@ -1,6 +1,5 @@
 package disjointset;
 
-import org.junit.jupiter.api.Test;
 /**
  *
  * Implementation of the union-find / disjoint set algorithm*/

@@ -7,9 +7,7 @@ import annotation.Topic;
 import org.junit.jupiter.api.Test;
 import sorting.ArrayUtility;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**

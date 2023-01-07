@@ -1,9 +1,6 @@
 package lists;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Collections;
-import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 /**

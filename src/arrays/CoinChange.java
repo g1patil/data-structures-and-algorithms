@@ -4,8 +4,6 @@ import annotation.Platform;
 import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

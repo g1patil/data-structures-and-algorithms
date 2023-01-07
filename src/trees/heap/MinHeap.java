@@ -2,10 +2,7 @@ package trees.heap;
 
 import sorting.ArrayUtility;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
 
 /**
  * Implementation of the MeanHeap ds.

@@ -3,8 +3,6 @@ package lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.management.relation.InvalidRelationIdException;
-
 /*
 * 203. Remove Linked List Elements
 *

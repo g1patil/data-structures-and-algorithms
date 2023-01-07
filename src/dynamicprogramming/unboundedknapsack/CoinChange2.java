@@ -2,9 +2,6 @@ package dynamicprogramming.unboundedknapsack;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 /**
  * Problem statement : https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/
  * */

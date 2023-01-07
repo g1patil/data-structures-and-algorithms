@@ -5,8 +5,6 @@ import annotation.Stage;
 import org.junit.jupiter.api.Test;
 import trees.m_ary.Node;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * 559. Maximum Depth of N-ary Tree

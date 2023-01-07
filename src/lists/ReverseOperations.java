@@ -1,7 +1,5 @@
 package lists;
 
-import annotation.Pattern;
-import annotation.Platform;
 import annotation.Quality;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;

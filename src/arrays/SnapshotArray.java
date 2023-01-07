@@ -6,8 +6,6 @@ import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
-import java.lang.instrument.Instrumentation;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

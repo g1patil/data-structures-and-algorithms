@@ -6,8 +6,6 @@ import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 /**
  * @author g1patil
  * 24. Swap Nodes in Pairs

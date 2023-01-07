@@ -1,8 +1,5 @@
 package trees;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 public class SumLeaf {
 
 //    private int getLeafSum(Node root){

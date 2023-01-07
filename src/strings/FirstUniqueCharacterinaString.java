@@ -6,9 +6,6 @@ import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 387. First Unique Character in a String
  * */

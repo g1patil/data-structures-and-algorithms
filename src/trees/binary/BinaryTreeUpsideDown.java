@@ -7,7 +7,6 @@ import annotation.Site;
 import annotation.Stage;
 import model.TreeNode;
 import org.junit.jupiter.api.Test;
-import trees.Tree;
 
 /**
  * 156. Binary Tree Upside Down

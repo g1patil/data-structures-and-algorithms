@@ -3,7 +3,6 @@ package graph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.HashSet;
 
 public class DFSPractice {

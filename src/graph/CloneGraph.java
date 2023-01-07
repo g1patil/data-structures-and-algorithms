@@ -56,7 +56,6 @@ public class CloneGraph {
         for ( Vertex child : node.child){
             cloneGraph( child , visited , built);
         }
-        return;
     }
 
     @Test

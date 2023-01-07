@@ -2,7 +2,6 @@ package graph;
 
 import annotation.Platform;
 import annotation.Site;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;

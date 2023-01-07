@@ -1,7 +1,5 @@
 package disjointset.theory;
 
-import disjointset.UnionFind;
-
 /**
  * @author g1patil
  */

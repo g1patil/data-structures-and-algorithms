@@ -1,9 +1,5 @@
 package miscellaneous;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
-
 class SportsRadar {
 
     String[] input = null;

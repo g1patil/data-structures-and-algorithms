@@ -24,7 +24,6 @@ public class MinStack {
     public void push(int val) {
         if(stack.isEmpty()){
             stack.push(new int[]{val , val});
-            return;
         } else{
             stack.push(new int[]{val , Math.min(val,stack.peek()[1])});
         }
