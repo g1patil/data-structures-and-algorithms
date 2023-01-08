@@ -10,15 +10,6 @@ import annotation.Stage;
  * 1650. Lowest Common Ancestor of a Binary Tree III
  */
 
-/*
-// Definition for a Node.
-class Node {
-    public int val;
-    public Node left;
-    public Node right;
-    public Node parent;
-};
-*/
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class LCABT3 {

@@ -5,7 +5,7 @@ Feel free to fork/contribute/share/createissue or ask any question. Majority of 
 
 ## Contents
 
-1. [Basic Practice](/src/main/java/com//):
+1. [Basic Practice](/src):
     1. [Arrays](/src/arrays)
     2. [Sliding Window Arrays](/src/arrays/slidingwindow)
     3. [Disjointset/Union Find](/src/disjointset)
@@ -16,9 +16,9 @@ Feel free to fork/contribute/share/createissue or ask any question. Majority of 
     8. [Graphs](/src/graph)
     9. [Lists](/src/lists)
     10. [Miscellaneous](/src/miscellaneous)
-    12. [Searching](/src/main/java/com//searching)
-    13. [Sorting](/src/sorting)
-    14. [Strings](/src/strings)
+    11. [Searching](/src/main/java/com//searching)
+    12. [Sorting](/src/sorting)
+    13. [Strings](/src/strings)
     
 ## Environment
 

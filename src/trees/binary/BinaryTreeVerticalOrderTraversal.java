@@ -147,7 +147,5 @@ public class BinaryTreeVerticalOrderTraversal {
         n2.setChild(null,n4);
         n1.setChild(null,n3);
 
-//        root.setChild(n4,n9);
-//        System.out.println(verticalTraversal(root));
     }
 }

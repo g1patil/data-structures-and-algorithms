@@ -80,8 +80,6 @@ public class MinimumRemove2MakeValidParentheses {
 
     @Test
     public void test(){
-//        System.out.println(minRemoveToMakeValid("())()((("));
-//        System.out.println(minRemoveToMakeValid("lee(t(c)o)de)"));
         System.out.println(minRemoveToMakeValid("a)b(c)d"));
     }
 

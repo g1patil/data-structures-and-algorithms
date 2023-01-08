@@ -4,7 +4,7 @@ package trees;
  * @author g1patil
  *
  * This is straight implementation of the BST using the YT channel Geekific
- * Reference : https://www.youtube.com/watch?v=zIX3zQP0khM
+ * Reference : <a href="https://www.youtube.com/watch?v=zIX3zQP0khM"> Tutorial </a>
  */
 public class BinarySearchTree<T extends Comparable<T>> implements Tree{
 

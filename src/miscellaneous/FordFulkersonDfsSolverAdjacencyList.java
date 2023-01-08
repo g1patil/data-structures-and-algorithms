@@ -11,9 +11,9 @@ package miscellaneous;
  */
 
 
-import static java.lang.Math.min;
-
 import java.util.List;
+
+import static java.lang.Math.min;
 
 public class FordFulkersonDfsSolverAdjacencyList extends NetworkFlowSolverBase {
 
@@ -70,8 +70,6 @@ public class FordFulkersonDfsSolverAdjacencyList extends NetworkFlowSolverBase {
 
     public static void main(String[] args) {
          exampleFromSlides();
-//         testSmallFlowGraph();
-//        exampleFromSlides2();
     }
 
     private static void exampleFromSlides2() {
