@@ -17,13 +17,12 @@ public class FixedPoint {
         int low = 0 , high = arr.length - 1;
         int result = Integer.MAX_VALUE;
 
-        while(low < high){
-            int mid = low + (high-low)/2;
-
+        while(low <= high){
+            int mid = (high+low)/2;
             if(mid == arr[mid])
                 result = Math.min( result , mid);
             if( mid <= arr[mid]){
-                high = mid;
+                high = mid-1;
             } else {
                 low = mid + 1;
             }
@@ -35,7 +34,7 @@ public class FixedPoint {
     @Test
     public void test(){
         System.out.println(
-                fixedPoint(new int[]{-10,-5,0,3,7})
+                fixedPoint(new int[]{-10,-8,-5,-3,-1,5})
         );
     }
 }
