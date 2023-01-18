@@ -8,27 +8,29 @@ import org.junit.jupiter.api.Test;
 
 public class TestClass {
 
-    // 344. 242. Valid Anagram
-    public boolean isAnagram(String s, String t) {
-        int[] chars = new int[26];
-        for(char c : s.toCharArray()){
-            chars[c-'a']++;
-        }
-        for(char c : t.toCharArray()){
-            chars[c-'a']--;
+    // 509. Fibonacci Number
+    public int fib(int n) {
+        if(n==0)
+            return 0;
+
+        if(n==1)
+            return 1;
+
+        int prev1 = 1 , prev2= 0 , current = 0;
+
+        for(int i = 2; i <= n ; i++) {
+            current = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = current;
         }
 
-        for(int i : chars){
-            if(i != 0)
-                return false;
-        }
-        return true;
+        return current;
     }
 
     @Test
     public void test(){
         System.out.println(
-                isAnagram("jivan","vanjia")
+                fib(3)
         );
     }
 
