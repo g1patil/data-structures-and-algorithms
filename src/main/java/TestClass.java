@@ -10,35 +10,28 @@ import sorting.ArrayUtility;
 
 public class TestClass {
 
-    //66. Plus One
-    public int[] plusOne(int[] digits) {
-        int carry = 1 , index = digits.length - 1;
-        int[] result = digits;
+    //125. Valid Palindrome
+    public boolean isPalindrome(String s) {
+        for (int i = 0 , j = s.length() - 1 ; i < j ; i++ , j --) {
+            while ( !Character.isLetterOrDigit(s.charAt(i)) && i < j )
+                i++;
+            while ( !Character.isLetterOrDigit(s.charAt(j)) && i < j )
+                j--;
 
-        while ( carry != 0 && index >= 0){
-            int sum =  (digits[index] + carry);
-            digits[index] = sum % 10;
-            carry = sum / 10;
-            index--;
-        }
-
-        if (carry == 1){
-            result = new int[digits.length + 1];
-            result[0] = carry;
-            for (int i = 0; i < digits.length ; i++) {
-                result[i + 1] = digits[i];
+            if (
+                    Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))
+            ){
+                return false;
             }
         }
-        return result;
+        return true;
     }
 
 
     @Test
     public void test(){
-        ArrayUtility.print(
-                plusOne(
-                        new int[]{9,9,9,9}
-                )
+        System.out.println(
+                isPalindrome("0P")
         );
     }
 
