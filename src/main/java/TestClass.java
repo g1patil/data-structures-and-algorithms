@@ -1,4 +1,4 @@
-import lists.ListNode;
+import model.TreeNode;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -9,47 +9,34 @@ import org.junit.jupiter.api.Test;
 
 public class TestClass {
 
-    // 160. Intersection of Two Linked Lists
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode tempA = headA ,tempB = headB;
-        int sizeA = size(headA),sizeB = size(headB);
-        int diff= Math.abs( sizeA - sizeB );
+    //110. Balanced Binary Tree
+    private boolean result = true;
 
-        if(sizeA > sizeB){
-            while( diff != 0){
-                tempA = tempA.next;
-                diff--;
-            }
-        } else {
-            while( diff != 0){
-                tempB = tempB.next;
-                diff--;
-            }
-        }
+    public boolean isBalanced(TreeNode root) {
+        if(root == null)
+            return result;
 
-        while(tempA != tempB && tempA != null & tempB != null){
-            tempA = tempA.next;
-            tempB = tempB.next;
-        }
-
-        return tempA;
-
+        isBalancedHelper(root);
+        return result;
     }
 
-    private int size(ListNode root){
-        ListNode temp = root;
-        int size = 0 ;
-        while(temp!=null){
-            temp = temp.next;
-            size++;
-        }
-        return size;
+    private int isBalancedHelper(TreeNode root){
+        if(root == null)
+            return 0;
+
+        int left = isBalancedHelper(root.left);
+        int right = isBalancedHelper(root.right);
+
+        if(Math.abs(left - right) > 1)
+            result = false;
+
+        return 1 + Math.max( left , right );
     }
+
 
     @Test
     public void test(){
         System.out.println(
-                fib(3)
         );
     }
 
