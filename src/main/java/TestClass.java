@@ -1,3 +1,4 @@
+import lists.ListNode;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -8,23 +9,41 @@ import org.junit.jupiter.api.Test;
 
 public class TestClass {
 
-    // 509. Fibonacci Number
-    public int fib(int n) {
-        if(n==0)
-            return 0;
+    // 160. Intersection of Two Linked Lists
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode tempA = headA ,tempB = headB;
+        int sizeA = size(headA),sizeB = size(headB);
+        int diff= Math.abs( sizeA - sizeB );
 
-        if(n==1)
-            return 1;
-
-        int prev1 = 1 , prev2= 0 , current = 0;
-
-        for(int i = 2; i <= n ; i++) {
-            current = prev1 + prev2;
-            prev2 = prev1;
-            prev1 = current;
+        if(sizeA > sizeB){
+            while( diff != 0){
+                tempA = tempA.next;
+                diff--;
+            }
+        } else {
+            while( diff != 0){
+                tempB = tempB.next;
+                diff--;
+            }
         }
 
-        return current;
+        while(tempA != tempB && tempA != null & tempB != null){
+            tempA = tempA.next;
+            tempB = tempB.next;
+        }
+
+        return tempA;
+
+    }
+
+    private int size(ListNode root){
+        ListNode temp = root;
+        int size = 0 ;
+        while(temp!=null){
+            temp = temp.next;
+            size++;
+        }
+        return size;
     }
 
     @Test
