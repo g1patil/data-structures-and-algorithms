@@ -21,6 +21,11 @@ public class ArrayUtility {
             System.out.print(i + "   ");
     }
 
+    public static void print(char[] chars){
+        for (char i : chars)
+            System.out.print(i + "   ");
+    }
+
     public static void print(int[][] ints_ ){
         for (int i = 0; i < ints_.length; i++) {
             for (int j = 0; j < ints_[0].length; j++) {

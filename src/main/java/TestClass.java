@@ -1,5 +1,5 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import org.junit.jupiter.api.Test;
+import sorting.ArrayUtility;
 
 /**
  * Test class to practice any given problem .
@@ -9,24 +9,33 @@ import java.util.Queue;
 
 public class TestClass {
 
-    private int size;
-    int sum = 0;
-    Queue<Integer> q = new LinkedList();
-    //Moving Average from Data Stream
-
-    public MovingAverage(int size) {
-        this.size = size;
+    // 344. Reverse String
+    public void reverseString(char[] s) {
+        int p1 = 0 , p2 = s.length - 1;
+        while( p1 <= p2){
+            replace(s,p1,p2);
+            p1++;
+            p2--;
+        }
     }
 
-    public double next(int val) {
-        sum+=val;
-        q.add(val);
+    private void replace(char[] chars, int s , int d){
+        char temp = chars[s];
+        chars[s] = chars[d];
+        chars[d] = temp;
+    }
 
-        if(q.size() <= size){
-            return sum/q.size();
-        } else {
-            sum-=q.remove();
-        }
-        return sum/size;
+    @Test
+    public void test(){
+        char[] a =  new char[]{'j','i','v','a','n'};
+        reverseString(a);
+        ArrayUtility.print(a);
+    }
+
+    @Test
+    public void test2(){
+        char[] a =  new char[]{'j'};
+        reverseString(a);
+        ArrayUtility.print(a);
     }
 }
