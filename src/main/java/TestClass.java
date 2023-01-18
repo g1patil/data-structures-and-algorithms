@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-import sorting.ArrayUtility;
 
 /**
  * Test class to practice any given problem .
@@ -9,33 +8,28 @@ import sorting.ArrayUtility;
 
 public class TestClass {
 
-    // 344. Reverse String
-    public void reverseString(char[] s) {
-        int p1 = 0 , p2 = s.length - 1;
-        while( p1 <= p2){
-            replace(s,p1,p2);
-            p1++;
-            p2--;
+    // 344. 242. Valid Anagram
+    public boolean isAnagram(String s, String t) {
+        int[] chars = new int[26];
+        for(char c : s.toCharArray()){
+            chars[c-'a']++;
         }
-    }
+        for(char c : t.toCharArray()){
+            chars[c-'a']--;
+        }
 
-    private void replace(char[] chars, int s , int d){
-        char temp = chars[s];
-        chars[s] = chars[d];
-        chars[d] = temp;
+        for(int i : chars){
+            if(i != 0)
+                return false;
+        }
+        return true;
     }
 
     @Test
     public void test(){
-        char[] a =  new char[]{'j','i','v','a','n'};
-        reverseString(a);
-        ArrayUtility.print(a);
+        System.out.println(
+                isAnagram("jivan","vanjia")
+        );
     }
 
-    @Test
-    public void test2(){
-        char[] a =  new char[]{'j'};
-        reverseString(a);
-        ArrayUtility.print(a);
-    }
 }
