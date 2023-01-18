@@ -1,5 +1,6 @@
 import model.TreeNode;
 import org.junit.jupiter.api.Test;
+import sorting.ArrayUtility;
 
 /**
  * Test class to practice any given problem .
@@ -9,34 +10,35 @@ import org.junit.jupiter.api.Test;
 
 public class TestClass {
 
-    //110. Balanced Binary Tree
-    private boolean result = true;
+    //66. Plus One
+    public int[] plusOne(int[] digits) {
+        int carry = 1 , index = digits.length - 1;
+        int[] result = digits;
 
-    public boolean isBalanced(TreeNode root) {
-        if(root == null)
-            return result;
+        while ( carry != 0 && index >= 0){
+            int sum =  (digits[index] + carry);
+            digits[index] = sum % 10;
+            carry = sum / 10;
+            index--;
+        }
 
-        isBalancedHelper(root);
+        if (carry == 1){
+            result = new int[digits.length + 1];
+            result[0] = carry;
+            for (int i = 0; i < digits.length ; i++) {
+                result[i + 1] = digits[i];
+            }
+        }
         return result;
-    }
-
-    private int isBalancedHelper(TreeNode root){
-        if(root == null)
-            return 0;
-
-        int left = isBalancedHelper(root.left);
-        int right = isBalancedHelper(root.right);
-
-        if(Math.abs(left - right) > 1)
-            result = false;
-
-        return 1 + Math.max( left , right );
     }
 
 
     @Test
     public void test(){
-        System.out.println(
+        ArrayUtility.print(
+                plusOne(
+                        new int[]{9,9,9,9}
+                )
         );
     }
 
