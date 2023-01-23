@@ -1,4 +1,3 @@
-import lists.ListNode;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -9,16 +8,19 @@ import org.junit.jupiter.api.Test;
 
 public class TestClass {
 
-    // 141. Linked List Cycle
-    public boolean hasCycle(ListNode head) {
-        ListNode slow = head, fast = head.next;
+    //125. Valid Palindrome
+    public boolean isPalindrome(String s) {
+        for (int i = 0 , j = s.length() - 1 ; i < j ; i++ , j --) {
+            while ( !Character.isLetterOrDigit(s.charAt(i)) && i < j )
+                i++;
+            while ( !Character.isLetterOrDigit(s.charAt(j)) && i < j )
+                j--;
 
-        while( slow != fast){
-            if(fast == null || fast.next == null)
+            if (
+                    Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))
+            ){
                 return false;
-
-            slow = slow.next;
-            fast = fast.next.next;
+            }
         }
         return true;
     }
@@ -27,6 +29,7 @@ public class TestClass {
     @Test
     public void test(){
         System.out.println(
+                isPalindrome("0P")
         );
     }
 
