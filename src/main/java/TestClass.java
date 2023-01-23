@@ -1,4 +1,4 @@
-import model.TreeNode;
+import lists.ListNode;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -9,28 +9,18 @@ import org.junit.jupiter.api.Test;
 
 public class TestClass {
 
-    //110. Balanced Binary Tree
-    private boolean result = true;
+    // 141. Linked List Cycle
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head, fast = head.next;
 
-    public boolean isBalanced(TreeNode root) {
-        if(root == null)
-            return result;
+        while( slow != fast){
+            if(fast == null || fast.next == null)
+                return false;
 
-        isBalancedHelper(root);
-        return result;
-    }
-
-    private int isBalancedHelper(TreeNode root){
-        if(root == null)
-            return 0;
-
-        int left = isBalancedHelper(root.left);
-        int right = isBalancedHelper(root.right);
-
-        if(Math.abs(left - right) > 1)
-            result = false;
-
-        return 1 + Math.max( left , right );
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return true;
     }
 
 
