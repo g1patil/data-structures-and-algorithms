@@ -87,9 +87,8 @@ class Database {
     private final Map<String,String> urlDatabase = new HashMap<>();
     private final Map<String,Integer> satsDatabase = new HashMap<>();
 
-    public boolean saveUrl(String key, String url){
+    public void saveUrl(String key, String url){
         urlDatabase.put(key, url);
-        return true;
     }
 
     public String getUrl(String key){
