@@ -21,7 +21,7 @@ class TicTacToeImpl implements TicTacToe {
 
     @Override
     public boolean makeMove(int i, int j, ACTION action){
-        if(currentAction != action)
+        if(currentAction != action && game[i][j] == null)
             return false;
         game[i][j] = action;
         currentAction = action == ACTION.O ? ACTION.X : ACTION.O;
