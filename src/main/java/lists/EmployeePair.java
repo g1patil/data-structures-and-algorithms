@@ -8,17 +8,17 @@ import java.util.*;
  * Given list of emplyees, pair each emplyee.
  * If the method is called twice, they should not be paired again.
  * */
-public class EmployeePair {
+public class EmployeePair<T> {
 
-    private static final Map<String,Set<String>> pairsMap = new HashMap<>();
+    private final Map<Object,Set<Object>> pairsMap = new HashMap<>();
 
-    public List<List<String>> makePair(List<String> employeeList){
+    public List<List<T>> makePair(List<T> employeeList){
         Collections.shuffle(employeeList);
-        List<List<String>> result = new ArrayList<>();
+        List<List<T>> result = new ArrayList<>();
 
         for(int i = 0; i < employeeList.size(); i+=2) {
-            String a = employeeList.get(i);
-            String b = employeeList.get(i+1);
+            T a = employeeList.get(i);
+            T b = employeeList.get(i+1);
             if(!alreadyPaired(a,b)){
                 addToPairHistory(a,b);
                 result.add( List.of(a,b) );
@@ -32,7 +32,7 @@ public class EmployeePair {
         return result;
     }
 
-    private void addToPairHistory(String a , String b){
+    private void addToPairHistory(T a , T b){
         pairsMap.putIfAbsent(a,new HashSet<>());
         pairsMap.putIfAbsent(b,new HashSet<>());
         pairsMap.get(a).add(b);
@@ -40,22 +40,23 @@ public class EmployeePair {
     }
 
 
-    private boolean alreadyPaired(String a , String b){
+    private boolean alreadyPaired(T a , T b){
         return pairsMap.getOrDefault(a , Set.of()).contains(b)
                 || pairsMap.getOrDefault(b, Set.of()).contains(a);
     }
 
     @Test
     public void test(){
-        List<String> list = new ArrayList<>();
-        list.add("a");
-        list.add("b");
-        list.add("c");
-        list.add("e");
+        EmployeePair<Integer> employeePair = new EmployeePair<>();
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
 
-        for(int i = 0; i < 6; i++) {
+        for(int i = 0; i < 4; i++) {
             System.out.println(
-                    makePair(list)
+                    employeePair.makePair(list)
             );
         }
     }
