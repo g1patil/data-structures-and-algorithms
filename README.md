@@ -7,18 +7,18 @@ Feel free to fork/contribute/share/createissue or ask any question. Majority of 
 
 1. [Basic Practice](/src):
     1. [Arrays](/src/main/java/arrays)
-    2. [Sliding Window Arrays](/src/arrays/slidingwindow)
-    3. [Disjointset/Union Find](/src/disjointset)
-    4. [Matrix](/src/matrix)
-    5. [Trees](/src/trees)
-    6. [Binary Trees](/src/trees/binary)
-    7. [Dynamic Programming](/src/dynamicprogramming)
-    8. [Graphs](/src/graph)
-    9. [Lists](/src/lists)
-    10. [Miscellaneous](/src/miscellaneous)
-    11. [Searching](/src/main/java/com//searching)
-    12. [Sorting](/src/sorting)
-    13. [Strings](/src/strings)
+    2. [Sliding Window Arrays](/src/main/java/arrays/slidingwindow)
+    3. [Disjointset/Union Find](/src/main/java/disjointset)
+    4. [Matrix](/src/main/java/matrix)
+    5. [Trees](/src/main/java/trees)
+    6. [Binary Trees](/src/main/java/trees/binary)
+    7. [Dynamic Programming](/src/main/java/dynamicprogramming)
+    8. [Graphs](/src/main/java/graph)
+    9. [Lists](/src/main/java/lists)
+    10. [Miscellaneous](/src/main/java/miscellaneous)
+    11. [Searching](/src/main/java/main/java/com//searching)
+    12. [Sorting](/src/main/java/sorting)
+    13. [Strings](/src/main/java/strings)
     
 ## Environment
 
