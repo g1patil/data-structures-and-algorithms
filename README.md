@@ -6,7 +6,7 @@ Feel free to fork/contribute/share/createissue or ask any question. Majority of 
 ## Contents
 
 1. [Basic Practice](/src):
-    1. [Arrays](/src/arrays)
+    1. [Arrays](/src/main/java/arrays)
     2. [Sliding Window Arrays](/src/arrays/slidingwindow)
     3. [Disjointset/Union Find](/src/disjointset)
     4. [Matrix](/src/matrix)
