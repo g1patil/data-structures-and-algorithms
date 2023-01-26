@@ -12,37 +12,37 @@ import annotation.Stage;
 @Platform(Site.LEETCODE)
 public class DesignaTextEditor {
 
-    StringBuilder sb = new StringBuilder();
-    int cursor = 0;
-
+    private StringBuilder content;
+    private int cursor;
+    private static final int read_length = 10;
     public DesignaTextEditor() {
+        content = new StringBuilder();
+        cursor = 0;
     }
 
     public void addText(String text) {
-        sb.insert(cursor,text);
+        content.insert(cursor,text);
         cursor+=text.length();
     }
 
     public int deleteText(int k) {
-        int rightBound = Math.max(cursor - k ,0 );
-        int oldLength = sb.length();
-        sb.delete( rightBound , cursor );
-        cursor = rightBound;
-        return Math.abs( sb.length() - oldLength);
+        int newCursor = Math.max( 0 , this.cursor - k);
+        int oldLength = content.length();
+        content.delete(newCursor,cursor);
+        this.cursor = newCursor;
+        return Math.abs( oldLength - content.length());
     }
 
     public String cursorLeft(int k) {
-        int bound = Math.max(cursor - k ,0 );
-        int start = Math.max( bound- 10 , 0 );
-        cursor = bound;
-        return sb.substring( start , bound);
+        this.cursor = Math.max( cursor - k , 0 );
+        int start = Math.max( 0, cursor - read_length );
+        return content.substring(start,cursor);
     }
 
     public String cursorRight(int k) {
-        int bound = Math.min( sb.length() ,  cursor + k );
-        int start = Math.max( bound - 10 , 0 );
-        cursor = bound;
-        return sb.substring( start , bound);
+        this.cursor = Math.min( content.length() , this.cursor + k );
+        int start = Math.max( 0, cursor - read_length );
+        return content.substring(start,cursor);
     }
 
     public static void main(String[] args){
