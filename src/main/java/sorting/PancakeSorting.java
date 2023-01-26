@@ -14,39 +14,38 @@ import java.util.List;
 public class PancakeSorting {
 
     public List<Integer> pancakeSort(int[] arr) {
-        int last = arr.length - 1;
-        int biggestIndex = 0;
+        int last = arr.length;
         List<Integer> result = new ArrayList<>();
 
-        while( last >= 0 ){
-            biggestIndex = getBiggestIndex(arr , last);
-            if(biggestIndex != last && biggestIndex != 0){
-                reverse(arr , 0 , biggestIndex);
-                result.add(biggestIndex);
+        while(last > 1){
+            int index = 0;
+            index = getBiggestIndex(arr, last);
+
+            if(index == last-1){
+                last--;
+                continue;
             }
 
-            if(last != 0){
-                reverse(arr , 0, last);
-                result.add(last);
-            }
+            reverse(arr,0,index);
+            result.add(index+1);
+
+            reverse(arr,0,last-1);
+            result.add(last);
+
             last--;
         }
         return result;
     }
 
-    private int getBiggestIndex(int[] arr , int index){
-        int max = Integer.MIN_VALUE;
-        int result= 0;
-        for(int i = 0; i <= index; i++) {
-            if( arr[i] > max){
-                max = arr[i];
-                result = i;
-            }
+    private int getBiggestIndex(int[] arr , int target){
+        for(int i = 0; i < target; i++) {
+            if( arr[i] == target)
+                return i;
         }
-        return result;
+        return -1;
     }
     public void reverse(int[] arr, int i , int j){
-        while( i <= j){
+        while( i < j){
             int temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
@@ -59,7 +58,7 @@ public class PancakeSorting {
     public void test(){
         System.out.println(
                 pancakeSort(
-                        new int[]{5,3,4,2}
+                        new int[]{3,2,4,1}
                 )
         );
     }

@@ -1,5 +1,12 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Test class to practice any given problem .
  * This class serves as the template class for any coding practices that I do.
@@ -8,29 +15,28 @@ import org.junit.jupiter.api.Test;
 
 public class TestClass {
 
-    //125. Valid Palindrome
-    public boolean isPalindrome(String s) {
-        for (int i = 0 , j = s.length() - 1 ; i < j ; i++ , j --) {
-            while ( !Character.isLetterOrDigit(s.charAt(i)) && i < j )
-                i++;
-            while ( !Character.isLetterOrDigit(s.charAt(j)) && i < j )
-                j--;
-
-            if (
-                    Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))
-            ){
-                return false;
-            }
-        }
-        return true;
-    }
-
-
     @Test
     public void test(){
-        System.out.println(
-                isPalindrome("0P")
-        );
+        Map<String,Integer> frequency = new HashMap<>();
+
+        try {
+            URL url = new URL("https://norvig.com/big.txt");
+            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+            String line;
+            while ((line = in.readLine()) != null) {
+                String[] words = line.split(" ");
+                for(String s : words){
+                    s = s.toLowerCase();
+                    s = s.replaceAll("[^a-zA-Z0-9]", "");
+                    frequency.putIfAbsent( s , frequency.getOrDefault(s , 0 ) + 1 );
+                }
+            }
+            System.out.println(frequency);
+            in.close();
+        } catch ( IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
