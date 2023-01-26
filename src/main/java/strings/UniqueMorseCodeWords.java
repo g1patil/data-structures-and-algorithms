@@ -33,6 +33,23 @@ public class UniqueMorseCodeWords {
         return unique.size();
     }
 
+    //optimal
+    public int uniqueMorseRepresentationsOptimal(String[] words) {
+        Set<String> unique = new HashSet<>();
+        String[] codes = new String[]{
+                ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."
+        };
+
+        for(String w : words){
+            StringBuilder sb = new StringBuilder();
+            for(Character c : w.toCharArray()){
+                sb.append( codes[ c - 'a'] );
+            }
+            unique.add(sb.toString());
+        }
+        return unique.size();
+    }
+
     public void buildCodes(){
         String[] codes = new String[]{
                 ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."
@@ -47,7 +64,7 @@ public class UniqueMorseCodeWords {
     public void test(){
         buildCodes();
         System.out.println(
-                uniqueMorseRepresentations(
+                uniqueMorseRepresentationsOptimal(
                         new String[]{
                                 "gin","zen","gig","msg"
                         }
