@@ -19,6 +19,7 @@ public class ReservationsImpl implements Reservations {
         totalRooms = 0;
     }
 
+    // add created at
     @Override
     public Booking makeReservation(Booking booking){
         double total = getPrice(booking.getRoom().getType());
