@@ -8,32 +8,27 @@ public class RankTeamsbyVotes   {
 
 
     public String rankTeams(String[] votes) {
-        Map<Character,int[]> map = new HashMap<>();
+        Map<Character,int[]> votesMap = new HashMap<>();
         int length = votes[0].length();
+        StringBuilder sb = new StringBuilder();
 
         for(String vote : votes){
             for(int i = 0; i < length; i++) {
-                char c = vote.charAt(i);
-                map.putIfAbsent( c , new int[length]);
-                map.get(c)[i]++;
+                Character c = vote.charAt(i);
+                votesMap.putIfAbsent(c , new int[length]);
+                votesMap.get(c)[i]++;
             }
         }
-
-        List<Character> characters = new ArrayList<>(map.keySet());
-
-        Collections.sort(characters, (a,b)->{
+        List<Character> list = new ArrayList<>(votesMap.keySet());
+        list.sort((a,b)->{
             for(int i = 0; i < length; i++) {
-                if(map.get(a)[i] != map.get(b)[i]){
-                    return map.get(b)[i] - map.get(a)[i];
+                if(votesMap.get(a)[i] != votesMap.get(b)[i]){
+                    return votesMap.get(b)[i] - votesMap.get(a)[i];
                 }
             }
-            return a - b;
+            return a - b ;
         });
-
-        StringBuilder sb = new StringBuilder();
-        for(char c : characters){
-            sb.append(c);
-        }
+        list.stream().forEach(c->sb.append(c));
         return sb.toString();
     }
 
