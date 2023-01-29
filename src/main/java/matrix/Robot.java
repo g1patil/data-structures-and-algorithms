@@ -36,8 +36,8 @@ public class Robot {
     }
 
     public int[] getPos() {
-        System.out.println(currentRow + " : " + curentCol);
-        return new int[]{currentRow,curentCol};
+        System.out.println(curentCol + " : " + currentRow);
+        return new int[]{curentCol,currentRow};
     }
 
     private boolean isOutOfBound(int i , int j){
@@ -62,11 +62,16 @@ public class Robot {
     }
 
     public static void main(String[] args){
-        Robot robot = new Robot(3,3);
-        System.out.println(robot.getDir());
+        Robot robot = new Robot(6,3);
         robot.getPos();
-        robot.step(3);
-        System.out.println(robot.getDir());
+        robot.step(2);
+        robot.step(2);
+        robot.getPos();
+        robot.step(2);
+        robot.getPos();
+        robot.step(1);
+        robot.getPos();
+        robot.step(4);
         robot.getPos();
     }
 }
