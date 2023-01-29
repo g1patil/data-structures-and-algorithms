@@ -1,5 +1,8 @@
 package arrays;
 
+import org.junit.Test;
+import sorting.ArrayUtility;
+
 import java.util.Arrays;
 
 /**
@@ -19,5 +22,14 @@ public class DistantBarcodes {
         }
 
         return result;
+    }
+
+    @Test
+    public void test(){
+        ArrayUtility.print(
+                rearrangeBarcodes(
+                        new int[]{1,1,1,2,2,2}
+                )
+        );
     }
 }
