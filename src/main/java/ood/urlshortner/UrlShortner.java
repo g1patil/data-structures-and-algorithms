@@ -63,8 +63,8 @@ class UrlShortnerImpl implements UrlShortner{
 
 class PasswordService {
 
-    private Map<String,String> passwordStorage = new HashMap<>();
-    private static PasswordService passwordService = new PasswordService();
+    private final Map<String,String> passwordStorage = new HashMap<>();
+    private static final PasswordService passwordService = new PasswordService();
 
     private PasswordService(){}
 

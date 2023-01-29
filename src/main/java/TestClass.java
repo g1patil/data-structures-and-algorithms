@@ -39,4 +39,25 @@ public class TestClass {
         }
     }
 
+    public int countSegments(String s) {
+        if(s == null || s.isBlank())
+            return 0;
+        int result = 0;
+        for(String _s : s.split(" ")){
+            if(!_s.isBlank() && !_s.isEmpty()){
+
+                result++;
+            }
+        }
+
+        return result;
+    }
+
+    @Test
+    public void test2(){
+        System.out.println(
+                countSegments(", , , ,        a, eaefa")
+        );
+    }
+
 }
