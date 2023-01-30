@@ -5,6 +5,7 @@ import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
 import org.junit.jupiter.api.Test;
+import sorting.ArrayUtility;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -73,6 +74,8 @@ public class TopKFrequentElements {
 
     @Test
     public void test(){
-        topKFrequent(new int[]{99,13,12,11,14,14,14,14,11,11,12,99,99},2);
+        ArrayUtility.print(
+                topKFrequent(new int[]{99,13,12,11,14,14,14,14,11,11,12,99,99},2)
+        );
     }
 }
