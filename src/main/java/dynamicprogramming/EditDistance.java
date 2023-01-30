@@ -23,7 +23,11 @@ public class EditDistance {
     private void calculateDistance(int[][] dp ,String word1 , String word2){
         for(int i = 1; i < dp.length; i++) {
             for(int j = 1; j < dp[0].length; j++) {
-                dp[i][j] =  (word1.charAt(i-1) == word2.charAt(j-1) ? 0 : 1 ) + getMinimum(dp , i , j);
+                if(word1.charAt(i-1) == word2.charAt(j-1)) {
+                    dp[i][j] = dp[i-1][j-1];
+                } else {
+                    dp[i][j] = Math.min(dp[i-1][j-1], Math.min(dp[i-1][j], dp[i][j-1])) + 1;
+                }
             }
         }
     }
