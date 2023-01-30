@@ -37,7 +37,7 @@ public class HistoricKVImpl implements HistoricKV{
         }
     }
 
-    private class Node {
+    private static class Node {
         public int key;
         public LinkedHashMap<Integer,Integer> history;
 
