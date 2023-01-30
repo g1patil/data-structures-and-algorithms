@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class SortSocks {
 
-
     private List<Sock> sortSocks(List<Sock> sockList){
         Map<Sock,int[]> map = new HashMap<>();
         init(map,sockList);
@@ -52,6 +51,10 @@ public class SortSocks {
                 sortSocks(
                         List.of(
                                 new Sock("yellow","right"),
+                                new Sock("blue","right"),
+                                new Sock("red","right"),
+                                new Sock("blue","left"),
+                                new Sock("red","left"),
                                 new Sock("blue","right"),
                                 new Sock("red","right"),
                                 new Sock("blue","left"),

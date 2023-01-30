@@ -16,70 +16,71 @@ import java.util.Map;
 @Platform(Site.LEETCODE)
 public class LRUCache {
 
-    int size , capacity;
-    Map<Integer,Node> cache;
-    Node head , tail ;
+    private Map<Integer,Node> map = new HashMap<>();
+    private Node head,tail;
+    private int capacity;
+    private int size;
+
     public LRUCache(int capacity) {
         this.capacity = capacity;
-        cache = new HashMap();
+
         head = new Node(-1,-1);
         tail = new Node(-1,-1);
 
         head.next = tail;
-        tail.pre = head;
+        tail.prev = head;
     }
 
-    public void delete(Node node){
-        node.pre.next = node.next;
-        node.next.pre = node.pre;
-    }
-
-    public void addToHead(Node node){
-        node.next = head.next;
-        head.next.pre = node;
-        node.pre = head;
-        head.next = node;
-    }
     public int get(int key) {
-        if(cache.containsKey(key)){
-            Node node = cache.get(key);
-            delete(node);
+        if(map.containsKey(key)){
+            Node node =  map.get(key);
+            deleteNode(node);
             addToHead(node);
-            return node.val;
         }
-        return -1;
+    }
+
+    private void addToHead(Node node){
+        node.next = head.next;
+        head.next.prev = node;
+        head.next = node;
+        node.prev = head;
+    }
+
+    private void deleteNode(Node node){
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
 
     public void put(int key, int value) {
-        if(cache.containsKey(key)){
-            Node node = cache.get(key);
-            node.val = value;
-            delete(node);
-            addToHead(node);
+        if(map.containsKey(key)){
+            map.get(key).value = value;
+            deleteNode(map.get(key));
+            addToHead(map.get(key));
         } else {
             Node node = new Node(key,value);
-            cache.put(key , node);
-
+            map.put(key,node);
             if(size < capacity){
                 size++;
                 addToHead(node);
             } else {
-                cache.remove(tail.pre.key);
-                delete(tail.pre);
+                map.remove(tail.prev.key);
                 addToHead(node);
+                deleteNode(tail.prev);
             }
+
         }
     }
 
     private class Node {
-        int key;
-        int val;
-        Node next;
-        Node pre;
+        public int key;
+        public int value;
 
-        public Node(int key , int val){
-            this.key = key;
-            this.val = val;
+        public Node next;
+        public Node prev;
+
+        public Node(int k , int v){
+            this.key = k;
+            this.value = v;
         }
     }
 
