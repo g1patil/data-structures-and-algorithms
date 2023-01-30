@@ -36,7 +36,9 @@ public class LRUCache {
             Node node =  map.get(key);
             deleteNode(node);
             addToHead(node);
+            return node.value;
         }
+        return -1;
     }
 
     private void addToHead(Node node){
