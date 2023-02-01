@@ -2,7 +2,6 @@ package sorting;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -10,15 +9,15 @@ public class ScheduleFlight {
 
     private static final int delay = 10;
     public List<Schedule> sortScheule(List<Schedule> scheduleList){
-        Collections.sort(scheduleList, Comparator.comparing(o->o.time));
+        scheduleList.sort(Comparator.comparing(o -> o.time));
 
         for(int i = 1; i < scheduleList.size(); i++ ) {
-            Schedule s1 = scheduleList.get(i-1);
-            Schedule s2 = scheduleList.get(i);
+            Schedule previous = scheduleList.get(i-1);
+            Schedule current = scheduleList.get(i);
 
-            if(s2.time.equals(s1.time) || s2.time.isBefore(s1.time)){
-               int diff = s1.time.getMinute() - s2.time.getMinute() ;
-                adjustTime(s2 , diff + delay);
+            if(current.time.equals(previous.time) || current.time.isBefore(previous.time)){
+               int diff = previous.time.getMinute() - current.time.getMinute() ;
+                adjustTime(current, diff + delay);
             }
         }
         return scheduleList;
