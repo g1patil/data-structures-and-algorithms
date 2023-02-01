@@ -12,19 +12,14 @@ public class ScheduleFlight {
     public List<Schedule> sortScheule(List<Schedule> scheduleList){
         Collections.sort(scheduleList, Comparator.comparing(o->o.time));
 
-        for(int i = 1; i < scheduleList.size(); ) {
+        for(int i = 1; i < scheduleList.size(); i++ ) {
             Schedule s1 = scheduleList.get(i-1);
             Schedule s2 = scheduleList.get(i);
 
-            if(s1.time.equals(s2.time)){
-                adjustTime(s2, delay);
-            } else if( s1.time.isAfter(s2.time)){
-                adjustTime(s2 , s1.time.getMinute() - s2.time.getMinute() + delay);
-                i++;
-            } else {
-                i++;
+            if(s2.time.equals(s1.time) || s2.time.isBefore(s1.time)){
+               int diff = s1.time.getMinute() - s2.time.getMinute() ;
+                adjustTime(s2 , diff + delay);
             }
-
         }
         return scheduleList;
     }
@@ -35,6 +30,7 @@ public class ScheduleFlight {
 
     public static void main(String[] args){
 
+        Schedule s0 = new Schedule("1",LocalTime.of(05,10),100);
         Schedule s1 = new Schedule("1",LocalTime.of(05,10),100);
         Schedule s2 = new Schedule("2",LocalTime.of(04,10),100);
         Schedule s3 = new Schedule("3",LocalTime.of(03,10),100);
@@ -44,6 +40,7 @@ public class ScheduleFlight {
         Schedule s7 = new Schedule("7",LocalTime.of(03,10),100);
 
         List<Schedule> li = new ArrayList<>();
+        li.add(s0);
         li.add(s1);
         li.add(s2);
         li.add(s3);
@@ -52,9 +49,9 @@ public class ScheduleFlight {
         li.add(s6);
         li.add(s7);
 
-        System.out.println(
-                new ScheduleFlight().sortScheule(li)
-        );
+
+        new ScheduleFlight().sortScheule(li).forEach(System.out::println);
+
 
     }
     private static class Schedule{
