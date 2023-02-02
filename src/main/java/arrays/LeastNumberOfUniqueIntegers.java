@@ -1,12 +1,17 @@
 package arrays;
 
 import annotation.Platform;
+import annotation.Quality;
 import annotation.Site;
+import annotation.Stage;
 import org.junit.Test;
-
 import java.util.*;
 
+/**
+ * 1481. Least Number of Unique Integers after K Removals
+ * */
 @Platform(Site.LEETCODE)
+@Quality(value = Stage.FAILING,details = "36 / 43")
 public class LeastNumberOfUniqueIntegers {
 
     public int findLeastNumOfUniqueInts(int[] arr, int k) {
@@ -20,12 +25,10 @@ public class LeastNumberOfUniqueIntegers {
 
         for(Map.Entry<Integer,Integer> es : maps.entrySet()){
             freqMap.putIfAbsent(es.getValue(),new LinkedList<>());
-            freqMap.get(es.getValue()).add(es.getKey());
         }
-        Set<Integer> set = new HashSet<>(maps.keySet());
 
-        for (int i = 1; i <= k; i++) {
-
+        for(int i : arr){
+            freqMap.get( maps.get(i)).add(i);
         }
 
         for(int i : freqMap.keySet()){
