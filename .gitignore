@@ -54,3 +54,4 @@ lib
 algorithms.iml
 
 target
+target/*
