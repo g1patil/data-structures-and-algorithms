@@ -1,4 +1,4 @@
-package ood.map;
+package ood.customdatastructures.map;
 
 import lombok.Getter;
 
