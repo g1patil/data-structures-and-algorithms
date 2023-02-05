@@ -68,7 +68,7 @@ public class MaximumLengthPairChain {
 
     @Test
     public void test_(){
-        int[][] pairs = new int[][]{
+        int[][] pairs = {
                 new int[]{-10,-8},
                 new int[]{8,9},
                 new int[]{-5,0},

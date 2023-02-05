@@ -16,7 +16,7 @@ import java.util.List;
 @Platform(Site.LEETCODE)
 public class GameOfLife {
 
-    private static final int[][] direction = new int[][]{
+    private static final int[][] direction = {
             new int[]{-1, 0},
             new int[]{1, 0},
             new int[]{0, 1},

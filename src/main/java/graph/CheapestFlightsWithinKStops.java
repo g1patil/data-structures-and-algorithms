@@ -113,7 +113,7 @@ public class CheapestFlightsWithinKStops {
         int[] e2 = new int[]{1,2,200};
         int[] e3 = new int[]{0,2,500};
 
-        int[][] g = new int[][]{e1,e2,e3};
+        int[][] g = {e1,e2,e3};
 
         System.out.println(findCheapestPrice(3 , g , 0  , 2 , 1));
     }
@@ -127,7 +127,7 @@ public class CheapestFlightsWithinKStops {
         int[] e5 = new int[]{2,4,1};
         int[] e6 = new int[]{3,4,1};
 
-        int[][] g = new int[][]{e1,e2,e3,e4,e5,e6};
+        int[][] g = {e1,e2,e3,e4,e5,e6};
 
         System.out.println(findCheapestPrice(3 , g , 0  , 4 , 2));
     }
@@ -141,7 +141,7 @@ public class CheapestFlightsWithinKStops {
         int[] e5 = new int[]{3,1,1};
         int[] e6 = new int[]{1,4,3};
 
-        int[][] g = new int[][]{e1,e2,e3 ,e4,e5,e6};
+        int[][] g = {e1,e2,e3 ,e4,e5,e6};
 
         System.out.println(findCheapestPriceFaster(5 , g , 0  , 2 , 3));
     }

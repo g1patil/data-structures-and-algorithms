@@ -17,7 +17,7 @@ import java.util.Queue;
 @Platform(Site.LEETCODE)
 public class ShortestPathinaGridwithObstaclesElimination {
 
-    int[][] direction = new int[][]{
+    int[][] direction = {
             {0,1},{1,0},{-1,0},{0,-1}
     };
     public int shortestPath(int[][] grid, int k) {
@@ -68,7 +68,7 @@ public class ShortestPathinaGridwithObstaclesElimination {
 
     @Test
     public void test_(){
-        int[][] grid = new int[][]{
+        int[][] grid = {
                 {0,0,0},{1,1,0},{0,0,0},{0,1,1},{0,0,0}
         };
         System.out.println(shortestPath(grid , 1 ));

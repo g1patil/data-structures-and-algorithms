@@ -74,7 +74,7 @@ public class NodeKDistance {
         int[] v7 = {5,4};
 
 
-        int[][] graph = new int[][]{v1,v2,v3,v4,v5,v6,v7};
+        int[][] graph = {v1,v2,v3,v4,v5,v6,v7};
 
         System.out.println(getKDistanceNodes(graph , 0 , 2 ));
     }

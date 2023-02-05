@@ -115,14 +115,14 @@ public class GraphProblem1 {
 
     public static void main(String[] args) {
         GraphProblem1 graphProblem = new GraphProblem1();
-        int[][] ints = new int[][]{
+        int[][] ints = {
                 new int[]{0,0} ,
                 new int[]{2,2} ,
                 new int[]{7,0} ,
                 new int[]{50,50 }
         };
 
-        int[][] ints2 = new int[][]{
+        int[][] ints2 = {
                 new int[]{0,0} ,
                 new int[]{2,2} ,
                 new int[]{3,10} ,
@@ -130,7 +130,7 @@ public class GraphProblem1 {
                 new int[]{7,0}
         };
 
-        int[][] ints3 = new int[][]{
+        int[][] ints3 = {
                 new int[]{3,12} ,
                 new int[]{-2,5} ,
                 new int[]{-4,1}

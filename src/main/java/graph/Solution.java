@@ -63,7 +63,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[][] ints = new int[][]{
+        int[][] ints = {
                 new int[]{0,0} ,
                 new int[]{2,2} ,
                 new int[]{7,0} ,

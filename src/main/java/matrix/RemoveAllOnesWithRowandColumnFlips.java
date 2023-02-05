@@ -45,7 +45,7 @@ public class RemoveAllOnesWithRowandColumnFlips {
 
     @Test
     public void test_(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 {0,1,0},
                 {1,0,1},
                 {0,1,0}

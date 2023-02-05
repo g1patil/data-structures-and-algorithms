@@ -17,7 +17,7 @@ import java.util.Queue;
 @Platform(Site.LEETCODE)
 public class BestMeetingPoint {
 
-    int[][] nextCell = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
+    int[][] nextCell = {{1,0},{-1,0},{0,1},{0,-1}};
     public int minTotalDistance(int[][] grid) {
         int[][] distance = new int[grid.length][grid[0].length];
 
@@ -75,7 +75,7 @@ public class BestMeetingPoint {
 
     @Test
     public void test_(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 {1,0,0,0,1},
                 {0,0,0,0,0},
                 {0,0,1,0,0}
@@ -85,7 +85,7 @@ public class BestMeetingPoint {
 
     @Test
     public void test_2(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 {1,0,1,0,1}
         };
         System.out.println(minTotalDistance(matrix));

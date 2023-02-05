@@ -38,7 +38,7 @@ public class KClosestPointsOrigin {
 
     @Test
     public void test_(){
-        int[][] ints = new int[][]{
+        int[][] ints = {
                 new int[]{3,3},
                 new int[]{5,-1},
                 new int[]{-2,4}

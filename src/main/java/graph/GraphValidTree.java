@@ -76,7 +76,7 @@ public class GraphValidTree {
 
     @Test
     public void test_(){
-        int[][] edges = new int[][]{
+        int[][] edges = {
           new int[]{0,1},
           new int[]{2,1},
           new int[]{2,0},

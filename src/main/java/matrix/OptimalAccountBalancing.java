@@ -43,7 +43,7 @@ public class OptimalAccountBalancing {
 
     @Test
     public void test_(){
-        int[][] t = new int[][]{
+        int[][] t = {
                 {0,1,10},{2,0,5}
         };
         System.out.println(minTransfers(t));

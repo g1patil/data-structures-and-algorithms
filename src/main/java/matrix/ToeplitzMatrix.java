@@ -48,7 +48,7 @@ public class ToeplitzMatrix {
 
     @Test
     public void test_(){
-        int[][] mat = new int[][]{
+        int[][] mat = {
                 new int[]{11,74,0,93},
                 new int[]{40,11,74,7}
         };

@@ -46,7 +46,7 @@ public class MatrixElementsSum {
     @Test
     public void test_(){
 
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 new int[]{0,1,1,2},
                 new int[]{0,5,0,0},
                 new int[]{2,0,3,3}
@@ -58,7 +58,7 @@ public class MatrixElementsSum {
     @Test
     public void test_2(){
 
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 new int[]{1,1,1,0},
                 new int[]{0,5,0,1},
                 new int[]{2,1,3,10}

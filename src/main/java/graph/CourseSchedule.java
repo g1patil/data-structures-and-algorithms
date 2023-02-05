@@ -80,7 +80,7 @@ public class CourseSchedule {
 
     @Test
     public void test_(){
-        int[][] edges = new int[][]{
+        int[][] edges = {
                 new int[]{2,0},
                 new int[]{2,1},
                 new int[]{0,3},
@@ -92,7 +92,7 @@ public class CourseSchedule {
 
     @Test
     public void test_2(){
-        int[][] edges = new int[][]{
+        int[][] edges = {
                 new int[]{2,0},
                 new int[]{0,2}
         };
@@ -102,7 +102,7 @@ public class CourseSchedule {
 
     @Test
     public void test_3(){
-        int[][] edges = new int[][]{
+        int[][] edges = {
                 new int[]{1,0},
                 new int[]{2,0},
                 new int[]{3,1},
@@ -115,7 +115,7 @@ public class CourseSchedule {
 
     @Test
     public void test_4(){
-        int[][] edges = new int[][]{
+        int[][] edges = {
                 new int[]{1,4},
                 new int[]{2,4},
                 new int[]{3,1},
@@ -128,7 +128,7 @@ public class CourseSchedule {
 
     @Test
     public void test_5(){
-        int[][] edges = new int[][]{
+        int[][] edges = {
                 new int[]{1,0}
         };
 

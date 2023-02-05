@@ -6,7 +6,7 @@ package matrix;
 //my impl . ths is not same as the leetcode. Duretions and orientation is changed.
 public class Robot {
 
-    int[][] direction = new int[][]{
+    int[][] direction = {
             {0,1},{0,-1},{-1,0},{1,0}
     };
     int currentDurection = 0;

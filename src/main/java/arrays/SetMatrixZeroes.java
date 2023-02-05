@@ -63,19 +63,19 @@ public class SetMatrixZeroes {
     public static void main(String[] args) {
         SetMatrixZeroes setMatrixZeroes = new SetMatrixZeroes();
 
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 {1,2,3},
                 {2,0,6},
                 {1,2,3}
         };
 
-        int[][] matrix2 = new int[][]{
+        int[][] matrix2 = {
                 {0,2,3},
                 {2,5,6},
                 {1,2,3}
         };
 
-        int[][] matrix3 = new int[][]{
+        int[][] matrix3 = {
                 {0,1,2,0},
                 {3,4,5,2},
                 {1,3,1,5}

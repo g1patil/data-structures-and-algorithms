@@ -1,11 +1,7 @@
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Test class to practice any given problem .
@@ -15,49 +11,24 @@ import java.util.Map;
 
 public class TestClass {
 
+    //1,5], [14, 17], [6,9], [10,13], [4,7], [8,12]
     @Test
     public void test(){
-        Map<String,Integer> frequency = new HashMap<>();
+        List<int[]> list = new ArrayList<>();
+        list.add(new int[]{1,5});
+        list.add(new int[]{14,17});
+        list.add(new int[]{6,9});
+        list.add(new int[]{10,13});
+        list.add(new int[]{4,7});
+        list.add(new int[]{8,12});
 
-        try {
-            URL url = new URL("https://norvig.com/big.txt");
-            BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-
-            String line;
-            while ((line = in.readLine()) != null) {
-                String[] words = line.split(" ");
-                for(String s : words){
-                    s = s.toLowerCase();
-                    s = s.replaceAll("[^a-zA-Z0-9]", "");
-                    frequency.putIfAbsent( s , frequency.getOrDefault(s , 0 ) + 1 );
-                }
-            }
-            System.out.println(frequency);
-            in.close();
-        } catch ( IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public int countSegments(String s) {
-        if(s == null || s.isBlank())
-            return 0;
-        int result = 0;
-        for(String _s : s.split(" ")){
-            if(!_s.isBlank() && !_s.isEmpty()){
-
-                result++;
-            }
-        }
-
-        return result;
-    }
-
-    @Test
-    public void test2(){
-        System.out.println(
-                countSegments(", , , ,        a, eaefa")
+        sortIntervals(list).stream().forEach(
+                a -> System.out.println("[" + a[0] + "," + a[1] + "]")
         );
     }
 
+    private List<int[]> sortIntervals(List<int[]> list){
+        list.sort((a,b)->a[0]-b[0]);
+        return list;
+    }
 }

@@ -39,7 +39,7 @@ public class TheMaze {
 
     @Test
     public void test(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 {0,0,1,0,0},
                 {0,0,0,0,0},
                 {0,0,0,1,0},

@@ -16,7 +16,7 @@ import java.util.*;
 @Platform(Site.LEETCODE)
 public class ShortestDistanceFromAllBuildings {
 
-    int[][] next = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
+    int[][] next = {{1,0},{-1,0},{0,1},{0,-1}};
 
     public int shortestDistance(int[][] grid) {
         int row = grid.length , col = grid[0].length;
@@ -81,7 +81,7 @@ public class ShortestDistanceFromAllBuildings {
 
     @Test
     public void test_(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 {1,0,2,0,1},
                 {0,0,0,0,0},
                 {0,0,1,0,0}
@@ -91,7 +91,7 @@ public class ShortestDistanceFromAllBuildings {
 
     @Test
     public void test_2(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 {1,0,1,0,1}
         };
         System.out.println(shortestDistance(matrix));

@@ -31,7 +31,7 @@ public class CherryPickup {
 
     @Test
     public void test(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
           {0,1,-1},
           {1,0,-1},
           {1,1,1},

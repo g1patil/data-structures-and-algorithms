@@ -37,13 +37,13 @@ public class IntervalListIntersections {
 
     @Test
     public void test_(){
-        int[][] first = new int[][]{
+        int[][] first = {
                 {0,2},
                 {5,10}
 
         };
 
-        int[][] second = new int[][]{
+        int[][] second = {
                 {1,5}
 
         };

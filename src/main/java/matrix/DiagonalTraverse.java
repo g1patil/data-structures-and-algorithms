@@ -90,7 +90,7 @@ public class DiagonalTraverse {
 
     @Test
     public void test_(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 new int[]{1,2,3},
                 new int[]{4,5,6},
                 new int[]{7,8,9}
@@ -101,7 +101,7 @@ public class DiagonalTraverse {
 
     @Test
     public void test_2(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 new int[]{1,2,3},
                 new int[]{4,5,6}
         };
@@ -111,7 +111,7 @@ public class DiagonalTraverse {
 
     @Test
     public void test_3(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 new int[]{1,2,3},
                 new int[]{4,5,6},
                 new int[]{7,8,9},

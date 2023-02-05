@@ -43,7 +43,7 @@ public class MinimumFallingPathSum {
 
     @Test
     public void test_(){
-        int[][] mat = new int[][]{
+        int[][] mat = {
                 {100,-42,-46,-41},
                 {31,97,10,-10},
                 {-58,-51,82,89},

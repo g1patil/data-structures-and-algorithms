@@ -100,7 +100,7 @@ public class RestoreArrayFromPairs {
 
     @Test
     public void test_(){
-        int[][] ints = new int[][]{
+        int[][] ints = {
                 new int[]{2,1},
                 new int[]{3,4},
                 new int[]{3,2}

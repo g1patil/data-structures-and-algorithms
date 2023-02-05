@@ -32,7 +32,7 @@ public class MergeIntervals {
 
     @Test
     public void test_(){
-        int[][] ints = new int[][]{
+        int[][] ints = {
                 new int[]{1,3},
                 new int[]{2,6},
                 new int[]{8,10},
@@ -44,7 +44,7 @@ public class MergeIntervals {
 
     @Test
     public void test_2(){
-        int[][] ints = new int[][]{
+        int[][] ints = {
                 new int[]{1,4},
                 new int[]{2,3}
         };

@@ -93,7 +93,7 @@ public class ValidArrangementPairs {
 
     @Test
     public void test_(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 new int[]{5,1},
                 new int[]{4,5},
                 new int[]{11,9},
@@ -105,7 +105,7 @@ public class ValidArrangementPairs {
 
     @Test
     public void test_2(){
-        int[][] matrix = new int[][]{
+        int[][] matrix = {
                 new int[]{1,3},
                 new int[]{3,2},
                 new int[]{2,1}
