@@ -1,44 +1,44 @@
 package graph;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
 import org.junit.jupiter.api.Test;
 
+/**
+ * 63. Unique Paths II
+ * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class UniquePathsII {
 
-    private int count;
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        boolean[][] visited = new boolean[obstacleGrid.length][obstacleGrid[0].length];
-        dfs(0,0,
-                obstacleGrid.length-1,
-                obstacleGrid[0].length -1,
-                obstacleGrid,visited);
-        return count;
-    }
+        int row = obstacleGrid.length, col = obstacleGrid[0].length;
 
-    private void dfs(int r, int c, int tarRow,int tarCol, int[][] obstacleGrid, boolean[][] visited){
-        if(r < 0 || c < 0 || r >= obstacleGrid.length || c >= obstacleGrid[0].length || visited[r][c]
-            || obstacleGrid[r][c] == 1
-        ){
-            return;
+        if(obstacleGrid[0][0] == 1)
+            return 0;
+
+        obstacleGrid[0][0] = 1;
+        for(int i = 1; i < row; i++) {
+            obstacleGrid[i][0] = (obstacleGrid[i][0] == 0  && obstacleGrid[i-1][0] == 1 ) ? 1 : 0;
         }
 
-        if(r == tarRow && c == tarCol){
-            count++;
-            return;
+        for(int i = 1; i < col; i++) {
+            obstacleGrid[0][i] = (obstacleGrid[0][i] == 0  && obstacleGrid[0][i-1] == 1 ) ? 1 : 0;
         }
 
-        visited[r][c] = true;
+        for(int i = 1; i < row ; i++) {
+            for(int j = 1; j < col; j++) {
+                if(obstacleGrid[i][j] == 0){
+                    obstacleGrid[i][j] = obstacleGrid[i-1][j] + obstacleGrid[i][j-1];
+                } else {
+                    obstacleGrid[i][j] = 0;
+                }
+            }
+        }
 
-        dfs(r,c+1,tarRow,tarCol,obstacleGrid,visited);
-        if(isValid(r,c+1,obstacleGrid))
-            visited[r][c+1]=false;
-        dfs(r+1,c,tarRow,tarCol,obstacleGrid,visited);
-        if(isValid(r+1,c,obstacleGrid))
-            visited[r+1][c]=false;
-
-    }
-
-    public boolean isValid(int r,int c , int[][] grid){
-        return r >= 0 && c >= 0 && r < grid.length && c < grid[0].length;
+        return obstacleGrid[row-1][col-1];
     }
 
     @Test
