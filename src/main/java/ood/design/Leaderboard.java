@@ -4,6 +4,7 @@ import annotation.Platform;
 import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -14,55 +15,71 @@ import java.util.*;
 @Platform(Site.LEETCODE)
 public class Leaderboard {
 
-    private static class Player {
-        public int id;
-        public int score;
+    private final Map<Integer,Integer> map;
+    private final TreeMap<Integer,Integer> sorted;
 
-        public Player(int i){
-            this.id = i;
-        }
-
-        @Override
-        public boolean equals(Object o){
-            if(this == o) return true;
-            if( o == null || getClass()!= o.getClass() ) return false;
-            Player p = (Player) o;
-            return this.id == p.id;
-        }
-
-        @Override
-        public int hashCode(){
-            return Objects.hashCode(id);
-        }
-    }
-
-    private List<Player> list;
-    private Map<Integer,Player> players;
     public Leaderboard() {
-        list = new ArrayList<>();
-        players = new HashMap<>();
+        this.map = new HashMap<>();
+        sorted = new TreeMap<>(Collections.reverseOrder());
     }
 
     public void addScore(int playerId, int score) {
-        players.putIfAbsent(playerId,new Player(playerId));
-        if(!list.contains(players.get(playerId))){
-            list.add(players.get(playerId));
+        if(!map.containsKey(playerId)){
+            map.put(playerId,score);
+            sorted.put(score, sorted.getOrDefault(score,0)+1);
+
+        } else {
+            int preScore = map.get(playerId);
+            sorted.put(preScore, sorted.get(preScore) - 1);
+            if (sorted.get(preScore) == 0) {
+                sorted.remove(preScore);
+            }
+            int newScore = preScore + score;
+            map.put(playerId, newScore);
+            sorted.put(newScore, sorted.getOrDefault(newScore, 0) + 1);
         }
-        players.get(playerId).score= players.get(playerId).score + score;
     }
 
     public int top(int K) {
-        if(list.isEmpty())
-            return 0;
-        list.sort((a,b)->b.score-a.score);
+        int count = 0;
         int sum = 0;
-        for(int i=0;i < K ; i++){
-            sum+=list.get(i).score;
+        for(int score : sorted.keySet()){
+            int times = sorted.get(score);
+            for(int i = 0; i < times ; i++) {
+                sum+=score;
+                count++;
+
+                if(count == K)
+                    break;
+            }
+            if(count == K)
+                break;
         }
         return sum;
     }
 
     public void reset(int playerId) {
-        players.get(playerId).score = 0;
+        int oldScore = map.get(playerId);
+        sorted.put(oldScore , sorted.get(oldScore) - 1);
+        map.put(playerId,0);
+        if(sorted.get(oldScore) == 0)
+            sorted.remove(oldScore);
+        map.remove(playerId);
+    }
+
+    @Test
+    public void test(){
+        Leaderboard lb = new Leaderboard();
+        lb.addScore(1,73);
+        lb.addScore(2,56);
+        lb.addScore(3,39);
+        lb.addScore(4,51);
+        lb.addScore(5,4);
+        lb.top(1);
+        lb.reset(1);
+        lb.reset(2);
+        lb.addScore(2,51);
+        lb.top(3);
+
     }
 }
