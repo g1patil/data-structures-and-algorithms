@@ -1,12 +1,22 @@
 package ood.design;
 
+import annotation.Platform;
+import annotation.Quality;
+import annotation.Site;
+import annotation.Stage;
+
 import java.util.*;
 
+/**
+ * 2353. Design a Food Rating System
+ * */
+@Quality(Stage.TESTED)
+@Platform(Site.LEETCODE)
 public class FoodRatings {
 
     private Map<String, TreeMap<Integer, TreeSet<String>>> map ;
-    private Map<String, String> foodCousineMap ;
-    private Map<String, Integer> foodRatingMap ;
+    private final Map<String, String> foodCousineMap ;
+    private final Map<String, Integer> foodRatingMap ;
 
     public FoodRatings(String[] foods, String[] cuisines, int[] ratings) {
         map = new HashMap<>();
