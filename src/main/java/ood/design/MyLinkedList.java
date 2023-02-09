@@ -10,9 +10,9 @@ import annotation.Stage;
  * */
 @Quality(value = Stage.FAILING,details = "8/64")
 @Platform(Site.LEETCODE)
-public class DesignLinkedList {
+public class MyLinkedList {
 
-    private Node head,tail;
+    private Node head;
 
     private static class Node {
         public int value;
@@ -24,18 +24,16 @@ public class DesignLinkedList {
     }
     public MyLinkedList() {
         head = new Node(-1);
-        tail = new Node(-1);
-        head.next = tail;
     }
 
     public int get(int index) {
-        Node temp = head.next;
+        Node temp = head;
         int p1=0;
         while(p1 != index){
             p1++;
             temp = temp.next;
         }
-        return temp.value;
+        return temp.next.value;
     }
 
     public void addAtHead(int val) {
@@ -47,10 +45,9 @@ public class DesignLinkedList {
     public void addAtTail(int val) {
         Node node = new Node(val);
         Node temp = head;
-        while(temp.next != tail){
+        while(temp.next != null){
             temp = temp.next;
         }
-        node.next = temp.next;
         temp.next = node;
     }
 
@@ -73,6 +70,22 @@ public class DesignLinkedList {
             p1++;
             temp = temp.next;
         }
-        temp.next = temp.next.next;
+        if (temp.next !=null)
+            temp.next = temp.next.next;
+    }
+
+    public static void main(String[] args) {
+        MyLinkedList obj = new MyLinkedList();
+        obj.addAtHead(2);
+        obj.deleteAtIndex(1);
+        obj.addAtHead(2);
+        obj.addAtHead(7);
+        obj.addAtHead(3);
+        obj.addAtHead(2);
+        obj.addAtHead(5);
+        obj.addAtTail(5);
+        obj.get(5);
+        obj.deleteAtIndex(6);
+        obj.deleteAtIndex(4);
     }
 }
