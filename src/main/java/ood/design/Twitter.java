@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 /**
  * Twitter
  * 355. Design Twitter
- * */
-@Quality(value = Stage.FAILING,details = "7/16")
+ */
+@Quality(value = Stage.FAILING, details = "7/16")
 @Platform(Site.LEETCODE)
 class Twitter {
 
@@ -21,15 +21,15 @@ class Twitter {
     private final Map<Integer, User> users;
     private final Map<Integer, Tweet> tweets;
 
-    public Twitter() {
+    public Twitter(){
         usersFollowersMap = new HashMap<>();
         usersTimelinesMap = new HashMap<>();
         users = new HashMap<>();
         tweets = new HashMap<>();
     }
 
-    public void postTweet(int userId, int tweetId) {
-        users.putIfAbsent(userId,new User(userId));
+    public void postTweet(int userId, int tweetId){
+        users.putIfAbsent(userId, new User(userId));
         User user = users.get(userId);
         usersTimelinesMap.putIfAbsent(user, new LinkedList<>());
         if(usersFollowersMap.get(user) == null){
@@ -38,8 +38,8 @@ class Twitter {
         }
 
         usersFollowersMap.get(user).stream().forEach(
-                follower ->{
-                    tweets.putIfAbsent(tweetId,new Tweet(tweetId,userId));
+                follower -> {
+                    tweets.putIfAbsent(tweetId, new Tweet(tweetId, userId));
                     usersTimelinesMap.get(follower).addFirst(
                             tweets.get(tweetId)
                     );
@@ -47,31 +47,31 @@ class Twitter {
         );
     }
 
-    public List<Integer> getNewsFeed(int userId) {
-        if(usersTimelinesMap.get(users.get(userId))== null)
+    public List<Integer> getNewsFeed(int userId){
+        if(usersTimelinesMap.get(users.get(userId)) == null)
             return new LinkedList<>();
         return usersTimelinesMap.get(users.get(userId)).stream().map(
-                o->o.id
+                o -> o.id
         ).collect(Collectors.toList());
     }
 
-    public void follow(int followerId, int followeeId) {
-        users.putIfAbsent(followerId,new User(followerId));
-        users.putIfAbsent(followeeId,new User(followeeId));
+    public void follow(int followerId, int followeeId){
+        users.putIfAbsent(followerId, new User(followerId));
+        users.putIfAbsent(followeeId, new User(followeeId));
 
-        usersFollowersMap.putIfAbsent(users.get(followeeId),new LinkedList<>());
+        usersFollowersMap.putIfAbsent(users.get(followeeId), new LinkedList<>());
         usersFollowersMap.get(users.get(followeeId)).add(users.get(followerId));
-        populateTimeline(users.get(followerId),users.get(followeeId));
+        populateTimeline(users.get(followerId), users.get(followeeId));
     }
 
     /**
      * TODO : refresh the timeline with tweets that you missed
-     * */
+     */
     private void populateTimeline(User user, User user1){
     }
 
-    public void unfollow(int followerId, int followeeId) {
-        cleanTimeLine(users.get(followerId),users.get(followeeId));
+    public void unfollow(int followerId, int followeeId){
+        cleanTimeLine(users.get(followerId), users.get(followeeId));
         usersFollowersMap.get(users.get(followeeId)).remove(users.get(followerId));
     }
 
@@ -80,9 +80,12 @@ class Twitter {
         usersTimelinesMap.get(user).removeIf(tweet -> tweet.userId == user1.id);
     }
 
-    private static class User{
+    private static class User {
         public int id;
-        public User(int i){this.id = i;}
+
+        public User(int i){
+            this.id = i;
+        }
 
         @Override
         public boolean equals(Object o){
@@ -101,9 +104,10 @@ class Twitter {
     private static class Tweet {
         public int id;
         public int userId;
-        public Tweet(int i,int u){
+
+        public Tweet(int i, int u){
             this.id = i;
-            this.userId =u;
+            this.userId = u;
         }
 
         @Override

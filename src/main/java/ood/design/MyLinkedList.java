@@ -7,7 +7,7 @@ import annotation.Stage;
 
 /**
  * 707. Design Linked List
- * */
+ */
 @Quality(value = Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class MyLinkedList {
@@ -23,15 +23,16 @@ public class MyLinkedList {
             this.value = val;
         }
     }
-    public MyLinkedList() {
+
+    public MyLinkedList(){
         head = new Node(-1);
     }
 
-    public int get(int index) {
-        if (index<0)
+    public int get(int index){
+        if(index < 0)
             return -1;
         Node temp = head;
-        int p1=0;
+        int p1 = 0;
         while(p1 != index){
             p1++;
             temp = temp.next;
@@ -39,14 +40,14 @@ public class MyLinkedList {
         return temp == null || temp.next == null ? -1 : temp.next.value;
     }
 
-    public void addAtHead(int val) {
+    public void addAtHead(int val){
         Node node = new Node(val);
         node.next = head.next;
         head.next = node;
         size++;
     }
 
-    public void addAtTail(int val) {
+    public void addAtTail(int val){
         Node node = new Node(val);
         Node temp = head;
         while(temp.next != null){
@@ -56,19 +57,19 @@ public class MyLinkedList {
         size++;
     }
 
-    public void addAtIndex(int index, int val) {
-        if (index > size || index < 0)
+    public void addAtIndex(int index, int val){
+        if(index > size || index < 0)
             return;
         Node temp = head;
         Node node = new Node(val);
-        if (size == index){
-            while (temp.next != null)
+        if(size == index){
+            while(temp.next != null)
                 temp = temp.next;
             temp.next = node;
             size++;
-        } else {
-            int p1=0;
-            while(p1!=index){
+        } else{
+            int p1 = 0;
+            while(p1 != index){
                 p1++;
                 temp = temp.next;
             }
@@ -79,20 +80,20 @@ public class MyLinkedList {
         }
     }
 
-    public void deleteAtIndex(int index) {
-        if (index>=size)
+    public void deleteAtIndex(int index){
+        if(index >= size)
             return;
-        int p1=0;
+        int p1 = 0;
         Node temp = head;
-        while(p1!=index){
+        while(p1 != index){
             p1++;
             temp = temp.next;
         }
-        if (temp.next !=null)
+        if(temp.next != null)
             temp.next = temp.next.next;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         MyLinkedList obj = new MyLinkedList();
         obj.addAtHead(1);
