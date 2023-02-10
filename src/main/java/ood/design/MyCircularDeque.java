@@ -7,15 +7,15 @@ import annotation.Stage;
 
 /**
  * 641. Design Circular Deque
- * */
+ */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class MyCircularDeque {
 
-    private Node head,tail;
-    private int capacity,size;
+    private Node head, tail;
+    private int capacity, size;
 
-    public MyCircularDeque(int k) {
+    public MyCircularDeque(int k){
         this.capacity = k;
         this.size = 0;
 
@@ -26,7 +26,7 @@ public class MyCircularDeque {
         tail.prev = head;
     }
 
-    public boolean insertFront(int value) {
+    public boolean insertFront(int value){
         if(size == capacity)
             return false;
 
@@ -39,7 +39,7 @@ public class MyCircularDeque {
         return true;
     }
 
-    public boolean insertLast(int value) {
+    public boolean insertLast(int value){
         if(size == capacity)
             return false;
         Node tailPrev = tail.prev;
@@ -53,7 +53,7 @@ public class MyCircularDeque {
         return true;
     }
 
-    public boolean deleteFront() {
+    public boolean deleteFront(){
         if(size == 0)
             return false;
 
@@ -66,7 +66,7 @@ public class MyCircularDeque {
         return true;
     }
 
-    public boolean deleteLast() {
+    public boolean deleteLast(){
         if(size == 0)
             return false;
         Node delete = tail.prev;
@@ -77,27 +77,29 @@ public class MyCircularDeque {
         return true;
     }
 
-    public int getFront() {
+    public int getFront(){
         return size == 0 ? -1 : head.next.value;
     }
 
-    public int getRear() {
+    public int getRear(){
         return size == 0 ? -1 : tail.prev.value;
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty(){
         return size == 0 && size < capacity;
     }
 
-    public boolean isFull() {
+    public boolean isFull(){
         return size == capacity;
     }
 
-    private static class Node{
+    private static class Node {
         public int value;
-        public Node next,prev;
+        public Node next, prev;
 
-        public Node(int v){this.value = v; }
+        public Node(int v){
+            this.value = v;
+        }
     }
 
     public static void main(String[] args){
