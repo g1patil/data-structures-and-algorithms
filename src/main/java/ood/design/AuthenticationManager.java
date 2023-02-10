@@ -10,33 +10,33 @@ import java.util.Map;
 
 /**
  * 1797. Design Authentication Manager
- * */
+ */
 @Quality(Stage.TESTED)
 @Platform(Site.LEETCODE)
 public class AuthenticationManager {
 
     private final int ttl;
-    private final Map<String,Integer> tokens;
+    private final Map<String, Integer> tokens;
 
-    public AuthenticationManager(int timeToLive) {
+    public AuthenticationManager(int timeToLive){
         this.ttl = timeToLive;
         tokens = new HashMap<>();
     }
 
-    public void generate(String tokenId, int currentTime) {
-        tokens.put(tokenId,ttl+currentTime);
+    public void generate(String tokenId, int currentTime){
+        tokens.put(tokenId, ttl+currentTime);
     }
 
-    public void renew(String tokenId, int currentTime) {
+    public void renew(String tokenId, int currentTime){
         if(tokens.containsKey(tokenId) && tokens.get(tokenId) <= currentTime)
             return;
-        tokens.put(tokenId,currentTime+ttl);
+        tokens.put(tokenId, currentTime+ttl);
     }
 
-    public int countUnexpiredTokens(int currentTime) {
-        int count=0;
+    public int countUnexpiredTokens(int currentTime){
+        int count = 0;
 
-        for(String token : tokens.keySet()){
+        for(String token : tokens.keySet()) {
             if(tokens.get(token) > currentTime)
                 count++;
         }
