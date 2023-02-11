@@ -6,9 +6,7 @@ import annotation.Site;
 import annotation.Stage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 1656. Design an Ordered Stream
@@ -17,34 +15,24 @@ import java.util.Map;
 @Platform(Site.LEETCODE)
 public class OrderedStream {
 
-    private int size,pointer;
-    private int[] values;
-    private Map<Integer,String> map;
+    private String[] values;
+    private int size , pointer;
 
     public OrderedStream(int n) {
         size = n;
+        values = new String[n+1];
         pointer = 1;
-        values = new int[n+1];
-        map = new HashMap<>();
     }
 
     public List<String> insert(int idKey, String value) {
-        values[idKey] = idKey;
-        map.put(idKey,value);
+        values[idKey] = value;
         return getStreamValues();
     }
 
     private List<String> getStreamValues(){
         List<String> result = new ArrayList<>();
-        if(values[pointer] == 0)
-            return result;
-        for(int i = pointer; i <= size ; i++) {
-            if(map.containsKey(i)){
-                result.add(map.get(i));
-            } else {
-                pointer = i;
-                break;
-            }
+        while( pointer <= size && values[pointer] != null){
+            result.add(values[pointer++]);
         }
         return result;
     }
