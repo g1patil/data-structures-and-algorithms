@@ -16,13 +16,18 @@ public class TagSearch {
     }
     public Map<String, Set<String>> buildDisctonary(String input){
         Map<String, Set<String>> map = new HashMap<>();
-        String[] strings = input.split(" ");
+        for(String s : input.split("\n")){
+            String[] feature = s.split(":");
+            String _feature = feature[0].strip();
+            map.putIfAbsent(_feature,new HashSet<>());
 
-        for(String feature : strings){
-            String[] featureValue = feature.split(":");
-            map.put(featureValue[0],new HashSet<>());
-            map.get(featureValue[0]).addAll(List.of(featureValue[1].split(",")));
+            for(String t : feature[1].split(" ")){
+                if(t.isBlank())
+                    continue;
+                map.get(_feature).add(t.strip());
+            }
         }
+        this.dict = map;
         return map;
     }
 
@@ -37,7 +42,15 @@ public class TagSearch {
         return features;
     }
 
-    public Set<String> getTwoCommon(String t1,String t2){
+    public Set<String> getEitherCommon(String t1,String t2){
+        Set<String> s1 = getFeatureContains(t1);
+        Set<String> s2 = getFeatureContains(t2);
+        Set<String> result = new HashSet<>();
+        s1.addAll(s2);
+        return s1;
+    }
+
+    public Set<String> getContainsAll(String t1,String t2){
         Set<String> s1 = getFeatureContains(t1);
         Set<String> s2 = getFeatureContains(t2);
         Set<String> result = new HashSet<>();
@@ -45,21 +58,40 @@ public class TagSearch {
             if(s2.contains(s))
                 result.add(s);
         }
-
         return result;
     }
 
+    public Set<List<String>> getWhichHaveCommon() {
+        Set<List<String>> pairs = new HashSet<>();
+        for (String outer : dict.keySet()) {
+            for (String inner : dict.keySet()) {
+                if (outer.compareTo(inner) < 0) {
+                    if (haveCommon(dict.get(outer), dict.get(inner))) {
+                        pairs.add(List.of(outer, inner));
+                    }
+                }
+            }
+        }
+        return pairs;
+    }
+
+
+    public boolean haveCommon(Set<String> s1,Set<String> s2){
+        for(String s : s1)
+            if(s2.contains(s))
+                return true;
+        return false;
+    }
+
     public static void main(String[] args){
-        TagSearch search = new TagSearch("FeatureA:tag1,tag2 FeatureB:tag3,tag4 FeatureC:tag3,tag4 FeatureD:tag1,tag3 FeatureE:tag1");
+        String test = "feature1 : string categorical\nfeature2 : numeric\nfeature3 : numeric categorical\nfeature4 : string splittable\nfeature5 : string";
+        TagSearch search = new TagSearch(test);
+
+
         System.out.println(
-                search.getTwoCommon("tag1","tag3")
+                search.getWhichHaveCommon()
         );
 
-        search.tagSet.stream().forEach(
-                s -> System.out.println(
-                        search.getFeatureContains(s)
-                )
-        );
     }
 }
 
