@@ -19,7 +19,7 @@ public class PairSocks {
 
         for(Sock s : socks){
             String pairsWith = ruleMap.get(s.getKey());
-            if(map.containsKey(pairsWith)){
+            if(pairsWith!= null && map.containsKey(pairsWith)){
                 result.add(List.of(s,map.get(pairsWith)));
                 map.remove(pairsWith);
                 map.remove(s.getKey());
