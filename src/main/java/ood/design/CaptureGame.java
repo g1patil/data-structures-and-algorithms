@@ -4,8 +4,8 @@ import java.util.*;
 
 public class CaptureGame {
 
-    private Map<String,Integer> scoreMap ;
-    private Map<String,Integer> pointmap;
+    private final Map<String,Integer> scoreMap ;
+    private final Map<String,Integer> pointmap;
     Map<Integer,List<String>> topScores;
 
 
