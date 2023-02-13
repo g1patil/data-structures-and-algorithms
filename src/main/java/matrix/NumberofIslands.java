@@ -5,9 +5,6 @@ import annotation.Quality;
 import annotation.Site;
 import annotation.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author g1patil
  * 200. Number of Islands
@@ -30,16 +27,29 @@ public class NumberofIslands {
 
     public int numIslands(char[][] grid) {
         boolean[][] visited = new boolean[grid.length][grid[0].length];
-        List<Integer> sizeList = new ArrayList();
-        int max = 0 ;
+        int result = 0 ;
         for(int i = 0 ; i < grid.length ; i++){
             for(int j = 0 ; j < grid[0].length ; j++){
                 int size = getArea(grid , i , j , visited) ;
                 if(size > 0)
-                    sizeList.add(size);
+                    result++;
             }
         }
 
-        return sizeList.size();
+        return result;
+    }
+
+    public int getMaxLenghtOfIsland(char[][] grid){
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
+
+        int max = 0 ;
+        for(int i = 0 ; i < grid.length ; i++){
+            for(int j = 0 ; j < grid[0].length ; j++){
+                int size = getArea(grid , i , j , visited) ;
+                max = Math.max(size,max);
+            }
+        }
+
+        return max;
     }
 }
