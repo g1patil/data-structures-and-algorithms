@@ -17,12 +17,12 @@ public class PairSocks {
         Map<String,Sock> map = buildMap(socks);
         Map<String,String> ruleMap = buildRuleMap(rules);
 
-        for(Sock s : socks){
-            String pairsWith = ruleMap.get(s.getKey());
+        for(Sock currentPair : socks){
+            String pairsWith = ruleMap.get(currentPair.getKey());
             if(pairsWith!= null && map.containsKey(pairsWith)){
-                result.add(List.of(s,map.get(pairsWith)));
+                result.add(List.of(currentPair,map.get(pairsWith)));
                 map.remove(pairsWith);
-                map.remove(s.getKey());
+                map.remove(currentPair.getKey());
             }
         }
         return result;
