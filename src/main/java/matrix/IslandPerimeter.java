@@ -48,6 +48,10 @@ public class IslandPerimeter {
         return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length && grid[row][col] == 1;
     }
 
+    /**
+     * Gets the fist cell which is part of the island
+     * @param grid the island grid
+     * */
     private int[] getStartingCell(final int[][] grid) {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
