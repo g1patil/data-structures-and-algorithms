@@ -19,8 +19,6 @@ Feel free to fork/contribute/share/createissue or ask any question. Majority of 
     11. [Searching](/src/main/java/main/java/com//searching)
     12. [Sorting](/src/main/java/sorting)
     13. [Strings](/src/main/java/strings)
-    
-## Environment
 
 ### Java Version
 Java version 1.8.0_172  
