@@ -1,8 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Test class to practice any given problem .
  * This class serves as the template class for any coding practices that I do.
@@ -11,24 +8,40 @@ import java.util.List;
 
 public class TestClass {
 
-    //1,5], [14, 17], [6,9], [10,13], [4,7], [8,12]
-    @Test
-    public void test(){
-        List<int[]> list = new ArrayList<>();
-        list.add(new int[]{1,5});
-        list.add(new int[]{14,17});
-        list.add(new int[]{6,9});
-        list.add(new int[]{10,13});
-        list.add(new int[]{4,7});
-        list.add(new int[]{8,12});
-
-        sortIntervals(list).stream().forEach(
-                a -> System.out.println("[" + a[0] + "," + a[1] + "]")
-        );
+    private boolean getLCA(TestNode head, int leftData, int rightData) {
+        if (head == null)
+            return false;
+        
+        if (head.data == leftData || head.data == rightData)
+            return true;
+        
+        boolean left  = getLCA(head.left, leftData, rightData);
+        boolean right  = getLCA(head.right, leftData, rightData);
+        
+        if (left && right) {
+            System.out.println("LCA has been found : " + head.data );
+        }
+        
+        return getLCA(head.left,leftData,rightData) || getLCA(head.right, leftData, rightData);
     }
+    @Test
+    public void test() {
+        TestNode n4 = new TestNode(4,null,null);
+        TestNode n3 = new TestNode(3,null,null);
+        TestNode n2 = new TestNode(2,null,null);
+        TestNode n1 = new TestNode(1,n3,n4);
+        TestNode n0 = new TestNode(0,n1,n2);
+        getLCA(n0, 3,4);
+    }
+}
 
-    private List<int[]> sortIntervals(List<int[]> list){
-        list.sort((a,b)->a[0]-b[0]);
-        return list;
+class TestNode {
+    int data;
+    public TestNode left,right;
+
+    public TestNode(int data, TestNode left, TestNode right) {
+        this.data = data;
+        this.left = left;
+        this.right = right;
     }
 }
