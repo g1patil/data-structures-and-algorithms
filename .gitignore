@@ -52,3 +52,6 @@ out
 lib
 *.iml
 algorithms.iml
+
+target
+target/*
